@@ -1,0 +1,7 @@
+POST /api/v1/checks 202
+FastAPI health: schema_version=1.0 run_mode=fixture
+GET /api/v1/checks/84572a8b-ece9-4bc3-aa4f-84fa945fb7a1 200
+GET /api/v1/sources/fixture_minh_hoa_f18d386db9cbb08c 200
+Direct FastAPI: wrong token 404; DELETE 204; GET after delete 404
+POST /api/v1/checks 202
+GET /api/v1/checks/f87a7e9e-b0ae-42d0-84de-2a0079583d02 200

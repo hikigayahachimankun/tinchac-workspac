@@ -1,0 +1,25 @@
+{
+  "field_type": "award_amount",
+  "normalized": {
+    "text": null,
+    "money": {
+      "amount": 5000000,
+      "currency": "VND",
+      "basis": "per_award"
+    },
+    "date": null,
+    "url": null
+  },
+  "scope": {
+    "program": "Học bổng Minh Họa 2026",
+    "academic_year": null,
+    "cohort": null,
+    "audience": null,
+    "fee_kind": null
+  },
+  "quote": "5.000.000 đồng/suất.",
+  "span": {
+    "start": 0,
+    "end": 20
+  }
+}

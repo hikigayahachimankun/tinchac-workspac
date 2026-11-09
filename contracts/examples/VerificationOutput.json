@@ -1,0 +1,36 @@
+{
+  "drafts": [
+    {
+      "claim_id": "clm_01",
+      "label": "contradicted",
+      "reason_codes": [
+        "VALUE_MISMATCH"
+      ],
+      "explanation": "Nguồn mô phỏng ghi 5 triệu đồng/suất, khác 7 triệu đồng trong nội dung gửi.",
+      "evidence": [
+        {
+          "chunk_id": "fixture_hb_v1_c01",
+          "version_id": "fixture_hb_v1",
+          "quote": "5.000.000 đồng/suất.",
+          "quote_span": {
+            "start": 0,
+            "end": 20
+          },
+          "relation": "contradicts"
+        }
+      ],
+      "temporal_status": "not_applicable"
+    }
+  ],
+  "usage": {
+    "provider": "fixture",
+    "model": "fixture-v1",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": 0,
+    "cost_vnd_estimate": 0,
+    "attempts": 0,
+    "cache_hit": false,
+    "duration_ms": 0
+  }
+}

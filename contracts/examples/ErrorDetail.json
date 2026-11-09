@@ -1,0 +1,8 @@
+{
+  "code": "INVALID_INPUT",
+  "message": "Dữ liệu mô phỏng không hợp lệ.",
+  "retryable": false,
+  "details": {
+    "field": "confirmed_text"
+  }
+}

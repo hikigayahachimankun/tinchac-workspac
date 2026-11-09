@@ -1,0 +1,7 @@
+{
+  "schema_version": "1.0",
+  "status": "ok",
+  "corpus_version": "fixture-v1",
+  "provider_configured": false,
+  "run_mode": "fixture"
+}

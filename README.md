@@ -133,3 +133,109 @@ trong handoff. Cập nhật checkpoint sau bước kiểm được và dừng th
 **Gemini chỉ dùng khi cần chạy thật.** Codex đăng nhập ChatGPT là công cụ viết mã. Gemini là model TinChắc gọi khi chạy live. T01/T03/T04 fixture không cần API key. R1 tạo authorization key (auth key) ở [Google AI Studio](https://aistudio.google.com/app/apikey) và giữ riêng, chỉ cung cấp cho tiến trình backend/preflight do R1 chạy. `.env.example` là mẫu tên biến và trần dự kiến. Key thật cần ở ngoài repo/workspace của các agent và ngoài frontend. Khi cần live, R1 truyền biến môi trường từ terminal riêng. Chạy `python -m scripts.preflight --model-check --max-calls 3` sau T05, bằng đúng key, model và một mẫu công khai. Nếu thiếu quota hoặc model, tiếp tục fixture và ghi trạng thái live trong D02.
 
 Kế hoạch dự kiến `gemini-3.5-flash-lite`, app cap 3 USD và tổng tiền 200.000 VND. R1 xác nhận phí/thuế hiển thị, quota và mức nạp trước khi thanh toán. Nếu tài khoản yêu cầu Prepay, tài liệu Google ghi khoản nạp tối thiểu 5 USD hoặc tương đương. Cùng một model đã chốt cho A/B/C. Không dựa vào Gemini free tier để hứa tiến độ hoặc dùng dữ liệu sinh viên. Phần còn lại của stack MVP chạy local, gồm SQLite, OCR, retrieval và demo. [Gemini API keys](https://ai.google.dev/gemini-api/docs/api-key) · [Structured output](https://ai.google.dev/gemini-api/docs/structured-output) · [Pricing](https://ai.google.dev/gemini-api/docs/pricing) · [Billing](https://ai.google.dev/gemini-api/docs/billing)
+
+## T01 — Backend và hợp đồng 1.0
+
+T01 chỉ chạy health. Các model nghiệp vụ được xuất vào OpenAPI components;
+route assets/checks/sources chưa triển khai. Không có frontend trong task này.
+Hợp đồng nằm ở `backend/app/models.py`, examples ở `contracts/examples/`.
+`check_result.json` là **CheckRecord** bọc CheckResult; `CheckResult.json` là result bên trong.
+Tất cả examples đều mô phỏng. Token trong examples không cấp quyền truy cập thật.
+
+Đã thử trên máy Ubuntu 26.04.1 LTS, Python 3.11.18, Node 22.23.4,
+SQLite 3.53.1, uv 0.13.7 (2026-11-09). Python/Node được khóa tại `.python-version` và `.nvmrc`.
+
+```bash
+# Từ repo root. uv dùng Python 3.11.18 đã cài.
+uv venv --python 3.11.18 .venv
+source .venv/bin/activate
+uv pip sync requirements.lock.txt
+python -m scripts.init_db
+python -m pytest backend/tests -q
+python -m scripts.export_contracts --check
+python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+# Terminal khác:
+curl --fail http://127.0.0.1:8000/api/v1/health
+```
+
+`.env.example` đã chứa defaults fixture, không cần tạo `.env` để chạy T01.
+Settings parse tất cả biến trong mẫu và che key trong repr. Health không gọi provider;
+`provider_configured` chỉ báo key có được cấu hình, không xác nhận key dùng được.
+DB được tạo bằng CLI, không tự tạo khi health được gọi. Health kiểm phiên bản DB và
+bảng FTS5 TEMP; DB chưa sẵn sàng trả 503 theo ErrorEnvelope. DB chỉ có metadata ở T01.
+`corpus_version=fixture-v1` là định danh fixture đóng gói, chưa phải kho nguồn ingest;
+mode live/replay chưa có corpus và health trả `corpus_version=unavailable`.
+
+Tạo lại lock khi chủ động cập nhật dependencies:
+
+```bash
+uv pip compile requirements.in --python .venv/bin/python -o requirements.lock.txt
+uv pip sync requirements.lock.txt
+python -m pytest backend/tests -q
+python -m scripts.export_contracts
+python -m scripts.export_contracts --check
+```
+
+`export_contracts` validate tất cả examples trước khi export; `--check` thoát lỗi nếu drift.
+OpenAPI sinh từ Pydantic/FastAPI, không chỉnh tay. Nullable fields vẫn phải có mặt;
+arrays rỗng vẫn xuất. Schema diễn tả kiểu và bounds; validator quan hệ trường chạy trong Python.
+EvidenceRef nhận `context={'chunks': {chunk_id: SourceChunk}}` để kiểm quote/span/version
+với text NFC. Kiểm nguồn/scope/thời gian và asset ready/token cần runtime ở task sau;
+parse model đơn lẻ không chứng nhận bằng chứng đúng. `checks_passed` fixture chỉ ghi `quote_exact`.
+
+Tài liệu đã đối chiếu: [Pydantic validators](https://docs.pydantic.dev/latest/concepts/validators/),
+[FastAPI metadata/OpenAPI](https://fastapi.tiangolo.com/tutorial/metadata/),
+[Vite prerequisites](https://vite.dev/guide/).
+Danh sách dependency theo §7.1 gồm cả gói cho task sau, nhưng T01 không import/chạy pipeline đó.
+Trước khi phân phối app, chủ repo cần chốt điều kiện giấy phép dependency,
+đặc biệt [giấy phép PyMuPDF](https://pymupdf.readthedocs.io/en/latest/about.html#license-and-copyright).
+
+Kết quả T01: `pytest backend/tests -q` đạt **55 passed** sau review (lượt đầu 48 passed).
+Health qua uvicorn + curl thật trả HTTP 200. Hai lần export có cùng SHA-256 với bản
+trong repo; `--check` pass và thử file drift cố ý trả exit 1 đúng dự kiến.
+`uv pip check --python .venv/bin/python` xác nhận 63 packages tương thích.
+Chi tiết lệnh và giới hạn kiểm tra: [handoff T01](docs/handoffs/T01.md),
+[review T01](docs/handoffs/T01-review.md).
+
+## T04 — Văn bản qua backend fixture
+
+Frontend mặc định gửi HTTP tới FastAPI qua Vite proxy `/api`, giữ banner mô phỏng.
+Chỉ các văn bản định danh trong `data/fixtures/cases.jsonl` có kết quả cố định;
+không phân tích AI hay gọi URL trong nội dung. Chọn tình huống ở giao diện để điền
+văn bản, hoặc dùng nút Điền nội dung mẫu. Lỗi backend hiện riêng, không fallback
+sang mock frontend. Mẫu hết hạn thời gian của T03 chỉ có trong mock giao diện;
+TTL tài nguyên thật được kiểm riêng bằng backend tests.
+
+```bash
+# Terminal 1, từ repo root; mặc định APP_MODE=fixture, một process.
+.venv/bin/python -m scripts.init_db
+.venv/bin/python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000
+# Terminal 2, từ repo root:
+npm run dev --prefix frontend
+# Mở http://127.0.0.1:5173
+```
+
+POST trả 202/queued; poll GET nhận CheckRecord với completed/result hoặc
+failed/error. Token ngẫu nhiên chỉ giữ trong memory, gửi `X-Resource-Token`;
+server lưu SHA-256, token sai/thiếu trả 404. DELETE xóa record và token;
+worker không ghi lại sau DELETE/expiry. TTL 24h; dọn mỗi 60 giây hoặc khi thao tác,
+hash-only tombstone thêm 24h để đúng token nhận 410, sau đó 404. Restart đánh dấu
+job dở JOB_INTERRUPTED, không tự chạy lại. Đây là queue một process cho demo.
+
+```bash
+.venv/bin/python -m pytest backend/tests -q
+.venv/bin/python -m scripts.export_contracts --check
+npm test --prefix frontend
+npm run build --prefix frontend
+# Browser T03 (mock tường minh, test config tự đặt VITE_API_MODE=mock):
+npm run test:browser --prefix frontend
+# Browser T04: tự mở FastAPI port 8000 + Vite port 5174, không mở server trùng port.
+DATABASE_PATH=/tmp/tinchac-t04-smoke.sqlite3 .venv/bin/python -m scripts.init_db
+npm run test:fixture --prefix frontend
+```
+
+Playwright cần Chromium đã cài (`cd frontend` rồi `npx playwright install chromium`)
+và thư viện hệ thống. Có thể đặt `TINCHAC_CHROMIUM_PATH` để dùng browser riêng.
+Ảnh/log smoke sạch token ở `docs/evidence/T04/`; lệnh thực của máy này và giới hạn
+ở [handoff T04](docs/handoffs/T04.md), review ở [T04-review](docs/handoffs/T04-review.md).
+OpenAPI sinh thêm routes đúng §3.7, giữ nguyên components/schema 1.0/examples.

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "00000000-0000-4000-8000-000000000002",
+  "status": "ready",
+  "ocr": {
+    "text": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+    "mean_confidence": 90.0,
+    "low_quality": false,
+    "warnings": [
+      "FIXTURE_ONLY"
+    ],
+    "duration_ms": 0
+  },
+  "error": null,
+  "created_at": "2026-11-08T17:00:00+07:00",
+  "expires_at": "2026-11-09T17:00:00+07:00"
+}

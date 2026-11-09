@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "request_id": "fixture-request-01",
+  "error": {
+    "code": "INVALID_INPUT",
+    "message": "Dữ liệu mô phỏng không hợp lệ.",
+    "retryable": false,
+    "details": {
+      "field": "confirmed_text"
+    }
+  }
+}

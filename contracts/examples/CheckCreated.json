@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "check": {
+    "schema_version": "1.0",
+    "check_id": "00000000-0000-4000-8000-000000000001",
+    "status": "queued",
+    "result": null,
+    "error": null,
+    "created_at": "2026-11-08T17:00:00+07:00",
+    "updated_at": "2026-11-08T17:00:00+07:00",
+    "expires_at": "2026-11-09T17:00:00+07:00"
+  },
+  "access_token": "fixture-only-token-00000000000002"
+}

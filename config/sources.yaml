@@ -1,0 +1,107 @@
+{
+  "schema_version": "1.0",
+  "purpose": "T02 manual seed register; not a crawler configuration",
+  "checked_on": "2026-11-09",
+  "reviewer": "T02-agent; owner review pending",
+  "normalization": "Unicode NFC; LF; content_sha256 over UTF-8 SourceVersion.text",
+  "availability_policy": "first_seen: no verified historical snapshot / modification history",
+  "rights": "Publicly readable, no open redistribution licence verified. Local review/research only; owner must clear reuse before publication.",
+  "discovery_urls": [
+    "https://dut.udn.vn/Phong/CTSV/Tintucds/gid/332",
+    "https://dut.udn.vn/Phong/Taichinh"
+  ],
+  "sources": [
+    {
+      "notice_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "notice_host": "dut.udn.vn",
+      "notice_path": "/Phong/CTSV/Thongbao/id/12395",
+      "content_selector": ".wd-content-detail",
+      "date_selector": ".wd-date",
+      "source_id": "dut_be8a0080c11e660f",
+      "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "family_id": "agribank",
+      "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "attachments": [
+        "https://docs.google.com/document/d/17exz6WD3BS_r8Qeiszhya_8a_sUeyz0q/edit?usp=sharing&ouid=112054809668127454802&rtpof=true&sd=true"
+      ],
+      "review_status": "approved",
+      "attachment_policy": "Only exact links from the notice; never submit forms or open student/payment portals"
+    },
+    {
+      "notice_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+      "notice_host": "dut.udn.vn",
+      "notice_path": "/TrangSinhvien/Thongbao/id/12394",
+      "content_selector": ".wd-content-detail",
+      "date_selector": ".wd-date",
+      "source_id": "dut_2a0b90b19b67872f",
+      "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "family_id": "keidanren_jcci",
+      "canonical_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+      "attachments": [],
+      "review_status": "approved",
+      "attachment_policy": "Only exact links from the notice; never submit forms or open student/payment portals"
+    },
+    {
+      "notice_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+      "notice_host": "dut.udn.vn",
+      "notice_path": "/Phong/CTSV/Thongbao/id/12321",
+      "content_selector": ".wd-content-detail",
+      "date_selector": ".wd-date",
+      "source_id": "dut_09fb9c92c9ab7b2f",
+      "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "family_id": "schneider",
+      "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+      "attachments": [],
+      "review_status": "approved",
+      "attachment_policy": "Only exact links from the notice; never submit forms or open student/payment portals"
+    },
+    {
+      "notice_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12327",
+      "notice_host": "dut.udn.vn",
+      "notice_path": "/Phong/CTSV/Thongbao/id/12327",
+      "content_selector": ".wd-content-detail",
+      "date_selector": ".wd-date",
+      "source_id": "dut_344b21e393855658",
+      "version_id": "dut_344b21e393855658_921795aab925d271",
+      "family_id": "toyota",
+      "canonical_url": "https://drive.google.com/file/d/1fMZ6as3DNjI3WwLJ_wAFnehvKHgRC2M-/view",
+      "attachments": [
+        "https://drive.google.com/file/d/1fMZ6as3DNjI3WwLJ_wAFnehvKHgRC2M-/view?usp=sharing"
+      ],
+      "review_status": "approved",
+      "attachment_policy": "Only exact links from the notice; never submit forms or open student/payment portals"
+    },
+    {
+      "notice_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12387",
+      "notice_host": "dut.udn.vn",
+      "notice_path": "/Phong/Taichinh/Thongbao/id/12387",
+      "content_selector": ".wd-content-detail",
+      "date_selector": ".wd-date",
+      "source_id": "dut_f18730b4c4454e87",
+      "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+      "family_id": "tuition_hki_2026_dot2",
+      "canonical_url": "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/view",
+      "attachments": [
+        "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/preview"
+      ],
+      "review_status": "approved",
+      "attachment_policy": "Only exact links from the notice; never submit forms or open student/payment portals"
+    },
+    {
+      "notice_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381",
+      "notice_host": "dut.udn.vn",
+      "notice_path": "/Phong/Taichinh/Thongbao/id/12381",
+      "content_selector": ".wd-content-detail",
+      "date_selector": ".wd-date",
+      "source_id": "dut_5612e8ebaf4a8bfe",
+      "version_id": "dut_5612e8ebaf4a8bfe_d00f8e6c84db7050",
+      "family_id": "tuition_masters_hki_2026_k51",
+      "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381",
+      "attachments": [
+        "https://drive.google.com/file/d/1gOVIKBh5y6rQpWlucYPYOhKJRBvpusui/preview"
+      ],
+      "review_status": "quarantined",
+      "attachment_policy": "Only exact links from the notice; never submit forms or open student/payment portals"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "provider": "fixture",
+  "model": "fixture-v1",
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "cost_usd": 0,
+  "cost_vnd_estimate": 0,
+  "attempts": 0,
+  "cache_hit": false,
+  "duration_ms": 0
+}

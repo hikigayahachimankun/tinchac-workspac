@@ -1,0 +1,79 @@
+{
+  "schema_version": "1.0",
+  "check_id": "00000000-0000-4000-8000-000000000001",
+  "claims": [
+    {
+      "claim_id": "clm_01",
+      "label": "contradicted",
+      "reason_codes": [
+        "VALUE_MISMATCH"
+      ],
+      "explanation": "Nguồn mô phỏng ghi 5 triệu đồng/suất, khác 7 triệu đồng trong nội dung gửi.",
+      "evidence": [
+        {
+          "chunk_id": "fixture_hb_v1_c01",
+          "version_id": "fixture_hb_v1",
+          "quote": "5.000.000 đồng/suất.",
+          "quote_span": {
+            "start": 0,
+            "end": 20
+          },
+          "relation": "contradicts"
+        }
+      ],
+      "temporal_status": "not_applicable",
+      "field_type": "award_amount",
+      "statement": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+      "normalized": {
+        "text": null,
+        "money": {
+          "amount": 7000000,
+          "currency": "VND",
+          "basis": "per_award"
+        },
+        "date": null,
+        "url": null
+      },
+      "checks_passed": [
+        "quote_exact"
+      ]
+    }
+  ],
+  "summary": {
+    "supported": 0,
+    "contradicted": 1,
+    "insufficient_evidence": 0,
+    "message": "Có 1 chi tiết mâu thuẫn với nguồn mô phỏng; đây không phải kết luận lừa đảo."
+  },
+  "sources": [
+    {
+      "version_id": "fixture_hb_v1",
+      "title": "Học bổng Minh Họa 2026 — dữ liệu mô phỏng",
+      "canonical_url": "https://tinchac.example/fixtures/hb-2026",
+      "published_at": "2026-11-01",
+      "retrieved_at": "2026-11-08T09:00:00+07:00",
+      "is_fixture": true
+    }
+  ],
+  "as_of": "2026-11-08T17:00:00+07:00",
+  "corpus_version": "fixture-v1",
+  "corpus_updated_at": "2026-11-08T09:00:00+07:00",
+  "warnings": [
+    "FIXTURE_ONLY: Không phải thông báo DUT thật."
+  ],
+  "run_mode": "fixture",
+  "next_steps": [
+    "Trong chế độ live, mở nguồn chính thức và đối chiếu đúng chương trình."
+  ],
+  "usage": {
+    "provider": "fixture",
+    "model": "fixture-v1",
+    "input_tokens": 0,
+    "output_tokens": 0,
+    "cost_usd": 0,
+    "cost_vnd_estimate": 0,
+    "attempts": 0,
+    "cache_hit": false,
+    "duration_ms": 0
+  }
+}

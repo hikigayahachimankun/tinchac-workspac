@@ -1,0 +1,23 @@
+{
+  "version_id": "fixture_hb_v1",
+  "title": "Học bổng Minh Họa 2026 — dữ liệu mô phỏng",
+  "canonical_url": "https://tinchac.example/fixtures/hb-2026",
+  "published_at": "2026-11-01",
+  "retrieved_at": "2026-11-08T09:00:00+07:00",
+  "is_fixture": true,
+  "schema_version": "1.0",
+  "text": "5.000.000 đồng/suất.",
+  "chunks": [
+    {
+      "chunk_id": "fixture_hb_v1_c01",
+      "version_id": "fixture_hb_v1",
+      "text": "5.000.000 đồng/suất.",
+      "source_span": {
+        "start": 0,
+        "end": 20
+      },
+      "section": null,
+      "page": null
+    }
+  ]
+}

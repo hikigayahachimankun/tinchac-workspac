@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+pydantic>=2,<3
+pydantic-settings
+python-multipart
+httpx
+beautifulsoup4
+scikit-learn
+numpy
+Pillow
+pytesseract
+PyMuPDF
+google-genai
+pytest

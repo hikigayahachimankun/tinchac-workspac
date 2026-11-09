@@ -1,0 +1,643 @@
+[
+  {
+    "source_id": "dut_be8a0080c11e660f",
+    "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+    "family_id": "agribank",
+    "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+    "parent_url": null,
+    "title": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG “AGRIBANK NAM ĐÀ NẴNG - CHẮP CÁNH ƯỚC MƠ” NĂM 2026",
+    "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+    "published_at": "2026-11-07",
+    "published_precision": "date",
+    "retrieved_at": "2026-11-09T13:09:10.052838+00:00",
+    "available_at": "2026-11-09T13:09:10.052838+00:00",
+    "available_basis": "first_seen",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes_version_id": null,
+    "content_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+    "text": "🎓 THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG “AGRIBANK NAM ĐÀ NẴNG - CHẮP CÁNH ƯỚC MƠ” NĂM 2026 ❤️\nNhằm kịp thời động viên, hỗ trợ sinh viên có hoàn cảnh gia đình khó khăn vươn lên trong học tập và tích cực tham gia các hoạt động vì cộng đồng, Trường Đại học Bách khoa, Đại học Đà Nẵng thông báo tiếp nhận hồ sơ đăng ký xét cấp học bổng do Ngân hàng Nông nghiệp và Phát triển nông thôn Việt Nam - Chi nhánh Nam Đà Nẵng tài trợ.\n🌟 Thông tin học bổng:\n- Số lượng: 12 suất.\n- Giá trị: 5.000.000 đồng/suất.\n- Đối tượng: Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn, kết quả học tập và rèn luyện năm học 2025–2026 đạt từ loại Khá trở lên, tích cực tham gia hoạt động tình nguyện, vì cộng đồng và chưa nhận học bổng hoặc khoản hỗ trợ ngoài ngân sách khác tính đến thời điểm xét học bổng.\n📌 Hình thức đăng ký và thời gian nộp hồ sơ:\n🔹 Đăng ký trực tuyến: Sinh viên thực hiện đăng ký tại đường dẫn:\n👉\nhttps://forms.gle/AtyFoN5pMQC6cvLJ8\n🔹 Nộp hồ sơ trực tiếp:\n- Thời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).\n- Địa điểm: Phòng Công tác Sinh viên, phòng S06.08.\n- Người tiếp nhận: Chuyên viên Đới Phương Thanh.\n📂 Hồ sơ đăng ký: Phiếu đăng ký học bổng theo mẫu, bảng điểm học tập và kết quả rèn luyện năm học 2025–2026 cùng các giấy tờ minh chứng hoàn cảnh gia đình và thành tích, hoạt động cộng đồng (nếu có).\nPhiếu đăng ký học bổng tại đường link:\nhttps://docs.google.com/document/d/17exz6WD3BS_r8Qeiszhya_8a_sUeyz0q/edit?usp=sharing&ouid=112054809668127454802&rtpof=true&sd=true\n📲 Sinh viên vui lòng quét mã QR trên poster hoặc truy cập đường dẫn để đăng ký trực tuyến; đồng thời chuẩn bị đầy đủ hồ sơ theo yêu cầu và nộp đúng thời gian quy định.\n💙 Đừng bỏ lỡ cơ hội nhận học bổng ý nghĩa này! Chúc các bạn sinh viên có hoàn cảnh khó khăn luôn vững tin, nỗ lực học tập và tiếp tục chắp cánh cho những ước mơ trên hành trình chinh phục tri thức.\n#DUT #HocBongAgribank #ChapCanhUocMo #AgribankNamDaNang #HocBongSinhVien",
+    "scope": {
+      "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+      "academic_year": "2025-2026",
+      "cohort": null,
+      "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+      "fee_kind": null
+    },
+    "is_fixture": false,
+    "review_status": "approved",
+    "verified_by": "T02-agent: primary-source reading; owner spot-check pending",
+    "facts": [
+      {
+        "field_type": "award_amount",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 5000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+          "academic_year": "2025-2026",
+          "cohort": null,
+          "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+          "fee_kind": null
+        },
+        "quote": "5.000.000 đồng/suất.",
+        "span": {
+          "start": 482,
+          "end": 502
+        }
+      },
+      {
+        "field_type": "deadline",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-10T16:00:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "Thời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+          "academic_year": "2025-2026",
+          "cohort": null,
+          "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+          "fee_kind": null
+        },
+        "quote": "Thời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).",
+        "span": {
+          "start": 963,
+          "end": 1043
+        }
+      },
+      {
+        "field_type": "eligibility",
+        "normalized": {
+          "text": "- Đối tượng: Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn, kết quả học tập và rèn luyện năm học 2025–2026 đạt từ loại Khá trở lên, tích cực tham gia hoạt động tình nguyện, vì cộng đồng và chưa nhận học bổng hoặc khoản hỗ trợ ngoài ngân sách khác tính đến thời điểm xét học bổng.",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+          "academic_year": "2025-2026",
+          "cohort": null,
+          "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+          "fee_kind": null
+        },
+        "quote": "- Đối tượng: Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn, kết quả học tập và rèn luyện năm học 2025–2026 đạt từ loại Khá trở lên, tích cực tham gia hoạt động tình nguyện, vì cộng đồng và chưa nhận học bổng hoặc khoản hỗ trợ ngoài ngân sách khác tính đến thời điểm xét học bổng.",
+        "span": {
+          "start": 503,
+          "end": 790
+        }
+      }
+    ],
+    "outbound_links": [
+      "https://forms.gle/AtyFoN5pMQC6cvLJ8",
+      "https://docs.google.com/document/d/17exz6WD3BS_r8Qeiszhya_8a_sUeyz0q/edit?usp=sharing&ouid=112054809668127454802&rtpof=true&sd=true"
+    ]
+  },
+  {
+    "source_id": "dut_2a0b90b19b67872f",
+    "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+    "family_id": "keidanren_jcci",
+    "canonical_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+    "parent_url": null,
+    "title": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG KEIDANREN & JCCI NĂM HỌC 2026-2027",
+    "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+    "published_at": "2026-11-05",
+    "published_precision": "date",
+    "retrieved_at": "2026-11-09T13:09:23.984576+00:00",
+    "available_at": "2026-11-09T13:09:23.984576+00:00",
+    "available_basis": "first_seen",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes_version_id": null,
+    "content_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+    "text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG KEIDANREN & JCCI NĂM HỌC 2026-2027\nTrường Đại học Bách khoa, Đại học Đà Nẵng thông báo tiếp nhận hồ sơ đăng ký xét cấp học bổng Keidanren & JCCI do Hiệp hội Doanh nghiệp Nhật Bản Keidanren và JCCI tài trợ.\nSố lượng và giá trị học bổng: 03 suất học bổng, trị giá: 7.000.000 đồng/suất.\nĐối tượng và tiêu chí xét chọn:\n- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.\n- Có thành tích học tập tốt, tích cực tham gia các hoạt động cộng đồng của Nhà trường và xã hội.\n- Ưu tiên sinh viên có hoàn cảnh khó khăn hoặc tích cực tham gia các hoạt động hợp tác quốc tế.\nHồ sơ đăng ký:\n- Bảng điểm học tập và kết quả rèn luyện của năm học 2025-2026 xác nhận của Trường;\n- Bản sao chứng chỉ tiếng Nhật;\n- Bản sao giấy chứng nhận thành tích, giải thưởng đạt được trong năm học 2025-2026;\n- Bản sao tài liệu minh chứng việc tham gia các hoạt động cộng đồng trong năm học 2025-2026;\n- Bản sao có chứng thực giấy chứng nhận hoặc xác nhận hộ nghèo, hộ cận nghèo còn hiệu lực; giấy tờ chứng minh sinh viên là người dân tộc thiểu số hoặc có hoàn cảnh gia đình khó khăn trong năm 2026 (nếu có);\n- Giấy xác nhận của cơ sở y tế về việc sinh viên hoặc người thân của sinh viên (cha, mẹ hoặc người trực tiếp nuôi dưỡng) đang điều trị bệnh hiểm nghèo (nếu có).\nThời gian và hình thức đăng ký:\nĐăng ký trực tuyến:\nhttps://forms.gle/AtyFoN5pMQC6cvLJ8\nNộp hồ sơ trực tiếp:\n- Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.\n- Địa điểm: Phòng Công tác Sinh viên, phòng S06.08.\n- Người tiếp nhận: Chuyên viên Đới Phương Thanh.\nĐây là cơ hội ý nghĩa dành cho sinh viên có thành tích học tập tốt, năng lực tiếng Nhật và tinh thần tích cực tham gia các hoạt động cộng đồng.\nCác bạn sinh viên quan tâm vui lòng đọc kỹ thông báo, chuẩn bị đầy đủ hồ sơ và đăng ký đúng thời hạn nhé!",
+    "scope": {
+      "program": "Keidanren & JCCI",
+      "academic_year": "2026-2027",
+      "cohort": null,
+      "audience": "Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật",
+      "fee_kind": null
+    },
+    "is_fixture": false,
+    "review_status": "approved",
+    "verified_by": "T02-agent: primary-source reading; owner spot-check pending",
+    "facts": [
+      {
+        "field_type": "award_amount",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 7000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Keidanren & JCCI",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật",
+          "fee_kind": null
+        },
+        "quote": "7.000.000 đồng/suất.",
+        "span": {
+          "start": 306,
+          "end": 326
+        }
+      },
+      {
+        "field_type": "deadline",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-12T11:00:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": "Keidanren & JCCI",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật",
+          "fee_kind": null
+        },
+        "quote": "Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+        "span": {
+          "start": 1452,
+          "end": 1530
+        }
+      },
+      {
+        "field_type": "eligibility",
+        "normalized": {
+          "text": "- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Keidanren & JCCI",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật",
+          "fee_kind": null
+        },
+        "quote": "- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+        "span": {
+          "start": 359,
+          "end": 471
+        }
+      }
+    ],
+    "outbound_links": [
+      "https://forms.gle/AtyFoN5pMQC6cvLJ8",
+      "https://forms.gle/AtyFoN5pMQC6cvLJ8?fbclid=IwZXh0bgNhZW0CMTAAcGRvZgFicmlkETF0aXRocVZUZkNVZUcwcVV4c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABH_0CE1UWPbHxYYCeFp1L-SDLhQY_t5uAnBLBBdPLlFQQpA59tqaM_Z94svLu_aem_AKubxKLcgtw_7JyPysvpIg"
+    ]
+  },
+  {
+    "source_id": "dut_09fb9c92c9ab7b2f",
+    "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+    "family_id": "schneider",
+    "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+    "parent_url": null,
+    "title": "⚡ 10 SUẤT HỌC BỔNG SCHNEIDER ELECTRIC - CƠ HỘI DÀNH CHO SINH VIÊN BÁCH KHOA",
+    "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+    "published_at": "2026-10-06",
+    "published_precision": "date",
+    "retrieved_at": "2026-11-09T13:09:51.086419+00:00",
+    "available_at": "2026-11-09T13:09:51.086419+00:00",
+    "available_basis": "first_seen",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes_version_id": null,
+    "content_sha256": "e5e4f9b141b646e668b29d17204614ffe7569b6a9d28ac4ee487513506453f95",
+    "text": "Nhằm khuyến khích sinh viên có thành tích học tập tốt, tích cực tham gia các hoạt động học thuật, ngoại khóa và định hướng phát triển nghề nghiệp, Trường Đại học Bách khoa, Đại học Đà Nẵng thông báo tiếp nhận hồ sơ đăng ký xét Học bổng Schneider Electric.\n✨ Thông tin học bổng:\n🔹 Đối tượng: Sinh viên năm 3 đến năm 5 tại Khoa Điện, đáp ứng các tiêu chí về học tập, hoạt động học thuật, ngoại khóa và định hướng nghề nghiệp.\n🔹 Số lượng: 10 suất\n🔹 Giá trị: 5.000.000 đồng/suất\n🔹 Đơn vị tài trợ: Công ty TNHH Schneider Electric Việt Nam\n🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh\n📌 Hồ sơ đăng ký gồm bảng điểm học tập, bảng điểm rèn luyện năm học 2025-2026 có xác nhận của Trường và các minh chứng liên quan đến nghiên cứu khoa học, cuộc thi học thuật, hoạt động ngoại khóa, tình nguyện, cuộc thi kỹ năng mềm và kinh nghiệm thực tập (nếu có).\n👉 ĐĂNG KÝ XÉT HỌC BỔNG:\nhttps://forms.gle/yGY8PKGvK73oaigDA\n🌟 Đừng bỏ lỡ cơ hội nhận học bổng và mở rộng cơ hội phát triển nghề nghiệp cùng Schneider Electric!",
+    "scope": {
+      "program": "Schneider Electric",
+      "academic_year": null,
+      "cohort": null,
+      "audience": "Sinh viên năm 3 đến năm 5 tại Khoa Điện",
+      "fee_kind": null
+    },
+    "is_fixture": false,
+    "review_status": "approved",
+    "verified_by": "T02-agent: primary-source reading; owner spot-check pending",
+    "facts": [
+      {
+        "field_type": "award_amount",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 5000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Schneider Electric",
+          "academic_year": null,
+          "cohort": null,
+          "audience": "Sinh viên năm 3 đến năm 5 tại Khoa Điện",
+          "fee_kind": null
+        },
+        "quote": "5.000.000 đồng/suất",
+        "span": {
+          "start": 455,
+          "end": 474
+        }
+      },
+      {
+        "field_type": "deadline",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-10-16T16:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": "Schneider Electric",
+          "academic_year": null,
+          "cohort": null,
+          "audience": "Sinh viên năm 3 đến năm 5 tại Khoa Điện",
+          "fee_kind": null
+        },
+        "quote": "🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+        "span": {
+          "start": 534,
+          "end": 674
+        }
+      },
+      {
+        "field_type": "eligibility",
+        "normalized": {
+          "text": "🔹 Đối tượng: Sinh viên năm 3 đến năm 5 tại Khoa Điện, đáp ứng các tiêu chí về học tập, hoạt động học thuật, ngoại khóa và định hướng nghề nghiệp.",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Schneider Electric",
+          "academic_year": null,
+          "cohort": null,
+          "audience": "Sinh viên năm 3 đến năm 5 tại Khoa Điện",
+          "fee_kind": null
+        },
+        "quote": "🔹 Đối tượng: Sinh viên năm 3 đến năm 5 tại Khoa Điện, đáp ứng các tiêu chí về học tập, hoạt động học thuật, ngoại khóa và định hướng nghề nghiệp.",
+        "span": {
+          "start": 278,
+          "end": 423
+        }
+      }
+    ],
+    "outbound_links": [
+      "https://forms.gle/yGY8PKGvK73oaigDA"
+    ]
+  },
+  {
+    "source_id": "dut_344b21e393855658",
+    "version_id": "dut_344b21e393855658_921795aab925d271",
+    "family_id": "toyota",
+    "canonical_url": "https://drive.google.com/file/d/1fMZ6as3DNjI3WwLJ_wAFnehvKHgRC2M-/view",
+    "parent_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12327",
+    "title": "🎓 HỌC BỔNG TOYOTA NĂM HỌC 2026-2027",
+    "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+    "published_at": "2026-10-06",
+    "published_precision": "date",
+    "retrieved_at": "2026-11-09T13:11:05.702010+00:00",
+    "available_at": "2026-11-09T13:11:05.702010+00:00",
+    "available_basis": "first_seen",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes_version_id": null,
+    "content_sha256": "921795aab925d271910da89d908e238589015ddf90834e1687665e0663418553",
+    "text": "THÔNG BÁO\nVề việc nộp hồ sơ đăng ký xét cấp học bổng Toyota năm học 2026-2027\n1. Đối tượng và tiêu chí lựa chọn\n1.1. Học bổng Tiếp sức\n- Là sinh viên đang học 02 năm cuối thuộc các ngành, chuyên ngành sau: Kỹ thuật Ô tô, Kỹ thuật Cơ khí và Môi trường; ưu tiên sinh viên thuộc Khoa Cơ khí Giao thông và Năng lượng.\n- Có điểm trung bình học tập của năm học 2025-2026 từ 8,0 trở lên theo thang điểm 10 hoặc từ 3,2 trở lên theo thang điểm 4.\n- Có kết quả rèn luyện năm học 2025-2026 được xếp loại Tốt trở lên.\n- Ưu tiên sinh viên thuộc một trong các trường hợp sau:\na) Có hoàn cảnh khó khăn;\nb) Là người dân tộc thiểu số;\nc) Có thành tích trong nghiên cứu khoa học.\n1.2. Học bổng Đồng hành\n- Sinh viên có điểm trung bình học tập năm học 2025-2026 cao nhất trong số các sinh viên do Nhà trường đề xuất.\n- Trường hợp kết quả học tập bằng nhau, thứ tự ưu tiên được xác định như sau:\na) Có thành tích trong nghiên cứu khoa học; đạt giải các cuộc thi hoặc đạt giải thưởng cấp quốc gia, quốc tế;\nb) Có hoàn cảnh khó khăn hoặc là người dân tộc thiểu số.\n2. Số lượng và giá trị học bổng\n- Học bổng Đồng hành: 01 suất, trị giá 25.000.000 đồng.\n- Học bổng Tiếp sức: 09 suất, mỗi suất trị giá 6.000.000 đồng, gồm:\n+ 08 suất dành cho nhóm ngành Kỹ thuật Ô tô, Kỹ thuật Cơ khí;\n+ 01 suất dành cho ngành Môi trường.\n3. Nguồn học bổng: Học bổng do Công ty Ô tô Toyota Việt Nam tài trợ.\n4. Hồ sơ đăng ký xét học bổng\n- Bảng điểm học tập và kết quả rèn luyện năm học 2025-2026 có xác nhận của nhà trường.\n- Bản sao có chứng thực giấy khai sinh đối với sinh viên là người dân tộc thiểu số (nếu có).\n- Minh chứng về hoàn cảnh gia đình khó khăn, gồm một trong các giấy tờ sau: bản sao có chứng thực sổ hộ nghèo hoặc sổ hộ cận nghèo; giấy xác nhận hộ nghèo, hộ cận nghèo; hoặc giấy xác nhận gia đình có hoàn cảnh khó khăn do cơ quan có thẩm quyền tại địa phương cấp và còn hiệu lực trong năm 2026 (nếu có).\n- Minh chứng về thành tích nghiên cứu khoa học; giải thưởng hoặc kết quả đạt được tại các cuộc thi cấp quốc gia, quốc tế (nếu có).\n5. Đăng ký và nộp hồ sơ\n5.1. Đăng ký trực tuyến\nSinh viên đăng ký xét học bổng theo đường dẫn: https://forms.gle/AtyFoN5pMQC6cvLJ8\n5.2. Nộp hồ sơ trực tiếp\n- Thời gian tiếp nhận hồ sơ: Từ 08 giờ 00 đến 11 giờ 30 ngày 13/10/2026 (thứ Ba).\n- Địa điểm: Phòng Công tác Sinh viên (phòng S06.08).",
+    "scope": {
+      "program": "Toyota",
+      "academic_year": "2026-2027",
+      "cohort": null,
+      "audience": "Theo từng loại Đồng hành / Tiếp sức; xem facts",
+      "fee_kind": null
+    },
+    "is_fixture": false,
+    "review_status": "approved",
+    "verified_by": "T02-agent: primary-source reading; owner spot-check pending",
+    "facts": [
+      {
+        "field_type": "award_amount",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 25000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Toyota — Đồng hành",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Theo từng loại Đồng hành / Tiếp sức; xem facts",
+          "fee_kind": null
+        },
+        "quote": "Học bổng Đồng hành: 01 suất, trị giá 25.000.000 đồng.",
+        "span": {
+          "start": 1077,
+          "end": 1130
+        }
+      },
+      {
+        "field_type": "award_amount",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 6000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Toyota — Tiếp sức",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Theo từng loại Đồng hành / Tiếp sức; xem facts",
+          "fee_kind": null
+        },
+        "quote": "Học bổng Tiếp sức: 09 suất, mỗi suất trị giá 6.000.000 đồng, gồm:\n+ 08 suất dành cho nhóm ngành Kỹ thuật Ô tô, Kỹ thuật Cơ khí;\n+ 01 suất dành cho ngành Môi trường.",
+        "span": {
+          "start": 1133,
+          "end": 1297
+        }
+      },
+      {
+        "field_type": "deadline",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-10-13T11:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "Thời gian tiếp nhận hồ sơ: Từ 08 giờ 00 đến 11 giờ 30 ngày 13/10/2026 (thứ Ba).",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": "Toyota",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Theo từng loại Đồng hành / Tiếp sức; xem facts",
+          "fee_kind": null
+        },
+        "quote": "Thời gian tiếp nhận hồ sơ: Từ 08 giờ 00 đến 11 giờ 30 ngày 13/10/2026 (thứ Ba).",
+        "span": {
+          "start": 2171,
+          "end": 2250
+        }
+      },
+      {
+        "field_type": "eligibility",
+        "normalized": {
+          "text": "1.1. Học bổng Tiếp sức\n- Là sinh viên đang học 02 năm cuối thuộc các ngành, chuyên ngành sau: Kỹ thuật Ô tô, Kỹ thuật Cơ khí và Môi trường; ưu tiên sinh viên thuộc Khoa Cơ khí Giao thông và Năng lượng.\n- Có điểm trung bình học tập của năm học 2025-2026 từ 8,0 trở lên theo thang điểm 10 hoặc từ 3,2 trở lên theo thang điểm 4.\n- Có kết quả rèn luyện năm học 2025-2026 được xếp loại Tốt trở lên.\n- Ưu tiên sinh viên thuộc một trong các trường hợp sau:\na) Có hoàn cảnh khó khăn;\nb) Là người dân tộc thiểu số;\nc) Có thành tích trong nghiên cứu khoa học.",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Toyota — Tiếp sức",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Theo từng loại Đồng hành / Tiếp sức; xem facts",
+          "fee_kind": null
+        },
+        "quote": "1.1. Học bổng Tiếp sức\n- Là sinh viên đang học 02 năm cuối thuộc các ngành, chuyên ngành sau: Kỹ thuật Ô tô, Kỹ thuật Cơ khí và Môi trường; ưu tiên sinh viên thuộc Khoa Cơ khí Giao thông và Năng lượng.\n- Có điểm trung bình học tập của năm học 2025-2026 từ 8,0 trở lên theo thang điểm 10 hoặc từ 3,2 trở lên theo thang điểm 4.\n- Có kết quả rèn luyện năm học 2025-2026 được xếp loại Tốt trở lên.\n- Ưu tiên sinh viên thuộc một trong các trường hợp sau:\na) Có hoàn cảnh khó khăn;\nb) Là người dân tộc thiểu số;\nc) Có thành tích trong nghiên cứu khoa học.",
+        "span": {
+          "start": 112,
+          "end": 661
+        }
+      },
+      {
+        "field_type": "eligibility",
+        "normalized": {
+          "text": "1.2. Học bổng Đồng hành\n- Sinh viên có điểm trung bình học tập năm học 2025-2026 cao nhất trong số các sinh viên do Nhà trường đề xuất.\n- Trường hợp kết quả học tập bằng nhau, thứ tự ưu tiên được xác định như sau:\na) Có thành tích trong nghiên cứu khoa học; đạt giải các cuộc thi hoặc đạt giải thưởng cấp quốc gia, quốc tế;\nb) Có hoàn cảnh khó khăn hoặc là người dân tộc thiểu số.",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Toyota — Đồng hành",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Theo từng loại Đồng hành / Tiếp sức; xem facts",
+          "fee_kind": null
+        },
+        "quote": "1.2. Học bổng Đồng hành\n- Sinh viên có điểm trung bình học tập năm học 2025-2026 cao nhất trong số các sinh viên do Nhà trường đề xuất.\n- Trường hợp kết quả học tập bằng nhau, thứ tự ưu tiên được xác định như sau:\na) Có thành tích trong nghiên cứu khoa học; đạt giải các cuộc thi hoặc đạt giải thưởng cấp quốc gia, quốc tế;\nb) Có hoàn cảnh khó khăn hoặc là người dân tộc thiểu số.",
+        "span": {
+          "start": 662,
+          "end": 1042
+        }
+      }
+    ],
+    "outbound_links": [
+      "https://drive.google.com/file/d/1fMZ6as3DNjI3WwLJ_wAFnehvKHgRC2M-/view?usp=sharing",
+      "https://forms.gle/AtyFoN5pMQC6cvLJ8"
+    ]
+  },
+  {
+    "source_id": "dut_f18730b4c4454e87",
+    "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+    "family_id": "tuition_hki_2026_dot2",
+    "canonical_url": "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/view",
+    "parent_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12387",
+    "title": "Thông báo gia hạn thời gian thu học phí đợt 2 học kỳ I năm học 2026-2027",
+    "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+    "published_at": "2026-11-03",
+    "published_precision": "date",
+    "retrieved_at": "2026-11-09T13:10:53.089033+00:00",
+    "available_at": "2026-11-09T13:10:53.089033+00:00",
+    "available_basis": "first_seen",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes_version_id": null,
+    "content_sha256": "be1a2356ad0f864bbb1eb41bdafaf2dd3422c62bc9e9e56b5442c56177e606fa",
+    "text": "THÔNG BÁO\nVề việc gia hạn thời gian thu học phí đợt 2 học kỳ I, năm học 2026-2027\n1. Mức thu học phí và dữ liệu phải nộp\n- Mức thu học phí thực hiện theo Thông báo số 4055/TB-ĐHBK ngày 05/8/2026 của Trường Đại học Bách khoa về việc Thông báo mức thu học phí năm học 2026-2027.\n- Dữ liệu học phí phải nộp (bao gồm miễn, giảm học phí theo chế độ chính sách của Nhà nước) đã được cập nhật tại trang: https://sv.dut.udn.vn\nLưu ý:\n+ Đơn giá học phí được tính theo chương trình đào tạo sinh viên theo học;\n+ Số tiền học phí phải nộp đợt 2 bằng 40% học phí học kỳ I, năm học 2026-2027. Trường hợp sinh viên chưa hoàn thành nghĩa vụ nộp 60% học phí đợt 1 thì phải nộp 100% học phí học kỳ I, năm học 2026-2027;\n+ Đối với sinh viên khóa 2026, số học phí phải nộp bổ sung (nếu có) là khoản chênh lệch giữa số học phí thực tế phải nộp theo số tín chỉ đăng ký của học kỳ I, năm học 2026-2027 và số học phí đã tạm nộp khi nhập học. Trường hợp nộp thừa học phí, số tiền thừa sẽ được chuyển sang học phí học kỳ II, năm học 2026-2027;\n+ Sinh viên thuộc đối tượng được miễn, giảm học phí theo Quyết định số 4802/QĐ-ĐHBK ngày 04/9/2026 và Quyết định số 5575/QĐ-ĐHBK ngày 13/10/2026 được miễn, giảm học phí đối với các học phần đăng ký lần đầu;\n+ Sinh viên xin thôi học vì lý do cá nhân phải nộp đủ 100% học phí của học kỳ nếu đơn xin thôi học được ghi nhận trên Hệ thống từ tuần thứ 5 của học kỳ trở đi.\n2. Thời gian thu\n- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.\n- Qua VietinBank: từ ngày 04/11/2026 đến 11h00 ngày 30/11/2026.\n3. Cách thức thu\n- Sinh viên khóa 2019 đến khóa 2026: nộp qua tài khoản Ngân hàng tích hợp cùng thẻ sinh viên (Ngân hàng BIDV cho khóa 2019-2022, Ngân hàng VietinBank cho khóa 2023-2026). Nhà trường phối hợp với Ngân hàng thực hiện thu tự động.\n- Sinh viên khóa 2018 trở về trước: sinh viên liên hệ trực tiếp với Phòng Kế hoạch - Tài chính (phòng S03.11, tầng 3, tòa nhà S) để được hướng dẫn cụ thể.\n4. Cảnh báo và xử lý\n- Sinh viên chưa hoàn thành nghĩa vụ nộp học phí sẽ bị tạm khóa tài khoản, bị xem xét cấm thi và xử lý theo quy định của Nhà trường.\n- Sinh viên không được tự ý nộp tiền trực tiếp vào tài khoản của Trường Đại học Bách khoa. Việc nộp học phí chỉ hợp lệ qua Ngân hàng theo quy định của Thông báo.\n- Đặc biệt, sinh viên tuyệt đối không sử dụng các thông tin không chính thống, để chuyển tiền học phí nhằm tránh bị các đối tượng lợi dụng để lừa đảo.",
+    "scope": {
+      "program": null,
+      "academic_year": "2026-2027",
+      "cohort": null,
+      "audience": "Sinh viên",
+      "fee_kind": "Học phí đợt 2 học kỳ I"
+    },
+    "is_fixture": false,
+    "review_status": "approved",
+    "verified_by": "T02-agent: primary-source reading; owner spot-check pending",
+    "facts": [
+      {
+        "field_type": "deadline",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-30T08:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": "2026-2027",
+          "cohort": "2019-2022",
+          "audience": "Sinh viên nộp qua BIDV",
+          "fee_kind": "Học phí đợt 2 học kỳ I"
+        },
+        "quote": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+        "span": {
+          "start": 1402,
+          "end": 1459
+        }
+      },
+      {
+        "field_type": "deadline",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-30T11:00:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "- Qua VietinBank: từ ngày 04/11/2026 đến 11h00 ngày 30/11/2026.",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": "2026-2027",
+          "cohort": "2023-2026",
+          "audience": "Sinh viên nộp qua VietinBank",
+          "fee_kind": "Học phí đợt 2 học kỳ I"
+        },
+        "quote": "- Qua VietinBank: từ ngày 04/11/2026 đến 11h00 ngày 30/11/2026.",
+        "span": {
+          "start": 1460,
+          "end": 1523
+        }
+      },
+      {
+        "field_type": "payment_requirement",
+        "normalized": {
+          "text": "+ Số tiền học phí phải nộp đợt 2 bằng 40% học phí học kỳ I, năm học 2026-2027. Trường hợp sinh viên chưa hoàn thành nghĩa vụ nộp 60% học phí đợt 1 thì phải nộp 100% học phí học kỳ I, năm học 2026-2027;",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Sinh viên",
+          "fee_kind": "Học phí đợt 2 học kỳ I"
+        },
+        "quote": "+ Số tiền học phí phải nộp đợt 2 bằng 40% học phí học kỳ I, năm học 2026-2027. Trường hợp sinh viên chưa hoàn thành nghĩa vụ nộp 60% học phí đợt 1 thì phải nộp 100% học phí học kỳ I, năm học 2026-2027;",
+        "span": {
+          "start": 500,
+          "end": 701
+        }
+      },
+      {
+        "field_type": "eligibility",
+        "normalized": {
+          "text": "- Sinh viên khóa 2019 đến khóa 2026: nộp qua tài khoản Ngân hàng tích hợp cùng thẻ sinh viên (Ngân hàng BIDV cho khóa 2019-2022, Ngân hàng VietinBank cho khóa 2023-2026). Nhà trường phối hợp với Ngân hàng thực hiện thu tự động.",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Sinh viên",
+          "fee_kind": "Học phí đợt 2 học kỳ I"
+        },
+        "quote": "- Sinh viên khóa 2019 đến khóa 2026: nộp qua tài khoản Ngân hàng tích hợp cùng thẻ sinh viên (Ngân hàng BIDV cho khóa 2019-2022, Ngân hàng VietinBank cho khóa 2023-2026). Nhà trường phối hợp với Ngân hàng thực hiện thu tự động.",
+        "span": {
+          "start": 1541,
+          "end": 1768
+        }
+      }
+    ],
+    "outbound_links": [
+      "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/preview",
+      "https://sv.dut.udn.vn"
+    ]
+  },
+  {
+    "source_id": "dut_5612e8ebaf4a8bfe",
+    "version_id": "dut_5612e8ebaf4a8bfe_d00f8e6c84db7050",
+    "family_id": "tuition_masters_hki_2026_k51",
+    "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381",
+    "parent_url": null,
+    "title": "Gia hạn thời gian thu học phí học kỳ I năm học 2026-2027 đối với HV các khóa đào tạo trình độ thạc sĩ từ khóa 51 trở về trước",
+    "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+    "published_at": "2026-11-02",
+    "published_precision": "date",
+    "retrieved_at": "2026-11-09T13:09:53.131167+00:00",
+    "available_at": "2026-11-09T13:09:53.131167+00:00",
+    "available_basis": "first_seen",
+    "effective_from": null,
+    "effective_to": null,
+    "supersedes_version_id": null,
+    "content_sha256": "d00f8e6c84db70504bd5e9cc58b2d665628e99313f4e0f98408d96eb97743ab9",
+    "text": "Gia hạn thời gian thu học phí học kỳ I năm học 2026-2027 đối với HV các khóa đào tạo trình độ thạc sĩ từ khóa 51 trở về trước",
+    "scope": {
+      "program": null,
+      "academic_year": "2026-2027",
+      "cohort": null,
+      "audience": null,
+      "fee_kind": "Học phí học kỳ I"
+    },
+    "is_fixture": false,
+    "review_status": "quarantined",
+    "verified_by": "T02-agent: primary-source reading; owner spot-check pending",
+    "facts": [],
+    "outbound_links": [
+      "https://drive.google.com/file/d/1gOVIKBh5y6rQpWlucYPYOhKJRBvpusui/preview"
+    ]
+  }
+]

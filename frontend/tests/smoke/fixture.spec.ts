@@ -1,0 +1,66 @@
+import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+import { mkdir, writeFile } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { readFileSync } from 'node:fs';
+const fixtureTexts = JSON.parse(readFileSync(new URL('../../src/api/fixture-texts.json',import.meta.url),'utf8')) as Record<string,string>;
+const evidence=fileURLToPath(new URL('../../../docs/evidence/T04/',import.meta.url));
+for (const width of [390,1440]) {
+ test(`real FastAPI fixture flow at ${width}`,async({page,request})=>{
+  await mkdir(evidence,{recursive:true});
+  const log:string[]=[];
+  const errors:string[]=[];page.on('pageerror',e=>errors.push(e.message));
+  page.on('response',r=>{const url=new URL(r.url());if(url.pathname.startsWith('/api/')) log.push(`${r.request().method()} ${url.pathname} ${r.status()}`);});
+  await page.setViewportSize({width,height:900});await page.goto('/');
+  await expect(page.getByText('Chế độ mô phỏng',{exact:true})).toBeVisible();
+  await page.getByLabel('Nội dung thông báo').fill(fixtureTexts.mixed!);
+  await page.getByLabel('Nội dung thông báo').focus();
+  await page.keyboard.press('Tab');await page.keyboard.press('Tab');
+  await expect(page.getByRole('checkbox')).toBeFocused();
+  await page.keyboard.press('Space');await page.keyboard.press('Tab');
+  const post=page.waitForResponse(r=>r.url().endsWith('/api/v1/checks') && r.request().method()==='POST');
+  await page.keyboard.press('Enter');
+  const accepted=await post;
+  expect(accepted.status()).toBe(202);
+  expect(accepted.request().postDataJSON().confirmed_text).toBe(fixtureTexts.mixed!);
+  const health=await request.get('http://127.0.0.1:8000/api/v1/health');
+  expect((await health.json()).run_mode).toBe('fixture');
+  log.push('FastAPI health: schema_version=1.0 run_mode=fixture');
+  const created=await accepted.json() as {check:{check_id:string;status:string};access_token:string};
+  expect(created.check.status).toBe('queued');
+  await expect(page.getByRole('heading',{name:'Phiếu đối chiếu'})).toBeVisible({timeout:10000});
+  await expect(page.locator('.output')).toBeFocused();
+  await expect(page.locator('.verdict')).toHaveText(['Được nguồn hỗ trợ','Mâu thuẫn với nguồn','Chưa đủ bằng chứng']);
+  const summary=page.locator('.evidence summary').first();await summary.focus();await page.keyboard.press('Enter');
+  await expect(page.getByText('Lưu snapshot',{exact:true})).toBeVisible();
+  await page.locator('.snapshot summary').click();
+  await expect(page.locator('.snapshot p')).toContainText('Học bổng Minh Họa 2026: 5.000.000');
+  expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
+  expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations).toEqual([]);
+  await page.screenshot({path:`${evidence}/success-${width}.png`,fullPage:true});
+  const url=`http://127.0.0.1:8000/api/v1/checks/${created.check.check_id}`;
+  const headers={'X-Resource-Token':created.access_token};
+  expect((await request.get(url,{headers:{'X-Resource-Token':'wrong'}})).status()).toBe(404);
+  expect((await request.delete(url,{headers})).status()).toBe(204);
+  expect((await request.get(url,{headers})).status()).toBe(404);
+  log.push('Direct FastAPI: wrong token 404; DELETE 204; GET after delete 404');
+  // Backend worker failure is a 200 failed record; no frontend mock takes over.
+  await page.getByText('Tình huống mô phỏng',{exact:true}).click();
+  await page.getByLabel('Chọn kết quả mẫu').selectOption('failed');
+  await page.getByRole('button',{name:'Kiểm tra mô phỏng'}).click();
+  await expect(page.getByRole('alert')).toContainText('PROVIDER_TIMEOUT',{timeout:10000});
+  await expect(page.locator('.verdict')).toHaveCount(0);
+  expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations).toEqual([]);
+  await page.screenshot({path:`${evidence}/worker-error-${width}.png`,fullPage:true});
+  // Simulate loss of the backend connection. This must stay an error.
+  await page.route('**/api/v1/checks',route=>route.abort('connectionrefused'));
+  await page.getByLabel('Chọn kết quả mẫu').selectOption('original');
+  await page.getByRole('button',{name:'Kiểm tra mô phỏng'}).click();
+  await expect(page.getByRole('alert')).toContainText('Không kết nối được FastAPI');
+  await expect(page.locator('.verdict')).toHaveCount(0);
+  expect(log.some(s=>s.startsWith('GET /api/v1/sources/'))).toBe(true);
+  expect(errors).toEqual([]);
+  expect(log.every(s=>!s.includes(created.access_token))).toBe(true);
+  await writeFile(`${evidence}/network-${width}.log`,log.join('\n')+'\n');
+ });
+}

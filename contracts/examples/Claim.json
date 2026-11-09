@@ -1,0 +1,25 @@
+{
+  "claim_id": "clm_01",
+  "field_type": "award_amount",
+  "statement": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+  "input_span": null,
+  "raw_value": "7 triệu đồng mỗi suất",
+  "normalized": {
+    "text": null,
+    "money": {
+      "amount": 7000000,
+      "currency": "VND",
+      "basis": "per_award"
+    },
+    "date": null,
+    "url": null
+  },
+  "scope": {
+    "program": "Học bổng Minh Họa 2026",
+    "academic_year": null,
+    "cohort": null,
+    "audience": null,
+    "fee_kind": null
+  },
+  "ambiguities": []
+}

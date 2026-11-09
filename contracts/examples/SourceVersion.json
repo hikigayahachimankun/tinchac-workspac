@@ -1,0 +1,57 @@
+{
+  "source_id": "fixture_hb",
+  "version_id": "fixture_hb_v1",
+  "family_id": "fixture_hb_2026",
+  "canonical_url": "https://tinchac.example/fixtures/hb-2026",
+  "parent_url": null,
+  "title": "Học bổng Minh Họa 2026 — dữ liệu mô phỏng",
+  "publisher": "TinChắc fixture",
+  "published_at": "2026-11-01",
+  "published_precision": "date",
+  "retrieved_at": "2026-11-08T09:00:00+07:00",
+  "available_at": "2026-11-08T09:00:00+07:00",
+  "available_basis": "fixture",
+  "effective_from": null,
+  "effective_to": null,
+  "supersedes_version_id": null,
+  "content_sha256": "c6ddfdc5410fed57331fe9190a262ca098079804ea37f64e2bc82357124feec0",
+  "text": "5.000.000 đồng/suất.",
+  "scope": {
+    "program": "Học bổng Minh Họa 2026",
+    "academic_year": null,
+    "cohort": null,
+    "audience": null,
+    "fee_kind": null
+  },
+  "is_fixture": true,
+  "review_status": "approved",
+  "verified_by": "fixture-author",
+  "facts": [
+    {
+      "field_type": "award_amount",
+      "normalized": {
+        "text": null,
+        "money": {
+          "amount": 5000000,
+          "currency": "VND",
+          "basis": "per_award"
+        },
+        "date": null,
+        "url": null
+      },
+      "scope": {
+        "program": "Học bổng Minh Họa 2026",
+        "academic_year": null,
+        "cohort": null,
+        "audience": null,
+        "fee_kind": null
+      },
+      "quote": "5.000.000 đồng/suất.",
+      "span": {
+        "start": 0,
+        "end": 20
+      }
+    }
+  ],
+  "outbound_links": []
+}
