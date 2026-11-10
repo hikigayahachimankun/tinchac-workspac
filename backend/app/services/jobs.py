@@ -1,10 +1,11 @@
-"""Single-process demo jobs. SQLite operations never span fixture work."""
+"""Single-process demo jobs. SQLite transactions never span provider work."""
+import asyncio
 from contextlib import closing, contextmanager
 from datetime import datetime, timedelta, timezone
 import hashlib
 import secrets
 import sqlite3
-from threading import Semaphore
+from threading import Lock, Semaphore
 from uuid import UUID, uuid4
 
 from ..config import Settings
@@ -26,6 +27,15 @@ class Jobs:
         self.settings = settings
         self.slots = Semaphore(min(settings.max_concurrent_jobs, 2))
         self.adapter = FixtureAdapter()
+        self._runtime = None
+        self._runtime_lock = Lock()
+
+    def runtime(self):
+        from .runtime import LiveRuntime
+        with self._runtime_lock:
+            if self._runtime is None:
+                self._runtime = LiveRuntime(self.settings.corpus_dir)
+            return self._runtime
 
     @contextmanager
     def db(self):
@@ -59,8 +69,12 @@ class Jobs:
         db.execute('UPDATE checks SET canceled=1, request=NULL, record=NULL, text_modified=NULL WHERE expires_at<=?', (stamp,))
 
     def create(self, request: CheckCreate) -> CheckCreated:
-        if self.settings.app_mode != 'fixture':
-            raise ServiceError('CORPUS_UNAVAILABLE', 'T04 chỉ chạy ở chế độ fixture.', status=503)
+        if self.settings.app_mode == 'live':
+            if not self.settings.llm_live_enabled or not self.settings.gemini_api_key.get_secret_value():
+                raise ServiceError('CORPUS_UNAVAILABLE', 'Live chưa được bật sau preflight và xác nhận ngân sách.', status=503)
+            self.runtime()  # Validate the immutable corpus before accepting or charging a job.
+        elif self.settings.app_mode != 'fixture':
+            raise ServiceError('CORPUS_UNAVAILABLE', 'HTTP replay chưa có phiên ghi được cấu hình; dùng eval replay CLI.', status=503)
         text_modified = None
         if request.input_mode == 'image':
             asset = self.assets.get(str(request.asset_id), request.asset_token)
@@ -138,6 +152,9 @@ class Jobs:
                 if row is None:
                     return
                 request = CheckCreate.model_validate_json(row['request'])
+                if self.settings.app_mode == 'live':
+                    asyncio.run(self.run_live(check_id, request))
+                    return
                 for target in ('retrieving', 'verifying'):
                     if not self.transition(check_id, stage, target):
                         return
@@ -146,5 +163,35 @@ class Jobs:
                 self.transition(check_id, stage, 'completed', result=result)
             except Exception as exc:
                 detail = exc.detail if isinstance(exc, ServiceError) else ErrorDetail(
-                    code='INTERNAL_ERROR', message='Lỗi kỹ thuật khi xử lý fixture.', retryable=True, details={})
+                    code='INTERNAL_ERROR', message='Lỗi kỹ thuật khi xử lý phiên kiểm tra.', retryable=True, details={})
                 self.transition(check_id, stage, 'failed', error=detail)
+
+    async def run_live(self, check_id: str, request: CheckCreate):
+        from .extract import extract_claims
+        from .llm import GeminiAdapter
+        from .verify import limit_bundles, verify_extraction
+
+        stage = 'extracting'
+        try:
+            runtime = self.runtime()
+            llm = GeminiAdapter(self.settings, run_id=check_id)
+            extraction = await extract_claims(request, llm=llm, corpus_version=runtime.retriever.corpus_version,
+                                               stage='demo', public=False)
+            if not self.transition(check_id, stage, 'retrieving'):
+                return
+            stage = 'retrieving'
+            bundles = [runtime.retriever.retrieve_claim(c, runtime.retriever.corpus_version, request.as_of)
+                       for c in extraction.claims]
+            bundles, clipped = limit_bundles(bundles)
+            if clipped:
+                extraction.warnings.append('Context giới hạn 6 chunks; có hit bị cắt.')
+            if not self.transition(check_id, stage, 'verifying'):
+                return
+            stage = 'verifying'
+            result = await verify_extraction(UUID(check_id), extraction, bundles, llm=llm,
+                run_mode='live', corpus_updated_at=runtime.updated_at, stage='demo', public=False)
+            self.transition(check_id, stage, 'completed', result=result)
+        except Exception as exc:
+            detail = exc.detail if isinstance(exc, ServiceError) else ErrorDetail(
+                code='INTERNAL_ERROR', message='Lỗi kỹ thuật khi xử lý phiên kiểm tra.', retryable=True, details={})
+            self.transition(check_id, stage, 'failed', error=detail)

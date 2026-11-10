@@ -27,6 +27,8 @@ class Settings(BaseSettings):
     llm_output_price_per_million_usd: NonNegative = 2.50
     usd_vnd_planning_rate: Annotated[float, Field(gt=0)] = 27000
     llm_budget_usd: NonNegative = 3
+    # Enable HTTP charges only after account preflight and budget approval.
+    llm_live_enabled: bool = False
     max_concurrent_jobs: PositiveInt = 2
     max_upload_bytes: PositiveInt = 5242880
     max_image_pixels: PositiveInt = 12000000

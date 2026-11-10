@@ -114,3 +114,17 @@ Chủ repo xác nhận tự triển khai TinChắc: chủ repo giữ vai trò R1
 - **T12-B03, owner R3/R4/T09:** chỉ 2 ảnh OCR tổng hợp có reference / 1 family dev, chưa có 20 ảnh split dev/test theo §4.6. Không tạo dataset/test mới, không sửa expected labels. OCR có người sửa và thời gian sửa chưa có; script kiểm UI điền fixture là kiểm flow, không đo hiệu quả người dùng.
 - `python -m scripts.purge_private` chỉ dùng env (không nạp .env), mở DB có sẵn mode=rw và gọi purge TTL của assets/jobs. Không initialize/restart, không xóa DB/ledger/active raw, không quét orphan đang dùng; app restart sở hữu orphan cleanup. DELETE/TTL là xóa logic trong SQLite, không cam kết secure erase page/WAL/backup.
 - Experiment version không đổi vì không đổi inference/corpus/config. Build QA có fingerprint riêng trong docs/evidence/T12; nếu owner sửa pipeline sau freeze phải tạo version/run mới theo protocol, không chấm lại chọn lọc.
+
+## D19 — Autonomous recovery authority (2026-11-10)
+
+The user delegates repository maintenance, architecture, technical acceptance, commit and push to the maintainer. This supersedes earlier per-task instructions to wait for owner diff review, avoid commits, or stop after one task. Work proceeds sequentially on `recovery/t00-t17-audit`, based on `4fdbc5b`; existing branches/history are retained. Technical self-review is not an independent human annotation or usability review. Main remains unchanged while live/data acceptance gates are unresolved. No production deployment, billing changes or submissions are authorized.
+
+D01: solo owner remains responsible for real account access and human participation; agent owns technical decisions and Git. D04: this WSL environment has Python/Node and local vie+eng OCR; a physical demo laptop and second-machine cold start are still unverified. D06: localhost only. Paid calls require explicit account/preflight budget authorization; key presence alone is insufficient.
+
+## D17 — Approved for recovery implementation (2026-11-10)
+
+The proposed public-input Claim sidecar and known-subtotal accounting envelope are approved under D19. Scope and raw value must be traceable to the supplied target/input; no inference from gold, source facts or retrieval. Human confirmation of target atomicity/scope remains a freeze gate. Inference never imports gold. Unknown attempts retain reservations; reports expose known subtotal and mark actual total unavailable. Sidecar hashes, pinned temporal subset and all accounting must travel with run provenance. Approval resolves the design decision, not D02, human gold, holdout availability or freeze.
+
+## D20 — Connect the production HTTP pipeline (2026-11-10)
+
+Reuse T05/T07/T08 for live HTTP with per-job adapters and one durable ledger; charge stage `demo` (0.8 USD), global <=3 USD. HTTP uses `public=False` and no persistent provider cache. `LLM_LIVE_ENABLED=false` is the default; only enable after account/model/pricing/quota checks and paid-use authorization. Load and validate one immutable approved non-fixture corpus per process, expose its exact snapshots and corpus version, restart to adopt changes. Keep replay HTTP unavailable until a recorded run is configured; CLI replay remains supported. Check deletion/TTL between extraction/retrieval/verification, retain in-flight attempt charges and prevent late worker writes.
