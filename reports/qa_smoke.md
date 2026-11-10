@@ -1,5 +1,11 @@
 # T12 — QA smoke và release checklist T15
 
+## Recovery update — 10/11/2026
+
+Current implementation is on `recovery/t00-t17-audit`, under D19. Production HTTP integration is implemented and tested with scripted SDK responses through real retrieval/guards/ledger; actual Gemini account calls remain blocked by D02. A separate OCR-only dev pilot has run **20 images / 5 dev families, 29 edits / 1812 characters, CER 1.60044%**; 0 heldout and human correction/time unmeasured. Full regression 329 pytest / 37 Vitest, 20 fixture + 4 mock + 2 built release browser pass. Evidence and limits: `docs/evidence/recovery/README.md`, `docs/handoffs/recovery.md`.
+
+The historical T12 checkpoints below record the earlier fixture-only state and are superseded for current implementation by this update. They remain evidence of which checks were actually performed then.
+
 Ngày 10/11/2026 (UTC+7). R2 agent; chủ repo solo review cuối. Nhánh `task/T12-failure-privacy`, nền `1c8e8ce`, không commit/PR/push/merge/deploy. Build **`t12-f17f9a808da7a1b6`**, inventory SHA256 tại `docs/evidence/T12/build.json`; mọi hàng dưới có build B = ID này. Code/tests/config được hash; tài liệu/evidence không tham gia build ID. Các lượt baseline/reproduce trước sửa không được gán kết quả pass cho build B.
 
 **Gate T12: BLOCKED cho nghiệm thu đầy đủ.** Diff QA độc lập và sửa client sẵn owner review. B01 crash payload API đã sửa theo quyền owner; B02 HTTP live và B03 bộ ảnh split/người sửa chưa có. Chưa cho T15 công bố live hoặc OCR benchmark đạt. Các flow fixture đã kiểm có thể dùng để diễn tập có nhãn, giữ giới hạn này trên slide/demo.
@@ -31,8 +37,8 @@ Ngày 10/11/2026 (UTC+7). R2 agent; chủ repo solo review cuối. Nhánh `task/
 | .gitignore / frontend key scan | Private/env/build paths ignored; không key trong bundle | 10/10 probes ignored; 1 JS bundle, 0 Gemini key-pattern / GEMINI_API_KEY matches; sentinel protected paths không tracked | B |
 | Mobile/desktop/keyboard/axe | 390/1440, không overflow, không lỗi console | T12 ảnh tổng hợp đã xem; axe WCAG A/AA 0 violations ở flow quét; T03 còn 360 px | B |
 | 12 ca đa trường | Hai field/case giữ ID, summary, nhãn/time/citations | **12/12 service flows** qua run_pipeline; extraction/retrieval/model scripted, không HTTP live/ranking/model accuracy | B |
-| 20 ảnh dev/test / corrected OCR | 20 biến thể theo family/split; CER/fields/time sửa riêng | **CHƯA ĐỦ: 2 dev reference images / 1 family, 0 heldout; corrected human NOT RUN** | B |
-| HTTP live T08 đầu cuối | Assets/checks → production pipeline thật với chi phí ghi nhận | **CHƯA CHẠY**: Jobs vẫn FixtureAdapter; live trả CORPUS_UNAVAILABLE | B |
+| 20 ảnh dev/test / corrected OCR | 20 biến thể theo family/split; CER/fields/time sửa riêng | **Recovery: 20 dev images / 5 families measured, 0 heldout; corrected human NOT RUN** | B |
+| HTTP live T08 đầu cuối | Assets/checks → production pipeline thật với chi phí ghi nhận | **Recovery: production HTTP code integrated and scripted SDK tests pass; paid provider/account acceptance NOT RUN** | B |
 
 N = `insufficient_evidence`, S = `supported`; ba nhãn hợp đồng giữ nguyên. Nguồn im lặng/nguồn thiếu không thành contradicted, lỗi kỹ thuật không có verdict, expiry là temporal riêng.
 

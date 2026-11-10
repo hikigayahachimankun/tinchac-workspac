@@ -1,0 +1,38 @@
+{
+  "status": "draft_NOT_approved",
+  "selection_basis": "Four exposed dev families: source-derived award, one-value modification, unverified fee assertion, payment deadline; no model outcomes used or expected labels assigned.",
+  "tasks": [
+    {
+      "task_id": "P1",
+      "case_id": "T09_dev_agribank_01",
+      "family_id": "agribank",
+      "input_text": "Học bổng Agribank Nam Đà Nẵng – Chắp cánh ước mơ 2026 có giá trị 5.000.000 đồng mỗi suất.",
+      "expected_action": null,
+      "human_answer_key_reviewed": false
+    },
+    {
+      "task_id": "P2",
+      "case_id": "T09_dev_keidanren_jcci_02",
+      "family_id": "keidanren_jcci",
+      "input_text": "Học bổng Keidanren & JCCI năm học 2026–2027 có giá trị 9.000.000 đồng mỗi suất.",
+      "expected_action": null,
+      "human_answer_key_reviewed": false
+    },
+    {
+      "task_id": "P3",
+      "case_id": "T09_dev_schneider_03",
+      "family_id": "schneider",
+      "input_text": "Học bổng Schneider Electric trong thông báo DUT ngày 06/10/2026 yêu cầu phí đăng ký 200.000 đồng.",
+      "expected_action": null,
+      "human_answer_key_reviewed": false
+    },
+    {
+      "task_id": "P4",
+      "case_id": "T09_dev_tuition_hki_2026_dot2_01",
+      "family_id": "tuition_hki_2026_dot2",
+      "input_text": "Hạn thu học phí DUT đợt 2 học kỳ I năm học 2026–2027 qua BIDV cho khóa 2019–2022 là 08h30 ngày 30/11/2026.",
+      "expected_action": null,
+      "human_answer_key_reviewed": false
+    }
+  ]
+}

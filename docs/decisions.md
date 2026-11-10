@@ -2,12 +2,12 @@
 
 | ID | Owner | Trạng thái khởi tạo | Việc cần chốt | Mặc định để tiếp tục |
 |---|---|---|---|---|
-| D01 | Chủ repo | Đã chốt solo | Chủ repo giữ R1–R4 và review cuối | Xem quyết định D01 bên dưới |
+| D01 | Chủ repo / maintainer | Solo, D19 ủy quyền kỹ thuật | Maintainer tự nghiệm thu/commit/push; validation con người giữ riêng | D19 supersedes review diff thủ công |
 | D02 | R1 | Mở | Project Gemini, model khả dụng, quota và chi phí hiển thị | Fixture offline |
 | D03 | Chủ repo solo / agent T02 | Mở — thiếu 1 nguồn phí seed | T02 có 4 học bổng + 1 phí approved; 1 phí quarantined do danh sách cá nhân | Giữ quarantine; tìm thông báo mức thu chung không có dữ liệu cá nhân; theo ngưỡng §4.2 |
-| D04 | R2 | Mở | Máy demo và OCR tiếng Việt | WSL2, CPU, ưu tiên luồng text |
+| D04 | Maintainer | OCR WSL đã kiểm; máy thứ hai mở | vie+eng thật, 20 ảnh dev; cold-start máy khác ở T15 | Demo localhost/CPU |
 | D05 | R3 | Mở | Người thử tự nguyện và quy trình đồng ý | Chưa đưa dữ liệu thật vào repo |
-| D06 | R1 | Mở | Có công khai website sau demo hay không | Demo localhost |
+| D06 | Maintainer | Chốt local-only trong recovery | Không public production hoặc deploy | Demo localhost |
 
 ## D01 — Triển khai solo (2026-11-09)
 
@@ -132,3 +132,9 @@ Reuse T05/T07/T08 for live HTTP with per-job adapters and one durable ledger; ch
 ## D21 — Gemini reasoning configuration corrected before live (2026-11-10)
 
 Primary Google documentation rechecked: https://ai.google.dev/gemini-api/docs/thinking and https://ai.google.dev/gemini-api/docs/pricing (direct HTTPS returned 200, redirected to aistudio.google.com/docs). Gemini 3.5 Flash-Lite supports `thinking_level=minimal`; minimal may still produce billable thoughts. Use the SDK ThinkingLevel.MINIMAL for Gemini 3 family and omit candidate_count (default single candidate; response still checked). Retain budget=0 for older configured models, subject to their preflight support. Actual output accounting still includes thoughts, verifies total tokens and output cap, and retains unknown reservations. Published Standard prices currently match the existing 0.30/2.50 USD per million defaults, including thinking output; this does not verify the user's account, taxes, quota or billing. D02 remains open. All A/B/C use the same adapter; prior offline artifacts are historical, new experiments must pin new hashes. No paid call was made.
+
+## D22 — Pilot and local release boundaries (2026-11-10)
+
+Choose the existing protocol's technical-pilot fallback with actual n rather than lowering sample targets or relabeling exposed dev families. Keep the new official fee candidate outside approved corpus while its embedded rate image/rights/family relations are unreviewed. Automate public-input worksheet and 20 dev OCR variants; human gold/evidence/correction/volunteer outcomes remain unperformed. No dataset or research outcome was frozen or fabricated.
+
+Use explicit FRONTEND_DIST for same-origin fixture release with one FastAPI worker; fallback must preserve API errors and never follow paths/symlinks outside the build. Do not tag this as a fully accepted live/research release before second-machine, account, rights and human gates. Original four-person schedule is historical; solo work proceeds by dependency and actual checks, without inventing staff or committing to four-person throughput.

@@ -35,3 +35,18 @@ def test_redirect_or_personal_lists_leave_no_snapshot(tmp_path,status,body):
         headers={'content-type':'text/html','location':'http://127.0.0.1'},text=body))) as client:
         with pytest.raises(ValueError): collect(ENTRY,tmp_path,client)
     assert not list(tmp_path.iterdir())
+
+
+def test_oversized_candidate_is_rejected_before_retention(tmp_path,monkeypatch):
+    monkeypatch.setattr('scripts.collect_sources.MAX_BYTES',16)
+    with httpx.Client(transport=httpx.MockTransport(lambda r:httpx.Response(200,
+        headers={'content-type':'text/html'},content=b'x'*17))) as client:
+        with pytest.raises(ValueError,match='byte cap'): collect(ENTRY,tmp_path,client)
+    assert not list(tmp_path.iterdir())
+
+
+def test_non_html_candidate_is_never_downloaded_as_attachment(tmp_path):
+    with httpx.Client(transport=httpx.MockTransport(lambda r:httpx.Response(200,
+        headers={'content-type':'application/pdf'},content=b'%PDF-fixture'))) as client:
+        with pytest.raises(ValueError,match='HTML unavailable'): collect(ENTRY,tmp_path,client)
+    assert not list(tmp_path.iterdir())

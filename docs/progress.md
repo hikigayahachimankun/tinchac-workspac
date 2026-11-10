@@ -4,21 +4,21 @@ Recovery 10/11/2026, giờ Việt Nam. Quyền bảo trì/commit/push và nghi�
 
 | Task | Owner | Trạng thái | Gate thực tế / bước tiếp theo | Handoff |
 |---|---|---|---|---|
-| T00 | Maintainer / chủ repo (phần con người) | doing | Đã khôi phục Git và quyền quyết định; kiểm môi trường/demo, hoàn tất recovery | [T00](handoffs/T00.md) |
+| T00 | Maintainer / chủ repo (phần con người) | done | Phạm vi solo/quyền/Git/môi trường và toàn bộ T00–T17 đã đối soát; gate con người được phân đúng task | [T00](handoffs/T00.md) |
 | T01 | Maintainer | done | Model/DB/FTS5/schema tests, 31 examples và OpenAPI không drift; baseline 300 + HTTP recovery 305 tests đạt | [T01](handoffs/T01.md) |
 | T02 | Maintainer / người kiểm nguồn | blocked | 5 approved (4 học bổng/1 phí), 1 quarantine; thiếu nguồn phí thứ hai và spot-check độc lập | [T02](handoffs/T02.md) |
-| T03 | Maintainer | review | 37 unit + build đạt; đang chạy lại browser/keyboard/mobile | [T03](handoffs/T03.md) |
-| T04 | Maintainer | review | Lifecycle fixture/TTL/auth/restart đạt; đang chạy lại browser | [T04](handoffs/T04.md) |
-| T05 | Maintainer / chủ tài khoản | blocked | SDK/retry/reservation/unknown usage đạt offline; D02 account/model/quota/giá/preflight chưa có | [T05](handoffs/T05.md) |
-| T06 | Maintainer | review | OCR/local limits/confirm/delete đạt backend; đang kiểm lại OCR browser | [T06](handoffs/T06.md) |
+| T03 | Maintainer | done | 37 unit/build, 4 mock browser, mobile/desktop/keyboard/evidence đạt | [T03](handoffs/T03.md) |
+| T04 | Maintainer | done | Lifecycle fixture/TTL/auth/restart, HTTP browser và built release smoke đạt | [T04](handoffs/T04.md) |
+| T05 | Maintainer / chủ tài khoản | blocked | SDK/retry/reservation/unknown usage và Gemini3 thinking config đạt offline; D02 account/model/quota/giá/preflight chưa có | [T05](handoffs/T05.md) |
+| T06 | Maintainer | done | OCR local thật, confirm/edit/delete và browser đạt; nghiên cứu ảnh test/human correction thuộc T12 | [T06](handoffs/T06.md) |
 | T07 | Maintainer | done | Corpus validate: 6 sources/7 chunks (5 approved); retrieval regression và tái lập đạt; quy mô dữ liệu là gate T02/T09 | [T07](handoffs/T07.md) |
-| T08 | Maintainer | blocked | Đã nối production HTTP, 5 test mới và full 305 tests đạt; thiếu Gemini live/public acceptance D02 | [T08](handoffs/T08.md) |
+| T08 | Maintainer | blocked | Đã nối production HTTP, 5 test mới và full 329 tests đạt; thiếu Gemini live/public acceptance D02 | [T08](handoffs/T08.md) |
 | T09 | Maintainer / người gán nhãn | blocked | 15 dev drafts, 5 dev/0 test family, 0 human gold, NOT frozen; D17 đã duyệt | [T09](handoffs/T09.md) |
-| T10 | Maintainer | review | UI/backend production đã nối; unit/build đạt, browser đang kiểm; model live còn D02 | [T10](handoffs/T10.md) |
-| T11 | Maintainer | doing | D17 sidecar/accounting đã chốt; đang kiểm preparation/freeze/provenance/scorer; live dev còn D02 | [T11](handoffs/T11.md) |
-| T12 | Maintainer / người thử OCR | blocked | Production HTTP scripted regression đạt; chưa đủ 20 ảnh/reference và human correction/live D02 | [T12](handoffs/T12.md) |
+| T10 | Maintainer | blocked | UI fixture/metadata các mode, OCR, keyboard và HTTP integration đạt; nghiệm thu provider live còn D02 | [T10](handoffs/T10.md) |
+| T11 | Maintainer | blocked | D17/preparation/input+temporal pins/scorer đạt offline, fixture/replay 27/27; live dev còn D02 | [T11](handoffs/T11.md) |
+| T12 | Maintainer / người thử OCR | blocked | Production HTTP scripted regression đạt; 20 ảnh dev/5 family đã đo (CER 29/1812); 0 test, human correction/live D02 chưa có | [T12](handoffs/T12.md) |
 | T13 | Maintainer / người chấm evidence | blocked | Chưa benchmark; thiếu holdout/human gold/freeze/D02 và chấm evidence thật | [T13](handoffs/T13.md) |
-| T14 | Maintainer / người tham gia tự nguyện | todo | Chuẩn bị consent, allocation và worksheet; không giả kết quả người thật | — |
-| T15 | Maintainer | todo | Thiếu static serving/runbook; cold-start máy thứ hai và video chưa thực hiện | — |
-| T16 | Maintainer / đại diện dự thi | todo | Chuẩn bị draft factual/AI disclosure; form/identity/benchmark còn thiếu | — |
-| T17 | Maintainer / đại diện dự thi | blocked | Phụ thuộc T13–T16; chưa nộp và chưa có receipt thật | — |
+| T14 | Maintainer / người tham gia tự nguyện | blocked | Consent/protocol/48 planned rows sẵn; actual 0 volunteers, chưa có task/answer-key review | [T14](handoffs/T14.md) |
+| T15 | Maintainer | blocked | Static serving/runbook và built browser 2/2 đạt; thiếu cold-start máy thứ hai/video/quyền phân phối | [T15](handoffs/T15.md) |
+| T16 | Maintainer / đại diện dự thi | blocked | Draft/AI disclosure/checklist sẵn; form/rules HTTP 200 đã kiểm; identity/evidence thực/benchmark còn thiếu | [T16](handoffs/T16.md) |
+| T17 | Maintainer / đại diện dự thi | blocked | Review checkpoint sẵn; phụ thuộc T13–T16, chưa nộp và chưa có receipt thật | [T17](handoffs/T17.md) |

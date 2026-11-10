@@ -39,3 +39,18 @@ Initial tree clean, branch `task/T13-benchmark-evidence`, HEAD `4fdbc5b`. Fetch 
 ## Research limits and decision
 
 Use the protocol's technical-pilot fallback with actual n while attempting lawful source expansion. Current n=5 dev families/0 test and zero gold cannot support an out-of-sample benchmark or any claim that C improves B. AI may prepare inputs/worksheets and inspect public source text; it may not impersonate annotators. Existing source rights allow internal review only; no corpus/raw redistribution claim. Do not lower thresholds, invent supersession histories or label silent sources as contradictions.
+
+## Recovery implemented and verified
+
+- Production HTTP uses existing extraction/retrieval/verification with durable demo ledger and per-job accounting; safe explicit enablement, exact approved snapshots and truthful corpus health. Cancellation/TTL stops between paid stages and cannot restore deleted rows.
+- Gemini3 minimal thinking configuration corrected from primary Google docs; candidate_count omitted; thoughts included in actual usage/reservations. Account D02 remains unverified.
+- D17 approved; public preparation, exact raw-value traceability, cases/normalized-claims hashes and ordered temporal subset pinned. Scorer rejects A source leakage, nonfinite exchange rates and mode/corpus drift; missing accounting is unknown, not free.
+- Safe exact-path HTML candidate collector tested and run; no attachment fetch/promotion. Approved corpus remains unchanged (5 usable families). Draft annotation worksheets do not create gold.
+- Local OCR-only pilot actually ran 20 rendered dev images/5 families, 29 edits/1812 reference chars (CER 1.60044%). No heldout image or human correction was manufactured.
+- Explicit same-origin static release, private/API path guards and built browser smoke; actual user-pilot allocation, AI disclosure and factual submission/final-review drafts prepared. Actual participants/submissions remain zero.
+
+Final technical regression at recovery checkpoint: **329 pytest**, **37 Vitest**, build/contracts/corpus/eval validators pass; **20 fixture browser +4 mock browser +2 built release browser** pass. UV reports63packages compatible. Fixture/replay27/27 each and scorer synthetic reproducibility pass. No paid provider calls, benchmark verdict metrics, gold annotation, human evidence scoring, production deployment or real submission.
+
+Technical scopes accepted: **T00/T01/T03/T04/T06/T07**. Remaining tasks have completed independent engineering/draft portions but fail full live/data/human/release gates; see current progress table for precise status. Main is deliberately unchanged.
+
+Normal Git push failed because WSL lacks credentials. Connected GitHub has verified push permission; recovery publishes equivalent commits through GitHub tools and verifies identical Git tree hashes. API-created commits have different author/time metadata and thus different commit SHAs; their messages preserve local checkpoint SHAs. Original local checkpoints remain on a preserved local branch before checkout of the published tracking branch. No force push, reset, deleted history or hidden merge is used.

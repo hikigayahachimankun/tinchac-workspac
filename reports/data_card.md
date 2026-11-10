@@ -27,3 +27,9 @@ Gán nhãn: chủ repo tự đọc nguồn theo `eval/annotation_guide.md`; sing
 Quyền/riêng tư: nguồn public để đọc, quyền tái phân phối chưa xác nhận; corpus dùng nội bộ. Không thu dữ liệu cổng đăng nhập/danh sách cá nhân, không có dữ liệu người dùng thật. Test input/gold tương lai giữ ngoài repo và workspace agent; nguồn tài liệu test được có trong corpus. Chưa có artifact private thực tế nào được agent tạo/đọc.
 
 Giới hạn: pilot5 family, payment chỉ1, không đủ ngoại suy chất lượng thu phí/thiệt hại lừa đảo, không power claim. Chưa đủ 12 dev có nhãn hoặc6 seed approved; D03 mở. Không báo metric/CI từ dữ liệu chưa gán, không tăng n bằng chunk/gia hạn/biến thể. Hướng dẫn owner validate/hash trong `eval/owner_handoff.md`; không có hash freeze hoặc commit chốt vì điều kiện còn thiếu.
+
+## Recovery amendment — unchanged corpus/split
+
+Approved corpus remains 5 families (4 scholarship / 1 payment), 15 draft dev cases, 0 heldout / 0 human gold / NOT frozen. One additional official HTML candidate was fetched with embedded rate image omitted; it is NOT approved and adds no eligible family or fact. No source/gold test was fabricated or moved from dev.
+
+D17 input-only sidecar/preparation is implemented; no further owner implementation review is required. Human source/scope/atomicity/gold review remains. A separate actual OCR pilot rendered 20 dev images across 5 exposed families; 29 edits / 1812 reference chars (CER 1.60044%). References are public input text, not verdict gold. 0 test images, no measured human correction/time or volunteer study. See `docs/evidence/recovery/ocr20.json` and protocol v0.2. Historical “no OCR measurement in T09” describes the original task, not this later dev-only OCR pilot.
