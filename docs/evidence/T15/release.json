@@ -1,0 +1,56 @@
+{
+  "task": "T15",
+  "status": "blocked",
+  "kind": "internal-fixture-release-candidate",
+  "stable_release": false,
+  "source_commit": "690947c5f19b113072f27713ad688627f5b0fefa",
+  "remote_annotated_tag": "v1.0.0-rc.1",
+  "tag_object": "5a507280e09e0adbbbe47c891da7cbae939cdf3d",
+  "remote_tag_verified": true,
+  "ci_run": 42828193987,
+  "ci_cold_start": "success",
+  "independent_environment_verified": true,
+  "physical_demo_laptop_verified": false,
+  "package": {
+    "path": "artifacts/T15/tinchac-v1.0.0-rc.1.tar.gz",
+    "sha256": "7349acb7aa5dc4e6a66b2ef975b2d0482b6f89069b7dea07ab3131e5fb49ac8d",
+    "bytes": 243290,
+    "manifest_files": 117,
+    "working_tree_changes": false
+  },
+  "video": {
+    "video": "artifacts/T15/tinchac-demo-rc.mp4",
+    "sha256": "d6e3b4b89245b46bad5cc8d2eb8493864d09b11dea6d09e51e4cb1a7953d4917",
+    "bytes": 4320772,
+    "duration_seconds": 220,
+    "full_audio_video_decode_exit": 0
+  },
+  "checks": {
+    "backend_eval_passed": 397,
+    "frontend_unit_passed": 37,
+    "built_browser_passed": 2,
+    "own_browser_widths": [
+      390,
+      1440
+    ],
+    "fixture_rows": 27,
+    "replay_rows": 27,
+    "contract_examples": 31,
+    "openapi_drift": false
+  },
+  "provider_calls": 0,
+  "tokens": 0,
+  "cost_usd": 0,
+  "cost_vnd": 0,
+  "remaining_gates": [
+    "Actual DUT supported-case QA via T12",
+    "Physical demo laptop untested",
+    "External source/dependency redistribution rights",
+    "Upstream human gold/freeze/benchmark/pilot acceptance"
+  ],
+  "handover": [
+    "T16: use fixture/RC label and actual counts only",
+    "T17: RC tag is not full acceptance; no submission/receipt fabricated"
+  ],
+  "note": "Following metadata-only commits may add these receipts after the tagged code; runtime package is pinned to the actual tested annotated tag."
+}

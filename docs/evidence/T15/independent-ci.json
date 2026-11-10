@@ -53,5 +53,5 @@
     "package_commit": "474ef28ecde76b9cab6ac00e83c0da730201db77"
   },
   "clarification": "The generic cold-start script reports SAME host/false relative to its own invoking host. The Actions VM and Azure OS in external run logs establish a separate environment from local WSL; no physical laptop claim.",
-  "cost": "Public repository, standard runner; no caches/artifact uploads/paid service."
+  "cost": "Public repository, standard runner; no persistent Actions cache/artifact upload/paid service. Transient uv/npm download cache inside the VM may be used."
 }

@@ -23,3 +23,5 @@ Không public hosting/deploy, merge main, paid request, top-up hoặc nộp hồ
 API/schema1.0, ba label, model và benchmark protocol giữ nguyên. Gói nội bộ cài dependencies từ lock ngoài gói; không coi việc không bundle binary là đã giải quyết giấy phép.
 
 T16 nhận video/script/manifest/checklist, chỉ trình bày kết quả thực. T17 nhận gate list, không dùng tagRC làm chứng nhận nghiệm thu. Bước tiếp theo duy nhất: đóng QA cho một ca DUT thật được hỗ trợ theo upstream T12, giữ laptop demo vật lý/rights mở trước stable tag.
+
+Final receipt: annotated remote [v1.0.0-rc.1](https://github.com/hikigayahachimankun/tinchac-workspac/tree/v1.0.0-rc.1) targets `690947c`; [CI cold-start + tag jobs](https://github.com/hikigayahachimankun/tinchac-workspac/actions/runs/42828193987) both succeeded. No GitHub Release/binary distribution was created. Exact tag/package/video hashes and counts: [release.json](../docs/evidence/T15/release.json). Receipt-only commits follow the tagged source; no stable-release claim.
