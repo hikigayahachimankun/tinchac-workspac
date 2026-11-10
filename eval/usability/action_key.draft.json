@@ -1,0 +1,37 @@
+{
+  "status": "AGENT_SOURCE_REVIEWED_DRAFT_NOT_LOCKED",
+  "reviewer_kind": "agent_self_review",
+  "independent_human_review": false,
+  "basis": "Local approved public source snapshots only; no model outputs or benchmark gold. Candidate safe-next-step rubric, not verdict labels or human observations.",
+  "limitation": "All three verification/deferral choices can be safe under the current broad task wording. Accept them rather than arbitrarily penalizing caution. This may create a ceiling effect and cannot measure whether a student resolves the exact detail; review task clarity/rubric before locking for recruitment. Do not change after observing outcomes.",
+  "answers": {
+    "P1": {
+      "accepted_actions": ["official_channel", "ask_unit", "wait_verify"],
+      "rationale": "Snapshot records 5.000.000 đồng/suất, but eligibility and the 10/11/2026 submission window also matter. Open the correct official notice or ask the official unit before acting; deferring until verified is safe. Historical support does not establish an open application or sender/transaction safety.",
+      "source_version": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+      "source_quote": "5.000.000 đồng/suất."
+    },
+    "P2": {
+      "accepted_actions": ["official_channel", "ask_unit", "wait_verify"],
+      "rationale": "Snapshot records 7.000.000 đồng/suất, unlike the input's 9.000.000. Verify the exact program/year in the official channel or ask the unit; do not act on the unverified modified amount. Waiting for clarification is also safe. A detail mismatch is not proof of fraud.",
+      "source_version": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "source_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+      "source_quote": "7.000.000 đồng/suất."
+    },
+    "P3": {
+      "accepted_actions": ["official_channel", "ask_unit", "wait_verify"],
+      "rationale": "The full Schneider snapshot describes award value/application documents and does not establish the asserted 200.000 đồng registration fee. Its silence cannot disprove a fee. Check an official channel, ask the responsible unit, or wait for verification before any payment; no real payment is requested in the pilot.",
+      "source_version": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "source_sha256": "e5e4f9b141b646e668b29d17204614ffe7569b6a9d28ac4ee487513506453f95",
+      "source_quote": "Giá trị: 5.000.000 đồng/suất"
+    },
+    "P4": {
+      "accepted_actions": ["official_channel", "ask_unit", "wait_verify"],
+      "rationale": "Snapshot separates BIDV 08h30 from VietinBank 11h00 on 30/11/2026 and assigns banks by cohort. Verify the bank/cohort/time or ask the official unit before acting; deferring while clarifying is safe. A historical deadline is not a transaction guarantee; passing it does not imply forgery.",
+      "source_version": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+      "source_sha256": "be1a2356ad0f864bbb1eb41bdafaf2dd3422c62bc9e9e56b5442c56177e606fa",
+      "source_quote": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026."
+    }
+  }
+}

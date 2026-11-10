@@ -1,0 +1,16 @@
+{
+  "status": "DRAFT_NOT_READY_NOT_A_HUMAN_REVIEW",
+  "run_mode": null,
+  "build_id": "",
+  "qa_evidence": "",
+  "qa_passed": false,
+  "supports_all_tasks": false,
+  "answer_key_reviewed": false,
+  "review_basis": "",
+  "answers": {
+    "P1": {"accepted_actions": [], "rationale": ""},
+    "P2": {"accepted_actions": [], "rationale": ""},
+    "P3": {"accepted_actions": [], "rationale": ""},
+    "P4": {"accepted_actions": [], "rationale": ""}
+  }
+}

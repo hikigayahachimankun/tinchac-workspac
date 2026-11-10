@@ -1,1 +1,1 @@
-participant_id,task_id,condition,order,duration_seconds,completed,action_correct,labels_understood,sources_opened,comment
+participant_id,case_id,condition,order,duration,action_correct,comments
