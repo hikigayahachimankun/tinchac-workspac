@@ -1,0 +1,40 @@
+{
+  "family_count": 1,
+  "sample_count": 2,
+  "split": "synthetic dev only; not benchmark/gold",
+  "font": "DejaVuSans 36",
+  "blur_radius": 10,
+  "normalization": "NFC and collapsed whitespace",
+  "results": [
+    {
+      "sample": "vietnamese-clear",
+      "ocr": {
+        "text": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+        "mean_confidence": 95.84615384615384,
+        "low_quality": false,
+        "warnings": [],
+        "duration_ms": 165
+      },
+      "reference": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+      "reference_chars": 56,
+      "character_edits": 0,
+      "cer": 0.0
+    },
+    {
+      "sample": "vietnamese-blurred",
+      "ocr": {
+        "text": "",
+        "mean_confidence": null,
+        "low_quality": true,
+        "warnings": [
+          "Không đọc được chữ; hãy nhập tay."
+        ],
+        "duration_ms": 121
+      },
+      "reference": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+      "reference_chars": 56,
+      "character_edits": 56,
+      "cer": 1.0
+    }
+  ]
+}

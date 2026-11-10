@@ -1,0 +1,752 @@
+{
+  "mode": "offline_mock",
+  "prompt_sha256": "a418087129a5036109c911657015b77f12e262620b6abdaa10c9940ec986d304",
+  "model_candidate": "gemini-3.5-flash-lite",
+  "temperature": 0.0,
+  "thinking_budget": 0,
+  "output_cap_per_claim": 1200,
+  "synthetic_dev": [
+    {
+      "case_id": "fee_silence",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "SOURCE_SILENT",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "SOURCE_SILENT",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "fee_negation",
+      "expected": {
+        "label": "contradicted",
+        "reason": "EXPLICIT_NEGATION",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "contradicted",
+        "reason": "EXPLICIT_NEGATION",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "contradicted",
+          "guard_changes": [
+            "reason_codes",
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "EXPLICIT_NEGATION"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "scope_mismatch",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "SCOPE_UNCLEAR",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "SCOPE_UNCLEAR",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "SCOPE_UNCLEAR"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "expired_history",
+      "expected": {
+        "label": "supported",
+        "reason": "MATCHED",
+        "temporal": "expired"
+      },
+      "actual": {
+        "label": "supported",
+        "reason": "MATCHED",
+        "temporal": "expired"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "missing_year",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "DATE_AMBIGUOUS",
+        "temporal": "unknown"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "DATE_AMBIGUOUS",
+        "temporal": "unknown"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "DATE_AMBIGUOUS"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "extension",
+      "expected": {
+        "label": "supported",
+        "reason": "MATCHED",
+        "temporal": "active"
+      },
+      "actual": {
+        "label": "supported",
+        "reason": "MATCHED",
+        "temporal": "active"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "source_conflict",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "SOURCE_CONFLICT",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "SOURCE_CONFLICT",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "SOURCE_CONFLICT"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "fabricated_quote",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "INVALID_CITATION",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "INVALID_CITATION",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ]
+    },
+    {
+      "case_id": "external_link",
+      "expected": {
+        "label": "supported",
+        "reason": "MATCHED",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "supported",
+        "reason": "MATCHED",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "injection",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "PARTIAL_EVIDENCE",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "PARTIAL_EVIDENCE",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "PARTIAL_EVIDENCE"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "out_of_scope",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "OUT_OF_SCOPE",
+        "temporal": "not_applicable"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "OUT_OF_SCOPE",
+        "temporal": "not_applicable"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "OUT_OF_SCOPE"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "missing_source",
+      "expected": {
+        "label": "insufficient_evidence",
+        "reason": "NO_SOURCE",
+        "temporal": "unknown"
+      },
+      "actual": {
+        "label": "insufficient_evidence",
+        "reason": "NO_SOURCE",
+        "temporal": "unknown"
+      },
+      "passed": true,
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "NO_SOURCE"
+          ],
+          "removed_citations": 0
+        }
+      ]
+    }
+  ],
+  "public_dev": [
+    {
+      "case_id": "live01",
+      "run_id": "5ab4d3fb-4ebc-460a-a1ba-691dcee90499",
+      "mode": "offline_mock",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5708,
+      "label": "supported",
+      "reasons": [
+        "MATCHED"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "cost_usd": 0.00028,
+        "cost_vnd_estimate": 7.56,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 22
+      }
+    },
+    {
+      "case_id": "live02",
+      "run_id": "f9929abb-0dc4-4bae-9683-748e84ad7e4a",
+      "mode": "offline_mock",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ]
+      ],
+      "input_bound": 5708,
+      "label": "contradicted",
+      "reasons": [
+        "VALUE_MISMATCH"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "contradicted",
+          "guard_changes": [
+            "reason_codes",
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "VALUE_MISMATCH"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "cost_usd": 0.00028,
+        "cost_vnd_estimate": 7.56,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 12
+      }
+    },
+    {
+      "case_id": "live03",
+      "run_id": "8e721c0b-2851-4e38-8ec4-97e97fa274ea",
+      "mode": "offline_mock",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ]
+      ],
+      "input_bound": 5371,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "SOURCE_SILENT"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "insufficient_evidence",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "cost_usd": 0.00028,
+        "cost_vnd_estimate": 7.56,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 10
+      }
+    },
+    {
+      "case_id": "live04",
+      "run_id": "27a1615c-803d-46a8-8017-dba10cffbd8e",
+      "mode": "offline_mock",
+      "source_version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "source_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+      "shared_bundle": [
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5737,
+      "label": "supported",
+      "reasons": [
+        "MATCHED"
+      ],
+      "temporal_status": "active",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "cost_usd": 0.00028,
+        "cost_vnd_estimate": 7.56,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 11
+      }
+    },
+    {
+      "case_id": "live05",
+      "run_id": "cac5a782-2510-409c-8059-fda3c1baf403",
+      "mode": "offline_mock",
+      "source_version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+      "shared_bundle": [
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c002",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5653,
+      "label": "supported",
+      "reasons": [
+        "MATCHED"
+      ],
+      "temporal_status": "expired",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "cost_usd": 0.00028,
+        "cost_vnd_estimate": 7.56,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 12
+      }
+    },
+    {
+      "case_id": "live06",
+      "run_id": "7d7a25e4-87ff-45bc-9d7a-1e0996aaf2ff",
+      "mode": "offline_mock",
+      "source_version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+      "source_url": "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/view",
+      "shared_bundle": [
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c002",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5673,
+      "label": "supported",
+      "reasons": [
+        "MATCHED"
+      ],
+      "temporal_status": "active",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "temporal_status"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 100,
+        "output_tokens": 100,
+        "cost_usd": 0.00028,
+        "cost_vnd_estimate": 7.56,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 12
+      }
+    }
+  ],
+  "live_calls": 0,
+  "note": "Mock ledger/token amounts are synthetic. D02/live remain owner verified."
+}

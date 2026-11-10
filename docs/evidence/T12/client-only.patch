@@ -1,0 +1,91 @@
+--- a/frontend/src/api/client.ts (upstream T10)
++++ b/frontend/src/api/client.ts (T12)
+@@ -4,7 +4,7 @@
+ import sourceExample from '../../../contracts/examples/SourcePublic.json';
+ import errorExample from '../../../contracts/examples/error.json';
+ import scenarios from './scenarios.json';
+-import { errorMessages } from './presentation';
++import { errorMessages, labels, temporal } from './presentation';
+ export type Schema = components['schemas'];
+ export type CheckCreate = Schema['CheckCreate'];
+ export type CheckRecord = Schema['CheckRecord'];
+@@ -62,6 +62,44 @@
+   return 'slow' as const;
+ }
+ 
++// Validate fields consumed by the UI before putting untrusted HTTP JSON in React state.
++// Pydantic remains the contract authority; the client does not infer or repair verdicts.
++const stringList = (value: unknown): value is string[] => Array.isArray(value) && value.every(item => typeof item === 'string');
++const validDate = (value: unknown) => typeof value === 'string' && Number.isFinite(Date.parse(value));
++function validError(error: Schema['ErrorDetail'] | null | undefined): boolean {
++  return !!error && typeof error.code === 'string' && Object.hasOwn(errorMessages, error.code) &&
++    typeof error.message === 'string' && typeof error.retryable === 'boolean';
++}
++function invalid(): never {
++  throw new ApiError({code:'INTERNAL_ERROR',message:'Backend trả dữ liệu không hợp lệ.',retryable:false,details:{}});
++}
++function validSource(source: Schema['SourceSummary']): boolean {
++  return !!source && typeof source.version_id === 'string' && typeof source.title === 'string' &&
++    typeof source.canonical_url === 'string' && typeof source.is_fixture === 'boolean' &&
++    (source.published_at === null || validDate(source.published_at)) && validDate(source.retrieved_at);
++}
++function validResult(result: Schema['CheckResult'], checkId: string): boolean {
++  if (!result || result.schema_version !== '1.0' || result.check_id !== checkId ||
++      !['fixture','replay','live'].includes(result.run_mode) || !validDate(result.as_of) ||
++      !validDate(result.corpus_updated_at) || typeof result.corpus_version !== 'string' ||
++      !stringList(result.warnings) || !stringList(result.next_steps) || !result.summary ||
++      typeof result.summary.message !== 'string' || !Array.isArray(result.sources) ||
++      !result.sources.every(validSource) || !Array.isArray(result.claims)) return false;
++  const versions = new Set(result.sources.map(source => source.version_id));
++  if (versions.size !== result.sources.length || !result.claims.every(claim =>
++      !!claim && typeof claim.claim_id === 'string' && typeof claim.statement === 'string' &&
++      typeof claim.explanation === 'string' && typeof claim.label === 'string' && Object.hasOwn(labels, claim.label) &&
++      typeof claim.temporal_status === 'string' && Object.hasOwn(temporal, claim.temporal_status) &&
++      Array.isArray(claim.evidence) && claim.evidence.every(ref => !!ref &&
++        typeof ref.version_id === 'string' && versions.has(ref.version_id) && typeof ref.chunk_id === 'string' &&
++        typeof ref.quote === 'string' && ['supports','contradicts','context'].includes(ref.relation)) &&
++      (claim.label === 'insufficient_evidence' || claim.evidence.some(ref =>
++        ref.relation === (claim.label === 'supported' ? 'supports' : 'contradicts'))))) return false;
++  return new Set(result.claims.map(claim => claim.claim_id)).size === result.claims.length &&
++    (Object.keys(labels) as Schema['Label'][]).every(label => Number.isSafeInteger(result.summary[label]) &&
++      result.summary[label] === result.claims.filter(claim => claim.label === label).length);
++}
++
+ // The normal app always uses HTTP. Mock mode is explicit and never an error fallback.
+ async function request<T>(path: string, init?: RequestInit): Promise<T> {
+     let response: Response;
+@@ -76,7 +114,7 @@
+     catch { throw new ApiError({code:'INTERNAL_ERROR',message:'Backend trả phản hồi không hợp lệ.',retryable:true,details:{}}); }
+     if (!response.ok) {
+       const envelope = body as Schema['ErrorEnvelope'];
+-      if (envelope?.schema_version === '1.0' && envelope.error && typeof envelope.error.message === 'string' && envelope.error.code in errorMessages) {
++      if (envelope?.schema_version === '1.0' && validError(envelope.error)) {
+         throw new ApiError(envelope.error);
+       }
+       throw new ApiError({code:'INTERNAL_ERROR',message:`Backend trả HTTP ${response.status}.`,retryable:true,details:{}});
+@@ -87,14 +125,11 @@
+     return body as T;
+   }
+ export function createHttpClient(): ApiClient {
+-  function invalid(): never { throw new ApiError({code:'INTERNAL_ERROR',message:'Backend trả dữ liệu không hợp lệ.',retryable:false,details:{}}); }
+   function validRecord(record: CheckRecord): boolean {
+     return !!record && typeof record.check_id === 'string' &&
+       ['queued','extracting','retrieving','verifying','completed','failed'].includes(record.status) &&
+-      (record.status === 'completed' ? record.error === null && record.result?.schema_version === '1.0' &&
+-        record.result.check_id === record.check_id && ['fixture','replay','live'].includes(record.result.run_mode) &&
+-        Array.isArray(record.result.claims) && record.result.claims.every(c=>['supported','contradicted','insufficient_evidence'].includes(c.label))
+-      : record.status === 'failed' ? record.result === null && !!record.error && record.error.code in errorMessages
++      (record.status === 'completed' ? record.error === null && !!record.result && validResult(record.result, record.check_id)
++      : record.status === 'failed' ? record.result === null && validError(record.error)
+       : record.result === null && record.error === null);
+   }
+   return {
+@@ -110,7 +145,7 @@
+     },
+     async getSource(versionId) {
+       const source = await request<SourcePublic>(`/sources/${encodeURIComponent(versionId)}`);
+-      if (source.version_id !== versionId || typeof source.is_fixture !== 'boolean' || typeof source.text !== 'string' || !Array.isArray(source.chunks)) invalid();
++      if (!validSource(source) || source.version_id !== versionId || typeof source.text !== 'string' || !Array.isArray(source.chunks)) invalid();
+       return source;
+     },
+   };

@@ -1,0 +1,194 @@
+{
+  "build_at": "2026-11-09T13:11:05.702010+00:00",
+  "chunking": {
+    "max_words": 400,
+    "oversize_policy": "keep_atomic_section_table_or_fact",
+    "pdf_boundary": "page",
+    "target_words": 200,
+    "version": 1
+  },
+  "chunks_sha256": "9cf6cc7f13c79bf15ac8c06e9bab636b8876381492e8206cddd302344e48c403",
+  "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+  "excluded_versions": [
+    "dut_5612e8ebaf4a8bfe_d00f8e6c84db7050"
+  ],
+  "format": 1,
+  "implementation": {
+    "files": {
+      "backend/app/models.py": "5b67b84375422dc4c43e64a3862691d80394028977443bebcc5cec8aac5bf407",
+      "backend/app/services/corpus.py": "2470180c7706f222d6ec1774b4d57104ec397de43e9b5dd0d2892e05386d3b58",
+      "backend/app/services/retrieve.py": "90afccb5976e3df53bf02c65511ddfd1b9e22ac1d494500db15c4925404e77fa",
+      "scripts/ingest_sources.py": "7bd4cb076813a29b16aec17c7e3bee52a51214fdca8c0d0dcf84cada087a0480",
+      "scripts/validate_corpus.py": "d46cad664849036718f24f3068086510068383c3a918488a20b8a36ecef1736b"
+    },
+    "packages": {
+      "PyMuPDF": "2.1",
+      "beautifulsoup4": "4.15.0",
+      "numpy": "2.4.6",
+      "pydantic": "2.14.3",
+      "scikit-learn": "1.9.1"
+    },
+    "sqlite": "3.53.1"
+  },
+  "indexed_source_count": 5,
+  "ingest_code_commit": "1c8e8ce8cce6f79d567f26c0799024dd3fdacb30",
+  "is_fixture": false,
+  "provenance": {
+    "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6": {
+      "method": "html",
+      "normalized_sha256": "e5e4f9b141b646e668b29d17204614ffe7569b6a9d28ac4ee487513506453f95",
+      "raw": {
+        "path": "data/raw/t02/12321.html",
+        "sha256": "1fe4a3fdfc09a7b4473288e5c1ef5d1a1fd1a19c8a850e83623dd766b9d5a04f"
+      },
+      "reviewed_by": "T02-agent: primary-source reading; owner spot-check pending",
+      "reviewed_on": "2026-11-09",
+      "snapshot_retrieved_at": "2026-11-09T13:09:51.086419+00:00",
+      "source_log": "docs/source_log.md"
+    },
+    "dut_2a0b90b19b67872f_dbd836ad6b4251a7": {
+      "method": "html",
+      "normalized_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+      "raw": {
+        "path": "data/raw/t02/12394.html",
+        "sha256": "d77eb3bdadb3fe51582357dcc05ab65f13038b3a429de8f58caf185c0346c84d"
+      },
+      "reviewed_by": "T02-agent: primary-source reading; owner spot-check pending",
+      "reviewed_on": "2026-11-09",
+      "snapshot_retrieved_at": "2026-11-09T13:09:23.984576+00:00",
+      "source_log": "docs/source_log.md"
+    },
+    "dut_344b21e393855658_921795aab925d271": {
+      "manual_text": {
+        "path": "data/raw/t02/12327.verified.txt",
+        "sha256": "c781a78bf36650c20813ed693168dc32c96d92025fc0d89b7697ae2952f5e284"
+      },
+      "method": "manual_pdf",
+      "normalized_sha256": "921795aab925d271910da89d908e238589015ddf90834e1687665e0663418553",
+      "notes": "T02 reviewed business extract from both scan pages; headers, signatures, recipients and administrative contacts omitted. Text is the reviewed extract, not verbatim full PDF/OCR.",
+      "page_mapping_reviewed_by": "T07-agent, local page images 2026-11-09",
+      "pages": [
+        {
+          "end": 1367,
+          "page": 1,
+          "start": 0
+        },
+        {
+          "end": 2303,
+          "page": 2,
+          "start": 1367
+        }
+      ],
+      "raw": {
+        "path": "data/raw/t02/12327.pdf",
+        "sha256": "2161224fe24a88badeeb0fa8c8be056c26a51c17117e8fd5452548cfb873a718"
+      },
+      "reviewed_by": "T02-agent: primary-source reading; owner spot-check pending",
+      "reviewed_on": "2026-11-09",
+      "snapshot_retrieved_at": "2026-11-09T13:11:05.702010+00:00",
+      "source_log": "docs/source_log.md"
+    },
+    "dut_5612e8ebaf4a8bfe_d00f8e6c84db7050": {
+      "method": "quarantine_metadata",
+      "normalized_sha256": "d00f8e6c84db70504bd5e9cc58b2d665628e99313f4e0f98408d96eb97743ab9",
+      "notes": "Title only. Personal-data attachment deleted at T02; never reopen or index.",
+      "raw": {
+        "path": "data/raw/t02/12381.html",
+        "sha256": "f241f81c28810064e802e5cbbedb1bcb17a84272df12a9db1fac60a33ce5c288"
+      },
+      "reviewed_by": "T02-agent: primary-source reading; owner spot-check pending",
+      "reviewed_on": "2026-11-09",
+      "snapshot_retrieved_at": "2026-11-09T13:09:53.131167+00:00",
+      "source_log": "docs/source_log.md"
+    },
+    "dut_be8a0080c11e660f_f0ef96bab2007bb9": {
+      "method": "html",
+      "normalized_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+      "raw": {
+        "path": "data/raw/t02/12395.html",
+        "sha256": "a39e0cfbe4210a16c297033a19a013ee4456a5f945eb9517ba88053d4e221e04"
+      },
+      "reviewed_by": "T02-agent: primary-source reading; owner spot-check pending",
+      "reviewed_on": "2026-11-09",
+      "snapshot_retrieved_at": "2026-11-09T13:09:10.052838+00:00",
+      "source_log": "docs/source_log.md"
+    },
+    "dut_f18730b4c4454e87_be1a2356ad0f864b": {
+      "manual_text": {
+        "path": "data/raw/t02/12387.verified.txt",
+        "sha256": "ab055228e056c089d9964e0eac4cde8189dfd1fdf009264214cf1c60fe27ac9b"
+      },
+      "method": "manual_pdf",
+      "normalized_sha256": "be1a2356ad0f864bbb1eb41bdafaf2dd3422c62bc9e9e56b5442c56177e606fa",
+      "notes": "T02 reviewed business extract from both scan pages; headers, signatures, recipients and administrative contacts omitted. Text is the reviewed extract, not verbatim full PDF/OCR.",
+      "page_mapping_reviewed_by": "T07-agent, local page images 2026-11-09",
+      "pages": [
+        {
+          "end": 1225,
+          "page": 1,
+          "start": 0
+        },
+        {
+          "end": 2390,
+          "page": 2,
+          "start": 1225
+        }
+      ],
+      "raw": {
+        "path": "data/raw/t02/12387.pdf",
+        "sha256": "a48eab4e6c746f9f7c795282078e7ae0b0fe1938b150e88496e8dda349c12cf3"
+      },
+      "reviewed_by": "T02-agent: primary-source reading; owner spot-check pending",
+      "reviewed_on": "2026-11-09",
+      "snapshot_retrieved_at": "2026-11-09T13:10:53.089033+00:00",
+      "source_log": "docs/source_log.md"
+    }
+  },
+  "retrieval": {
+    "analyzer": "char_wb",
+    "fts_candidates": 10,
+    "method": "fts5_tfidf_rrf",
+    "ngram_range": [
+      3,
+      5
+    ],
+    "query_version": "program_year_statement_v1",
+    "rrf_k": 60,
+    "tfidf_candidates": 10,
+    "tokenizer": "unicode61 remove_diacritics 2",
+    "top_k": 5
+  },
+  "source_count": 6,
+  "source_versions": [
+    {
+      "content_sha256": "e5e4f9b141b646e668b29d17204614ffe7569b6a9d28ac4ee487513506453f95",
+      "metadata_sha256": "0bae0f6e47964113512f28f9c9c608a5a47330abf22fa0942ee0c347ad2f8284",
+      "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+    },
+    {
+      "content_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+      "metadata_sha256": "b93905cb901cd4491af9cfba02663f0d5c9a3c8d43b411984f0bb5579ce568a5",
+      "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+    },
+    {
+      "content_sha256": "921795aab925d271910da89d908e238589015ddf90834e1687665e0663418553",
+      "metadata_sha256": "2966016a14f47cd173724b25ef29cbcfd45c20ed220b5ffd36786070b2a7b495",
+      "version_id": "dut_344b21e393855658_921795aab925d271"
+    },
+    {
+      "content_sha256": "d00f8e6c84db70504bd5e9cc58b2d665628e99313f4e0f98408d96eb97743ab9",
+      "metadata_sha256": "82da30027574b0b2d5dccf812917e9bfd20f48cdce035b9fc94750ccb9ce7784",
+      "version_id": "dut_5612e8ebaf4a8bfe_d00f8e6c84db7050"
+    },
+    {
+      "content_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+      "metadata_sha256": "f6162dc16409d9fb1e53e5631c38e0a145e24729eff610e64b05b1a4885a0e79",
+      "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+    },
+    {
+      "content_sha256": "be1a2356ad0f864bbb1eb41bdafaf2dd3422c62bc9e9e56b5442c56177e606fa",
+      "metadata_sha256": "82f46fcb2a97f776b0a1aa4f700cbff9724a2667ca5ac90797217457fcef697f",
+      "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b"
+    }
+  ]
+}

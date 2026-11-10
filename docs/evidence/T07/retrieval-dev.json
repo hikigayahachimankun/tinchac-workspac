@@ -1,0 +1,676 @@
+{
+  "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+  "probe_hash": "bc3b5c2d07e08619fe1544704151b0cc71649c53abe1d58138ca5df8d46d666e",
+  "config": {
+    "analyzer": "char_wb",
+    "fts_candidates": 10,
+    "method": "fts5_tfidf_rrf",
+    "ngram_range": [
+      3,
+      5
+    ],
+    "query_version": "program_year_statement_v1",
+    "rrf_k": 60,
+    "tfidf_candidates": 10,
+    "tokenizer": "unicode61 remove_diacritics 2",
+    "top_k": 5
+  },
+  "results": [
+    {
+      "method": "fts5_only",
+      "case_id": "seed01",
+      "query": "Học bổng Agribank Nam Đà Nẵng năm 2026 trị giá 5 triệu đồng mỗi suất.",
+      "expected": {
+        "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+        "quote": "5.000.000 đồng/suất.",
+        "span": {
+          "start": 482,
+          "end": 502
+        },
+        "chunk_ids": [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+        ]
+      },
+      "top_k": [
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002"
+      ],
+      "expected_rank": 2,
+      "duration_ms": 1.694,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed02",
+      "query": "Agrbank chắp cánh ước mơ nhận hồ sơ 14h00 đến 16h00 ngày 10/11/2026.",
+      "expected": {
+        "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+        "quote": "Thời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).",
+        "span": {
+          "start": 963,
+          "end": 1043
+        },
+        "chunk_ids": [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+        ]
+      },
+      "top_k": [
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.355,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed03",
+      "query": "Học bổng Keidanren JCCI năm học 2026-2027 cần chứng chỉ tiếng Nhật.",
+      "expected": {
+        "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+        "quote": "- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+        "span": {
+          "start": 359,
+          "end": 471
+        },
+        "chunk_ids": [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+        ]
+      },
+      "top_k": [
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.21,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed04",
+      "query": "Keidanren JCCI nhận hồ sơ tới ngày 12/11/2026 từ 08h00 đến 11h00.",
+      "expected": {
+        "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+        "quote": "Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+        "span": {
+          "start": 1452,
+          "end": 1530
+        },
+        "chunk_ids": [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+        ]
+      },
+      "top_k": [
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.195,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed05",
+      "query": "Học bổng Schneider Electric cấp 5.000.000 đồng/suất cho sinh viên Khoa Điện.",
+      "expected": {
+        "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+        "quote": "5.000.000 đồng/suất",
+        "span": {
+          "start": 455,
+          "end": 474
+        },
+        "chunk_ids": [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+        ]
+      },
+      "top_k": [
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.383,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed06",
+      "query": "Hạn nộp học bổng Schneider Electric là 16h30 ngày 16/10/2026.",
+      "expected": {
+        "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+        "quote": "🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+        "span": {
+          "start": 534,
+          "end": 674
+        },
+        "chunk_ids": [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+        ]
+      },
+      "top_k": [
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_344b21e393855658_921795aab925d271_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.258,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed07",
+      "query": "Học bổng Toyota Đồng hành năm học 2026-2027 có một suất 25 triệu đồng.",
+      "expected": {
+        "version_id": "dut_344b21e393855658_921795aab925d271",
+        "quote": "Học bổng Đồng hành: 01 suất, trị giá 25.000.000 đồng.",
+        "span": {
+          "start": 1077,
+          "end": 1130
+        },
+        "chunk_ids": [
+          "dut_344b21e393855658_921795aab925d271_c001"
+        ]
+      },
+      "top_k": [
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.312,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed08",
+      "query": "Nộp hồ sơ học bổng Toyota trước 11 giờ 30 ngày 13/10/2026.",
+      "expected": {
+        "version_id": "dut_344b21e393855658_921795aab925d271",
+        "quote": "Thời gian tiếp nhận hồ sơ: Từ 08 giờ 00 đến 11 giờ 30 ngày 13/10/2026 (thứ Ba).",
+        "span": {
+          "start": 2171,
+          "end": 2250
+        },
+        "chunk_ids": [
+          "dut_344b21e393855658_921795aab925d271_c002"
+        ]
+      },
+      "top_k": [
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.247,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed09",
+      "query": "Học phí đợt 2 học kỳ I 2026-2027 thu qua BIDV đến 08h30 ngày 30/11/2026.",
+      "expected": {
+        "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+        "quote": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+        "span": {
+          "start": 1402,
+          "end": 1459
+        },
+        "chunk_ids": [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+        ]
+      },
+      "top_k": [
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+      ],
+      "expected_rank": 2,
+      "duration_ms": 1.241,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_only",
+      "case_id": "seed10",
+      "query": "Học phí đợt 2 năm học 2026-2027 qua VietinBank đến 11h00 ngày 30/11/2026.",
+      "expected": {
+        "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+        "quote": "- Qua VietinBank: từ ngày 04/11/2026 đến 11h00 ngày 30/11/2026.",
+        "span": {
+          "start": 1460,
+          "end": 1523
+        },
+        "chunk_ids": [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+        ]
+      },
+      "top_k": [
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_344b21e393855658_921795aab925d271_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 1.259,
+      "scores": [
+        0.01639344262295082,
+        0.016129032258064516,
+        0.015873015873015872,
+        0.015625,
+        0.015384615384615385
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed01",
+      "query": "Học bổng Agribank Nam Đà Nẵng năm 2026 trị giá 5 triệu đồng mỗi suất.",
+      "expected": {
+        "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+        "quote": "5.000.000 đồng/suất.",
+        "span": {
+          "start": 482,
+          "end": 502
+        },
+        "chunk_ids": [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+        ]
+      },
+      "top_k": [
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002"
+      ],
+      "expected_rank": 2,
+      "duration_ms": 12.341,
+      "scores": [
+        0.03252247488101534,
+        0.03252247488101534,
+        0.03149801587301587,
+        0.03149801587301587,
+        0.030536130536130537
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed02",
+      "query": "Agrbank chắp cánh ước mơ nhận hồ sơ 14h00 đến 16h00 ngày 10/11/2026.",
+      "expected": {
+        "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+        "quote": "Thời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).",
+        "span": {
+          "start": 963,
+          "end": 1043
+        },
+        "chunk_ids": [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+        ]
+      },
+      "top_k": [
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 10.427,
+      "scores": [
+        0.03278688524590164,
+        0.0315136476426799,
+        0.0315136476426799,
+        0.03149801587301587,
+        0.03149801587301587
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed03",
+      "query": "Học bổng Keidanren JCCI năm học 2026-2027 cần chứng chỉ tiếng Nhật.",
+      "expected": {
+        "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+        "quote": "- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+        "span": {
+          "start": 359,
+          "end": 471
+        },
+        "chunk_ids": [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+        ]
+      },
+      "top_k": [
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 10.008,
+      "scores": [
+        0.03278688524590164,
+        0.03200204813108039,
+        0.03149801587301587,
+        0.03128054740957967,
+        0.030776515151515152
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed04",
+      "query": "Keidanren JCCI nhận hồ sơ tới ngày 12/11/2026 từ 08h00 đến 11h00.",
+      "expected": {
+        "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+        "quote": "Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+        "span": {
+          "start": 1452,
+          "end": 1530
+        },
+        "chunk_ids": [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+        ]
+      },
+      "top_k": [
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 9.591,
+      "scores": [
+        0.03278688524590164,
+        0.03225806451612903,
+        0.03149801587301587,
+        0.03149801587301587,
+        0.03076923076923077
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed05",
+      "query": "Học bổng Schneider Electric cấp 5.000.000 đồng/suất cho sinh viên Khoa Điện.",
+      "expected": {
+        "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+        "quote": "5.000.000 đồng/suất",
+        "span": {
+          "start": 455,
+          "end": 474
+        },
+        "chunk_ids": [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+        ]
+      },
+      "top_k": [
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 9.815,
+      "scores": [
+        0.03278688524590164,
+        0.03225806451612903,
+        0.031746031746031744,
+        0.03125,
+        0.03076923076923077
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed06",
+      "query": "Hạn nộp học bổng Schneider Electric là 16h30 ngày 16/10/2026.",
+      "expected": {
+        "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+        "quote": "🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+        "span": {
+          "start": 534,
+          "end": 674
+        },
+        "chunk_ids": [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001"
+        ]
+      },
+      "top_k": [
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c002"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 9.702,
+      "scores": [
+        0.03278688524590164,
+        0.03225806451612903,
+        0.03125763125763126,
+        0.031024531024531024,
+        0.03055037313432836
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed07",
+      "query": "Học bổng Toyota Đồng hành năm học 2026-2027 có một suất 25 triệu đồng.",
+      "expected": {
+        "version_id": "dut_344b21e393855658_921795aab925d271",
+        "quote": "Học bổng Đồng hành: 01 suất, trị giá 25.000.000 đồng.",
+        "span": {
+          "start": 1077,
+          "end": 1130
+        },
+        "chunk_ids": [
+          "dut_344b21e393855658_921795aab925d271_c001"
+        ]
+      },
+      "top_k": [
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 10.059,
+      "scores": [
+        0.03278688524590164,
+        0.031754032258064516,
+        0.03149801587301587,
+        0.03128054740957967,
+        0.03125763125763126
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed08",
+      "query": "Nộp hồ sơ học bổng Toyota trước 11 giờ 30 ngày 13/10/2026.",
+      "expected": {
+        "version_id": "dut_344b21e393855658_921795aab925d271",
+        "quote": "Thời gian tiếp nhận hồ sơ: Từ 08 giờ 00 đến 11 giờ 30 ngày 13/10/2026 (thứ Ba).",
+        "span": {
+          "start": 2171,
+          "end": 2250
+        },
+        "chunk_ids": [
+          "dut_344b21e393855658_921795aab925d271_c002"
+        ]
+      },
+      "top_k": [
+        "dut_344b21e393855658_921795aab925d271_c002",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 9.772,
+      "scores": [
+        0.03252247488101534,
+        0.032266458495966696,
+        0.0315136476426799,
+        0.03149801587301587,
+        0.031009615384615385
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed09",
+      "query": "Học phí đợt 2 học kỳ I 2026-2027 thu qua BIDV đến 08h30 ngày 30/11/2026.",
+      "expected": {
+        "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+        "quote": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+        "span": {
+          "start": 1402,
+          "end": 1459
+        },
+        "chunk_ids": [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+        ]
+      },
+      "top_k": [
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_344b21e393855658_921795aab925d271_c002"
+      ],
+      "expected_rank": 2,
+      "duration_ms": 9.999,
+      "scores": [
+        0.03278688524590164,
+        0.03225806451612903,
+        0.03125763125763126,
+        0.03125,
+        0.030798389007344232
+      ]
+    },
+    {
+      "method": "fts5_tfidf_rrf",
+      "case_id": "seed10",
+      "query": "Học phí đợt 2 năm học 2026-2027 qua VietinBank đến 11h00 ngày 30/11/2026.",
+      "expected": {
+        "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+        "quote": "- Qua VietinBank: từ ngày 04/11/2026 đến 11h00 ngày 30/11/2026.",
+        "span": {
+          "start": 1460,
+          "end": 1523
+        },
+        "chunk_ids": [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002"
+        ]
+      },
+      "top_k": [
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+        "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+        "dut_344b21e393855658_921795aab925d271_c001",
+        "dut_344b21e393855658_921795aab925d271_c002"
+      ],
+      "expected_rank": 1,
+      "duration_ms": 9.865,
+      "scores": [
+        0.03278688524590164,
+        0.03225806451612903,
+        0.031746031746031744,
+        0.031009615384615385,
+        0.03055037313432836
+      ]
+    }
+  ],
+  "summary": {
+    "fts5_only": {
+      "cases": 10,
+      "recall_at_5": 1.0,
+      "top1": 0.8,
+      "mean_ms": 1.315
+    },
+    "fts5_tfidf_rrf": {
+      "cases": 10,
+      "recall_at_5": 1.0,
+      "top1": 0.8,
+      "mean_ms": 10.158
+    }
+  },
+  "selected": "fts5_tfidf_rrf",
+  "rationale": "Keep §3.9 default: FTS10 + char_wb(3,5)10, RRF60, top5, positive cosine only. Seed-only pilot, 10 probes from 5 approved families, no thresholds tuned or general quality claim. The amount of seed data cannot establish a hybrid advantage; freeze needs T09 family split and D03 resolution."
+}

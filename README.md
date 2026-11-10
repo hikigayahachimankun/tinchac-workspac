@@ -239,3 +239,42 @@ và thư viện hệ thống. Có thể đặt `TINCHAC_CHROMIUM_PATH` để dù
 Ảnh/log smoke sạch token ở `docs/evidence/T04/`; lệnh thực của máy này và giới hạn
 ở [handoff T04](docs/handoffs/T04.md), review ở [T04-review](docs/handoffs/T04-review.md).
 OpenAPI sinh thêm routes đúng §3.7, giữ nguyên components/schema 1.0/examples.
+
+## T06 — Ảnh và xác nhận chữ
+
+Cài Tesseract hệ thống trên Ubuntu/WSL nếu máy chưa có (pip không cài binary/ngôn ngữ):
+
+```bash
+sudo apt-get install tesseract-ocr tesseract-ocr-vie tesseract-ocr-eng fonts-dejavu-core
+tesseract --version
+tesseract --list-langs
+# Phải có vie và eng trước khi thử OCR thật.
+.venv/bin/python -m scripts.ocr_smoke
+```
+
+Chạy backend/frontend như T04, chọn **Ảnh**, tải PNG/JPEG đã che thông tin cá nhân.
+Ảnh tối đa 5 MiB/12 megapixel, được decode thật trước khi tạo asset. Tesseract chạy
+cục bộ với `OCR_LANGUAGES=vie+eng`, `OCR_TIMEOUT_SECONDS=20`; ảnh raw được xóa sau
+thành công, lỗi hoặc timeout. Preview dùng URL blob của trình duyệt. Token chỉ ở
+memory/header; không nằm trong URL. Mỗi server dùng một process, thư mục private
+riêng; không dùng nhiều process chung thư mục upload.
+
+Kiểm tra tiền/ngày, sửa chữ, tích đồng ý rồi bấm **Xác nhận chữ và kiểm tra**.
+POST check chỉ gửi `confirmed_text` và định danh/capability asset theo CheckCreate;
+backend so với chữ OCR để lưu `text_modified` nội bộ. Asset phải ready: nếu OCR
+failed/gián đoạn, nhập tay dùng CheckCreate text với hai trường asset null; thông báo
+lỗi OCR vẫn hiện. OCR ready nhưng rỗng cho nhập tay rồi gửi image như hợp đồng.
+
+Fixture T04 chỉ hiểu các văn bản định danh, nên thử ảnh
+`data/fixtures/ocr/vietnamese-clear.png` (7 triệu), sửa thành 5 triệu để nhận
+kết quả supported. Ảnh blurred trả chữ rỗng để thử nhập tay. Các mẫu này là dữ
+liệu tổng hợp dev, không phải ảnh sinh viên hay benchmark. Script smoke ghi CER
+chưa sửa vào `docs/evidence/T06/ocr-smoke.json`; không trộn số đo có sửa tay.
+
+```bash
+.venv/bin/python -m pytest backend/tests/test_ocr_intake.py -q
+# Browser OCR + smoke văn bản T04; init DB trước như hướng dẫn T04:
+npm run test:fixture --prefix frontend
+```
+
+Cách tái hiện, kết quả và giới hạn: [handoff T06](docs/handoffs/T06.md).

@@ -1,0 +1,106 @@
+{
+  "method": "All approved pairs; NFC corpus, casefold, digit masking, whitespace collapse, SequenceMatcher autojunk=False; >=0.65 flags manual review, not automatic merge.",
+  "pairs": [
+    {
+      "families": [
+        "agribank",
+        "keidanren_jcci"
+      ],
+      "normalized_similarity": 0.380799,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "agribank",
+        "schneider"
+      ],
+      "normalized_similarity": 0.399192,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "agribank",
+        "toyota"
+      ],
+      "normalized_similarity": 0.227053,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "agribank",
+        "tuition_hki_2026_dot2"
+      ],
+      "normalized_similarity": 0.190796,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "keidanren_jcci",
+        "schneider"
+      ],
+      "normalized_similarity": 0.276479,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "keidanren_jcci",
+        "toyota"
+      ],
+      "normalized_similarity": 0.324258,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "keidanren_jcci",
+        "tuition_hki_2026_dot2"
+      ],
+      "normalized_similarity": 0.204429,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "schneider",
+        "toyota"
+      ],
+      "normalized_similarity": 0.210907,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "schneider",
+        "tuition_hki_2026_dot2"
+      ],
+      "normalized_similarity": 0.178454,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    },
+    {
+      "families": [
+        "toyota",
+        "tuition_hki_2026_dot2"
+      ],
+      "normalized_similarity": 0.178761,
+      "review_flag": false,
+      "same_canonical": false,
+      "same_text_hash": false
+    }
+  ],
+  "limitation": "Only current approved snapshot: no evidence that other years or unseen reposts do not exist. Review names, parent URLs, scope and amendment references before expansion."
+}

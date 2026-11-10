@@ -1,0 +1,522 @@
+{
+  "artifact_type": "T13_offline_readiness_audit_NOT_benchmark_run",
+  "schema_version": "1.0",
+  "task": "T13",
+  "status": "blocked",
+  "audited_at": "2026-11-10T12:55:50.096857+07:00",
+  "branch": "task/T13-benchmark-evidence",
+  "git_commit": "1c8e8ce8cce6f79d567f26c0799024dd3fdacb30",
+  "upstream_dirty": true,
+  "summary": {
+    "benchmark_run_created": false,
+    "real_output_rows_n": 0,
+    "frozen_test_cases_N": null,
+    "real_technical_errors": null,
+    "model": "gemini-3.5-flash-lite",
+    "model_verified": false,
+    "model_version": null,
+    "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+    "configured_corpus_version": "TO_BE_FROZEN",
+    "ecv_delta": null,
+    "ecv_ci95": null,
+    "human_evidence_scores": 0,
+    "real_hand_checks": 0,
+    "live_preflight": "not_run_R1_only",
+    "evaluation_budget_cap_usd_configured": 1.4,
+    "session_provider_calls": 0,
+    "session_provider_tokens": 0,
+    "session_cost_usd": 0,
+    "session_cost_vnd": 0,
+    "project_account_cost": "unknown_not_reconciled"
+  },
+  "blockers": [
+    {
+      "id": "T13-B01",
+      "owner": "R3/R4/T09",
+      "reason": "No held-out test input provided; 5 dev families, 0 test families, draft split and no frozen input/gold receipt."
+    },
+    {
+      "id": "T13-B02",
+      "owner": "R1/D02",
+      "reason": "Model/quota/prices/thinking and durable budget ledger not verified; model_verified=false and configured corpus TO_BE_FROZEN."
+    },
+    {
+      "id": "T13-B03",
+      "owner": "R1/R4/T09/T11",
+      "reason": "D17 Claim preparation and unknown-usage accounting proposals pending owner review."
+    },
+    {
+      "id": "T13-B04",
+      "owner": "R4/T09",
+      "reason": "Temporal test subset and schedule not frozen; dirty upstream commit does not describe the whole implementation."
+    },
+    {
+      "id": "T13-B05",
+      "owner": "repo owner/R3/R4",
+      "reason": "No real outputs or independently completed human evidence sheets; solo cannot claim independent double review."
+    }
+  ],
+  "candidate_hashes": {
+    "hash_method_files": "SHA-256 of exact file bytes; candidate only, not freeze attestation",
+    "files_sha256": {
+      "TINCHAC_PROJECT_PLAN.md": "b9dc364c8b662d8db03a18f8a442b9ea540d7c46fffa9cfd4941cecb4d1e92a3",
+      "docs/decisions.md": "0db049526b854b972051d675dbcd45824f4315101c791001b43b1607a1b7504c",
+      "eval/protocol.md": "eaef66e98a0b421f950096150321f243f16e7bc959e23e00c18b5bea1fa9cd32",
+      "eval/split_manifest.json": "76462928763638cd73e082c4af73eb59055855bdb7c47d577764767728d4b203",
+      "eval/annotation_guide.md": "dc1b2420990be353a5395fac1d9d7ebcd16f5620f25464e6e5db9a5c59d19a48",
+      "eval/schema.py": "58fd30981a102e4a27f7a40df218c3da7cc74e45c823ea0e5b0a061e299fd1b7",
+      "eval/run_schema.py": "eecd4e014dd666648cf4d538279f199234a9b78618503cab3bb9866ff95a594c",
+      "eval/harness.py": "f840f4de1764c9a4182a3739e0dc3480aa9b76ea1b7315ca2da95412ea48ae52",
+      "eval/metrics.py": "74b01d65bb75d2705dbb4e43340dc09a8d655a3055f759ab4653b07cf409da8c",
+      "scripts/run_eval.py": "7fc325601790c853a67c6ccd64b07042c6e98a6c6d95dc5a9b3b3a00d890ffa8",
+      "scripts/score_eval.py": "0fd433b0ca30f2326fccd46f8b0957bbf86ebfc9acf5c70821f9e8bdd03eeb80",
+      "scripts/validate_eval.py": "94f41f241f50dbc94c8952864f77583d4ddffcd65d190c298117cb7508ececfc",
+      "config/experiments.yaml": "0ad843a54fb3cb505a4b2943e6a6553a3fe044a0ef9ae63bc28df4a5c9e4780b",
+      "data/dev/cases.jsonl": "86843b3e4020bf233fd432b278b95181f1c19967f65afe68fd0a22ef605c7621",
+      "data/corpus/sources.json": "21c59a8d72cb7217ce2da7b7926826116f26f372d1a6ce7770dac7d6eab8c4a5",
+      "data/corpus/chunks.json": "a7def7518e838c259883d4ed486935a01ef6c2ef1d41a431bf1f42a40ed38beb",
+      "data/corpus/manifest.json": "a52ecfe5632a92ae2503d27e59d781848cdfd4a28049e03f6c01e343001ceb50",
+      "backend/app/models.py": "5b67b84375422dc4c43e64a3862691d80394028977443bebcc5cec8aac5bf407",
+      "backend/app/config.py": "47a2a32da6a6bfb86a7423dc002349a19d127acd5e96e82af3bd52b0e7dcebd3",
+      "requirements.lock.txt": "dcd54f4524072266406bab7a2cc180c3b2e86b816b4a190bd93089cd99ecdb39",
+      "prompts/baseline_a.txt": "4912eeaa731518387b646867c7e8cdb8a9ee8deaa119d4e3b3731c75b5474e42",
+      "prompts/baseline_b.txt": "b835c2f47dffa3db2a07cf93d729700773884e4a53eea4e742c43789c16e83b0",
+      "prompts/verify_c.txt": "b28ed892bccb568abee0ca85ecdfbd2a574196111bb418dc33f6e8e476e289d9",
+      "prompts/verify_c_no_time.txt": "c5db4a565245a4eb389c9b6e67a886d49e277fc2ba10941eeeb02b82a0145727",
+      "backend/app/services/budget.py": "e48a93c2b8ca2f8ba536b9bd0835f036a6ab99df8e40fbcf3beb78439838e56d",
+      "backend/app/services/corpus.py": "2470180c7706f222d6ec1774b4d57104ec397de43e9b5dd0d2892e05386d3b58",
+      "backend/app/services/errors.py": "3f09743033415a30fb710c3b4dc00397f8824631261789858ff40641918d32b9",
+      "backend/app/services/evidence.py": "e4ff684701ecfe16eed476487e12ad881cb6a990e079fcea8c0996c1890d27cd",
+      "backend/app/services/extract.py": "8dbb43e197afa924e1a0c378146ba4a6214c707692ff23c35b14ec1545dd580d",
+      "backend/app/services/fixture.py": "2d67d1e8a7e2664772a16648c1f97e8126e4de250bf084ce8e8bad282cd96147",
+      "backend/app/services/intake.py": "389ffc9a45393cb9dff14226cb9417ca4e8a9208177ab6f32485c7ea3f2efd6c",
+      "backend/app/services/jobs.py": "39be6eeda0ed4a0d45702c5f67a7952202374dad83570237040eea784da7f14a",
+      "backend/app/services/llm.py": "4c8c73477e5d587b8330ee575886721e6125e57fa46d31ca2e3d015e2a70de8a",
+      "backend/app/services/normalization.py": "559c1bb30dd25f3a0ab6d4bd1cdaa2bbacb39148208926a3b16742a77919d1e8",
+      "backend/app/services/ocr.py": "7075dbfedb86d920ec7ddd9c3d82919a8d368fea51f7320c1fa343c1d49381d3",
+      "backend/app/services/render.py": "801fc75c3d7d9bb7bea9f1cd337ca047b6706bf4982f79b7620298c3554f870d",
+      "backend/app/services/retrieve.py": "90afccb5976e3df53bf02c65511ddfd1b9e22ac1d494500db15c4925404e77fa",
+      "backend/app/services/temporal.py": "a0c1ec0e2345b46df197e77e8dbe6b28694c99bce2bc05fe0abfccf372fb4dde",
+      "backend/app/services/verify.py": "18b637fe27be7b3dd8535d8c729018b5c76adde81a2407365276779a2dc57a74"
+    },
+    "harness_config_digest": "8bf2a14d7449c742962a7a96c9a3f9731cf600ca163d72a6a4f0d4069b8c64c4",
+    "harness_composed_prompt_digest": {
+      "A": "96adafdc9a74577ed5ed0d05413b1cc7ce4e9c3739f9c3bdd63445639db23d10",
+      "B": "cb53fbe03848972162df79b398fb2d93c84301e829b00cb6d48a565c553b2d53",
+      "C": "adb4f75f5ffe9934dccbbaf81c424b6ee6ceb6360c6d555c395985dcc7f875d4",
+      "C_NO_TIME": "60fcf6fa978fc91b3e281c242033ff074dad2e1de72af1c6e9ed71734b51880e"
+    },
+    "harness_digest_method": "SHA-256 of JSON canonical serialization, including JSON quoting for strings; differs from raw file SHA-256"
+  },
+  "public_inventory_and_fixture_audit": {
+    "classification": "offline_public_inventory_and_fixture_audit_not_test_acceptance",
+    "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+    "candidate_model": "gemini-3.5-flash-lite",
+    "sdk_google_genai": "3.0.0",
+    "split_status": "pilot_draft_NOT_frozen",
+    "family_counts": {
+      "dev": 5,
+      "test": 0
+    },
+    "public_dev_cases": 15,
+    "origin": {
+      "source_derived": 5,
+      "synthetic_modified": 10
+    },
+    "domain": {
+      "payment": 3,
+      "scholarship": 12
+    },
+    "family_overlap": [],
+    "version_overlap": [],
+    "test_overlap_acceptance": "not_run_no_test_families_or_inputs",
+    "real_prompt_log_audit": "not_run_no_real_inference_logs",
+    "fixture_context_count": 32,
+    "fixture_context_checks": [
+      {
+        "case_id": "fee_silence",
+        "system": "A",
+        "context_sha256": "f70571dcda92e1624278a30c518f08c6471140ab94a36e3b7e79b44403b148ba"
+      },
+      {
+        "case_id": "fee_silence",
+        "system": "B",
+        "context_sha256": "d5133d54420cd356953d5e753364553d23311a20d7cded750f15d849fee21c79"
+      },
+      {
+        "case_id": "fee_silence",
+        "system": "C",
+        "context_sha256": "d67977a114aad41abe8f53888e47dc8847be990c2f5ebbca04426cb79a14b33a"
+      },
+      {
+        "case_id": "fee_silence",
+        "system": "C_NO_TIME",
+        "context_sha256": "fb1695bec20c2b1fe6fccb5eaf0bb57371264739c219034f4100040e8c6553c5"
+      },
+      {
+        "case_id": "fee_negation",
+        "system": "A",
+        "context_sha256": "f70571dcda92e1624278a30c518f08c6471140ab94a36e3b7e79b44403b148ba"
+      },
+      {
+        "case_id": "fee_negation",
+        "system": "B",
+        "context_sha256": "02d186d92474b1e9a0ae7e5267c1f45f9460c3f41bba2069e14acdcf26b96081"
+      },
+      {
+        "case_id": "fee_negation",
+        "system": "C",
+        "context_sha256": "a62ce04f9e845a09b814a23a60488cbd100139c6d31d1a6e4c493af696744c21"
+      },
+      {
+        "case_id": "fee_negation",
+        "system": "C_NO_TIME",
+        "context_sha256": "a70d6f3646bebd44a2edc89654d54c9b6f54576e1fc5e892f87b7912259351d5"
+      },
+      {
+        "case_id": "scope_mismatch",
+        "system": "A",
+        "context_sha256": "51b484f170d844317d3a31bc69abafaee88f798a06f30d47cdd87b5a4dea7c89"
+      },
+      {
+        "case_id": "scope_mismatch",
+        "system": "B",
+        "context_sha256": "a98737c236fb5f03c69b26b468cc8306d282b5b2c6fb02c0531972b19f802306"
+      },
+      {
+        "case_id": "scope_mismatch",
+        "system": "C",
+        "context_sha256": "f66bbcb87214586566c790808fe9855c5e37e3bccbe4dc48ff1adf9f9d9c5d28"
+      },
+      {
+        "case_id": "scope_mismatch",
+        "system": "C_NO_TIME",
+        "context_sha256": "d849017208de9875c84c5b53692aead37060e5c064d2f330cc37ba2b17014821"
+      },
+      {
+        "case_id": "expired_history",
+        "system": "A",
+        "context_sha256": "09358fc3399fc20a45d453b5ed2e80343e1176b65951b8aeb0c2167158cffd4d"
+      },
+      {
+        "case_id": "expired_history",
+        "system": "B",
+        "context_sha256": "68d8854432a7d324a37af2467b99f8f27ac4593325ad89c56f9b82d7478d1e2c"
+      },
+      {
+        "case_id": "expired_history",
+        "system": "C",
+        "context_sha256": "50f80440f2c74952554a59c15dfaf69837ce52b00165f7740bbc8b0a37964f85"
+      },
+      {
+        "case_id": "expired_history",
+        "system": "C_NO_TIME",
+        "context_sha256": "f319660baf322ffeb163539877156216fabf74106160ab698c3bb24b9296c554"
+      },
+      {
+        "case_id": "missing_year",
+        "system": "A",
+        "context_sha256": "2f58bf5622116c686dd5948fde50d73e71b71c48cafa0d4653466a067905847b"
+      },
+      {
+        "case_id": "missing_year",
+        "system": "B",
+        "context_sha256": "80282f48ee6b91ee968b5ebee008b69a70613ced042fde9d6422de69c0756d1f"
+      },
+      {
+        "case_id": "missing_year",
+        "system": "C",
+        "context_sha256": "853d01fcf30ecb65e8db460dc4ec8ca53af8b633049e99039e049bfded2c16de"
+      },
+      {
+        "case_id": "missing_year",
+        "system": "C_NO_TIME",
+        "context_sha256": "4fe42ac70110c0d89829cea5d0b5cdd32b55d35f11f7ef6d3c2211441e973b9c"
+      },
+      {
+        "case_id": "extension",
+        "system": "A",
+        "context_sha256": "9190484226ca5d300310f33b395fe73791863cc40670aa88de3c1b5e939860bd"
+      },
+      {
+        "case_id": "extension",
+        "system": "B",
+        "context_sha256": "30602d6e35e91b6d5f73a9b92922cb02a80f123365480994109bbcb46ab34b51"
+      },
+      {
+        "case_id": "extension",
+        "system": "C",
+        "context_sha256": "71d5839331771e365551a2737046cabe85df000f200fd707e6bffb793085d6ad"
+      },
+      {
+        "case_id": "extension",
+        "system": "C_NO_TIME",
+        "context_sha256": "fdb7679e24a793af0f9dc351d23c91b4ba59cd92afb6bc1106304e3eac7b3aef"
+      },
+      {
+        "case_id": "source_conflict",
+        "system": "A",
+        "context_sha256": "51b484f170d844317d3a31bc69abafaee88f798a06f30d47cdd87b5a4dea7c89"
+      },
+      {
+        "case_id": "source_conflict",
+        "system": "B",
+        "context_sha256": "eb8c8727db0f68ea1154fced1c588db5e77ba1c01a8eb882781c8665fdd06863"
+      },
+      {
+        "case_id": "source_conflict",
+        "system": "C",
+        "context_sha256": "ca8f6fddc91963e73ffc12e7caf8c28af56125b61a502ed05ed696846e9c4adc"
+      },
+      {
+        "case_id": "source_conflict",
+        "system": "C_NO_TIME",
+        "context_sha256": "95b3b388ff2e44ecc1cc7922191561cbff4e6e6752b46cc5e945ec0c03fa0fb4"
+      },
+      {
+        "case_id": "fabricated_quote",
+        "system": "A",
+        "context_sha256": "51b484f170d844317d3a31bc69abafaee88f798a06f30d47cdd87b5a4dea7c89"
+      },
+      {
+        "case_id": "fabricated_quote",
+        "system": "B",
+        "context_sha256": "c5356bc62f5cf6d1e34025ae61fa6175e701bb69c8b0c09ace94eeba11a54b4a"
+      },
+      {
+        "case_id": "fabricated_quote",
+        "system": "C",
+        "context_sha256": "6c6aaf80103f6e0e75222d9012c0aa883a5af77c1ca9f1d652db9d63dc2a6a76"
+      },
+      {
+        "case_id": "fabricated_quote",
+        "system": "C_NO_TIME",
+        "context_sha256": "7ae66d235a70e28e672da4fb2ac4d05138cd08c8c572b9aa0396e0b46d5db6e5"
+      }
+    ],
+    "fixture_replay_rows": 27,
+    "fixture_replay_predictions_equal": true,
+    "replay_cost_latency_cleared_with_origin_preserved": true
+  },
+  "offline_checks": [
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "pytest",
+        "eval/tests",
+        "backend/tests/test_eval.py",
+        "-q"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 2.487,
+      "stdout": ".................................................                        [100%]\n49 passed in 1.89s\n",
+      "stderr": "",
+      "classification": "offline_validation_not_benchmark"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.validate_eval"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.219,
+      "stdout": "{\"cases\": 15, \"gold\": 0, \"families\": 5, \"gold_complete\": false, \"status\": \"validated_NOT_frozen\"}\n",
+      "stderr": "",
+      "classification": "offline_validation_not_benchmark"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.validate_corpus"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.412,
+      "stdout": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982: 6 sources, 7 exact chunks; valid\n",
+      "stderr": "",
+      "classification": "offline_validation_not_benchmark"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.export_contracts",
+        "--check"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.561,
+      "stdout": "31 examples validated; OpenAPI matches.\n",
+      "stderr": "",
+      "classification": "offline_validation_not_benchmark"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.run_eval",
+        "--mode",
+        "fixture",
+        "--output",
+        "/tmp/tinchac-t13-readiness-0bwth1z4/fixture"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.592,
+      "stdout": "fixture: 27/27 rows; output=/tmp/tinchac-t13-readiness-0bwth1z4/fixture\n",
+      "stderr": "",
+      "classification": "fixture_plumbing_only"
+    },
+    {
+      "command": [
+        ".venv/bin/python",
+        "-m",
+        "scripts.run_eval",
+        "--mode",
+        "replay",
+        "--cases",
+        "/tmp/tinchac-t13-readiness-0bwth1z4/fixture/cases.jsonl",
+        "--replay",
+        "/tmp/tinchac-t13-readiness-0bwth1z4/fixture/runs.jsonl",
+        "--output",
+        "/tmp/tinchac-t13-readiness-0bwth1z4/replay"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.54,
+      "stdout": "replay: 27/27 rows; output=/tmp/tinchac-t13-readiness-0bwth1z4/replay\n",
+      "stderr": "",
+      "classification": "replay_of_fixture_not_live"
+    },
+    {
+      "classification": "offline_config_check_not_live_preflight",
+      "offline_validation": "accepted",
+      "fresh_validation": "expected_refusal",
+      "reason": "D02 and corpus freeze required before fresh calls",
+      "provider_calls": 0
+    },
+    {
+      "classification": "synthetic_8_outcome_scorer_verification_not_DUT_gold_or_benchmark",
+      "source": "eval/tests/test_metrics.py:known_data",
+      "commands": [
+        {
+          "command": [
+            ".venv/bin/python",
+            "-m",
+            "scripts.score_eval",
+            "--run",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector",
+            "--gold",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/gold.jsonl",
+            "--evidence",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/evidence.jsonl",
+            "--output",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/metrics1.json"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.653,
+          "stdout": "Offline metrics written to /tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/metrics1.json\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            ".venv/bin/python",
+            "-m",
+            "scripts.score_eval",
+            "--run",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector",
+            "--gold",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/gold.jsonl",
+            "--evidence",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/evidence.jsonl",
+            "--output",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/metrics2.json"
+          ],
+          "exit_code": 0,
+          "duration_seconds": 0.619,
+          "stdout": "Offline metrics written to /tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/metrics2.json\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "cmp",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/metrics1.json",
+            "/tmp/tinchac-t13-readiness-0bwth1z4/synthetic-vector/metrics2.json"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "byte_identical": true,
+      "metrics_sha256": "9259940e648d1686c6f073c7a9210aeaacd26f20cee7053e23e688415ab1edb6",
+      "hand_formula_assertions": "8 synthetic outcomes only; not required 10 real cases",
+      "real_hand_check_cases": 0
+    }
+  ],
+  "raw_offline_artifacts": {
+    "directory": "/tmp/tinchac-t13-readiness-0bwth1z4",
+    "temporary_may_be_cleaned": true,
+    "not_canonical_benchmark_outputs": true,
+    "files_sha256": {
+      "fixture/cases.jsonl": "f5cd87269abb21b360df92e9b50c7a4cb4147712545741287dbbfd74851e1ce2",
+      "fixture/claims.jsonl": "cd054026302aad2b7e79b31c04dd555564b241b323f8625be31cd907d04612a9",
+      "fixture/events.jsonl": "e18a87baf6388d3471820fb7dfb7101528a35000d4180b1db34af1a0823a7d51",
+      "fixture/manifest.json": "cf38e4dee5801c34f61f728510bb537389c2ae77455d3da62790b4a29e38f0a9",
+      "fixture/runs.jsonl": "aa7bdba82f605d9bb7efb0081adacca3fd3bb2826b9f63b86b11e164fdce7342",
+      "replay/cases.jsonl": "f5cd87269abb21b360df92e9b50c7a4cb4147712545741287dbbfd74851e1ce2",
+      "replay/events.jsonl": "e18a87baf6388d3471820fb7dfb7101528a35000d4180b1db34af1a0823a7d51",
+      "replay/manifest.json": "b73cfeece93c1bfd2b5364b0293392f440cc6092b1bff97d7c739e18624e2770",
+      "replay/runs.jsonl": "c6eaa84ea49a37ae146d7d81a808465216cd1da313ad2b96d4dde4c665ac128e",
+      "synthetic-vector/cases.jsonl": "26f1787f2da4ff9eba1256a2e58af0ed277d1d4c988e4022ac10006278fe24f2",
+      "synthetic-vector/evidence.jsonl": "7e4eafcaa4f7feaa8efcc516b87fc4d0d4bbae977462868918036703e92ccf0a",
+      "synthetic-vector/gold.jsonl": "757fed7aa83d07c9b0f101e2a62ac181b9cfc9d95e231cca66b1e993f567a469",
+      "synthetic-vector/manifest.json": "c206921e4e816f64d08bbb75ea1308e49adb9657573a23c119e46971770611fb",
+      "synthetic-vector/metrics1.json": "9259940e648d1686c6f073c7a9210aeaacd26f20cee7053e23e688415ab1edb6",
+      "synthetic-vector/metrics2.json": "9259940e648d1686c6f073c7a9210aeaacd26f20cee7053e23e688415ab1edb6",
+      "synthetic-vector/runs.jsonl": "ab8bfd1097022434b09a90c1559dc1a9a657520dcfcb99ff66029cf62751f62f"
+    },
+    "recreate_with": ".venv/bin/python -m pytest eval/tests/test_harness.py::test_cli_fixture_replay_and_scoring_are_reproducible -q"
+  },
+  "not_created": [
+    "reports/runs.jsonl",
+    "reports/evidence_scores.jsonl",
+    "reports/metrics.json",
+    "reports/run_manifest.json"
+  ],
+  "not_created_reason": "No real run and no human scores; do not manufacture placeholders or promote fixtures into benchmark artifacts.",
+  "artifact_generation_history": [
+    {
+      "attempt": 1,
+      "exit_code": 1,
+      "error": "AssertionError on incorrectly assumed backend/requirements.lock; no report file created.",
+      "correction": "Use existing root requirements.lock.txt."
+    },
+    {
+      "attempt": 2,
+      "exit_code": 0,
+      "result": "Readiness report created with actual file paths."
+    }
+  ],
+  "final_verification": {
+    "classification": "T13_report_provenance_and_upstream_preservation_check",
+    "baseline_files": 357,
+    "upstream_unchanged": 355,
+    "upstream_changed_only_by_append": [
+      "docs/progress.md",
+      "reports/evaluation.md"
+    ],
+    "candidate_file_hashes_checked": 39,
+    "offline_artifact_hashes_checked": 16,
+    "canonical_benchmark_artifacts_absent": true,
+    "diff_check": {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  }
+}

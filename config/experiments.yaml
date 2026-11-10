@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0", "seed": 42,
+  "model": "gemini-3.5-flash-lite", "model_verified": false,
+  "temperature": 0, "systems": ["A", "B", "C"], "ablation_system": "C_NO_TIME",
+  "retrieval": {"method":"fts5_tfidf_rrf", "fts_candidates":10, "tfidf_candidates":10, "rrf_k":60, "top_k":5, "max_context_tokens":6000},
+  "generation": {"max_output_tokens":1200, "max_retries":1, "timeout_seconds":30},
+  "execution": {"concurrency":1, "cache_mode":"fresh", "total_budget_usd":1.4},
+  "data": {"corpus_version":"TO_BE_FROZEN", "split_manifest":"eval/split_manifest.json", "test_input":"data/test_public/cases.jsonl"},
+  "analysis": {"primary":"family_macro_ecv_delta_c_minus_b", "bootstrap_clusters":"family_id", "bootstrap_replicates":2000, "confidence_level":0.95}
+}

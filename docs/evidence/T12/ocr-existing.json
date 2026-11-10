@@ -1,0 +1,38 @@
+{
+  "required_images": 20,
+  "available_reference_images": 2,
+  "available_families": 1,
+  "split_test_available": false,
+  "normalization": "NFC + collapsed whitespace; punctuation/case/accents preserved",
+  "automatic": [
+    {
+      "sample": "vietnamese-clear",
+      "split": "synthetic dev fixture; one family; not test/gold",
+      "reference_chars": 56,
+      "character_edits": 0,
+      "cer": 0.0,
+      "money_exact": true,
+      "date_exact": null,
+      "url_exact": null,
+      "mean_confidence": 95.84615384615384,
+      "duration_ms": 171
+    },
+    {
+      "sample": "vietnamese-blurred",
+      "split": "synthetic dev fixture; one family; not test/gold",
+      "reference_chars": 56,
+      "character_edits": 56,
+      "cer": 1.0,
+      "money_exact": false,
+      "date_exact": null,
+      "url_exact": null,
+      "mean_confidence": null,
+      "duration_ms": 125
+    }
+  ],
+  "corrected": {
+    "status": "NOT RUN",
+    "reason": "No consented human correction session; no correction times. Exact reference is not a measured user correction."
+  },
+  "limits": "No heldout set. Date/URL absent in reference, therefore N/A. No changes to images/splits/gold."
+}

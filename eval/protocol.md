@@ -1,0 +1,45 @@
+# TinChắc — protocol T09 v0.1
+
+Trạng thái: **draft / single-annotator pilot / NOT frozen**, 10/11/2026 (giờ Việt Nam). Nguồn đặc tả: `TINCHAC_PROJECT_PLAN.md` §4–5, §7.2. T09 chuẩn bị dữ liệu/quy tắc; T11 hiện thực harness, T13 mới chạy benchmark. Chưa có kết quả benchmark.
+
+## Inventory và split trước biến thể
+
+`eval/split_manifest.json` ghi corpus version và từng version approved. Có 4 family scholarship (Agribank, Keidanren & JCCI, Schneider, Toyota), 1 payment (học phí HKI 2026–2027 đợt 2). 1 family thạc sĩ quarantined bị loại. Mục tiêu chuẩn 12 dev / 24 test; fallback 8 / 16. Hiện **5 dev / 0 test**, pilot kỹ thuật, chưa đủ điều kiện đánh giá test hoặc gate 12 dev có nhãn.
+
+Cả 5 family đã được dùng ở dev T07 (`docs/handoffs/T07.md`). Không tái đặt tên/chuyển thành test. Không đọc dự đoán hệ thống để soạn guide hoặc case. `scripts/eval_inventory.py` chỉ đọc corpus; xếp family theo miền (payment rồi scholarship), sort ID rồi shuffle bằng một `random.Random(42)`. Dev exposure ưu tiên giữ nguyên, nên hiện không có phép bốc thăm test thực chất. Đây là inventory split pilot, không tuyên bố đã có holdout ngẫu nhiên.
+
+Khi bổ sung: review quan hệ và near-duplicate trước, rồi phiên bản hóa manifest **trước** sinh biến thể. Cần tổng >=24 family cho fallback (thêm ít nhất 19 family độc lập, trong đó 16 chưa dùng dev), hoặc >=36 cho chuẩn (thêm ít nhất 31). Không đặt lại seed để chọn tập đẹp. Với fallback cố định 8 dev/16 test và chuẩn 12/24: ưu tiên >=8 payment test nếu có, phân bổ phần còn lại theo tỷ lệ miền của inventory bằng largest remainder (tie payment trước); chọn các family chưa lộ theo thứ tự seed trên, giữ dev cũ và bổ sung dev tới quota. Nếu một miền không đủ thì ghi số thiếu và quota thực trước sinh case, không thay thế bằng chunk/biến thể. Nếu chưa đủ 24 thì chỉ dùng pilot thực tế và khai báo n; không mặc định “đạt fallback”. Script hiện chỉ tái lập inventory hiện tại, **không** tự chia nguồn mới đủ chuẩn.
+
+Family bao gồm chương trình/đợt và chuỗi gốc–gia hạn–đính chính–repost, nhiều năm gần cùng mẫu phải ở cùng family. Parent HTML và PDF canonical là một nguồn, không hai family. Toyota Đồng hành/Tiếp sức ở cùng family nhưng scope từng claim riêng. Phí đợt 2 đã có văn bản gia hạn 6075 dẫn 4055 (mức thu gốc chưa thu); 4055 khi có phải xét cùng chuỗi, không đếm mới. Không dựng SourceVersion gốc hay supersedes khi chưa có nguồn. Thạc sĩ quarantined khác đối tượng, không nhập với đại học chỉ vì cùng học kỳ.
+
+Audit 10 cặp approved: `docs/evidence/T09/family_audit.json`. Dùng hash/URL, so text casefold, che chữ số để phát hiện mẫu qua năm, SequenceMatcher, ngưỡng gợi ý 0,65; đây là công cụ kiểm inventory, không threshold pipeline. Đã xem tên chương trình/scope/parent và dẫn chiếu source log; không có cặp trùng trong snapshot. Chỉ có một năm/version mỗi chương trình, chưa kiểm được các năm/repost ngoài corpus; không kết luận toàn web không trùng.
+
+## Cases, gold và ranh giới thông tin
+
+`data/dev/cases.jsonl`: 15 bản nháp, mỗi family 3 case, mỗi case đúng một target. 5 source_derived, 10 synthetic_modified, 0 user_contributed; không tự gán nhãn theo origin hoặc modification_type. Người đọc nguồn có thể sửa/loại case trước freeze. `input_text` hiện bằng `target_statement`; không chạy extraction/OCR trong benchmark chính. as_of chung `2026-11-10T00:00:00+07:00` sau available_at các nguồn; thời hạn đã qua không đổi giá trị lịch sử thành C.
+
+Gold thật chưa có. Không tạo `data/dev/gold.jsonl` chứa đáp án AI. Chủ repo đọc nguồn và gán; gold dev có thể công khai sau kiểm. Test input chưa tạo, không đặt một file rỗng vào `data/test_public` để giả đã niêm phong. Chủ repo tạo input/gold test **ngoài repo và ngoài workspace agent**, không truyền vào agent coding. Tới T13 chủ repo mới cấp input; gold tiếp tục riêng. Tài liệu nguồn test được nằm trong corpus. Không lấy claim/nhãn/evidence test để sửa prompt, index, keyword, fact hoặc threshold. Nếu chủ repo solo đã đọc test thì tự giữ cách ly vai trò: sau mở test không tuning; run sau khi tuning từ lỗi test phải gọi exploratory.
+
+Gold schema tái dùng enum 1.0 trong `eval/schema.py`; không thay API/OpenAPI. Ngoại lệ solo đã được chủ repo yêu cầu: `annotator_2=null`, `agreement_before_adjudication=null`. Không có agreement/kappa liên người; không tạo người thứ hai bằng AI. Bổ sung `quote_spans` cho kiểm chính xác quote theo chunk NFC. Đây là extension local eval, chưa phải thay đổi GoldRecord public. Nếu có người thứ hai thật, gán độc lập trước đối soát; lưu nhãn thô riêng, agreement và kappa trước thảo luận. Không tính kappa từ record đã adjudicate.
+
+## So sánh đã đăng ký, chưa chạy
+
+RQ1/H1 chính: C tăng ECV so B trong closed corpus; RQ2/H2 giảm supported nhầm trên C/N đồng thời báo coverage và answerable resolution; không giả định kết quả dương. Đơn vị độc lập là family, case là quan sát phụ thuộc.
+
+A nhận text sạch, target, as_of, schema; không corpus/công cụ. B nhận cùng input và top5 bundle. C nhận đúng cùng bundle, thêm xử lý scope/field/time/guard deterministic. C_NO_TIME bỏ semantic deadline/current_availability riêng của C nhưng **giữ available_at <= as_of**. B/C/ablation cùng serialized bundle, metadata/facts, corpus và model/version. Không thêm web, thêm nguồn hoặc call kết luận cho C. B giữ prediction JSON hợp lệ kể cả cite sai; scorer ghi lỗi. C lưu raw/prediction/guard_changes. Schema error sau retry là technical_error, không là N; citation sai là lỗi chất lượng và vẫn trong mẫu số.
+
+Cấu hình chung: seed 42, top5; FTS10 + TFIDF10 char_wb(3,5) RRF60 theo T07 (không tune lại ở T09); cùng SDK/model/version, temperature=0 nếu hỗ trợ, max output 1200 token/claim, context <=6000; 1 verdict call/case/system, max retry1/timeout30s; concurrency1 cho latency, fresh và replay tách. D02/model/config chưa xác minh, không coi tên model dự kiến là đã khả dụng. T11 phải hiện thực config thật theo §7.2, từ chối placeholder.
+
+Tuning chỉ dev: mỗi A/B/C <=2 vòng × <=12 case chọn trước = <=72 calls tổng; không bắt buộc dùng hết. Benchmark chuẩn <=72 test cases ×3 =216 calls, C_NO_TIME <=24 ca thời gian chọn trước theo metadata; nếu ngân sách thiếu báo tập thực chạy, không bù fixture. T09 không gọi model. Trước freeze chọn temporal subset theo `field_type in {deadline,current_availability}`, tối đa24 bằng thứ tự case_id sort rồi shuffle Random(42), ghi danh sách private riêng (hiện chỉ có 2 deadline dev, **0 test**). Bộ OCR20 ảnh và 12 ca đa trường end-to-end báo riêng, giữ family/split, không tăng n độc lập. Thử người dùng mục tiêu12 người ×4 tình huống, consent và cân bằng thứ tự, phân tích theo người; chưa thực hiện trong T09.
+
+Chỉ số chính ECV: đúng nhãn và S/C có citation hợp lệ, đủ căn cứ hoặc N có lý do thiếu bằng chứng đúng, không quá khẳng định; ERROR=0. Mean case trong family rồi mean family; báo C−B. Paired cluster bootstrap2000, seed42, lấy family có hoàn lại, giữ cặp B/C và mọi biến thể, percentile95% CI. Nếu CI chứa0 báo chưa đủ bằng chứng C tốt hơn B. Test0 family hiện tại không có ước lượng/CI.
+
+Báo đủ chỉ số §5.4: accuracy (ERROR sai), macroF1 ba lớp (zero denominator=0, n support); Recall@5 trên union gold và Hit@5, Complete-set@5 (có bộ đủ); citation validity; evidence sufficiency; supported nhầm trên gold C/N, tách từng nhãn và miền tiền; C nhầm trên gold S; coverage=S/C trên N toàn bộ; answerable resolution trên gold S/C; selective error trên p=S/C (rỗng=N/A); technical failure theo loại; temporal accuracy trên subset đã chọn; latency p50/p95/stages; chi phí tất cả attempt/N, tiền/case thành công, USD/VND và tỷ giá; field extraction trên bộ end-to-end riêng. Chỉ số phụ kèm tử/mẫu và family n. A không được cấp nguồn nên evidence=N/A. Không bỏ lỗi API, không dùng 15 biến thể như 15 đơn vị độc lập. Chi tiết công thức giữ §5.4 làm nguồn chuẩn cho T11.
+
+Chấm evidence ẩn system, xáo thứ tự; review mọi S/C và lý do N, trường hợp bất đồng. Pilot solo phải khai báo một người chấm, không báo chấm độc lập đôi. Evidence ngoài gold được người chấm xét mù, version gold mới áp dụng mọi hệ; solo không giả đáp ứng yêu cầu hai người. >10% lỗi provider: dừng, sửa hạ tầng, rerun toàn run ID mới, giữ run lỗi; chạm ngân sách dừng và báo thiếu. Không loại sau freeze vì model sai. Loại trước freeze vì nguồn/quyền/claim không rõ phải ghi exclusion log.
+
+## Kiểm và khóa do chủ repo thực hiện
+
+Lệnh fixture/dev không cần gold: `.venv/bin/python -m pytest backend/tests/test_eval.py -q` và `.venv/bin/python -m scripts.validate_eval`. Không có gold thì kết quả ghi `gold_complete=false`.
+
+Xem `eval/owner_handoff.md` để kiểm gold và ghi receipt ngoài workspace. Trước khóa: đủ dữ liệu theo quy mô công bố, nguồn được spot-check (>=20% và toàn bộ tiền/đính chính test), one-claim/scope/evidence người xác nhận, test sealed, subset thời gian, cấu hình/prompt thực, commit sạch sau owner review. Validator không chứng minh entailment, độc lập người gán hoặc quyền dữ liệu. Receipt hash input/gold/split/corpus/protocol/guide/schema/validator/prompts/config/attestation và commit, chỉ ghi **validated_candidate_NOT_frozen**. Chủ repo tự quyết định khóa sau kiểm; không tự ghi frozen trong phiên này.

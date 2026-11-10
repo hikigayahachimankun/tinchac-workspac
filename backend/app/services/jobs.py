@@ -39,6 +39,8 @@ class Jobs:
                 id TEXT PRIMARY KEY, token_hash TEXT NOT NULL, request TEXT,
                 record TEXT, expires_at TEXT NOT NULL, purge_at TEXT NOT NULL, canceled INTEGER NOT NULL DEFAULT 0
             )''')
+            if 'text_modified' not in {row[1] for row in db.execute('PRAGMA table_info(checks)')}:
+                db.execute('ALTER TABLE checks ADD COLUMN text_modified INTEGER')
             self.purge(db)
             for row in db.execute('SELECT id, record FROM checks WHERE canceled=0').fetchall():
                 record = CheckRecord.model_validate_json(row['record'])
@@ -54,13 +56,19 @@ class Jobs:
         stamp = now().isoformat()
         # Keep a hash-only tombstone for one more TTL, then remove it.
         db.execute('DELETE FROM checks WHERE purge_at<=?', (stamp,))
-        db.execute('UPDATE checks SET canceled=1, request=NULL, record=NULL WHERE expires_at<=?', (stamp,))
+        db.execute('UPDATE checks SET canceled=1, request=NULL, record=NULL, text_modified=NULL WHERE expires_at<=?', (stamp,))
 
     def create(self, request: CheckCreate) -> CheckCreated:
         if self.settings.app_mode != 'fixture':
             raise ServiceError('CORPUS_UNAVAILABLE', 'T04 chỉ chạy ở chế độ fixture.', status=503)
-        if request.input_mode != 'text':
-            raise ServiceError('ASSET_NOT_READY', 'Luồng ảnh chưa được triển khai.', status=409)
+        text_modified = None
+        if request.input_mode == 'image':
+            asset = self.assets.get(str(request.asset_id), request.asset_token)
+            if asset.status != 'ready':
+                raise ServiceError('ASSET_NOT_READY', 'Ảnh chưa OCR xong; có thể nhập tay qua văn bản.', status=409)
+            text_modified = request.confirmed_text != asset.ocr.text
+            # Authorization is complete. Do not persist the raw asset capability.
+            request = request.model_copy(update={'asset_token': '[validated]'})
         if len(request.confirmed_text) > self.settings.max_input_chars:
             raise ServiceError('INPUT_TOO_LARGE', 'Văn bản vượt giới hạn cấu hình.', status=413)
         stamp = now()
@@ -70,9 +78,9 @@ class Jobs:
         token = secrets.token_urlsafe(32)
         with self.db() as db:
             self.purge(db)
-            db.execute('INSERT INTO checks(id,token_hash,request,record,expires_at,purge_at) VALUES(?,?,?,?,?,?)',
+            db.execute('INSERT INTO checks(id,token_hash,request,record,expires_at,purge_at,text_modified) VALUES(?,?,?,?,?,?,?)',
                        (str(record.check_id), token_hash(token), request.model_dump_json(), record.model_dump_json(),
-                        expiry.isoformat(), (expiry + timedelta(hours=self.settings.resource_ttl_hours)).isoformat()))
+                        expiry.isoformat(), (expiry + timedelta(hours=self.settings.resource_ttl_hours)).isoformat(), text_modified))
         return CheckCreated(schema_version='1.0', check=record, access_token=token)
 
     def authorized(self, db, check_id: str, token: str):

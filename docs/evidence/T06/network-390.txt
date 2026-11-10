@@ -1,0 +1,6 @@
+POST /api/v1/assets
+GET /api/v1/assets/8be79d22-247e-4fda-80b3-40ad37f15ad9
+POST /api/v1/checks
+GET /api/v1/checks/86a4eab5-0028-4cb7-afaa-964d03f7cc63
+POST confirmed_text: Học bổng Minh Họa 2026 có giá trị 5 triệu đồng mỗi suất.
+Result: supported=1 contradicted=0 amount=5000000

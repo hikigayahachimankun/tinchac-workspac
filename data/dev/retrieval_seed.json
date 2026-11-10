@@ -1,0 +1,345 @@
+{
+  "purpose": "T07 public seed retrieval probes only; no verdict labels, no test gold, not a T09 split",
+  "cases": [
+    {
+      "case_id": "seed01",
+      "family_id": "agribank",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed01",
+        "field_type": "award_amount",
+        "statement": "Học bổng Agribank Nam Đà Nẵng năm 2026 trị giá 5 triệu đồng mỗi suất.",
+        "input_span": null,
+        "raw_value": "Học bổng Agribank Nam Đà Nẵng năm 2026 trị giá 5 triệu đồng mỗi suất.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+        "quote": "5.000.000 đồng/suất.",
+        "span": {
+          "start": 482,
+          "end": 502
+        }
+      }
+    },
+    {
+      "case_id": "seed02",
+      "family_id": "agribank",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed02",
+        "field_type": "deadline",
+        "statement": "Agrbank chắp cánh ước mơ nhận hồ sơ 14h00 đến 16h00 ngày 10/11/2026.",
+        "input_span": null,
+        "raw_value": "Agrbank chắp cánh ước mơ nhận hồ sơ 14h00 đến 16h00 ngày 10/11/2026.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+        "quote": "Thời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).",
+        "span": {
+          "start": 963,
+          "end": 1043
+        }
+      }
+    },
+    {
+      "case_id": "seed03",
+      "family_id": "keidanren_jcci",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed03",
+        "field_type": "eligibility",
+        "statement": "Học bổng Keidanren JCCI năm học 2026-2027 cần chứng chỉ tiếng Nhật.",
+        "input_span": null,
+        "raw_value": "Học bổng Keidanren JCCI năm học 2026-2027 cần chứng chỉ tiếng Nhật.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+        "quote": "- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+        "span": {
+          "start": 359,
+          "end": 471
+        }
+      }
+    },
+    {
+      "case_id": "seed04",
+      "family_id": "keidanren_jcci",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed04",
+        "field_type": "deadline",
+        "statement": "Keidanren JCCI nhận hồ sơ tới ngày 12/11/2026 từ 08h00 đến 11h00.",
+        "input_span": null,
+        "raw_value": "Keidanren JCCI nhận hồ sơ tới ngày 12/11/2026 từ 08h00 đến 11h00.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+        "quote": "Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+        "span": {
+          "start": 1452,
+          "end": 1530
+        }
+      }
+    },
+    {
+      "case_id": "seed05",
+      "family_id": "schneider",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed05",
+        "field_type": "award_amount",
+        "statement": "Học bổng Schneider Electric cấp 5.000.000 đồng/suất cho sinh viên Khoa Điện.",
+        "input_span": null,
+        "raw_value": "Học bổng Schneider Electric cấp 5.000.000 đồng/suất cho sinh viên Khoa Điện.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+        "quote": "5.000.000 đồng/suất",
+        "span": {
+          "start": 455,
+          "end": 474
+        }
+      }
+    },
+    {
+      "case_id": "seed06",
+      "family_id": "schneider",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed06",
+        "field_type": "deadline",
+        "statement": "Hạn nộp học bổng Schneider Electric là 16h30 ngày 16/10/2026.",
+        "input_span": null,
+        "raw_value": "Hạn nộp học bổng Schneider Electric là 16h30 ngày 16/10/2026.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+        "quote": "🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+        "span": {
+          "start": 534,
+          "end": 674
+        }
+      }
+    },
+    {
+      "case_id": "seed07",
+      "family_id": "toyota",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed07",
+        "field_type": "award_amount",
+        "statement": "Học bổng Toyota Đồng hành năm học 2026-2027 có một suất 25 triệu đồng.",
+        "input_span": null,
+        "raw_value": "Học bổng Toyota Đồng hành năm học 2026-2027 có một suất 25 triệu đồng.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_344b21e393855658_921795aab925d271",
+        "quote": "Học bổng Đồng hành: 01 suất, trị giá 25.000.000 đồng.",
+        "span": {
+          "start": 1077,
+          "end": 1130
+        }
+      }
+    },
+    {
+      "case_id": "seed08",
+      "family_id": "toyota",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed08",
+        "field_type": "deadline",
+        "statement": "Nộp hồ sơ học bổng Toyota trước 11 giờ 30 ngày 13/10/2026.",
+        "input_span": null,
+        "raw_value": "Nộp hồ sơ học bổng Toyota trước 11 giờ 30 ngày 13/10/2026.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_344b21e393855658_921795aab925d271",
+        "quote": "Thời gian tiếp nhận hồ sơ: Từ 08 giờ 00 đến 11 giờ 30 ngày 13/10/2026 (thứ Ba).",
+        "span": {
+          "start": 2171,
+          "end": 2250
+        }
+      }
+    },
+    {
+      "case_id": "seed09",
+      "family_id": "tuition_hki_2026_dot2",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed09",
+        "field_type": "deadline",
+        "statement": "Học phí đợt 2 học kỳ I 2026-2027 thu qua BIDV đến 08h30 ngày 30/11/2026.",
+        "input_span": null,
+        "raw_value": "Học phí đợt 2 học kỳ I 2026-2027 thu qua BIDV đến 08h30 ngày 30/11/2026.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+        "quote": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+        "span": {
+          "start": 1402,
+          "end": 1459
+        }
+      }
+    },
+    {
+      "case_id": "seed10",
+      "family_id": "tuition_hki_2026_dot2",
+      "as_of": "2026-11-09T14:00:00Z",
+      "claim": {
+        "claim_id": "seed10",
+        "field_type": "deadline",
+        "statement": "Học phí đợt 2 năm học 2026-2027 qua VietinBank đến 11h00 ngày 30/11/2026.",
+        "input_span": null,
+        "raw_value": "Học phí đợt 2 năm học 2026-2027 qua VietinBank đến 11h00 ngày 30/11/2026.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": null,
+          "cohort": null,
+          "audience": null,
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "expected": {
+        "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+        "quote": "- Qua VietinBank: từ ngày 04/11/2026 đến 11h00 ngày 30/11/2026.",
+        "span": {
+          "start": 1460,
+          "end": 1523
+        }
+      }
+    }
+  ]
+}

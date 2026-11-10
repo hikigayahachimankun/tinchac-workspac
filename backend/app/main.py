@@ -11,6 +11,8 @@ from starlette.exceptions import HTTPException
 from .api.health import router
 from .api.checks import router as checks_router
 from .api.sources import router as sources_router
+from .api.assets import router as assets_router, UploadBodyLimit
+from .services.intake import Assets
 from .services.jobs import Jobs
 from .services.errors import ServiceError
 from .config import Settings
@@ -23,6 +25,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         jobs = app.state.jobs
         if app.state.settings.database_path.exists():
             await asyncio.to_thread(jobs.initialize)
+            await asyncio.to_thread(app.state.assets.initialize)
 
         async def cleanup():
             while True:
@@ -31,6 +34,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
                     def purge():
                         with jobs.db() as db:
                             jobs.purge(db)
+                            app.state.assets.purge(db)
                     await asyncio.to_thread(purge)
 
         task = asyncio.create_task(cleanup())
@@ -44,9 +48,13 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     app = FastAPI(title='TinChắc', version='1.0', openapi_url='/api/v1/openapi.json', lifespan=lifespan)
     app.state.settings = settings if settings is not None else Settings()
     app.state.jobs = Jobs(app.state.settings)
+    app.state.assets = Assets(app.state.jobs)
+    app.state.jobs.assets = app.state.assets
+    app.add_middleware(UploadBodyLimit, max_bytes=app.state.settings.max_upload_bytes)
     app.include_router(router)
     app.include_router(checks_router)
     app.include_router(sources_router)
+    app.include_router(assets_router)
 
     @app.middleware('http')
     async def request_id(request: Request, call_next):

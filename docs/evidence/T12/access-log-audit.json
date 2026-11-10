@@ -1,0 +1,16 @@
+{
+  "mode": "fixture",
+  "server": "uvicorn localhost:8012",
+  "request_text_in_access_logs": false,
+  "capability_in_access_logs": false,
+  "filename_in_access_logs": false,
+  "validation_echo": false,
+  "invalid_upload_echo": false,
+  "statuses": {
+    "create": 202,
+    "validation": 422,
+    "upload": 415,
+    "delete": 204
+  },
+  "note": "Synthetic canary; raw log and temporary DB deleted after scan. Header/body requests only, not query-string misuse."
+}\n

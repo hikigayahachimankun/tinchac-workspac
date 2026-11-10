@@ -1,0 +1,53 @@
+{
+  "ignore_checks": [
+    {
+      "path": ".env",
+      "ignored": true
+    },
+    {
+      "path": ".env.local",
+      "ignored": true
+    },
+    {
+      "path": "frontend/.env.production.local",
+      "ignored": true
+    },
+    {
+      "path": "data/private/qa.txt",
+      "ignored": true
+    },
+    {
+      "path": "data/private/uploads/qa.png",
+      "ignored": true
+    },
+    {
+      "path": "data/raw/qa.pdf",
+      "ignored": true
+    },
+    {
+      "path": "data/private/ledger.sqlite3",
+      "ignored": true
+    },
+    {
+      "path": "test_gold.jsonl",
+      "ignored": true
+    },
+    {
+      "path": "frontend/dist/assets/qa.js",
+      "ignored": true
+    },
+    {
+      "path": "frontend/test-results/qa.txt",
+      "ignored": true
+    }
+  ],
+  "production_bundle": {
+    "js_files": 1,
+    "key_pattern_matches": 0,
+    "server_env_identifier_matches": 0
+  },
+  "method": "Static pattern scan only; no .env, real keys, gold or private files opened.",
+  "tracked_source_key_pattern_matches": 0,
+  "protected_paths_already_tracked": 0,
+  "build_id": "t12-f17f9a808da7a1b6"
+}

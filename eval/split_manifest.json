@@ -1,0 +1,71 @@
+{
+  "status": "pilot_draft_NOT_frozen",
+  "seed": 42,
+  "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+  "algorithm": "Random(42); sorted family IDs shuffled by domain payment then scholarship. Existing dev exposure overrides allocation. No unexposed family exists; no test assigned.",
+  "prospective_rule": "Add approved relationship-reviewed families before variants; preserve dev exposure; use same stratified seeded order with predeclared domain quotas, target 12/24 or fallback 8/16. Version manifest and audit before new cases.",
+  "families": [
+    {
+      "family_id": "tuition_hki_2026_dot2",
+      "domain": "payment",
+      "split": "dev",
+      "exposed_to_dev": true,
+      "exposure_basis": "T07 approved-seed dev probes; docs/handoffs/T07.md",
+      "version_ids": [
+        "dut_f18730b4c4454e87_be1a2356ad0f864b"
+      ],
+      "relationship_review": "One canonical version in current snapshot; parent page/attachment are one source. No additional approved annual/repost version observed."
+    },
+    {
+      "family_id": "schneider",
+      "domain": "scholarship",
+      "split": "dev",
+      "exposed_to_dev": true,
+      "exposure_basis": "T07 approved-seed dev probes; docs/handoffs/T07.md",
+      "version_ids": [
+        "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+      ],
+      "relationship_review": "One canonical version in current snapshot; parent page/attachment are one source. No additional approved annual/repost version observed."
+    },
+    {
+      "family_id": "keidanren_jcci",
+      "domain": "scholarship",
+      "split": "dev",
+      "exposed_to_dev": true,
+      "exposure_basis": "T07 approved-seed dev probes; docs/handoffs/T07.md",
+      "version_ids": [
+        "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+      ],
+      "relationship_review": "One canonical version in current snapshot; parent page/attachment are one source. No additional approved annual/repost version observed."
+    },
+    {
+      "family_id": "toyota",
+      "domain": "scholarship",
+      "split": "dev",
+      "exposed_to_dev": true,
+      "exposure_basis": "T07 approved-seed dev probes; docs/handoffs/T07.md",
+      "version_ids": [
+        "dut_344b21e393855658_921795aab925d271"
+      ],
+      "relationship_review": "One canonical version in current snapshot; parent page/attachment are one source. No additional approved annual/repost version observed."
+    },
+    {
+      "family_id": "agribank",
+      "domain": "scholarship",
+      "split": "dev",
+      "exposed_to_dev": true,
+      "exposure_basis": "T07 approved-seed dev probes; docs/handoffs/T07.md",
+      "version_ids": [
+        "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+      ],
+      "relationship_review": "One canonical version in current snapshot; parent page/attachment are one source. No additional approved annual/repost version observed."
+    }
+  ],
+  "excluded": [
+    {
+      "family_id": "tuition_masters_hki_2026_k51",
+      "version_id": "dut_5612e8ebaf4a8bfe_d00f8e6c84db7050",
+      "reason": "quarantined; personal-data attachment excluded"
+    }
+  ]
+}

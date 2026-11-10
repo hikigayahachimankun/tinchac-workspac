@@ -1,0 +1,199 @@
+{
+  "purpose": "T08 six public DEV target claims, prepared for owner-run live; not T09 gold; no extraction call",
+  "cases": [
+    {
+      "case_id": "live01",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "claim": {
+        "claim_id": "live01",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 5 triệu/suất.",
+        "input_span": null,
+        "raw_value": "5 triệu/suất",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 5000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+          "academic_year": "2025-2026",
+          "cohort": null,
+          "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "as_of": "2026-11-09T14:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982"
+    },
+    {
+      "case_id": "live02",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "claim": {
+        "claim_id": "live02",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 7 triệu/suất.",
+        "input_span": null,
+        "raw_value": "7 triệu/suất",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 7000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+          "academic_year": "2025-2026",
+          "cohort": null,
+          "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "as_of": "2026-11-09T14:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982"
+    },
+    {
+      "case_id": "live03",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "claim": {
+        "claim_id": "live03",
+        "field_type": "payment_requirement",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; thu phí. Loại phí được yêu cầu: phí giữ suất học bổng.",
+        "input_span": null,
+        "raw_value": "thu phí",
+        "normalized": {
+          "text": "thu phí",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "scope": {
+          "program": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026",
+          "academic_year": "2025-2026",
+          "cohort": null,
+          "audience": "Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn",
+          "fee_kind": "phí giữ suất học bổng"
+        },
+        "ambiguities": []
+      },
+      "as_of": "2026-11-09T14:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982"
+    },
+    {
+      "case_id": "live04",
+      "source_version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "source_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+      "claim": {
+        "claim_id": "live04",
+        "field_type": "deadline",
+        "statement": "Keidanren & JCCI — 2026-2027; Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật; 12/11/2026 lúc 11h00.",
+        "input_span": null,
+        "raw_value": "12/11/2026 lúc 11h00",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-12T11:00:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "12/11/2026 lúc 11h00",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": "Keidanren & JCCI",
+          "academic_year": "2026-2027",
+          "cohort": null,
+          "audience": "Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật",
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "as_of": "2026-11-09T14:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982"
+    },
+    {
+      "case_id": "live05",
+      "source_version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+      "claim": {
+        "claim_id": "live05",
+        "field_type": "deadline",
+        "statement": "Schneider Electric — ; Sinh viên năm 3 đến năm 5 tại Khoa Điện; 16/10/2026 lúc 16h30.",
+        "input_span": null,
+        "raw_value": "16/10/2026 lúc 16h30",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-10-16T16:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "16/10/2026 lúc 16h30",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": "Schneider Electric",
+          "academic_year": null,
+          "cohort": null,
+          "audience": "Sinh viên năm 3 đến năm 5 tại Khoa Điện",
+          "fee_kind": null
+        },
+        "ambiguities": []
+      },
+      "as_of": "2026-11-09T14:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982"
+    },
+    {
+      "case_id": "live06",
+      "source_version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+      "source_url": "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/view",
+      "claim": {
+        "claim_id": "live06",
+        "field_type": "deadline",
+        "statement": "Học phí đợt 2 học kỳ I — 2026-2027; Sinh viên nộp qua BIDV; 30/11/2026 lúc 08h30.",
+        "input_span": null,
+        "raw_value": "30/11/2026 lúc 08h30",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-30T08:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "30/11/2026 lúc 08h30",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "scope": {
+          "program": null,
+          "academic_year": "2026-2027",
+          "cohort": "2019-2022",
+          "audience": "Sinh viên nộp qua BIDV",
+          "fee_kind": "Học phí đợt 2 học kỳ I"
+        },
+        "ambiguities": []
+      },
+      "as_of": "2026-11-09T14:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982"
+    }
+  ]
+}

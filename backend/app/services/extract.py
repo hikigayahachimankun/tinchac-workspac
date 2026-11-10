@@ -6,6 +6,7 @@ from unicodedata import normalize
 from ..models import CheckCreate, ExtractionResult, check_quote
 from .errors import ServiceError
 from .llm import GeminiAdapter
+from .normalization import normalize_claim
 
 PROMPT = Path(__file__).resolve().parents[3] / 'prompts/extract.txt'
 CONTACTS = re.compile(
@@ -31,6 +32,7 @@ async def extract_claims(request: CheckCreate, *, llm: GeminiAdapter, corpus_ver
                 claim.input_span = None
             elif claim.input_span is not None:
                 check_quote(text, claim.input_span, claim.statement)
+        result.claims = [normalize_claim(claim) for claim in result.claims]
 
     result = await llm.generate(prompt=PROMPT.read_text(), text=text, output_type=ExtractionResult,
                                 corpus_version=corpus_version, as_of=request.as_of, stage=stage,

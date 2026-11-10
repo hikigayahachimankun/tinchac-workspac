@@ -1,0 +1,11 @@
+{
+  "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+  "raw_vs_normalized_manifest_equal": true,
+  "all_artifacts_byte_identical": true,
+  "hybrid_topk_scores_identical": 10,
+  "artifact_sha256": {
+    "sources.json": "8ec1673a9772221ff5c119a3fd8c4d2fea38ebf6499c52b159360940c0e4ff96",
+    "chunks.json": "a7def7518e838c259883d4ed486935a01ef6c2ef1d41a431bf1f42a40ed38beb",
+    "manifest.json": "a52ecfe5632a92ae2503d27e59d781848cdfd4a28049e03f6c01e343001ceb50"
+  }
+}

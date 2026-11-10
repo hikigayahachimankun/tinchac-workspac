@@ -1,0 +1,16 @@
+# Hướng dẫn người gán nhãn — v0.1, NOT frozen
+
+Đọc cùng `eval/protocol.md`, `eval/owner_handoff.md`, `docs/source_log.md` và nguồn approved trong snapshot đã chọn. Không mở prediction/log/output AI. Nhãn do người đọc nguồn quyết định; không dùng mẫu sinh hoặc origin để suy đáp án.
+
+1. Đọc duy nhất target claim; xác định program, năm, đối tượng/cohort, loại phí, ngân hàng, đơn vị tiền và as_of. Nếu câu chứa nhiều khẳng định độc lập, tách lại trước freeze và ghi lý do trong log. Không sửa case test sau thấy prediction.
+2. Đọc source text NFC và chunks, chỉ nguồn approved có available_at <= as_of. Date publication không tự thay first_seen. Không lấy nguồn mới trên web vào gold âm thầm; nếu cần, bổ sung trước freeze và làm lại hash/split audit.
+3. `supported`: bằng chứng hỗ trợ toàn bộ claim đúng scope. `contradicted`: bằng chứng bác bỏ nội dung cốt lõi đúng scope/thời điểm; im lặng không bác bỏ. `insufficient_evidence`: chưa đủ hỗ trợ hoặc bác bỏ, ghi nguyên nhân cụ thể và nguồn đã đọc.
+4. S/C: ghi một hay nhiều acceptable_evidence_sets. Mỗi inner list là **một bộ chunk đủ**, các list là lựa chọn thay thế; không gom các đoạn rời thành bộ đủ nếu thiếu scope. `reference_quotes` chứa trích nguyên văn, đủ ngữ cảnh; `quote_spans` cùng thứ tự, chunk_id và [start,end) Python code point tương đối trong chunk NFC. Không dùng UTF-8 byte hoặc offset source cho chunk. N có thể có context quotes nhưng không cần bộ support/refute. Validator chỉ kiểm cấu trúc/span, người phải xét đủ căn cứ.
+5. Với N, chọn ReasonCode cụ thể: SOURCE_SILENT (đọc nguồn nào, thiếu trường gì), SCOPE_UNCLEAR (thiếu năm/đối tượng nào), SOURCE_CONFLICT (nguồn nào xung đột), NO_SOURCE (nguồn eligible không có), DATE_AMBIGUOUS hoặc LINK_NOT_CONFIRMED khi thích hợp. Rationale không chỉ “không biết”. Không dùng lỗi provider/JSON/timeout làm gold N.
+6. Nguồn không nhắc phí đăng ký học bổng không chứng minh miễn phí. “Không thu phí” chỉ bác bỏ yêu cầu thu cùng loại phí/đối tượng. Học phí khác phí học bổng; không chuyển quy tắc phần trăm thành VND tuyệt đối.
+7. Phân biệt Toyota Đồng hành/Tiếp sức, ngân hàng BIDV/VietinBank và cohort. Hai mức tiền/giờ của hai scope khác nhau không phải mâu thuẫn. Gia hạn phải cùng đối tượng; không đoán supersedes theo ngày thu thập.
+8. Hạn cũ không làm câu lịch sử sai. `temporal_status` là trường riêng: active/expired/not_yet_active/unknown/not_applicable; current_availability xét còn mở tại as_of. Không thêm 23:59 khi nguồn chỉ cho ngày/khung giờ khác. Citation tương lai bị loại dù nội dung đúng.
+
+Pilot hiện có một annotator thật: điền mã người đọc vào annotator_1; annotator_2=null và agreement_before_adjudication=null. Không dùng cùng người dưới hai mã; không ghi agreement/kappa. Ghi single-annotator pilot vào adjudication_note khi cần. Nếu có người thứ hai thật, hai người gán toàn bộ case độc lập, giữ record ban đầu; sau đó tính agreement/kappa ba nhãn trước đối soát, ghi tranh luận và adjudication. AI chỉ được hỗ trợ định dạng, không đưa đáp án chuẩn hoặc trọng tài duy nhất.
+
+Worksheet trong `eval/owner_handoff.md` không có đáp án. Gold dev sau kiểm có thể chuyển vào `data/dev/gold.jsonl`; gold test luôn ngoài workspace. Không gửi private test source images/gold cho agent. Public corpus source được phép giữ, câu hỏi/nhãn/evidence test không được dùng tuning.
