@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import subprocess
 import tempfile
+import textwrap
 import wave
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -55,8 +56,18 @@ def main():
         draw.text((12, 7), 'FIXTURE · Local RC · Không gọi Gemini', fill='white',
                   font=ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 20))
         stamp.save(watermark)
+        # Editorial end card updates the acceptance status after independent CI.
+        end_card = Path(directory) / 'end-card.png'
+        card = Image.new('RGBA', (1280, 126), (18, 43, 42, 255))
+        pen = ImageDraw.Draw(card)
+        font = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', 20)
+        pen.text((32, 12), 'Giới hạn trước bàn giao T16 / T17 · FIXTURE RC', fill='white', font=font)
+        pen.multiline_text((32, 43), '\n'.join(textwrap.wrap(storyboard[-1]['caption'], width=105)),
+                           fill='white', font=font, spacing=4)
+        card.save(end_card)
         subprocess.run([args.ffmpeg, '-n', '-i', str(args.video), '-i', str(combined),
-            '-i', str(watermark), '-filter_complex', '[0:v][2:v]overlay=W-w-12:12,fps=25[v]',
+            '-i', str(watermark), '-i', str(end_card), '-filter_complex',
+            "[0:v][2:v]overlay=W-w-12:12[marked];[marked][3:v]overlay=0:H-h:enable='gte(t,205)',fps=25[v]",
             '-map', '[v]', '-map', '1:a', '-t', '220', '-c:v', 'libx264', '-preset', 'fast',
             '-crf', '27', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '96k',
             '-map_metadata', '-1', '-movflags', '+faststart', str(args.output)], check=True,

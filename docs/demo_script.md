@@ -27,7 +27,7 @@ Chữ/ảnh đều synthetic dev fixture có sẵn, tách khỏi live/gold; khô
 | 2:25–2:50 | Worker lỗi, 0 verdict; adapter/ledger được kiểm với provider mock |
 | 2:50–3:10 | Chặn POST bằng Playwright → lỗi kết nối, không NEI; fixture/video dự phòng có nhãn |
 | 3:10–3:25 | Chèn HTTP429 → RATE_LIMITED, 0 verdict; không dùng quota thật/paid fallback |
-| 3:25–3:40 | Một worker local; còn máy thứ hai, ca thật QA, benchmark/người thử/quyền phân phối; T15 chưa done |
+| 3:25–3:40 | Một worker local; cold-start WSL + CI Ubuntu độc lập đạt; còn laptop vật lý, ca thật QA, benchmark/người thử/quyền phân phối; T15 chưa done |
 
 Lời thuyết minh đầy đủ: `docs/demo_storyboard.json`. Không dùng bảng A/B/C hoặc số pilot giả. Expired chỉ có trong mock T03, không thuộc bốn ca HTTP/video này; video giải thích nguyên tắc, không dàn dựng ca expired thật.
 
@@ -61,3 +61,5 @@ node scripts/record_demo.mjs --output /tmp/tinchac-demo-record-new --record
 ```
 
 Tên `.webm` thực ở `result.json`, không copy nguyên placeholder. Quay/render từ checkout đầy đủ; runtime package không kèm authoring tools. Render dùng Pillow đã có trong lock và font DejaVu ở bước OCR. Metadata/hash/privacy audit nằm trong evidence T15. T16/T17 chỉ dùng tài sản này với nhãn fixture/RC và các gate chưa đạt trong checklist.
+
+Cập nhật sau quay: [CI Ubuntu độc lập](evidence/T15/independent-ci.json) đã thực chạy thành công. End card và đoạn giọng cuối được biên tập lại theo kết quả này, không dựng lại hành vi ứng dụng. Chưa kiểm laptop demo vật lý.

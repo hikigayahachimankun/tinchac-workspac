@@ -1,12 +1,12 @@
 {
   "video": "artifacts/T15/tinchac-demo-rc.mp4",
-  "sha256": "d415afa54ea70e4c0166e193567b2d4988088c31e29bde6829adfc48a0bd1455",
-  "bytes": 4403653,
+  "sha256": "d6e3b4b89245b46bad5cc8d2eb8493864d09b11dea6d09e51e4cb1a7953d4917",
+  "bytes": 4320772,
   "duration_seconds": 220,
   "full_audio_video_decode_exit": 0,
   "streams": [
-    "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x900 [SAR 1:1 DAR 64:45], 96 kb/s, 25 fps, 25 tbr, 12800 tbn (default)",
-    "Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 22050 Hz, mono, fltp, 58 kb/s (default)"
+    "Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1280x900 [SAR 1:1 DAR 64:45], 94 kb/s, 25 fps, 25 tbr, 12800 tbn (default)",
+    "Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 22050 Hz, mono, fltp, 57 kb/s (default)"
   ],
   "frame_samples": [
     {
@@ -57,5 +57,6 @@
   ],
   "bundle_and_receipt_key_pattern_matches": 0,
   "audio": "local espeak-ng vi, synthetic; no microphone or external TTS",
-  "privacy_scope": "fresh browser; only synthetic fixture text/image and no external requests. Frame OCR plus visual contact-sheet review, not a universal secret detector; no human listening claimed."
+  "privacy_scope": "fresh browser; only synthetic fixture text/image and no external requests. Frame OCR plus visual contact-sheet review, not a universal secret detector; no human listening claimed.",
+  "editorial_update": "Final15s end card/narration updated after actual independent CI run42827045087; original UI screen capture unchanged."
 }

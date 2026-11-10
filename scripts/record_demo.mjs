@@ -135,7 +135,7 @@ try {
   await page.unroute('**/api/v1/checks');
   await textCase('supported',['Được nguồn hỗ trợ']);
   await caption('Giới hạn trước bàn giao T16 / T17',
-    'Chưa máy thứ hai; chưa case DUT thật được hỗ trợ đạt QA; chưa benchmark/người thử/quyền phân phối. Một worker local; T15 chưa done.');
+    'Cold start WSL + CI Ubuntu độc lập đạt; laptop demo vật lý chưa thử. Còn case DUT thật QA, benchmark/người thử/quyền phân phối; T15 chưa done.');
   await page.locator('.output').scrollIntoViewIfNeeded(); await shot('limits'); await hold(220);
   expect(await page.evaluate(()=>({local:{...localStorage},session:{...sessionStorage},cookie:document.cookie})))
     .toEqual({local:{},session:{},cookie:''});

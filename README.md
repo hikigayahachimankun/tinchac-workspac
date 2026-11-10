@@ -1,6 +1,6 @@
 # TinChắc · Bản chạy local cho sinh viên DUT
 
-Ảnh/văn bản → OCR cục bộ và xác nhận chữ → đối chiếu từng chi tiết → nguồn và bước kiểm tra tiếp. API `/api/v1`, schema `1.0`. **Bản T15 hiện là release candidate nội bộ ở chế độ fixture; chưa nghiệm thu live hoặc máy thứ hai.** Không dùng kết quả mẫu để quyết định đóng tiền/nộp hồ sơ. [Checklist và giới hạn](reports/release_checklist.md) · [Demo/video](docs/demo_script.md) · [Handoff T15](docs/handoffs/T15.md).
+Ảnh/văn bản → OCR cục bộ và xác nhận chữ → đối chiếu từng chi tiết → nguồn và bước kiểm tra tiếp. API `/api/v1`, schema `1.0`. **Bản T15 hiện là release candidate nội bộ ở chế độ fixture; chưa nghiệm thu live/ca DUT thật; cold-start môi trường CI độc lập đã đạt.** Không dùng kết quả mẫu để quyết định đóng tiền/nộp hồ sơ. [Checklist và giới hạn](reports/release_checklist.md) · [Demo/video](docs/demo_script.md) · [Handoff T15](docs/handoffs/T15.md).
 
 ## Chạy bản demo hiện tại
 
@@ -42,7 +42,7 @@ python3 scripts/cold_start_release.py --archive artifacts/T15/tinchac-rc.tar.gz 
 
 Script tạo thư mục mới, kiểm hash, venv riêng, npm install/build mới, chạy một worker rồi tự dừng. Cài dependencies lần đầu cần mạng/package cache; demo fixture đã cài chạy offline. Manifest trong gói ghi commit, hash từng file/locks/config/seed, model/corpus fixture và hash manifest corpus thật tham chiếu. Gói chỉ có mã, build và fixture tự tạo; không chứa key, DB/ledger riêng, gold, raw, snapshot corpus thật hoặc vendor binaries. Quyền phân phối ngoài nhóm vẫn là gate mở.
 
-**Đã thử 10/11/2026:** Ubuntu26.04/WSL2 Linux6.18.58.1, Python3.11.18, Node22.23.4, Tesseract5.5.0 vie+eng. Cold-start thành công trong cây giải nén và venv mới **trên cùng host**; browser Chromium390/1440, OCR, bàn phím và injection mất kết nối/quota đạt. Đây không chứng nhận máy thứ hai. Bằng chứng/lệnh: [T15](docs/evidence/T15/README.md).
+**Đã thử 10/11/2026:** Ubuntu26.04/WSL2 Linux6.18.58.1, Python3.11.18, Node22.23.4, Tesseract5.5.0 vie+eng. Cold-start thành công trong cây giải nén và venv mới **trên cùng host**; browser Chromium390/1440, OCR, bàn phím và injection mất kết nối/quota đạt. Sau đó cùng quy trình đạt trên **GitHub-hosted Ubuntu24.04/Azure độc lập với WSL**: [run thực tế](https://github.com/hikigayahachimankun/tinchac-workspac/actions/runs/42827045087), [receipt](docs/evidence/T15/independent-ci.json). Đây là VM khác, chưa thử laptop demo vật lý. Bằng chứng/lệnh: [T15](docs/evidence/T15/README.md).
 
 Live dùng `gemini-3.5-flash-lite` theo cấu hình hiện có, tắt mặc định; corpus thật `corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982` chỉ có trong checkout có quyền truy cập. [Setup/ledger thật](docs/live_setup.md) ghi preflight Free Tier đã đạt nhưng HTTP QA còn lỗi503/unknown; không chạy live từ gói fixture. HTTP replay chưa có recording cấu hình; CLI replay offline được kiểm riêng, không phải kết quả benchmark.
 

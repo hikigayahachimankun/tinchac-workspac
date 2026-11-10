@@ -1,0 +1,57 @@
+{
+  "run_id": 42827045087,
+  "job_id": 129866973140,
+  "url": "https://github.com/hikigayahachimankun/tinchac-workspac/actions/runs/42827045087",
+  "conclusion": "success",
+  "commit": "474ef28ecde76b9cab6ac00e83c0da730201db77",
+  "environment": "GitHub-hosted standard Ubuntu 24.04 VM, independent of local WSL",
+  "independent_environment_verified": true,
+  "physical_demo_laptop_verified": false,
+  "scope": "archive install/new venv/npm build/health/4 fixture cases/source quotes/static/API/delete, plus actual synthetic Tesseract OCR",
+  "ocr": "Học bổng Minh Họa 2026 có giá trị 7 triệu đồng mỗi suất.",
+  "smoke": {
+    "schema_version": "1.0",
+    "mode": "fixture",
+    "provider_calls": 0,
+    "static_api_source_delete": "passed",
+    "cases": [
+      {
+        "case": "mixed",
+        "status": "completed",
+        "labels": {
+          "supported": 1,
+          "contradicted": 1,
+          "insufficient_evidence": 1
+        }
+      },
+      {
+        "case": "supported",
+        "status": "completed",
+        "labels": {
+          "supported": 1
+        }
+      },
+      {
+        "case": "nei",
+        "status": "completed",
+        "labels": {
+          "insufficient_evidence": 1
+        }
+      },
+      {
+        "case": "failed",
+        "status": "failed",
+        "labels": {}
+      }
+    ],
+    "environment": "fresh extracted tree and venv on SAME host",
+    "second_machine_verified": false,
+    "os": "Linux-7.0.0-1017-azure-x86_64-with-glibc2.39",
+    "node": "v22.23.4",
+    "python": "Python 3.11.18",
+    "archive_sha256": "2bb1adc7150fb12ea0f00c1b43bc1bc49321685be49701043e8cc0b15a05d473",
+    "package_commit": "474ef28ecde76b9cab6ac00e83c0da730201db77"
+  },
+  "clarification": "The generic cold-start script reports SAME host/false relative to its own invoking host. The Actions VM and Azure OS in external run logs establish a separate environment from local WSL; no physical laptop claim.",
+  "cost": "Public repository, standard runner; no caches/artifact uploads/paid service."
+}

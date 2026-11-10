@@ -79,10 +79,20 @@ LD_LIBRARY_PATH=/tmp/tinchac-t15-voice/unpacked/usr/lib/x86_64-linux-gnu:/tmp/ti
 
 `video-audit.json`: SHA256/bytes,220s,H264/AAC, full audio/video decode exit0,9 sampled frames with fixture watermark/OCR/key-pattern scan. Narration synthesized from public storyboard, no microphone/person. Visual contact-sheet review is separate; no human listening claimed. Count-only secret scans are limited detectors, not proof against every possible secret; inputs/browser were restricted to self-created fixture content.
 
-## Gates chưa chạy
+## Gates trước CI và cập nhật
 
 - Không máy thứ hai/VM độc lập: Docker command báo chưa WSL integration; no access to another host. Receipt `second_machine_verified=false`.
 - Không tự gọi live quota hoặc reset ledger. Actual DUT supported case chưa QA đạt; upstream real run2 hai completed đều NEI rồi503.
 - Không human pilot/correction/gold/evidence scoring/freeze; không sửa model/corpus/test protocol.
 - Không external rights clearance/public hosting/deploy/merge/submission.
 - Native `git push --dry-run` exit128: thiếu HTTPS username/credential, không phải auto-review rejection. Dùng connected GitHub Git Data API cho source branch nếu khả dụng; annotated RC tag local và Git bundle giữ được nếu connector không có tag API. Kết quả Git cuối xem handoff và Git, không gọi push tag thành công khi chưa chạy được.
+
+## Cập nhật môi trường độc lập
+
+`independent-ci.json`: GitHub-hosted Ubuntu24.04/Azure, run42827045087/job129866973140, commit474ef28ecde76b9cab6ac00e83c0da730201db77, conclusion success. Log thực xác nhận pinned install/build, archive/new-tree/venv, health4cases/source/delete và synthetic Tesseract OCR. Không dùng local caches hoặc secrets trên runner. Trường false/SAME host trong generic script nói về extraction so với host đang gọi script; receipt ngoài đối chiếu Actions/Azure OS với WSL xác nhận VM độc lập, không laptop vật lý.
+
+Source published through connector, remote tree6e120b51c2ace3ba28e3302fce341daad4c012af equals local verified tree; original local commits retained at task/T15-local-verification. A restricted workflow may publish annotated RC using short-lived GitHub token after cold-start success, only with explicit commit marker. No token value is printed; tag creation receipt must be inspected before claiming success. This supersedes the earlier tag-capability fallback; no stable release.
+
+Final video update: render command reused with `--output /tmp/tinchac-t15-demo-ci.mp4`; final15s end card/narration updated to actual independent CI success. Original UI capture retained. Repeated full decode and9sample watermark/OCR checks passed; latest checksum in video-audit.json supersedes first export.
+
+Final-card OCR literal check initially read capital I as lowercase l (`CI`→`Cl`), so that assertion failed; direct visual frame215s confirmed correct text. Recheck tests the unambiguous `Ubuntu độc lập`/`vật lý` text plus watermark, not an OCR font distinction; final decode/sample counts remain explicit in video-audit.json.

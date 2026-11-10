@@ -15,4 +15,6 @@ Resolved before commit:
 
 Looks good. Ship as internal fixture RC only. T15 remains blocked.
 
-Not checked: second physical machine, successful DUT real S-case QA, external licences, real human OCR correction/pilot, live benchmark, human audio listening, physical network outage; native remote annotated tag needs unavailable credential/API capability. No stable-release acceptance is implied.
+Independent Ubuntu24.04/Azure VM cold-start and synthetic OCR subsequently passed (run42827045087). Tag job is restricted to explicit RC marker after successful cold-start, creates annotated tag/ref without overwriting, uses short-lived GitHub token and logs only object hashes.
+
+Not checked: physical demo laptop, successful DUT real S-case QA, external licences, real human OCR correction/pilot, live benchmark, human audio listening, physical network outage; native HTTPS remains unavailable; remote RC tag requires actual successful workflow receipt. No stable-release acceptance is implied.
