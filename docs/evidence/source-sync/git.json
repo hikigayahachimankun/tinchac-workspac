@@ -1,0 +1,16 @@
+{
+  "repository": "hikigayahachimankun/tinchac-workspac",
+  "branch": "feature/verified-source-sync",
+  "code_commit": "0a11d5e1177a4fd9e90dcf001a5ffb78b54fe7b4",
+  "base_commit": "a97b3c4",
+  "local_original_commit": "c56c9b8de73d7ab87a2665398672fb029d797cb6",
+  "local_original_branch": "feature/verified-source-sync-local-checkpoints",
+  "verified_tree": "87c59440ecd9f289e3fc12a7a3badd008ee821f0",
+  "transport": "Connected GitHub Git Data API; fetched and verified equal Git tree SHA locally",
+  "native_https": "unavailable: no Username/credential helper",
+  "source_files_changed": 26,
+  "private_source_content_uploaded": false,
+  "merge": false,
+  "tag": false,
+  "deploy": false
+}

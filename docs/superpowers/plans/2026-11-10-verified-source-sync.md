@@ -75,7 +75,7 @@ Files: `reports/source_sync.md`, README/source_log/decisions/progress, `docs/han
 - [x] Bounded DUT smoke through safe transport: robots first, trust links, both registered units, local-only retention. Report real HTTP/parser/hash/counts and any block; zero new approval unless actual reviewed evidence supplied.
 - [x] Apply ponytail-review to full diff+callers; document and fix substantiated findings, retest.
 - [x] Document schedule installation/activation truthfully (CLI availability ≠ running service), safe private paths, promotion/reload/rollback and open human/rights gates.
-- [ ] Commit/push exact public feature tree safely; no force/merge/tag/deploy. Review state, not upstream task done.
+- [x] Commit/push exact public feature tree safely; no force/merge/tag/deploy. Review state, not upstream task done.
 
 ## Plan self-review
 

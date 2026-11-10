@@ -37,3 +37,11 @@
 - Next step: finish final regression and publish the checked public feature tree with exact local/remote tree verification.
 
 Final regression: `.venv/bin/python -m pytest backend/tests eval/tests -q` → **471passed,19.27s**, including74new feature tests. Source-only full suite baseline397; no gold/network/provider calls in regression.
+
+
+## Checkpoint I — Git publication verified
+
+- Feature code published at `0a11d5e1177a4fd9e90dcf001a5ffb78b54fe7b4`, parent a97b3c4, remote branch `feature/verified-source-sync`. Native original c56c9b8 retained on `feature/verified-source-sync-local-checkpoints`; renamed the clean local branch and checked out the fetched feature branch without reset/force.
+- Local/remote code trees both `87c59440ecd9f289e3fc12a7a3badd008ee821f0`, verified after fetch. Receipt `docs/evidence/source-sync/git.json`. Later receipt-only commit adds this verification; runtime code unchanged. No corpus/raw/private/gold/user content newly uploaded; no merge, tag, workflow, deployment or model calls.
+- Final status **review**, technical checkpoints A–I complete with471backend/eval tests/37frontend tests/build/contracts/corpus checks and actual bounded DUT smoke. New approvals0; unattended scheduler off. Runbook README; actual results report and review linked above.
+- Next step: actual source reviewer checks lawful completeness/content-use rights for one quarantined public fee notice before any promotion.
