@@ -278,3 +278,41 @@ npm run test:fixture --prefix frontend
 ```
 
 Cách tái hiện, kết quả và giới hạn: [handoff T06](docs/handoffs/T06.md).
+
+## Recovery quickstart — current integrated branch
+
+Current acceptance/state: [progress](docs/progress.md), [recovery audit](reports/recovery_audit.md), [recovery handoff](docs/handoffs/recovery.md). Earlier task sections describe their original checkpoints. D19 delegates technical review/commits to the maintainer; account and human-validation gates remain real.
+
+From repo root with Python3.11 and Node22.12+ (pinned files):
+
+```bash
+uv venv --python 3.11.18 .venv
+uv pip sync --python .venv/bin/python requirements.lock.txt
+npm ci --prefix frontend
+npm run build --prefix frontend
+APP_MODE=fixture .venv/bin/python -m scripts.init_db
+APP_MODE=fixture FRONTEND_DIST=./frontend/dist \
+  .venv/bin/python -m uvicorn backend.app.main:app --host 127.0.0.1 --port 8000 --workers 1
+```
+
+Open `http://127.0.0.1:8000`. Built UI and API share one origin; no Vite process is needed. Select a fixture scenario or upload a synthetic OCR image, confirm text and open evidence. `FRONTEND_DIST` is explicit; API/asset misses remain404, private files and paths outside the build are not served. Raw user images stay local and are removed after OCR; deletion is logical, not secure erasure of disks/backups.
+
+```bash
+.venv/bin/python -m pytest backend/tests eval/tests -q
+.venv/bin/python -m scripts.export_contracts --check
+.venv/bin/python -m scripts.validate_corpus
+.venv/bin/python -m scripts.validate_eval
+npm test --prefix frontend
+# Chromium installed according to prior browser instructions:
+npm run test:release --prefix frontend
+```
+
+Local OCR requires Tesseract vie+eng and the font documented in the OCR scripts. Reproducible dev-only pilot (new directory, never overwritten):
+
+```bash
+.venv/bin/python -m scripts.ocr_eval --output data/raw/ocr-dev-new
+.venv/bin/python -m scripts.prepare_eval --output data/private/annotation-draft-new
+.venv/bin/python -m scripts.collect_sources --output data/raw/source-discovery-new
+```
+
+These commands do not create human gold, approve sources or run Gemini. Live HTTP is now implemented, guarded by `LLM_LIVE_ENABLED=false`. Read [private account setup](docs/live_setup.md) before enabling paid requests. CLI replay is supported for recorded eval runs; HTTP replay is explicitly unavailable until a recording is configured. No paid benchmark or user-study result exists yet. This local smoke was run on the current WSL environment; second-machine validation remains pending in T15.

@@ -1,10 +1,11 @@
 import asyncio
 from contextlib import asynccontextmanager, suppress
+from pathlib import Path
 from uuid import uuid4
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
 from pydantic.json_schema import models_json_schema
 from starlette.exceptions import HTTPException
 
@@ -100,6 +101,28 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return app.openapi_schema
 
     app.openapi = contract_openapi
+
+    if app.state.settings.frontend_dist is not None:
+        dist = app.state.settings.frontend_dist.resolve()
+
+        @app.api_route('/{path:path}', methods=['GET', 'HEAD'], include_in_schema=False)
+        def frontend(path: str):
+            # Serve only this build. API, dotfiles and repository/private paths
+            # never become a successful SPA response, including missing assets.
+            parts = Path(path).parts
+            if parts and (parts[0] in ('api', 'data', 'backend', 'contracts', 'config')
+                          or any(p.startswith('.') for p in parts)):
+                raise HTTPException(404)
+            target = (dist / path).resolve()
+            if not target.is_relative_to(dist):
+                raise HTTPException(404)
+            allowed = {'.html', '.js', '.css', '.svg', '.ico', '.png', '.jpg', '.jpeg', '.webp', '.woff', '.woff2'}
+            if target.is_file() and target.suffix in allowed:
+                return FileResponse(target)
+            index = (dist / 'index.html').resolve()
+            if not Path(path).suffix and index.is_relative_to(dist) and index.is_file():
+                return FileResponse(index)
+            raise HTTPException(404)
     return app
 
 

@@ -9,7 +9,8 @@
     "test": "vitest run",
     "types:generate": "openapi-typescript ../contracts/openapi.json -o src/api/types.ts",
     "test:browser": "playwright test",
-    "test:fixture": "playwright test --config playwright.fixture.config.ts"
+    "test:fixture": "playwright test --config playwright.fixture.config.ts",
+    "test:release": "npm run build && playwright test --config playwright.release.config.ts"
   },
   "dependencies": {
     "react": "19.3.1",

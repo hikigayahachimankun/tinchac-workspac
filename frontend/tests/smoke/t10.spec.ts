@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { mkdir, readFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
-const evidence=fileURLToPath(new URL('../../../docs/evidence/T10/',import.meta.url));
+const evidence=process.env.TINCHAC_EVIDENCE_ROOT ? process.env.TINCHAC_EVIDENCE_ROOT+'/T10/' : fileURLToPath(new URL('../../../docs/evidence/T10/',import.meta.url));
 const fixture=JSON.parse(await readFile(new URL('../../src/api/fixture-texts.json',import.meta.url),'utf8')) as Record<string,string>;
 const completed=JSON.parse(await readFile(new URL('../../../contracts/examples/check_result.json',import.meta.url),'utf8'));
 const created=JSON.parse(await readFile(new URL('../../../contracts/examples/CheckCreated.json',import.meta.url),'utf8'));

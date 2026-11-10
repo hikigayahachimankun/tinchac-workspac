@@ -4,7 +4,7 @@ import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import { readFileSync } from 'node:fs';
 const fixtureTexts = JSON.parse(readFileSync(new URL('../../src/api/fixture-texts.json',import.meta.url),'utf8')) as Record<string,string>;
-const evidence=fileURLToPath(new URL('../../../docs/evidence/T04/',import.meta.url));
+const evidence=process.env.TINCHAC_EVIDENCE_ROOT ? process.env.TINCHAC_EVIDENCE_ROOT+'/T04/' : fileURLToPath(new URL('../../../docs/evidence/T04/',import.meta.url));
 for (const width of [390,1440]) {
  test(`real FastAPI fixture flow at ${width}`,async({page,request})=>{
   await mkdir(evidence,{recursive:true});
@@ -23,7 +23,7 @@ for (const width of [390,1440]) {
   const accepted=await post;
   expect(accepted.status()).toBe(202);
   expect(accepted.request().postDataJSON().confirmed_text).toBe(fixtureTexts.mixed!);
-  const health=await request.get('http://127.0.0.1:8000/api/v1/health');
+  const health=await request.get('/api/v1/health');
   expect((await health.json()).run_mode).toBe('fixture');
   log.push('FastAPI health: schema_version=1.0 run_mode=fixture');
   const created=await accepted.json() as {check:{check_id:string;status:string};access_token:string};
@@ -38,7 +38,7 @@ for (const width of [390,1440]) {
   expect(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth)).toBe(true);
   expect((await new AxeBuilder({page}).withTags(['wcag2a','wcag2aa','wcag21aa']).analyze()).violations).toEqual([]);
   await page.screenshot({path:`${evidence}/success-${width}.png`,fullPage:true});
-  const url=`http://127.0.0.1:8000/api/v1/checks/${created.check.check_id}`;
+  const url=`/api/v1/checks/${created.check.check_id}`;
   const headers={'X-Resource-Token':created.access_token};
   expect((await request.get(url,{headers:{'X-Resource-Token':'wrong'}})).status()).toBe(404);
   expect((await request.delete(url,{headers})).status()).toBe(204);

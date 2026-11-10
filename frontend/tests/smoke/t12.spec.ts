@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 const fixture = JSON.parse(readFileSync(new URL('../../src/api/fixture-texts.json', import.meta.url), 'utf8'));
 const created = JSON.parse(readFileSync(new URL('../../../contracts/examples/CheckCreated.json', import.meta.url), 'utf8'));
 const completed = JSON.parse(readFileSync(new URL('../../../contracts/examples/check_result.json', import.meta.url), 'utf8'));
-const evidence = fileURLToPath(new URL('../../../docs/evidence/T12/', import.meta.url));
+const evidence = process.env.TINCHAC_EVIDENCE_ROOT ? process.env.TINCHAC_EVIDENCE_ROOT+'/T12/' : fileURLToPath(new URL('../../../docs/evidence/T12/', import.meta.url));
 const sample = fileURLToPath(new URL('../../../data/fixtures/ocr/blank.png', import.meta.url));
 
 for (const width of [390, 1440]) {

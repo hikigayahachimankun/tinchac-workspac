@@ -1,0 +1,10 @@
+{
+  "width": 1440,
+  "run_mode": "fixture",
+  "checks_posted": 1,
+  "tokens_in_urls": false,
+  "private_content_in_console": false,
+  "storage_empty": true,
+  "browser_crashes": 0,
+  "screenshot": "synthetic fixture only"
+}

@@ -5,7 +5,7 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 const texts=JSON.parse(readFileSync(new URL('../../src/api/fixture-texts.json',import.meta.url),'utf8')) as Record<string,string>;
 const samples=fileURLToPath(new URL('../../../data/fixtures/ocr/',import.meta.url));
-const evidence=fileURLToPath(new URL('../../../docs/evidence/T06/',import.meta.url));
+const evidence=process.env.TINCHAC_EVIDENCE_ROOT ? process.env.TINCHAC_EVIDENCE_ROOT+'/T06/' : fileURLToPath(new URL('../../../docs/evidence/T06/',import.meta.url));
 
 for(const width of [390,1440]) {
  test(`real OCR review edits money before explicit confirmation ${width}`,async({page})=>{

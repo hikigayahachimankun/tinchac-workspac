@@ -17,6 +17,7 @@ class Settings(BaseSettings):
     database_path: Path = Path('./data/private/tinchac.sqlite3')
     private_dir: Path = Path('./data/private')
     corpus_dir: Path = Path('./data/corpus')
+    frontend_dist: Path | None = None
     app_timezone: Literal['Asia/Ho_Chi_Minh'] = 'Asia/Ho_Chi_Minh'
     gemini_api_key: SecretStr = Field(default=SecretStr(''), repr=False)
     llm_model: str = Field(default='gemini-3.5-flash-lite', min_length=1)
