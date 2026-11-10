@@ -1,3 +1,5 @@
+> Current Free Tier follow-up, 10/11/2026: D24/D25 and the latest T05/T08/T12 handoffs supersede the old key/billing-only blockers below. Preflight passed exactly3attempts (859/1126tokens). Total23actual attempts,21known responses/2unknown503; known estimatedFreeTier0USD,totalactualN/A. Two public HTTP runs remain partial (1/12 then2/12), not accepted live benchmark results.372pytestpass; source/gold/holdout/human/freeze gates remain open. Main is unchanged. See docs/evidence/T05/free-tier-ledger-2026-11-10.json.
+
 # Recovery audit — 10/11/2026 (Asia/Ho_Chi_Minh)
 
 Authority: current autonomous-recovery request; D19/D17/D20 in `docs/decisions.md`. Plan: `docs/superpowers/plans/2026-11-10-recovery.md`. This audit records actual gates; a historical handoff or commit is not acceptance.

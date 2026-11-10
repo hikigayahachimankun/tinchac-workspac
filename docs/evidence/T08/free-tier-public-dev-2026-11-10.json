@@ -1,0 +1,283 @@
+{
+  "mode": "live",
+  "prompt_sha256": "a418087129a5036109c911657015b77f12e262620b6abdaa10c9940ec986d304",
+  "model_candidate": "gemini-3.5-flash-lite",
+  "temperature": 0.0,
+  "thinking_config": {
+    "thinking_level": "MINIMAL"
+  },
+  "output_cap_per_claim": 1200,
+  "synthetic_dev": [],
+  "public_dev": [
+    {
+      "case_id": "live01",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:live01",
+      "mode": "live",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5708,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1210,
+        "output_tokens": 221,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 1926
+      },
+      "verdict": {
+        "claim_id": "live01",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 5 triệu/suất.",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 5000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      }
+    },
+    {
+      "case_id": "live02",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:live02",
+      "mode": "live",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ]
+      ],
+      "input_bound": 5708,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1210,
+        "output_tokens": 193,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 4070
+      },
+      "verdict": {
+        "claim_id": "live02",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 7 triệu/suất.",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 7000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      }
+    },
+    {
+      "case_id": "live03",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:live03",
+      "mode": "live",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ]
+      ],
+      "input_bound": 5371,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "SOURCE_SILENT"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "insufficient_evidence",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "reason_codes",
+            "explanation"
+          ],
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1088,
+        "output_tokens": 130,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 5324
+      },
+      "verdict": {
+        "claim_id": "live03",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "SOURCE_SILENT"
+        ],
+        "explanation": "Nguồn đã kiểm tra không xác nhận nội dung này; sự im lặng không chứng minh nội dung sai.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "payment_requirement",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; thu phí. Loại phí được yêu cầu: phí giữ suất học bổng.",
+        "normalized": {
+          "text": "thu phí",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      }
+    },
+    {
+      "case_id": "live04",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:live04",
+      "error": "PROVIDER_BAD_OUTPUT",
+      "error_details": {},
+      "input_bound": 5737
+    }
+  ],
+  "live_calls": null,
+  "note": "Mock ledger/token amounts are synthetic. D02/live remain owner verified."
+}

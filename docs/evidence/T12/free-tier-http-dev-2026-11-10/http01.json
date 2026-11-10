@@ -1,0 +1,103 @@
+{
+  "case_id": "http01",
+  "record": {
+    "schema_version": "1.0",
+    "check_id": "bb03fb6b-d25b-47a4-ab35-c4417fa3a180",
+    "status": "completed",
+    "result": {
+      "schema_version": "1.0",
+      "check_id": "bb03fb6b-d25b-47a4-ab35-c4417fa3a180",
+      "claims": [
+        {
+          "claim_id": "claim_1",
+          "label": "insufficient_evidence",
+          "reason_codes": [
+            "SCOPE_UNCLEAR"
+          ],
+          "explanation": "Chưa khớp chương trình, năm, đối tượng hoặc loại phí.",
+          "evidence": [],
+          "temporal_status": "not_applicable",
+          "field_type": "award_amount",
+          "statement": "Học bổng Schneider Electric trị giá 5.000.000 đồng/suất",
+          "normalized": {
+            "text": null,
+            "money": {
+              "amount": 5000000,
+              "currency": "VND",
+              "basis": "per_award"
+            },
+            "date": null,
+            "url": null
+          },
+          "checks_passed": [
+            "bundle_identity",
+            "source_release_cutoff"
+          ]
+        },
+        {
+          "claim_id": "claim_2",
+          "label": "insufficient_evidence",
+          "reason_codes": [
+            "SCOPE_UNCLEAR"
+          ],
+          "explanation": "Chưa khớp chương trình, năm, đối tượng hoặc loại phí.",
+          "evidence": [],
+          "temporal_status": "unknown",
+          "field_type": "deadline",
+          "statement": "Thời gian tiếp nhận hồ sơ đến ngày 16/10/2026",
+          "normalized": {
+            "text": null,
+            "money": null,
+            "date": {
+              "value": "2026-10-16",
+              "precision": "date",
+              "timezone": "Asia/Ho_Chi_Minh",
+              "raw": "16/10/2026",
+              "ambiguous": false
+            },
+            "url": null
+          },
+          "checks_passed": [
+            "bundle_identity",
+            "source_release_cutoff"
+          ]
+        }
+      ],
+      "summary": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_evidence": 2,
+        "message": "Có chi tiết chưa đủ bằng chứng."
+      },
+      "sources": [],
+      "as_of": "2026-11-09T17:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+      "corpus_updated_at": "2026-11-09T13:11:05.702010Z",
+      "warnings": [
+        "Context model dùng trích đoạn tối đa 220 ký tự quanh fact cùng scope; phần khác không gửi. Bundle gốc giữ nguyên cho guard."
+      ],
+      "run_mode": "live",
+      "next_steps": [
+        "Mở nguồn và kiểm tra đúng chương trình, năm, đối tượng trước khi làm theo thông báo.",
+        "TinChắc không xác minh người gửi hoặc chủ tài khoản; xác nhận yêu cầu chuyển tiền qua kênh chính thức.",
+        "Hỏi đơn vị công bố về nội dung chưa xác minh; bổ sung năm, loại phí hoặc nguồn còn thiếu."
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1635,
+        "output_tokens": 493,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 2,
+        "cache_hit": false,
+        "duration_ms": 6947
+      }
+    },
+    "error": null,
+    "created_at": "2026-11-10T09:30:18.987607Z",
+    "updated_at": "2026-11-10T09:30:26.031185Z",
+    "expires_at": "2026-11-11T09:30:18.987607Z"
+  },
+  "checked_citations": 0
+}

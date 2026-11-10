@@ -1,0 +1,680 @@
+{
+  "mode": "live",
+  "prompt_sha256": "4c5260c3b6dd5b056214c8cb0e0c9753080ce1d9f93be9f86d6d2b1c6e09c36f",
+  "model_candidate": "gemini-3.5-flash-lite",
+  "temperature": 0.0,
+  "thinking_config": {
+    "thinking_level": "MINIMAL"
+  },
+  "output_cap_per_claim": 1200,
+  "synthetic_dev": [],
+  "public_dev": [
+    {
+      "case_id": "live01",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:round2:live01",
+      "mode": "live",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5682,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1212,
+        "output_tokens": 263,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 3566
+      },
+      "verdict": {
+        "claim_id": "live01",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 5 triệu/suất.",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 5000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      },
+      "raw_public_drafts": [
+        {
+          "claim_id": "live01",
+          "label": "supported",
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "explanation": "The source explicitly states that the scholarship value is 5.000.000 dong per award for the specified program, year, and student cohort.",
+          "evidence": [
+            {
+              "chunk_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+              "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+              "quote": "5.000.000 đồng/suất",
+              "quote_span": {
+                "start": 482,
+                "end": 502
+              },
+              "relation": "supports"
+            }
+          ],
+          "temporal_status": "not_applicable"
+        }
+      ]
+    },
+    {
+      "case_id": "live02",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:round2:live02",
+      "mode": "live",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ]
+      ],
+      "input_bound": 5682,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1212,
+        "output_tokens": 196,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 2933
+      },
+      "verdict": {
+        "claim_id": "live02",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 7 triệu/suất.",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 7000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      },
+      "raw_public_drafts": [
+        {
+          "claim_id": "live02",
+          "label": "contradicted",
+          "reason_codes": [
+            "VALUE_MISMATCH"
+          ],
+          "explanation": "The claim states the award amount is 7 million VND per grant, but the source explicitly specifies the value is 5,000,000 VND per grant.",
+          "evidence": [
+            {
+              "chunk_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+              "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+              "quote": "- Giá trị: 5.000.000 đồng/suất.",
+              "quote_span": {
+                "start": 482,
+                "end": 502
+              },
+              "relation": "contradicts"
+            }
+          ],
+          "temporal_status": "not_applicable"
+        }
+      ]
+    },
+    {
+      "case_id": "live03",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:round2:live03",
+      "mode": "live",
+      "source_version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "shared_bundle": [
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ]
+      ],
+      "input_bound": 5331,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "SOURCE_SILENT"
+      ],
+      "temporal_status": "not_applicable",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "insufficient_evidence",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "explanation"
+          ],
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "removed_citations": 0
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1079,
+        "output_tokens": 113,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 6638
+      },
+      "verdict": {
+        "claim_id": "live03",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "SOURCE_SILENT"
+        ],
+        "explanation": "Nguồn đã kiểm tra không xác nhận nội dung này; sự im lặng không chứng minh nội dung sai.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "payment_requirement",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; thu phí. Loại phí được yêu cầu: phí giữ suất học bổng.",
+        "normalized": {
+          "text": "thu phí",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      },
+      "raw_public_drafts": [
+        {
+          "claim_id": "live03",
+          "label": "insufficient_evidence",
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "explanation": "The source bundle does not contain any evidence regarding whether a fee (phí giữ suất học bổng) is charged for the scholarship program.",
+          "evidence": [],
+          "temporal_status": "not_applicable"
+        }
+      ]
+    },
+    {
+      "case_id": "live04",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:round2:live04",
+      "mode": "live",
+      "source_version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "source_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+      "shared_bundle": [
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+          "dut_be8a0080c11e660f_f0ef96bab2007bb9"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5713,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "active",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1267,
+        "output_tokens": 308,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 7203
+      },
+      "verdict": {
+        "claim_id": "live04",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "active",
+        "field_type": "deadline",
+        "statement": "Keidanren & JCCI — 2026-2027; Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật; 12/11/2026 lúc 11h00.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-12T11:00:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "12/11/2026 lúc 11h00",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff",
+          "deadline_precision"
+        ]
+      },
+      "raw_public_drafts": [
+        {
+          "claim_id": "live04",
+          "label": "supported",
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "explanation": "The deadline for submitting applications for the Keidanren & JCCI program is supported by the text indicating it runs until 11h00 on 12/11/2026.",
+          "evidence": [
+            {
+              "chunk_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+              "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+              "quote": "Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+              "quote_span": {
+                "start": 1452,
+                "end": 1530
+              },
+              "relation": "supports"
+            }
+          ],
+          "temporal_status": "active"
+        }
+      ]
+    },
+    {
+      "case_id": "live05",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:round2:live05",
+      "mode": "live",
+      "source_version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+      "shared_bundle": [
+        [
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+          "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c002",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5627,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "expired",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1208,
+        "output_tokens": 305,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 4492
+      },
+      "verdict": {
+        "claim_id": "live05",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "expired",
+        "field_type": "deadline",
+        "statement": "Schneider Electric — ; Sinh viên năm 3 đến năm 5 tại Khoa Điện; 16/10/2026 lúc 16h30.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-10-16T16:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "16/10/2026 lúc 16h30",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff",
+          "deadline_precision"
+        ]
+      },
+      "raw_public_drafts": [
+        {
+          "claim_id": "live05",
+          "label": "supported",
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "explanation": "The source explicitly states the deadline/time for submitting application dossiers for Schneider Electric is 16h30 on 16/10/2026.",
+          "evidence": [
+            {
+              "chunk_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+              "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+              "quote": "Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+              "quote_span": {
+                "start": 534,
+                "end": 674
+              },
+              "relation": "supports"
+            }
+          ],
+          "temporal_status": "expired"
+        }
+      ]
+    },
+    {
+      "case_id": "live06",
+      "run_id": "tinchac-T08-free-tier-dev-2026-11-10:round2:live06",
+      "mode": "live",
+      "source_version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+      "source_url": "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/view",
+      "shared_bundle": [
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c001",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+          "dut_f18730b4c4454e87_be1a2356ad0f864b"
+        ],
+        [
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+          "dut_2a0b90b19b67872f_dbd836ad6b4251a7"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c001",
+          "dut_344b21e393855658_921795aab925d271"
+        ],
+        [
+          "dut_344b21e393855658_921795aab925d271_c002",
+          "dut_344b21e393855658_921795aab925d271"
+        ]
+      ],
+      "input_bound": 5647,
+      "label": "insufficient_evidence",
+      "reasons": [
+        "INVALID_CITATION"
+      ],
+      "temporal_status": "active",
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "label",
+            "reason_codes",
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "INVALID_CITATION"
+          ],
+          "removed_citations": 1
+        }
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 1293,
+        "output_tokens": 287,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 1,
+        "cache_hit": false,
+        "duration_ms": 2610
+      },
+      "verdict": {
+        "claim_id": "live06",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "INVALID_CITATION"
+        ],
+        "explanation": "Trích dẫn của bản nháp không khớp ID, phiên bản, đoạn hoặc thời điểm nguồn.",
+        "evidence": [],
+        "temporal_status": "active",
+        "field_type": "deadline",
+        "statement": "Học phí đợt 2 học kỳ I — 2026-2027; Sinh viên nộp qua BIDV; 30/11/2026 lúc 08h30.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-30T08:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "30/11/2026 lúc 08h30",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff",
+          "deadline_precision"
+        ]
+      },
+      "raw_public_drafts": [
+        {
+          "claim_id": "live06",
+          "label": "supported",
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "explanation": "The source explicitly states that the payment deadline through BIDV for tuition fees is 08h30 on November 30, 2026.",
+          "evidence": [
+            {
+              "chunk_id": "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+              "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+              "quote": "từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+              "quote_span": {
+                "start": 177,
+                "end": 234
+              },
+              "relation": "supports"
+            }
+          ],
+          "temporal_status": "active"
+        }
+      ]
+    }
+  ],
+  "round_id": 2,
+  "billing_mode": "free_tier",
+  "live_calls": 6,
+  "note": "Public DEV smoke/tuning, not a frozen benchmark or human gold. Failed rounds remain separate. Mock amounts are synthetic."
+}

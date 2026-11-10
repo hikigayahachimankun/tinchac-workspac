@@ -164,6 +164,22 @@ def cited_fact(ref, match):
             and ref.quote_span.end >= match.start + len(match.fact.quote))
 
 
+def canonical_citation(ref, bundle, matches):
+    """Repair literal formatting only at an exactly selected reviewed fact span."""
+    if citation_valid(ref, bundle):
+        return ref
+    if not any(c.isalnum() for c in ref.quote):
+        return ref
+    for match in matches:
+        exact = match.citation(ref.relation)
+        if (ref.chunk_id == exact.chunk_id and ref.version_id == exact.version_id
+                and ref.quote_span == exact.quote_span and ref.quote in match.hit.text
+                and (ref.quote in exact.quote or exact.quote in ref.quote)
+                and citation_valid(exact, bundle)):
+            return exact
+    return ref
+
+
 EXPLANATIONS = {
     'MATCHED': 'Bằng chứng đã kiểm tra hỗ trợ trường thông tin trong phạm vi này.',
     'VALUE_MISMATCH': 'Nguồn ghi giá trị khác cho cùng trường và phạm vi.',
@@ -191,13 +207,17 @@ def validate_verdicts(drafts: list[VerdictDraft], claims: list[Claim], bundles: 
     results = []
     for claim in claims:
         draft, bundle, report = draft_map[claim.claim_id], by_id[claim.claim_id], reports[claim.claim_id]
-        valid = [e for e in draft.evidence if citation_valid(e, bundle)]
-        removed = len(draft.evidence) - len(valid)
         matches = scoped_facts(claim, bundle, deadlines=claim.field_type == 'current_availability')
+        aligned = [canonical_citation(e, bundle, matches) for e in draft.evidence]
+        canonicalized = sum(a != e for a, e in zip(aligned, draft.evidence))
+        valid = [e for e in aligned if citation_valid(e, bundle)]
+        removed = len(draft.evidence) - len(valid)
         relations = [fact_relation(claim, m.fact) for m in matches]
         label = draft.label
         reason = None
         checks = ['bundle_identity']
+        if canonicalized:
+            checks.append('quote_canonicalized')
         if valid:
             checks += ['quote_exact', 'source_available']
         if any(cited_fact(e, m) for e in valid for m in matches):
@@ -250,7 +270,8 @@ def validate_verdicts(drafts: list[VerdictDraft], claims: list[Claim], bundles: 
         changes = [key for key in VerdictDraft.model_fields if getattr(draft, key) != getattr(verdict, key)]
         entry = {'claim_index': len(results), 'raw_prediction': draft.label.value,
                  'prediction': verdict.label.value, 'guard_changes': changes,
-                 'reason_codes': [reason], 'removed_citations': removed}
+                 'reason_codes': [reason], 'removed_citations': removed,
+                 'canonicalized_citations': canonicalized}
         if audit is not None:
             audit.append(entry)
         logger.info('verification_guard %s', entry)

@@ -1,0 +1,368 @@
+{
+  "mode": "offline_guard_replay",
+  "model_calls": 0,
+  "recording_hash": "8f839d6b47c10809cb4a1b047cffc71dcee8300fa53b97ac42477b6968ddd454",
+  "note": "Recomputed guard only from actual public DEV drafts. Original recording retained. No gold or benchmark metrics.",
+  "rows": [
+    {
+      "case_id": "live01",
+      "original_label": "insufficient_evidence",
+      "verdict": {
+        "claim_id": "live01",
+        "label": "supported",
+        "reason_codes": [
+          "MATCHED"
+        ],
+        "explanation": "Bằng chứng đã kiểm tra hỗ trợ trường thông tin trong phạm vi này.",
+        "evidence": [
+          {
+            "chunk_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+            "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+            "quote": "5.000.000 đồng/suất.",
+            "quote_span": {
+              "start": 482,
+              "end": 502
+            },
+            "relation": "supports"
+          }
+        ],
+        "temporal_status": "not_applicable",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 5 triệu/suất.",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 5000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "quote_canonicalized",
+          "quote_exact",
+          "source_available",
+          "scope_compatible",
+          "reviewed_fact_relation",
+          "source_release_cutoff"
+        ]
+      },
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0,
+          "canonicalized_citations": 1
+        }
+      ]
+    },
+    {
+      "case_id": "live02",
+      "original_label": "insufficient_evidence",
+      "verdict": {
+        "claim_id": "live02",
+        "label": "contradicted",
+        "reason_codes": [
+          "VALUE_MISMATCH"
+        ],
+        "explanation": "Nguồn ghi giá trị khác cho cùng trường và phạm vi.",
+        "evidence": [
+          {
+            "chunk_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9_c001",
+            "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+            "quote": "5.000.000 đồng/suất.",
+            "quote_span": {
+              "start": 482,
+              "end": 502
+            },
+            "relation": "contradicts"
+          }
+        ],
+        "temporal_status": "not_applicable",
+        "field_type": "award_amount",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; 7 triệu/suất.",
+        "normalized": {
+          "text": null,
+          "money": {
+            "amount": 7000000,
+            "currency": "VND",
+            "basis": "per_award"
+          },
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "quote_canonicalized",
+          "quote_exact",
+          "source_available",
+          "scope_compatible",
+          "reviewed_fact_relation",
+          "source_release_cutoff"
+        ]
+      },
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "contradicted",
+          "prediction": "contradicted",
+          "guard_changes": [
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "VALUE_MISMATCH"
+          ],
+          "removed_citations": 0,
+          "canonicalized_citations": 1
+        }
+      ]
+    },
+    {
+      "case_id": "live03",
+      "original_label": "insufficient_evidence",
+      "verdict": {
+        "claim_id": "live03",
+        "label": "insufficient_evidence",
+        "reason_codes": [
+          "SOURCE_SILENT"
+        ],
+        "explanation": "Nguồn đã kiểm tra không xác nhận nội dung này; sự im lặng không chứng minh nội dung sai.",
+        "evidence": [],
+        "temporal_status": "not_applicable",
+        "field_type": "payment_requirement",
+        "statement": "Agribank Nam Đà Nẵng - Chắp cánh ước mơ 2026 — 2025-2026; Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn; thu phí. Loại phí được yêu cầu: phí giữ suất học bổng.",
+        "normalized": {
+          "text": "thu phí",
+          "money": null,
+          "date": null,
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "source_release_cutoff"
+        ]
+      },
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "insufficient_evidence",
+          "prediction": "insufficient_evidence",
+          "guard_changes": [
+            "explanation"
+          ],
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "removed_citations": 0,
+          "canonicalized_citations": 0
+        }
+      ]
+    },
+    {
+      "case_id": "live04",
+      "original_label": "insufficient_evidence",
+      "verdict": {
+        "claim_id": "live04",
+        "label": "supported",
+        "reason_codes": [
+          "MATCHED"
+        ],
+        "explanation": "Bằng chứng đã kiểm tra hỗ trợ trường thông tin trong phạm vi này.",
+        "evidence": [
+          {
+            "chunk_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7_c001",
+            "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+            "quote": "Thời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+            "quote_span": {
+              "start": 1452,
+              "end": 1530
+            },
+            "relation": "supports"
+          }
+        ],
+        "temporal_status": "active",
+        "field_type": "deadline",
+        "statement": "Keidanren & JCCI — 2026-2027; Sinh viên bậc đại học có khả năng và chứng chỉ tiếng Nhật; 12/11/2026 lúc 11h00.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-12T11:00:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "12/11/2026 lúc 11h00",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "quote_canonicalized",
+          "quote_exact",
+          "source_available",
+          "scope_compatible",
+          "reviewed_fact_relation",
+          "source_release_cutoff",
+          "deadline_precision"
+        ]
+      },
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0,
+          "canonicalized_citations": 1
+        }
+      ]
+    },
+    {
+      "case_id": "live05",
+      "original_label": "insufficient_evidence",
+      "verdict": {
+        "claim_id": "live05",
+        "label": "supported",
+        "reason_codes": [
+          "MATCHED"
+        ],
+        "explanation": "Bằng chứng đã kiểm tra hỗ trợ trường thông tin trong phạm vi này.",
+        "evidence": [
+          {
+            "chunk_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6_c001",
+            "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+            "quote": "🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+            "quote_span": {
+              "start": 534,
+              "end": 674
+            },
+            "relation": "supports"
+          }
+        ],
+        "temporal_status": "expired",
+        "field_type": "deadline",
+        "statement": "Schneider Electric — ; Sinh viên năm 3 đến năm 5 tại Khoa Điện; 16/10/2026 lúc 16h30.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-10-16T16:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "16/10/2026 lúc 16h30",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "quote_canonicalized",
+          "quote_exact",
+          "source_available",
+          "scope_compatible",
+          "reviewed_fact_relation",
+          "source_release_cutoff",
+          "deadline_precision"
+        ]
+      },
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0,
+          "canonicalized_citations": 1
+        }
+      ]
+    },
+    {
+      "case_id": "live06",
+      "original_label": "insufficient_evidence",
+      "verdict": {
+        "claim_id": "live06",
+        "label": "supported",
+        "reason_codes": [
+          "MATCHED"
+        ],
+        "explanation": "Bằng chứng đã kiểm tra hỗ trợ trường thông tin trong phạm vi này.",
+        "evidence": [
+          {
+            "chunk_id": "dut_f18730b4c4454e87_be1a2356ad0f864b_c002",
+            "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+            "quote": "- Qua BIDV: từ ngày 04/11/2026 đến 08h30 ngày 30/11/2026.",
+            "quote_span": {
+              "start": 177,
+              "end": 234
+            },
+            "relation": "supports"
+          }
+        ],
+        "temporal_status": "active",
+        "field_type": "deadline",
+        "statement": "Học phí đợt 2 học kỳ I — 2026-2027; Sinh viên nộp qua BIDV; 30/11/2026 lúc 08h30.",
+        "normalized": {
+          "text": null,
+          "money": null,
+          "date": {
+            "value": "2026-11-30T08:30:00+07:00",
+            "precision": "datetime",
+            "timezone": "Asia/Ho_Chi_Minh",
+            "raw": "30/11/2026 lúc 08h30",
+            "ambiguous": false
+          },
+          "url": null
+        },
+        "checks_passed": [
+          "bundle_identity",
+          "quote_canonicalized",
+          "quote_exact",
+          "source_available",
+          "scope_compatible",
+          "reviewed_fact_relation",
+          "source_release_cutoff",
+          "deadline_precision"
+        ]
+      },
+      "guard": [
+        {
+          "claim_index": 0,
+          "raw_prediction": "supported",
+          "prediction": "supported",
+          "guard_changes": [
+            "explanation",
+            "evidence"
+          ],
+          "reason_codes": [
+            "MATCHED"
+          ],
+          "removed_citations": 0,
+          "canonicalized_citations": 1
+        }
+      ]
+    }
+  ]
+}

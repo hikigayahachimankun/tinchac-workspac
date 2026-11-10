@@ -1,0 +1,129 @@
+{
+  "mode": "public_dev_http_smoke",
+  "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+  "as_of": "2026-11-10T00:00:00+07:00",
+  "cases": [
+    {
+      "case_id": "http01",
+      "family_id": "schneider",
+      "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "input_text": "⚡ 10 SUẤT HỌC BỔNG SCHNEIDER ELECTRIC - CƠ HỘI DÀNH CHO SINH VIÊN BÁCH KHOA\n5.000.000 đồng/suất\n🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh",
+      "source_fields": [
+        "award_amount",
+        "deadline"
+      ]
+    },
+    {
+      "case_id": "http02",
+      "family_id": "keidanren_jcci",
+      "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "input_text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG KEIDANREN & JCCI NĂM HỌC 2026-2027\n7.000.000 đồng/suất.\nThời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.",
+      "source_fields": [
+        "award_amount",
+        "deadline"
+      ]
+    },
+    {
+      "case_id": "http03",
+      "family_id": "toyota",
+      "version_id": "dut_344b21e393855658_921795aab925d271",
+      "input_text": "🎓 HỌC BỔNG TOYOTA NĂM HỌC 2026-2027\nHọc bổng Đồng hành: 01 suất, trị giá 25.000.000 đồng.\n1.2. Học bổng Đồng hành\n- Sinh viên có điểm trung bình học tập năm học 2025-2026 cao nhất trong số các sinh viên do Nhà trường đề xuất.\n- Trường hợp kết quả học tập bằng nhau, thứ tự ưu tiên được xác định như sau:\na) Có thành tích trong nghiên cứu khoa học; đạt giải các cuộc thi hoặc đạt giải thưởng cấp quốc gia, quốc tế;\nb) Có hoàn cảnh khó khăn hoặc là người dân tộc thiểu số.",
+      "source_fields": [
+        "award_amount",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http04",
+      "family_id": "agribank",
+      "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "input_text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG “AGRIBANK NAM ĐÀ NẴNG - CHẮP CÁNH ƯỚC MƠ” NĂM 2026\n5.000.000 đồng/suất.\nThời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).",
+      "source_fields": [
+        "award_amount",
+        "deadline"
+      ]
+    },
+    {
+      "case_id": "http05",
+      "family_id": "tuition_hki_2026_dot2",
+      "version_id": "dut_f18730b4c4454e87_be1a2356ad0f864b",
+      "input_text": "Thông báo gia hạn thời gian thu học phí đợt 2 học kỳ I năm học 2026-2027\n+ Số tiền học phí phải nộp đợt 2 bằng 40% học phí học kỳ I, năm học 2026-2027. Trường hợp sinh viên chưa hoàn thành nghĩa vụ nộp 60% học phí đợt 1 thì phải nộp 100% học phí học kỳ I, năm học 2026-2027;\n- Sinh viên khóa 2019 đến khóa 2026: nộp qua tài khoản Ngân hàng tích hợp cùng thẻ sinh viên (Ngân hàng BIDV cho khóa 2019-2022, Ngân hàng VietinBank cho khóa 2023-2026). Nhà trường phối hợp với Ngân hàng thực hiện thu tự động.",
+      "source_fields": [
+        "payment_requirement",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http06",
+      "family_id": "schneider",
+      "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "input_text": "⚡ 10 SUẤT HỌC BỔNG SCHNEIDER ELECTRIC - CƠ HỘI DÀNH CHO SINH VIÊN BÁCH KHOA\n5.000.000 đồng/suất\n🔹 Đối tượng: Sinh viên năm 3 đến năm 5 tại Khoa Điện, đáp ứng các tiêu chí về học tập, hoạt động học thuật, ngoại khóa và định hướng nghề nghiệp.",
+      "source_fields": [
+        "award_amount",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http07",
+      "family_id": "keidanren_jcci",
+      "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "input_text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG KEIDANREN & JCCI NĂM HỌC 2026-2027\n7.000.000 đồng/suất.\n- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+      "source_fields": [
+        "award_amount",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http08",
+      "family_id": "toyota",
+      "version_id": "dut_344b21e393855658_921795aab925d271",
+      "input_text": "🎓 HỌC BỔNG TOYOTA NĂM HỌC 2026-2027\nHọc bổng Tiếp sức: 09 suất, mỗi suất trị giá 6.000.000 đồng, gồm:\n+ 08 suất dành cho nhóm ngành Kỹ thuật Ô tô, Kỹ thuật Cơ khí;\n+ 01 suất dành cho ngành Môi trường.\n1.1. Học bổng Tiếp sức\n- Là sinh viên đang học 02 năm cuối thuộc các ngành, chuyên ngành sau: Kỹ thuật Ô tô, Kỹ thuật Cơ khí và Môi trường; ưu tiên sinh viên thuộc Khoa Cơ khí Giao thông và Năng lượng.\n- Có điểm trung bình học tập của năm học 2025-2026 từ 8,0 trở lên theo thang điểm 10 hoặc từ 3,2 trở lên theo thang điểm 4.\n- Có kết quả rèn luyện năm học 2025-2026 được xếp loại Tốt trở lên.\n- Ưu tiên sinh viên thuộc một trong các trường hợp sau:\na) Có hoàn cảnh khó khăn;\nb) Là người dân tộc thiểu số;\nc) Có thành tích trong nghiên cứu khoa học.",
+      "source_fields": [
+        "award_amount",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http09",
+      "family_id": "agribank",
+      "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "input_text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG “AGRIBANK NAM ĐÀ NẴNG - CHẮP CÁNH ƯỚC MƠ” NĂM 2026\n5.000.000 đồng/suất.\n- Đối tượng: Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn, kết quả học tập và rèn luyện năm học 2025–2026 đạt từ loại Khá trở lên, tích cực tham gia hoạt động tình nguyện, vì cộng đồng và chưa nhận học bổng hoặc khoản hỗ trợ ngoài ngân sách khác tính đến thời điểm xét học bổng.",
+      "source_fields": [
+        "award_amount",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http10",
+      "family_id": "schneider",
+      "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "input_text": "⚡ 10 SUẤT HỌC BỔNG SCHNEIDER ELECTRIC - CƠ HỘI DÀNH CHO SINH VIÊN BÁCH KHOA\n🔹 Thời gian tiếp nhận hồ sơ: Từ 8h00 đến 16h30, ngày 16/10/2026 tại Phòng Công tác Sinh viên (Phòng S06.08) gặp chuyên viên Đới Phương Thanh\n🔹 Đối tượng: Sinh viên năm 3 đến năm 5 tại Khoa Điện, đáp ứng các tiêu chí về học tập, hoạt động học thuật, ngoại khóa và định hướng nghề nghiệp.",
+      "source_fields": [
+        "deadline",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http11",
+      "family_id": "keidanren_jcci",
+      "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "input_text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG KEIDANREN & JCCI NĂM HỌC 2026-2027\nThời gian: Từ 08h00 đến 11h00, các ngày từ 10/11/2026 đến hết ngày 12/11/2026.\n- Sinh viên bậc đại học thuộc bất kỳ ngành học nào.\n- Có khả năng sử dụng tiếng Nhật và có chứng chỉ tiếng Nhật.",
+      "source_fields": [
+        "deadline",
+        "eligibility"
+      ]
+    },
+    {
+      "case_id": "http12",
+      "family_id": "agribank",
+      "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "input_text": "THÔNG BÁO TIẾP NHẬN HỒ SƠ XÉT CẤP HỌC BỔNG “AGRIBANK NAM ĐÀ NẴNG - CHẮP CÁNH ƯỚC MƠ” NĂM 2026\nThời gian: Từ 14h00 đến 16h00, ngày 09/11/2026 (thứ Hai) và 10/11/2026 (thứ Ba).\n- Đối tượng: Sinh viên hệ chính quy có hoàn cảnh gia đình khó khăn, kết quả học tập và rèn luyện năm học 2025–2026 đạt từ loại Khá trở lên, tích cực tham gia hoạt động tình nguyện, vì cộng đồng và chưa nhận học bổng hoặc khoản hỗ trợ ngoài ngân sách khác tính đến thời điểm xét học bổng.",
+      "source_fields": [
+        "deadline",
+        "eligibility"
+      ]
+    }
+  ],
+  "human_gold": false,
+  "note": "Source-derived public DEV across exposed families. Field list describes input, not human-annotated extraction gold."
+}

@@ -72,7 +72,9 @@ async def synthetic_cases():
     return rows
 
 
-async def run_public_cases(settings, *, live=False, case_id=None):
+async def run_public_cases(settings, *, live=False, case_id=None, round_id=1):
+    if round_id not in (1,2):
+        raise ValueError('At most two public dev rounds before freeze')
     sources,chunks,manifest=load_corpus(settings.corpus_dir)
     retriever=Retriever(sources,chunks,manifest)
     cases=json.loads(LIVE_CASES.read_text())['cases']
@@ -93,7 +95,22 @@ async def run_public_cases(settings, *, live=False, case_id=None):
         text=context_text([claim],[bundle],[report])
         bound=len((text+PROMPT.read_text()+json.dumps(provider_schema(VerificationOutput))).encode())+1024
         run_id=str(uuid4())
+        if live and settings.llm_billing_mode == 'free_tier':
+            prefix = 'tinchac-T08-free-tier-dev-2026-11-10'
+            run_id = f'{prefix}:{case["case_id"]}' if round_id == 1 else f'{prefix}:round2:{case["case_id"]}'
+            from backend.app.services.budget import Budget
+            with Budget(settings).db() as db:
+                if db.execute("SELECT COUNT(*) FROM llm_attempts WHERE json_extract(metadata,'$.run_id')=?",(run_id,)).fetchone()[0]:
+                    raise ValueError('Public Free Tier dev case already attempted; do not reset/replay as fresh')
         adapter=GeminiAdapter(settings,run_id=run_id,max_calls=3)
+        raw_public = []
+        if live:
+            generate = adapter.generate
+            async def capture(*, _generate=generate, **kwargs):
+                output = await _generate(**kwargs)
+                raw_public.extend(d.model_dump(mode='json') for d in output.drafts)
+                return output
+            adapter.generate = capture  # Only this explicit public-dev CLI, never private HTTP logs.
         if not live:
             draft=mock_draft(claim,bundle)
             async def invoke(contents,config):
@@ -106,7 +123,8 @@ async def run_public_cases(settings, *, live=False, case_id=None):
             result=await verify_extraction(uuid4(),extraction,[bundle],llm=adapter,
                 run_mode='live' if live else 'replay',corpus_updated_at=datetime.fromisoformat(manifest['build_at']),public=False,audit=audit)
         except ServiceError as exc:
-            rows.append({'case_id':case['case_id'],'run_id':run_id,'error':exc.detail.code.value,'input_bound':bound})
+            rows.append({'case_id':case['case_id'],'run_id':run_id,'error':exc.detail.code.value,
+                         'error_details':exc.detail.details,'input_bound':bound})
             # Owner must inspect failed/unknown reservations before continuing.
             break
         v=result.claims[0]
@@ -114,21 +132,24 @@ async def run_public_cases(settings, *, live=False, case_id=None):
             'source_version_id':case['source_version_id'],'source_url':case['source_url'],
             'shared_bundle':[(h.chunk_id,h.version_id) for h in bundle.hits], 'input_bound':bound,
             'label':v.label.value,'reasons':[r.value for r in v.reason_codes], 'temporal_status':v.temporal_status.value,
-            'guard':audit,'usage':result.usage.model_dump(mode='json')})
+            'guard':audit,'usage':result.usage.model_dump(mode='json'),
+            **({'verdict':v.model_dump(mode='json'),'raw_public_drafts':raw_public} if live else {})})
     return rows
 
 
-async def run(settings, *, live=False, case_id=None):
+async def run(settings, *, live=False, case_id=None, round_id=1):
     if live and (settings.app_mode!='live' or not settings.gemini_api_key.get_secret_value()):
         print('Owner live run requires D02 verified, APP_MODE=live and a server-side key.')
         return 2
     initialize(settings.database_path)
     synthetic=[] if live else await synthetic_cases()
-    rows=await run_public_cases(settings,live=live,case_id=case_id)
+    rows=await run_public_cases(settings,live=live,case_id=case_id,round_id=round_id)
     report={'mode':'live' if live else 'offline_mock','prompt_sha256':canonical_hash(PROMPT.read_text()),
             'model_candidate':settings.llm_model,'temperature':settings.llm_temperature,'thinking_config':thinking_config(settings.llm_model).model_dump(mode='json', exclude_none=True),
             'output_cap_per_claim':1200,'synthetic_dev':synthetic,'public_dev':rows,
-            'live_calls':None if live else 0,'note':'Mock ledger/token amounts are synthetic. D02/live remain owner verified.'}
+            'round_id':round_id,'billing_mode':settings.llm_billing_mode,
+            'live_calls':sum(r.get('usage',{}).get('attempts',0) for r in rows) if live and not any('error' in r for r in rows) else None,
+            'note':'Public DEV smoke/tuning, not a frozen benchmark or human gold. Failed rounds remain separate. Mock amounts are synthetic.'}
     print(json.dumps(report,ensure_ascii=False,indent=2))
     return int(any('error' in row for row in rows) or any(not c['passed'] for c in synthetic))
 
@@ -137,10 +158,23 @@ def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--live',action='store_true',help='Owner only, after D02; uses durable T05 dev budget')
     parser.add_argument('--case',choices=[f'live{i:02d}' for i in range(1,7)])
+    parser.add_argument('--round',type=int,choices=(1,2),default=1)
+    parser.add_argument('--secret-file',type=Path)
+    parser.add_argument('--readiness-report',type=Path)
+    parser.add_argument('--output',type=Path,help='New public-dev report; existing files are refused')
     args=parser.parse_args()
     try:
         if args.live:
             settings=Settings(_env_file=None)
+            from scripts.preflight import account_mode
+            mode=account_mode(args.readiness_report,settings.llm_model)
+            if mode is None:
+                print('Public dev blocked: current account authorization required.')
+                return 2
+            settings.llm_billing_mode=mode
+            if args.secret_file:
+                from scripts.provider_check import load_key
+                settings.gemini_api_key=load_key(args.secret_file)
         else:
             # Ignore all process provider secrets. A fresh local mock ledger never spends account money.
             import tempfile
@@ -148,7 +182,11 @@ def main():
                 settings=Settings(_env_file=None,app_mode='live',gemini_api_key='offline-mock-key',
                                   database_path=Path(directory)/'ledger.db')
                 return asyncio.run(run(settings,case_id=args.case))
-        return asyncio.run(run(settings,live=True,case_id=args.case))
+        if args.output:
+            from contextlib import redirect_stdout
+            with args.output.open('x') as stream, redirect_stdout(stream):
+                return asyncio.run(run(settings,live=True,case_id=args.case,round_id=args.round))
+        return asyncio.run(run(settings,live=True,case_id=args.case,round_id=args.round))
     except Exception:
         print('Verification dev stopped. Check snapshot/config/ledger locally; raw exceptions are not printed.')
         return 2

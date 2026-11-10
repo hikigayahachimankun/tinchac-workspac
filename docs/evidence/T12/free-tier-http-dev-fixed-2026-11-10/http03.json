@@ -1,0 +1,19 @@
+{
+  "case_id": "http03",
+  "record": {
+    "schema_version": "1.0",
+    "check_id": "92292da6-a213-4a25-b6f3-567538ac3dde",
+    "status": "failed",
+    "result": null,
+    "error": {
+      "code": "PROVIDER_BAD_OUTPUT",
+      "message": "Usage lần gọi trước chưa rõ; cần đối soát.",
+      "retryable": false,
+      "details": {}
+    },
+    "created_at": "2026-11-10T09:34:49.803981Z",
+    "updated_at": "2026-11-10T09:35:00.779482Z",
+    "expires_at": "2026-11-11T09:34:49.803981Z"
+  },
+  "checked_citations": 0
+}

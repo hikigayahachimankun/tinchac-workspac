@@ -12,12 +12,12 @@ Recovery 10/11/2026, giờ Việt Nam. Quyền bảo trì/commit/push và nghi�
 | T05 | Maintainer | done | Free Tier do chủ tài khoản xác nhận; preflight thật3/3,859input/1126output,0USD ước tính; cap/quota/no-retry/refusal bền vững đã kiểm (D24) | [T05](handoffs/T05.md) |
 | T06 | Maintainer | done | OCR local thật, confirm/edit/delete và browser đạt; nghiên cứu ảnh test/human correction thuộc T12 | [T06](handoffs/T06.md) |
 | T07 | Maintainer | done | Corpus validate: 6 sources/7 chunks (5 approved); retrieval regression và tái lập đạt; quy mô dữ liệu là gate T02/T09 | [T07](handoffs/T07.md) |
-| T08 | Maintainer | blocked | Đã nối production HTTP, 5 test mới và full 329 tests đạt; thiếu Gemini live/public acceptance D02 | [T08](handoffs/T08.md) |
+| T08 | Maintainer | blocked | Preflight thật đạt; 2 DEV rounds và replay guard đã lưu; HTTP sửa context/ID, còn503unknown và thiếu full live acceptance (D25) | [T08](handoffs/T08.md) |
 | T09 | Maintainer / người gán nhãn | blocked | 15 dev drafts, 5 dev/0 test family, 0 human gold, NOT frozen; D17 đã duyệt | [T09](handoffs/T09.md) |
-| T10 | Maintainer | blocked | UI fixture/metadata các mode, OCR, keyboard và HTTP integration đạt; nghiệm thu provider live còn D02 | [T10](handoffs/T10.md) |
-| T11 | Maintainer | blocked | D17/preparation/input+temporal pins/scorer đạt offline, fixture/replay 27/27; live dev còn D02 | [T11](handoffs/T11.md) |
-| T12 | Maintainer / người thử OCR | blocked | Production HTTP scripted regression đạt; 20 ảnh dev/5 family đã đo (CER 29/1812); 0 test, human correction/live D02 chưa có | [T12](handoffs/T12.md) |
-| T13 | Maintainer / người chấm evidence | blocked | Chưa benchmark; thiếu holdout/human gold/freeze/D02 và chấm evidence thật | [T13](handoffs/T13.md) |
+| T10 | Maintainer | blocked | UI/fixture/browser và HTTP integration offline đạt; HTTP thật mới2ca hoàn tất/run, chưa đủ nghiệm thu live/UI | [T10](handoffs/T10.md) |
+| T11 | Maintainer | blocked | D17/scorer/pins/shared-context đạt offline; model preflight thật đạt; chưa đủ dev gold/test families/freeze để benchmark | [T11](handoffs/T11.md) |
+| T12 | Maintainer / người thử OCR | blocked | HTTP thật run1:1/12, run2:2/12 rồi503unknown; 20ảnh dev CER29/1812; còn0heldout/human correction và full live gate | [T12](handoffs/T12.md) |
+| T13 | Maintainer / người chấm evidence | blocked | Chưa benchmark; preflight đã đạt, còn holdout/human gold/freeze, provider reliability và chấm evidence thật | [T13](handoffs/T13.md) |
 | T14 | Maintainer / người tham gia tự nguyện | blocked | Consent/protocol/48 planned rows sẵn; actual 0 volunteers, chưa có task/answer-key review | [T14](handoffs/T14.md) |
 | T15 | Maintainer | blocked | Static serving/runbook và built browser 2/2 đạt; thiếu cold-start máy thứ hai/video/quyền phân phối | [T15](handoffs/T15.md) |
 | T16 | Maintainer / đại diện dự thi | blocked | Draft/AI disclosure/checklist sẵn; form/rules HTTP 200 đã kiểm; identity/evidence thực/benchmark còn thiếu | [T16](handoffs/T16.md) |

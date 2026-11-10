@@ -1,0 +1,125 @@
+{
+  "case_id": "http02",
+  "record": {
+    "schema_version": "1.0",
+    "check_id": "a74d8563-8267-4bc0-bc9f-2c293535fccc",
+    "status": "completed",
+    "result": {
+      "schema_version": "1.0",
+      "check_id": "a74d8563-8267-4bc0-bc9f-2c293535fccc",
+      "claims": [
+        {
+          "claim_id": "c1",
+          "label": "insufficient_evidence",
+          "reason_codes": [
+            "SOURCE_SILENT"
+          ],
+          "explanation": "Nguồn đã kiểm tra không xác nhận nội dung này; sự im lặng không chứng minh nội dung sai.",
+          "evidence": [],
+          "temporal_status": "not_applicable",
+          "field_type": "program",
+          "statement": "Học bổng KEIDANREN & JCCI năm học 2026-2027",
+          "normalized": {
+            "text": "KEIDANREN & JCCI",
+            "money": null,
+            "date": null,
+            "url": null
+          },
+          "checks_passed": [
+            "bundle_identity",
+            "source_release_cutoff"
+          ]
+        },
+        {
+          "claim_id": "c2",
+          "label": "insufficient_evidence",
+          "reason_codes": [
+            "SCOPE_UNCLEAR"
+          ],
+          "explanation": "Chưa khớp chương trình, năm, đối tượng hoặc loại phí.",
+          "evidence": [],
+          "temporal_status": "not_applicable",
+          "field_type": "award_amount",
+          "statement": "Mức học bổng là 7.000.000 đồng/suất",
+          "normalized": {
+            "text": null,
+            "money": {
+              "amount": 7000000,
+              "currency": "VND",
+              "basis": "per_award"
+            },
+            "date": null,
+            "url": null
+          },
+          "checks_passed": [
+            "bundle_identity",
+            "source_release_cutoff"
+          ]
+        },
+        {
+          "claim_id": "c3",
+          "label": "insufficient_evidence",
+          "reason_codes": [
+            "SCOPE_UNCLEAR"
+          ],
+          "explanation": "Chưa khớp chương trình, năm, đối tượng hoặc loại phí.",
+          "evidence": [],
+          "temporal_status": "unknown",
+          "field_type": "deadline",
+          "statement": "Thời hạn kết thúc tiếp nhận hồ sơ là ngày 12/11/2026",
+          "normalized": {
+            "text": null,
+            "money": null,
+            "date": {
+              "value": "2026-11-12",
+              "precision": "date",
+              "timezone": "Asia/Ho_Chi_Minh",
+              "raw": "12/11/2026",
+              "ambiguous": false
+            },
+            "url": null
+          },
+          "checks_passed": [
+            "bundle_identity",
+            "source_release_cutoff"
+          ]
+        }
+      ],
+      "summary": {
+        "supported": 0,
+        "contradicted": 0,
+        "insufficient_evidence": 3,
+        "message": "Có chi tiết chưa đủ bằng chứng."
+      },
+      "sources": [],
+      "as_of": "2026-11-09T17:00:00Z",
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+      "corpus_updated_at": "2026-11-09T13:11:05.702010Z",
+      "warnings": [
+        "Context model dùng trích đoạn tối đa 220 ký tự quanh fact cùng scope; phần khác không gửi. Bundle gốc giữ nguyên cho guard."
+      ],
+      "run_mode": "live",
+      "next_steps": [
+        "Mở nguồn và kiểm tra đúng chương trình, năm, đối tượng trước khi làm theo thông báo.",
+        "TinChắc không xác minh người gửi hoặc chủ tài khoản; xác nhận yêu cầu chuyển tiền qua kênh chính thức.",
+        "Hỏi đơn vị công bố về nội dung chưa xác minh; bổ sung năm, loại phí hoặc nguồn còn thiếu."
+      ],
+      "usage": {
+        "provider": "gemini",
+        "model": "gemini-3.5-flash-lite",
+        "input_tokens": 926,
+        "output_tokens": 864,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "attempts": 2,
+        "cache_hit": false,
+        "duration_ms": 10423
+      }
+    },
+    "error": null,
+    "created_at": "2026-11-10T09:34:39.274387Z",
+    "updated_at": "2026-11-10T09:34:49.780280Z",
+    "expires_at": "2026-11-11T09:34:39.274387Z"
+  },
+  "checked_citations": 0
+}

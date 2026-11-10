@@ -7,10 +7,10 @@ from uuid import UUID
 
 from ..models import (CheckCreate, CheckResult, Claim, ExtractionResult, RetrievalBundle,
                       RunMode, TemporalCheckReport, VerificationOutput)
-from .evidence import eligible_hits, join_inputs, validate_verdicts
+from .evidence import eligible_hits, join_inputs, scoped_facts, validate_verdicts
 from .errors import ServiceError
 from .extract import CONTACTS, extract_claims, redact
-from .normalization import normalize_claim, scope_compatible
+from .normalization import normalize_claim
 from .llm import GeminiAdapter
 from .render import build_result, combine_usage
 from .retrieve import Retriever
@@ -50,7 +50,13 @@ def context_text(claims, bundles, temporal):
 
     for claim, bundle, report in zip(claims, bundles, temporal):
         hits = []
+        matches = scoped_facts(claim, bundle, deadlines=claim.field_type == 'current_availability')
         for hit in eligible_hits(bundle):
+            facts = [m for m in matches if m.hit.chunk_id == hit.chunk_id and m.hit.version_id == hit.version_id]
+            # No reviewed same-field/scope fact means no evidence excerpt to send.
+            # The full original bundle still drives silence/scope/conflict guards.
+            if not facts:
+                continue
             identity = (hit.chunk_id, hit.version_id)
             if identity not in hit_ids:
                 hit_ids[identity] = len(headers)
@@ -58,11 +64,7 @@ def context_text(claims, bundles, temporal):
                     'available_at': hit.source.available_at.isoformat(),
                     **{k: getattr(hit.source, k).model_dump(exclude={'raw'}) for k in ('effective_from', 'effective_to') if getattr(hit.source, k)},
                     **({'supersedes': hit.source.supersedes_version_id} if hit.source.supersedes_version_id else {})})
-            facts = [f for f in hit.source.facts if f.field_type ==
-                     ('deadline' if claim.field_type == 'current_availability' else claim.field_type)
-                     and scope_compatible(claim.scope, f.scope)
-                     and f.quote in hit.text]
-            position = hit.text.find(facts[0].quote) if facts else 0
+            position = facts[0].start if facts else 0
             offset = max(0, position - 40)
             excerpt = hit.text[offset:offset + 220] if facts else ''
             # Source text may contain contact data. Keep length/offsets when masking.
@@ -71,10 +73,12 @@ def context_text(claims, bundles, temporal):
                 safe[match.start():match.end()] = '*' * (match.end() - match.start())
             hits.append({'hit': hit_ids[identity], 'offset': offset,
                          'text': ''.join(safe),
-                         'facts': [{'field': f.field_type.value, 'value': f.normalized.model_dump(exclude_none=True, exclude={'date': {'raw'}}),
-                                    'scope': scope_ref(f.scope)} for f in facts
-                                   if offset <= hit.text.find(f.quote) and hit.text.find(f.quote) + len(f.quote) <= offset + len(excerpt)]})
+                         'facts': [{'field': m.fact.field_type.value, 'value': m.fact.normalized.model_dump(exclude_none=True, exclude={'date': {'raw'}}),
+                                    'scope': scope_ref(m.fact.scope), 'q':[m.start, m.start + len(m.fact.quote)]} for m in facts
+                                   if offset <= m.start and m.start + len(m.fact.quote) <= offset + len(excerpt)]})
         data = claim.model_dump(exclude={'input_span': True, 'scope': True, 'normalized': {'date': {'raw'}}},exclude_none=True)
+        if data['normalized'].get('text') == data['statement']:
+            data['normalized'].pop('text')  # Lossless default documented in the prompt.
         if claim.raw_value in claim.statement:
             data.pop('raw_value')
         if not data['ambiguities']:
@@ -85,9 +89,24 @@ def context_text(claims, bundles, temporal):
             time_data.update(needs_more_evidence=True, reason_codes=[r.value for r in report.reason_codes])
         rows.append({'claim': data, 'hits': hits,
                      'temporal': time_data})
-    # Redact structured claims/facts too. Offsets are only used in length-preserving source excerpts.
-    return redact(json.dumps({'as_of': bundles[0].as_of.isoformat(), 'scopes': scopes, 'hits': headers, 'claims': rows},
-                             ensure_ascii=False, separators=(',', ':')))
+    # Redact untrusted text values, never opaque IDs or canonical dates/numeric values.
+    # Redacting serialized JSON can corrupt a source ID that happens to contain digits.
+    def safe_values(value):
+        if isinstance(value, list):
+            return [safe_values(item) for item in value]
+        if isinstance(value, dict):
+            return {key: redact(item) if key in {'statement','raw_value','url','program','audience','cohort','fee_kind'}
+                    and isinstance(item,str) else safe_values(item)
+                    for key,item in value.items()}
+        return value
+    payload = {'as_of': bundles[0].as_of.isoformat(), 'scopes': scopes, 'hits': headers, 'claims': rows}
+    # Excerpt text is already masked with equal length above; structured normalized
+    # text must be redacted separately without altering quote offsets.
+    for row in rows:
+        for normalized in [row['claim']['normalized']] + [f['value'] for h in row['hits'] for f in h['facts']]:
+            if isinstance(normalized.get('text'),str):
+                normalized['text'] = redact(normalized['text'])
+    return json.dumps(safe_values(payload), ensure_ascii=False, separators=(',', ':'))
 
 
 async def verify_claims(claims: list[Claim], bundles: list[RetrievalBundle], temporal: list[TemporalCheckReport],

@@ -358,3 +358,47 @@ def test_six_public_cases_leave_room_for_t05_schema_repair(tmp_path, monkeypatch
     assert all(row['usage']['attempts']==2 for row in rows)
     with GeminiAdapter(settings).budget.db() as db:
         assert db.execute('SELECT COUNT(*) FROM llm_attempts').fetchone()[0]==12
+
+
+def test_model_context_supplies_reviewed_chunk_relative_quote_spans_without_relaxing_guard():
+    from backend.app.services.evidence import scoped_facts
+    _,claims,bundles,reports,_=inputs(CASES[1])
+    data=json.loads(context_text(claims,bundles,reports))
+    for group in data['claims']:
+        for item in group['hits']:
+            header=data['hits'][item['hit']]
+            matches=[m for m in scoped_facts(claims[0],bundles[0]) if m.hit.chunk_id==header['chunk_id']]
+            for fact,match in zip(item['facts'],matches):
+                assert fact['q']==[match.start,match.start+len(match.fact.quote)]
+                a,b=fact['q']
+                assert item['text'][a-item['offset']:b-item['offset']]==match.fact.quote
+
+
+def test_reviewed_exact_span_can_canonicalize_nested_literal_quote_but_not_fabrication():
+    from backend.app.services.evidence import scoped_facts
+    _,claims,bundles,reports,output=inputs(CASES[1])
+    match=scoped_facts(claims[0],bundles[0])[0]
+    ref=match.citation('contradicts')
+    # The model selected the exact reviewed fact span but omitted literal punctuation/text.
+    shorter=ref.model_copy(update={'quote':ref.quote[:-1]})
+    draft=output.drafts[0].model_copy(update={'evidence':[shorter]})
+    audit=[]
+    verdict=validate_verdicts([draft],claims,bundles,reports,audit=audit)[0]
+    assert verdict.evidence[0].quote==ref.quote
+    assert 'quote_canonicalized' in verdict.checks_passed
+    assert audit[0]['canonicalized_citations']==1 and 'evidence' in audit[0]['guard_changes']
+    fabricated=shorter.model_copy(update={'quote':'A fabricated amount not present anywhere'})
+    verdict=validate_verdicts([draft.model_copy(update={'evidence':[fabricated]})],claims,bundles,reports)[0]
+    assert verdict.label=='insufficient_evidence' and not verdict.evidence
+
+
+def test_redaction_preserves_numeric_opaque_ids_and_length_preserving_excerpts():
+    _,claims,bundles,reports,_=inputs(CASES[1])
+    hit=bundles[0].hits[0]
+    hit.chunk_id='dut_344b21e393855658_c001'
+    hit.version_id=hit.source.version_id='dut_344b21e393855658'
+    claims[0].claim_id='claim_123456789012'
+    text=context_text(claims,bundles,reports)
+    assert hit.chunk_id in text and hit.version_id in text
+    assert claims[0].claim_id in text
+    assert '[REDACTED]' not in text

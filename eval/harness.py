@@ -165,6 +165,12 @@ def context(case, claim, bundle, system):
     if system != 'A':
         for hit in data['bundle']['hits']:
             source = hit['source']
+            start = source['text'].find(hit['text'])
+            if start >= 0 and source['text'].find(hit['text'], start + 1) == -1:
+                for fact in source['facts']:
+                    a, b = fact['span']['start'], fact['span']['end']
+                    if start <= a < b <= start + len(hit['text']):
+                        fact['q'] = [a - start, b - start]
             source.pop('text')  # chunk text already supplied
             for key in ('retrieved_at','available_basis','content_sha256','is_fixture','review_status','verified_by'):
                 source.pop(key,None)  # provenance remains in the immutable artifact, not reasoning context
@@ -284,6 +290,8 @@ def prompt_for(system):
     prompt = (ROOT / f'prompts/{PROMPTS[system]}.txt').read_text()
     if system in ('A','B','C_NO_TIME'):
         prompt += '\nScope numbers index root scopes.\n'
+    if system in ('B','C_NO_TIME'):
+        prompt += 'Fact q gives exact chunk quote_span [start,end).\n'
     if system == 'C':
         prompt += '\nEval: target is Claim, bundle.hits are direct objects; scope numbers index root scopes. Quote offsets start at zero in hit.text. code_checks is TemporalCheckReport.\n'
     return prompt

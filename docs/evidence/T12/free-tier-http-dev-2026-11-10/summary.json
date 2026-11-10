@@ -1,0 +1,10 @@
+{
+  "mode": "actual_public_dev_http",
+  "planned": 12,
+  "recorded": 2,
+  "completed": 1,
+  "passed_technical_smoke": false,
+  "human_gold": false,
+  "benchmark": false,
+  "note": "Actual production HTTP extraction/retrieval/verification and source/delete endpoints; no accuracy/effectiveness claim."
+}
