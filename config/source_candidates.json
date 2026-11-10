@@ -1,0 +1,7 @@
+{
+  "status": "discovery_only_NOT_approved",
+  "purpose": "Exact official notice allowlist for offline source review; never follow attachments or query user URLs",
+  "sources": [
+    {"url":"https://dut.udn.vn/hoidongtruong/Thongbao/id/11659", "family_candidate":"dormitory_hkii_2025_2026", "domain":"payment", "selector":".wd-content-detail"}
+  ]
+}

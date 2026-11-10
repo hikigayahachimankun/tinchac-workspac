@@ -1,0 +1,12 @@
+{
+  "status": "draft_NOT_frozen",
+  "human_gold_count": 0,
+  "cases_hash": "649d9c06aca575226090da022121b0dbf933ef194845af490dfba7e49c31137c",
+  "claims_hash": null,
+  "temporal_case_ids": [
+    "T09_dev_tuition_hki_2026_dot2_02",
+    "T09_dev_tuition_hki_2026_dot2_01"
+  ],
+  "seed": 42,
+  "note": "Draft scope/raw value are deliberately blank. A human checks input scope and atomicity, annotates against approved sources without model predictions, and retains gold privately. This is not a freeze receipt."
+}

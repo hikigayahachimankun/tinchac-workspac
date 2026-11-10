@@ -147,3 +147,9 @@ b) Có hoàn cảnh khó khăn hoặc là người dân tộc thiểu số.”
 ## Kiểm tra tự động
 
 Lệnh tái kiểm trong handoff T02: SourceVersion.model_validate cho 6 real + 1 fixture; hash/NFC/spans/ID/separation; không gọi mạng hoặc đọc gold. T02 không tạo crawler, ingest/chunks/index hoặc validator T07.
+
+## Recovery discovery — 10/11/2026
+
+Official notice candidate: [DUT dormitory fee/contract timing, id11659](https://dut.udn.vn/hoidongtruong/Thongbao/id/11659), family candidate `dormitory_hkii_2025_2026`, payment. Direct HTML returned200; administrative text includes bank deadlines and contract dates. It also embeds an image associated with fee rates. The collector did **not** follow/render/OCR that object or infer any amount. Candidate is NOT approved, creates no SourceFact and does not count toward six readable approved seeds or test families. Same-program annual/repost/extension relations still need review before assigning holdout.
+
+Exact allowlist and reusable collector: `config/source_candidates.json`, `scripts/collect_sources.py`. One request/sec maximum; redirects, non-HTML, oversized payloads and obvious personal lists rejected. Only sanitized notice HTML/text retained locally under ignored `data/raw/recovery-sources/`; embedded objects/scripts removed, transport hash recorded. Metadata receipt: `docs/evidence/recovery/source_candidates.jsonl`. No key, login, form submission, student portal, user-supplied URL or attachment was fetched. Public read access is not a redistribution licence; no corpus promotion or raw publication occurred. D03 remains open honestly.
