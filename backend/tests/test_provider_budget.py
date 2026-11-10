@@ -76,7 +76,7 @@ def test_success_full_validation_usage_and_metadata(adapter):
     assert 'mock-key-never-real' not in json.dumps(row)
     config = adapter._invoke.call_args.args[1]
     assert config.response_mime_type == 'application/json'
-    assert config.max_output_tokens == 2400 and config.thinking_config.thinking_budget == 0
+    assert config.max_output_tokens == 2400 and config.thinking_config.thinking_level == types.ThinkingLevel.MINIMAL and config.candidate_count is None
     assert 'usage' not in config.response_json_schema['properties']
     assert 'additionalProperties' not in json.dumps(provider_schema(ExtractionResult))
 
@@ -517,3 +517,10 @@ def test_missing_key_does_not_create_attempt(adapter):
     assert caught.value.detail.code == 'INTERNAL_ERROR'
     assert rows(adapter) == []
     adapter._invoke.assert_not_awaited()
+
+
+def test_thinking_configuration_uses_model_family_without_disabling_accounting():
+    from backend.app.services.llm import thinking_config
+    assert thinking_config('gemini-3.5-flash-lite').thinking_level == types.ThinkingLevel.MINIMAL
+    assert thinking_config('gemini-3.5-flash-lite').thinking_budget is None
+    assert thinking_config('gemini-2.5-flash-lite').thinking_budget == 0

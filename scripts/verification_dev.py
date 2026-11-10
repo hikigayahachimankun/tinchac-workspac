@@ -19,7 +19,7 @@ from backend.app.models import (Claim, ExtractionResult, RetrievalBundle, Usage,
 from backend.app.services.corpus import canonical_hash, load_corpus
 from backend.app.services.errors import ServiceError
 from backend.app.services.evidence import fact_relation, scoped_facts
-from backend.app.services.llm import GeminiAdapter, provider_schema
+from backend.app.services.llm import GeminiAdapter, provider_schema, thinking_config
 from backend.app.services.normalization import normalize_claim
 from backend.app.services.retrieve import Retriever
 from backend.app.services.temporal import check_claim
@@ -126,7 +126,7 @@ async def run(settings, *, live=False, case_id=None):
     synthetic=[] if live else await synthetic_cases()
     rows=await run_public_cases(settings,live=live,case_id=case_id)
     report={'mode':'live' if live else 'offline_mock','prompt_sha256':canonical_hash(PROMPT.read_text()),
-            'model_candidate':settings.llm_model,'temperature':settings.llm_temperature,'thinking_budget':0,
+            'model_candidate':settings.llm_model,'temperature':settings.llm_temperature,'thinking_config':thinking_config(settings.llm_model).model_dump(mode='json', exclude_none=True),
             'output_cap_per_claim':1200,'synthetic_dev':synthetic,'public_dev':rows,
             'live_calls':None if live else 0,'note':'Mock ledger/token amounts are synthetic. D02/live remain owner verified.'}
     print(json.dumps(report,ensure_ascii=False,indent=2))

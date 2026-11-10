@@ -2,7 +2,7 @@
 import argparse
 import json
 from pathlib import Path
-from eval.harness import digest, read_jsonl, schedule
+from eval.harness import digest, read_jsonl, schedule, temporal_subset
 from eval.metrics import score
 from eval.run_schema import EvidenceScore
 from eval.schema import EvalCase, GoldRecord
@@ -23,6 +23,7 @@ def main():
         raise ValueError('Cases hash drift')
     if digest(manifest['config']) != manifest['config_hash']:
         raise ValueError('Config hash drift')
+    temporal_subset(cases, expected=manifest['temporal_case_ids'])
     if manifest['schedule'] != [[c.case_id,s] for c,s in schedule(cases,set(manifest['temporal_case_ids']))]:
         raise ValueError('Schedule drift')
     envelopes=read_jsonl(directory/'runs.jsonl')
@@ -36,6 +37,11 @@ def main():
             raise ValueError('Foreign batch')
         if env['mode'] != manifest['mode']:
             raise ValueError('Mode differs from manifest')
+        expected_cache = 'replay' if env['mode'] == 'replay' else 'fresh'
+        if r['cache_mode'] != expected_cache:
+            raise ValueError('Cache mode differs from manifest')
+        if env['mode'] == 'fresh' and r['corpus_version'] != manifest['config']['data']['corpus_version']:
+            raise ValueError('Row corpus differs from frozen config')
     systems=['A','B','C']+(['C_NO_TIME'] if manifest['temporal_case_ids'] else [])
     result=score(cases,read_jsonl(args.gold,GoldRecord),envelopes,
         read_jsonl(args.evidence,EvidenceScore) if args.evidence else [],

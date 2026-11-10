@@ -14,7 +14,7 @@ from backend.app.db import initialize
 from backend.app.models import CheckCreate, SourceVersion
 from backend.app.services.errors import ServiceError
 from backend.app.services.extract import extract_claims
-from backend.app.services.llm import GeminiAdapter, digest
+from backend.app.services.llm import GeminiAdapter, digest, thinking_config
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,7 +38,8 @@ async def run(settings: Settings, max_calls: int) -> int:
     run_id = str(uuid4())
     adapter = GeminiAdapter(settings, run_id=run_id, max_calls=max_calls)
     print(json.dumps({'run_id': run_id, 'model': settings.llm_model, 'sdk': '3.0.0',
-                      'temperature': settings.llm_temperature, 'thinking_budget': 0,
+                      'temperature': settings.llm_temperature,
+                      'thinking_config': thinking_config(settings.llm_model).model_dump(mode='json', exclude_none=True),
                       'max_output_tokens': 2400, 'max_calls_including_retry': max_calls,
                       'input_price_usd_per_million': settings.llm_input_price_per_million_usd,
                       'output_price_usd_per_million': settings.llm_output_price_per_million_usd}))

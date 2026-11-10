@@ -83,6 +83,13 @@ def response_usage(response: types.GenerateContentResponse) -> tuple[int, int] |
     return incoming, outgoing + thoughts
 
 
+def thinking_config(model: str) -> types.ThinkingConfig:
+    # Gemini 3 uses levels; minimal still may produce billable thought tokens.
+    # Keep the total output reservation and validate actual usage, including thoughts.
+    return (types.ThinkingConfig(thinking_level=types.ThinkingLevel.MINIMAL)
+            if model.startswith('gemini-3') else types.ThinkingConfig(thinking_budget=0))
+
+
 class GeminiAdapter:
     def __init__(self, settings: Settings, *, run_id: str | None = None, max_calls: int | None = None):
         self.settings = settings
@@ -114,10 +121,9 @@ class GeminiAdapter:
         schema = provider_schema(output_type)
         config = types.GenerateContentConfig(
             system_instruction=prompt, temperature=self.settings.llm_temperature,
-            max_output_tokens=max_output_tokens, candidate_count=1,
+            max_output_tokens=max_output_tokens,
             response_mime_type='application/json', response_json_schema=schema,
-            # No separate thinking allowance beyond max_output_tokens. Preflight must verify support.
-            thinking_config=types.ThinkingConfig(thinking_budget=0),
+            thinking_config=thinking_config(self.settings.llm_model),
         )
         identity = dict(model=self.settings.llm_model, prompt_hash=digest(prompt), schema_version='1.0',
                         input_hash=digest(text), corpus_version=corpus_version,
@@ -151,7 +157,7 @@ class GeminiAdapter:
                 'request_id': request_id, 'attempt': attempt + 1,
                 'input_bound': input_bound, 'output_cap': max_output_tokens,
                 'sdk_version': '3.0.0', 'temperature': self.settings.llm_temperature,
-                'thinking_budget': 0,
+                'thinking_config': config.thinking_config.model_dump(mode='json', exclude_none=True),
                 'input_price_usd_per_million': self.settings.llm_input_price_per_million_usd,
                 'output_price_usd_per_million': self.settings.llm_output_price_per_million_usd},
                 run_id=self.run_id, max_calls=self.max_calls)

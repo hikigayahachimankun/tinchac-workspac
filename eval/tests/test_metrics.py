@@ -184,3 +184,25 @@ def test_ablation_is_paired_only_on_preselected_temporal_cases():
     assert result['temporal_ablation_c_minus_no_time']['families']==1
     assert result['temporal_ablation_c_minus_no_time']['delta']==.5
     assert result['temporal_ablation_c_minus_no_time']['degenerate_ci']
+
+
+@pytest.mark.parametrize('rate', [float('nan'),float('inf'),0,-1])
+def test_exchange_rate_must_be_finite_and_positive(rate):
+    with pytest.raises(ValueError,match='Exchange rate'):
+        score(*known_data(),rate=rate)
+
+
+def test_a_cannot_be_scored_as_source_free_if_its_artifact_contains_a_bundle():
+    cases,gold,envs,reviews=known_data()
+    a=next(e for e in envs if e['row']['system']=='A')
+    b=next(e for e in envs if e['row']['system']=='B')
+    a['bundle']=deepcopy(b['bundle'])
+    with pytest.raises(ValueError,match='A must not'):
+        score(cases,gold,envs,reviews)
+
+
+def test_missing_accounting_does_not_imply_zero_unknown_cost():
+    cases,gold,envs,reviews=known_data()
+    next(e for e in envs if e['row']['system']=='B').pop('accounting')
+    result=score(cases,gold,envs,reviews)['systems']['B']['cost']
+    assert result['total_usd'] is None and result['unknown_accounting'] is True

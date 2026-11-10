@@ -1,6 +1,7 @@
 """Offline scoring. Fixed case denominators; no inference, no automatic human review."""
 from collections import Counter, defaultdict
 from statistics import mean
+import math
 import random
 import numpy as np
 
@@ -55,12 +56,15 @@ def score(cases, gold, envelopes, evidence_scores, *, temporal_ids=(), systems=(
         raise ValueError('Temporal subset includes non-temporal fields')
     if set(temporal_ids)-by_case.keys():
         raise ValueError('Temporal subset outside planned cases')
-    if rate <= 0:
-        raise ValueError('Exchange rate must be positive')
+    if not math.isfinite(rate) or rate <= 0:
+        raise ValueError('Exchange rate must be finite and positive')
     records = []
     env_by_key = {}
     for env in envelopes:
         row = EvalRunRow.model_validate(env['row'])
+        if row.system == 'A' and (env.get('bundle') is not None or row.retrieved_chunk_ids
+                                  or any(d and d.evidence for d in (row.raw_prediction, row.prediction))):
+            raise ValueError('A must not receive or cite corpus evidence')
         if row.case_id not in by_case or row.system not in systems:
             raise ValueError('Unexpected row outside planned run')
         if row.system == 'C_NO_TIME' and row.case_id not in temporal_ids:
@@ -178,7 +182,7 @@ def score(cases, gold, envelopes, evidence_scores, *, temporal_ids=(), systems=(
                             'micro':ratio(sum(ecv),len(ecv),fam)}
             outcomes[system]={c.case_id:e for c,e in zip(active,ecv)}
         modes={env_by_key[(system,c.case_id)].get('mode') for c,r in zip(active,selected) if r}
-        unknown=any(env_by_key[(system,c.case_id)].get('accounting',{}).get('known_subtotal_only',False)
+        unknown=any(env_by_key[(system,c.case_id)].get('accounting',{}).get('known_subtotal_only') is not False
                     for c,r in zip(active,selected) if r)
         missing=sum(r is None for r in selected)
         fresh=modes=={'fresh'}

@@ -85,3 +85,7 @@ Sau đó chủ repo tự chạy, bổ sung mọi prompt thực bằng cách lặ
 Receipt ghi SHA-256 byte thật của input/gold/manifest/corpus 3 files/protocol/guide/schema/validator/config/prompts/attestation và commit HEAD. Nó không overwrite receipt cũ và không in gold. Trạng thái luôn `validated_candidate_NOT_frozen`; chủ repo đối chiếu checksum, xác nhận đủ dữ liệu và bước kiểm, rồi tự ghi quyết định lock/version/ngày 16/11 hoặc ngày thực tế. Nếu thiếu dữ liệu/nhãn, để draft. Hiện **không đủ điều kiện** ghi receipt freeze: 0 test, 0 gold, thiếu spot-check, config/model chưa chốt, upstream chưa commit.
 
 Tới T13 chỉ mở test input sau khóa, giữ gold riêng để chấm. Sau freeze sửa hạ tầng có log; tuning từ lỗi test làm run mới exploratory, không thay thế run đăng ký. Hash phiên bản cũ và run lỗi phải giữ.
+
+## Recovery update
+
+D17 no longer awaits technical approval (D19). Use `scripts.prepare_eval` and the v0.2 amendment in `eval/protocol.md` for public-input sidecar and exact temporal preparation. This command does not label cases. Configure cases_hash/claims_hash/temporal_case_ids before fresh inference. Model reasoning configuration changed per D21; re-pin config/prompt/implementation hashes before a real freeze. Gold review and source spot-check remain actual human requirements; no requirement to review implementation diffs or commit manually remains.

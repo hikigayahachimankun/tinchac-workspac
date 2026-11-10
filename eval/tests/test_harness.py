@@ -119,7 +119,7 @@ def test_real_adapter_mock_usage_cap_and_budget_stop_before_io(tmp_path):
     assert one['row']['technical_error'] is None
     assert one['row']['usage']['input_tokens']==100
     assert one['row']['model_version']=='offline-v1'
-    assert seen[0].max_output_tokens==1200 and seen[0].thinking_config.thinking_budget==0
+    assert seen[0].max_output_tokens==1200 and seen[0].thinking_config.thinking_level==types.ThinkingLevel.MINIMAL
     two=call_one(case,claim,bundle,'B',adapter,mode='fresh')
     assert two['row']['technical_error']=='BUDGET_EXCEEDED'
     assert len(seen)==1
@@ -219,6 +219,9 @@ def test_fresh_mock_records_retrieval_failure_and_stops_without_provider_io(tmp_
     config=json.loads(Path('config/experiments.yaml').read_text())
     config['model_verified']=True
     config['data']['corpus_version']='mock-corpus'
+    config['data']['cases_hash']=digest([c.model_dump(mode='json')])
+    config['data']['claims_hash']=digest({c.case_id:prepare_claim(c,claims[c.case_id]).model_dump(mode='json')})
+    config['data']['temporal_case_ids']=[]
     config['data']['split_manifest']=str(tmp_path/'split.json')
     (tmp_path/'config.yaml').write_text(json.dumps(config))
     db=tmp_path/'ledger.db'; initialize(db)

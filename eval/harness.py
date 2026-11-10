@@ -59,11 +59,24 @@ def schedule(cases, temporal_ids):
     return result
 
 
+def temporal_subset(cases, *, expected=None):
+    ids = sorted(c.case_id for c in cases if c.field_type in ('deadline', 'current_availability'))
+    random.Random(42).shuffle(ids)
+    ids = ids[:24]
+    if expected is not None and expected != ids:
+        raise ValueError('Temporal subset differs from preparation')
+    return ids
+
+
 def prepare_claim(case, supplied=None):
     if supplied is None:
         raise ValueError('Claim sidecar required: prepare from public inputs before freeze, never gold')
     if (supplied.claim_id, supplied.statement, supplied.field_type) != (case.target_claim_id, case.target_statement, case.field_type):
         raise ValueError('Claim sidecar differs from EvalCase target')
+    if not supplied.raw_value.strip() or supplied.raw_value not in case.input_text:
+        raise ValueError('Claim raw_value must be an exact excerpt of public input')
+    if supplied.input_span is not None:
+        check_quote(case.input_text, supplied.input_span, supplied.statement)
     return normalize_claim(supplied)
 
 

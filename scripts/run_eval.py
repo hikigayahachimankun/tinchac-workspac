@@ -9,7 +9,7 @@ from uuid import uuid4
 
 from backend.app.models import Claim, RetrievalBundle, VerificationOutput
 from eval.harness import (ROOT, PROMPTS, append_jsonl, digest, infer, prepare_claim,
-                          read_jsonl, schedule, shared_bundle, zero_usage, prompt_for)
+                          read_jsonl, schedule, shared_bundle, zero_usage, prompt_for, temporal_subset)
 from eval.schema import EvalCase
 
 
@@ -74,6 +74,12 @@ async def run(args):
             claims = {e['case_id']: Claim.model_validate(e['claim']) for e in entries}
             if len(claims) != len(entries) or set(claims) != {c.case_id for c in cases}:
                 raise ValueError('Claim sidecar coverage/duplicates')
+            claims = {c.case_id:prepare_claim(c, claims[c.case_id]) for c in cases}
+            if (config['data'].get('cases_hash') != digest([c.model_dump(mode='json') for c in cases])
+                    or config['data'].get('claims_hash') != digest({k:v.model_dump(mode='json') for k,v in claims.items()})
+                    or not isinstance(config['data'].get('temporal_case_ids'), list)):
+                raise ValueError('Pin public preparation hashes and temporal subset before fresh calls')
+            temporal_subset(cases, expected=config['data']['temporal_case_ids'])
             from backend.app.config import Settings
             from backend.app.services.llm import GeminiAdapter
             from backend.app.services.retrieve import Retriever
@@ -130,10 +136,7 @@ async def run(args):
     ids = [c.case_id for c in cases]
     if not cases or len(ids) != len(set(ids)) or len({c.split for c in cases}) != 1:
         raise ValueError('Nonempty unique cases in one split required')
-    temporal = sorted(c.case_id for c in cases if c.field_type in ('deadline','current_availability'))
-    import random
-    random.Random(42).shuffle(temporal)
-    temporal = temporal[:24]
+    temporal = temporal_subset(cases)
     order = schedule(cases, set(temporal))
     if args.mode == 'replay' and set(replay) != {(c.case_id,s) for c,s in order}:
         raise ValueError('Replay must cover entire planned schedule exactly')
