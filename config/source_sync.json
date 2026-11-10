@@ -1,0 +1,10 @@
+{
+  "enabled": false,
+  "interval_seconds": 3600,
+  "poll_seconds": 10,
+  "max_requests": 40,
+  "max_seconds": 90,
+  "max_pages": 6,
+  "max_notices": 12,
+  "note": "Independent local process; no service installed by default. Does not run while host is off. Network requires explicit --mode live and --enable. Raw/candidates/queue/snapshots remain private."
+}

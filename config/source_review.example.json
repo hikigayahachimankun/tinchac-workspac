@@ -1,0 +1,24 @@
+[
+  {
+    "version_id": "REPLACE_WITH_REVIEWED_SOURCE_VERSION",
+    "candidate_path": "candidates/REPLACE_SOURCE/REPLACE_CONTENT_KEY",
+    "candidate_receipt_sha256": "REPLACE_WITH_SHA256_OF_RECEIPT_BYTES",
+    "text_sha256": "REPLACE_WITH_REVIEWED_NORMALIZED_TEXT_SHA256",
+    "reviewer_identity": "REPLACE_WITH_ACTUAL_REVIEWER",
+    "reviewer_kind": "agent",
+    "gates": {
+      "authority": {"passed": false, "evidence": ""},
+      "completeness": {"passed": false, "evidence": ""},
+      "publisher_category": {"passed": false, "evidence": ""},
+      "personal_data": {"passed": false, "evidence": ""},
+      "provenance": {"passed": false, "evidence": ""},
+      "family": {"passed": false, "evidence": ""},
+      "facts": {"passed": false, "evidence": ""},
+      "temporal": {"passed": false, "evidence": ""},
+      "content_use": {"passed": false, "evidence": ""}
+    },
+    "family_review": {"family_id": "REPLACE_AFTER_RELATIONSHIP_REVIEW", "evidence": ""},
+    "human_review": {"identity": "", "kind": "human", "confirmed": false, "evidence": ""},
+    "attachment_review": {"complete": false, "evidence": "", "reviewed_files": []}
+  }
+]

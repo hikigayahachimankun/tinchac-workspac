@@ -29,13 +29,62 @@ class Jobs:
         self.adapter = FixtureAdapter()
         self._runtime = None
         self._runtime_lock = Lock()
+        self._runtime_directory = None
+        self._lookup = None
 
     def runtime(self):
         from .runtime import LiveRuntime
         with self._runtime_lock:
-            if self._runtime is None:
-                self._runtime = LiveRuntime(self.settings.corpus_dir)
+            directory = self.settings.corpus_dir
+            if self.settings.source_sync_store is not None:
+                from .corpus_store import active_directory
+                try:
+                    directory = active_directory(self.settings.source_sync_store) or directory
+                except (OSError, ValueError, KeyError, TypeError):
+                    if self._runtime is not None:
+                        return self._runtime
+                    raise ServiceError('CORPUS_UNAVAILABLE', 'Không đọc được snapshot đang phục vụ.', status=503) from None
+            if self._runtime is None or directory != self._runtime_directory:
+                try:
+                    updated = LiveRuntime(directory)
+                except ServiceError:
+                    if self._runtime is not None:
+                        return self._runtime
+                    raise
+                self._runtime, self._runtime_directory = updated, directory
             return self._runtime
+
+    def source(self, version_id):
+        runtime = self.runtime()
+        if version_id in runtime.sources:
+            return runtime.source(version_id)
+        if self.settings.source_sync_store is not None:
+            from .corpus_store import VERSION
+            from .runtime import LiveRuntime
+            # Retained snapshots are local/private and never garbage-collected automatically.
+            # Source API looks up immutable version IDs; no request controls a file path.
+            for directory in sorted((self.settings.source_sync_store/'snapshots').glob('corpus-*')):
+                if not VERSION.fullmatch(directory.name) or directory.is_symlink():
+                    continue
+                try:
+                    archived = LiveRuntime(directory)
+                except ServiceError:
+                    continue
+                if version_id in archived.sources:
+                    return archived.source(version_id)
+        raise ServiceError('RESOURCE_NOT_FOUND', 'Không tìm thấy snapshot.', status=404)
+
+    def discover_missing(self, claims, bundles):
+        if self.settings.app_mode != 'live' or not self.settings.source_lookup_enabled:
+            return False
+        from .source_lookup import LookupQueue, missing_authorities
+        # Persist only fixed registry authority IDs. No user text, scope, URL or image.
+        try:
+            if self._lookup is None:
+                self._lookup = LookupQueue(self.settings.source_sync_state)
+            return self._lookup.enqueue(missing_authorities(claims, bundles))
+        except (OSError, ValueError, sqlite3.Error):
+            return False  # Discovery is optional; verification/provider errors keep their own paths.
 
     @contextmanager
     def db(self):
@@ -182,6 +231,8 @@ class Jobs:
             stage = 'retrieving'
             bundles = [runtime.retriever.retrieve_claim(c, runtime.retriever.corpus_version, request.as_of)
                        for c in extraction.claims]
+            if self.discover_missing(extraction.claims, bundles):
+                extraction.warnings.append('Đã xếp hàng kiểm tra danh mục nguồn chính thức; nguồn mới cần duyệt trước khi sử dụng.')
             bundles, clipped = limit_bundles(bundles)
             if clipped:
                 extraction.warnings.append('Context giới hạn 6 chunks; có hit bị cắt.')

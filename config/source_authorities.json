@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "policy": "Internal public-notice review only. No redistribution licence is asserted. Attachments require separate review; never crawl links inside notice text.",
+  "authorities": [
+    {
+      "authority_id": "dut_ctsv",
+      "institution": "DUT",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "hostname": "dut.udn.vn",
+      "listing_paths": [
+        "/Phong/CTSV",
+        "/Phong/CTSV/Tintucds/gid/332"
+      ],
+      "pagination_patterns": [
+        "/Phong/CTSV/Tintucds/gid/332/page/[1-9][0-9]{0,2}"
+      ],
+      "notice_patterns": [
+        "/Phong/CTSV/Thongbao/id/[0-9]+",
+        "/Phong/Sinhvien/Thongbao/id/[0-9]+"
+      ],
+      "categories": [
+        "scholarship"
+      ],
+      "subject_authority": [
+        "Public scholarship programmes and application notices published by CTSV"
+      ],
+      "selector": ".wd-content-detail",
+      "trust_evidence": {
+        "url": "https://dut.udn.vn/",
+        "linked_path": "/Phong/CTSV",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S03; config/sources.yaml; docs/source_log.md",
+        "notice_channel_evidence": {
+          "url": "https://dut.udn.vn/Phong/CTSV/Tintucds/gid/332",
+          "observed_notice_path": "/Phong/Sinhvien/Thongbao/id/12395",
+          "checked_at": "2026-11-10T16:56:00+00:00",
+          "reviewed_by": "source-sync agent: bounded HTTPS listing inspection; official CTSV listing links this exact channel"
+        }
+      },
+      "review_status": "project_reviewed",
+      "reviewed_by": "Existing T02 agent primary-source review; independent owner spot-check pending",
+      "last_authority_validation_at": "2026-11-10T17:04:50.258431+00:00",
+      "validation_provenance": {
+        "run_id": "7d366322-3052-48eb-ab25-19e4c49f6d2e",
+        "evidence": "docs/evidence/source-sync/smoke.json",
+        "method": "agent deterministic homepage-link and closed-registry path validation; not independent human source review"
+      }
+    },
+    {
+      "authority_id": "dut_finance",
+      "institution": "DUT",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "hostname": "dut.udn.vn",
+      "listing_paths": [
+        "/Phong/Taichinh"
+      ],
+      "pagination_patterns": [],
+      "notice_patterns": [
+        "/Phong/Taichinh/Thongbao/id/[0-9]+"
+      ],
+      "categories": [
+        "payment"
+      ],
+      "subject_authority": [
+        "Public tuition and fee policy, collection schedules and amendments published by KHTC"
+      ],
+      "selector": ".wd-content-detail",
+      "trust_evidence": {
+        "url": "https://dut.udn.vn/",
+        "linked_path": "/Phong/Taichinh",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S24; config/sources.yaml; docs/source_log.md"
+      },
+      "review_status": "project_reviewed",
+      "reviewed_by": "Existing T02 agent primary-source review; independent owner spot-check pending",
+      "last_authority_validation_at": "2026-11-10T17:04:50.258431+00:00",
+      "validation_provenance": {
+        "run_id": "7d366322-3052-48eb-ab25-19e4c49f6d2e",
+        "evidence": "docs/evidence/source-sync/smoke.json",
+        "method": "agent deterministic homepage-link and closed-registry path validation; not independent human source review"
+      }
+    }
+  ]
+}

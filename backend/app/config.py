@@ -17,6 +17,10 @@ class Settings(BaseSettings):
     database_path: Path = Path('./data/private/tinchac.sqlite3')
     private_dir: Path = Path('./data/private')
     corpus_dir: Path = Path('./data/corpus')
+    # Product operations only; closed-corpus eval does not read these settings.
+    source_sync_store: Path | None = None
+    source_sync_state: Path = Path('./data/private/source-sync')
+    source_lookup_enabled: bool = False
     frontend_dist: Path | None = None
     app_timezone: Literal['Asia/Ho_Chi_Minh'] = 'Asia/Ho_Chi_Minh'
     gemini_api_key: SecretStr = Field(default=SecretStr(''), repr=False)

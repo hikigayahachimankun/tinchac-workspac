@@ -22,3 +22,7 @@ Recovery 10/11/2026, giờ Việt Nam. Quyền bảo trì/commit/push và nghi�
 | T15 | R1 autonomous maintainer; R2 hỗ trợ | blocked | Remote annotated v1.0.0-rc.1 (690947c): allowlist package, cold-start WSL + CI Ubuntu độc lập đạt, 397 pytest/37 Vitest, browser390/1440, video3:40 và fault injection; còn ca DUT thật đạt QA, laptop demo vật lý và quyền phân phối | [T15](handoffs/T15.md) |
 | T16 | Maintainer / đại diện dự thi | blocked | Draft/AI disclosure/checklist sẵn; form/rules HTTP 200 đã kiểm; identity/evidence thực/benchmark còn thiếu | [T16](handoffs/T16.md) |
 | T17 | Maintainer / đại diện dự thi | blocked | Review checkpoint sẵn; phụ thuộc T13–T16, chưa nộp và chưa có receipt thật | [T17](handoffs/T17.md) |
+
+| Feature | Owner | Trạng thái | Gate thực tế / bước tiếp theo | Handoff |
+|---|---|---|---|---|
+| Verified source sync | Autonomous maintainer | review | Registry2units/discovery18URLs,8quarantine/0newapproved; incremental/scheduler/on-demand/publish/runtime/rollback đã kiểm; không bật service, không đổi benchmark/T02–T15 acceptance | [Source sync](handoffs/source-sync.md) |

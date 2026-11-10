@@ -1,15 +1,12 @@
-"""Collect allowlisted official HTML candidates locally, never approve or follow attachments."""
-import argparse
+"""Registry discovery CLI and compatibility exact-notice collector; never approves sources."""
 from datetime import datetime, timezone
 import hashlib
 import json
 from pathlib import Path
 import re
-import time
 from urllib.parse import urlsplit
 
 from bs4 import BeautifulSoup
-import httpx
 
 from backend.app.services.corpus import normalize_text
 
@@ -64,22 +61,10 @@ def collect(entry, output: Path, client):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--register',type=Path,default=Path('config/source_candidates.json'))
-    parser.add_argument('--output',type=Path,default=Path('data/raw/recovery-sources'))
-    args = parser.parse_args()
-    entries = json.loads(args.register.read_text())['sources']
-    for entry in entries:
-        check_url(entry['url'])
-    with httpx.Client(timeout=25,headers={'User-Agent':'TinChac-source-review/0.1'}) as client:
-        last = None
-        for entry in entries:
-            if last is not None:
-                time.sleep(max(0, 1 - (time.monotonic() - last)))
-            last = time.monotonic()
-            receipt = collect(entry,args.output,client)
-            print(json.dumps(receipt,ensure_ascii=False))
-    return 0
+    # Keep the reviewed exact-notice helper for existing callers. All operational
+    # collection now uses registry discovery, robots, DNS pinning and checkpointing.
+    from scripts.sync_sources import main as sync_main
+    return sync_main()
 
 
 if __name__ == '__main__':

@@ -10,7 +10,7 @@ router = APIRouter(prefix='/api/v1/sources', tags=['sources'])
 def get_source(version_id: str, request: Request):
     mode = request.app.state.settings.app_mode
     if mode == 'live':
-        return request.app.state.jobs.runtime().source(version_id)
+        return request.app.state.jobs.source(version_id)
     if mode != 'fixture':
         raise ServiceError('RESOURCE_NOT_FOUND', 'Không tìm thấy snapshot.', status=404)
     source = request.app.state.jobs.adapter.public

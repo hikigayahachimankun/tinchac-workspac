@@ -358,7 +358,76 @@ Local OCR requires Tesseract vie+eng and the font documented in the OCR scripts.
 ```bash
 .venv/bin/python -m scripts.ocr_eval --output data/raw/ocr-dev-new
 .venv/bin/python -m scripts.prepare_eval --output data/private/annotation-draft-new
-.venv/bin/python -m scripts.collect_sources --output data/raw/source-discovery-new
+.venv/bin/python -m scripts.collect_sources collect --mode live --enable --dry-run
+# Registry listing discovery; dry-run fetches lists, never notice bodies.
 ```
 
 These commands do not create human gold, approve sources or run Gemini. Live HTTP is now implemented, guarded by `LLM_LIVE_ENABLED=false`. Read [private account setup](docs/live_setup.md) before enabling paid requests. CLI replay is supported for recorded eval runs; HTTP replay is explicitly unavailable until a recording is configured. No paid benchmark or user-study result exists yet. This local smoke was run on the current WSL environment; second-machine validation remains pending in T15.
+
+## Verified DUT source discovery và live refresh
+
+Feature vận hành riêng với benchmark, tắt mặc định. [Báo cáo thật](reports/source_sync.md), [kế hoạch/audit](docs/superpowers/plans/2026-11-10-verified-source-sync.md), [handoff](docs/handoffs/source-sync.md). Không đổi T09/T13, corpus đã khóa, API1.0 hoặc nhãn. Candidate chưa duyệt không được dùng làm bằng chứng; chạy collector không đồng nghĩa corpus đã cập nhật.
+
+`config/source_authorities.json` đăng ký đúng host/path của CTSV và KHTC. Mỗi lượt đối chiếu link từ trang trường; không mở subdomain khác, cổng SV, form hoặc URL người dùng. Listing CTSV có kênh alias `/Phong/Sinhvien`; redirect chỉ theo tối đa2hop, cùng authority và đúng registry/robots. Tốc độ≤1request/giây,40requests/90giây/lượt mặc định; tối đa6listing/12notice,2MiB/response. Khi robots/403/backoff/giới hạn chặn, receipt ghi lý do. Không fetch attachment tự động; PDF/ảnh/link chưa đọc giữ quarantine.
+
+Chạy tại repo root với dependencies hiện có, không key:
+
+```bash
+# Chỉ tìm link: vẫn có network tới robots/trang trường/listing, không tải notice.
+.venv/bin/python -m scripts.collect_sources collect --mode live --enable --dry-run
+# Thu incremental, tự resume backlog và nhận ETag/Last-Modified nếu có.
+.venv/bin/python -m scripts.collect_sources collect --mode live --enable
+.venv/bin/python -m scripts.sync_sources status
+```
+
+`--state` mặc định `data/private/source-sync`, `--store` mặc định `data/private/live-corpus`. Giữ các process cùng state/store, một worker. Thư mục trong repo phải nằm dưới `data/private`; có thể chọn thư mục private ngoài repo. State SQLite, candidate text/HTML đã làm sạch, review queue và receipts đều local/ignored. Không lưu transport HTML hoặc ảnh nhúng; receipt có hash. Không commit/push các thư mục này. Screen PII bảo thủ không thay việc đọc kiểm; không OCR/tải danh sách cá nhân. `config/source_candidates.json` và các receipt recovery cũ là lịch sử; CLI cũ `--output data/raw/...` được thay bằng `--state` private và enable live tường minh.
+
+Lịch độc lập với FastAPI:
+
+```bash
+.venv/bin/python -m scripts.sync_sources daemon --mode live --enable
+```
+
+`config/source_sync.json`: `enabled=false`, interval3600giây, poll queue10giây; `--enable` bật cho process này. Terminal phải còn chạy; Ctrl-C dừng, restart giữ cadence/checkpoint. Có thể để local supervisor gọi đúng lệnh này với working directory repo; không cần Redis/Celery hoặc GitHub Actions. **Phiên triển khai chưa cài/bật service thường trực**; user systemd tại môi trường này báo `offline`. Không chạy khi máy/WSL tắt. `scheduler.json` là receipt, không chứng minh process còn sống. Không coi dry-run là đã đồng bộ.
+
+Để live app nhận các lần publish, bootstrap store từ nguồn hiện đã duyệt rồi cấu hình cùng store:
+
+```bash
+# Một lần, offline; giữ nguyên data/corpus và trạng thái review hiện có.
+.venv/bin/python -m scripts.sync_sources bootstrap
+# Thêm vào cấu hình local của process live (các gate LLM trước đây vẫn áp dụng):
+# SOURCE_SYNC_STORE=./data/private/live-corpus
+# SOURCE_SYNC_STATE=./data/private/source-sync
+# SOURCE_LOOKUP_ENABLED=true
+```
+
+On-demand chỉ chạy trong `Jobs.run_live` khi thiếu nguồn approved cùng scope, trước khi cắt context. Nó lưu **chỉ ID authority cố định**, không lưu/gửi raw message, scope, ảnh, số điện thoại hoặc URL. Mỗi unit gộp thành một task, queue≤2, cooldown900giây, lease300giây. Daemon mới xử lý network; không giữ request kiểm chứng chờ crawler. Nguồn chưa duyệt không tạo S/C; warning hiện qua UI sẵn có. Kết quả cũ không bị sửa. Fixture/replay/eval không enqueue/crawl, kể cả khi cấu hình on-demand bật.
+
+Promotion cần review thực tế:
+
+1. Đọc candidate `receipt.json`/`text.txt`, xem phần thiếu và quyền sử dụng nội bộ. Agent review ghi đúng danh tính agent. Phí/đính chính, attachment/scan/link ngoài và cập nhật tiền/hạn cần bằng chứng review con người thật; không điền một danh tính giả để vượt gate.
+2. Chuẩn bị private `reviewed-sources.json` theo SourceVersion1.0 và `reviewed-register.json` theo `config/sources.yaml`. Bắt đầu bằng **toàn bộ** sources/register của active snapshot, thêm versions mới, giữ nguyên records cũ. Dùng source_id theo canonical URL/hash text, quote/span chính xác, available_basis=first_seen và available_at=retrieved_at không sớm hơn candidate.first_seen. Giữ family đã có; không suy supersedes từ lần tải mới.
+3. Copy `config/source_review.example.json` vào private, chỉ tạo packet cho versions mới. Từng gate phải có bằng chứng và passed=true sau kiểm thực tế; bind SHA256 receipt/text. Mọi gate mặc định false. PDF text dùng `scripts.ingest_sources.extract_pdf`; scan dùng OCR local hiện có hỗ trợ đọc kiểm và `manual_pdf`/page spans/manual_text/hash, không tự chứng nhận OCR. Attachment phải có parent DUT, canonical URL có trong receipt và file local/hash đã được kiểm. Nếu không được phép đọc đủ hoặc có danh sách cá nhân, giữ quarantine.
+4. Paths raw/manual/reviewed_files trong register/packet phải nằm trong repo private, có hash chính xác. Gate content_use chỉ xác nhận phạm vi sử dụng đã có quyền, không tự cấp giấy phép tái phân phối. Nguồn trùng text khác URL cần giải quyết canonical/family, không index như bằng chứng độc lập.
+
+```bash
+.venv/bin/python -m scripts.sync_sources publish \
+  --snapshot data/private/reviewed-sources.json \
+  --register data/private/reviewed-register.json \
+  --reviews data/private/source-reviews.json
+```
+
+Publish dùng ingest cũ để dựng staging, validate/index, lưu review trong provenance gắn manifest hash, fsync rồi đổi `active.json` atomic. Không sửa thư mục đang phục vụ; mỗi job giữ một runtime đến cuối, job mới nhận snapshot mới. Lỗi build/publish giữ active trước. Giữ snapshots cũ để citation còn mở sau restart/rollback; chưa có tự xóa archive. `bootstrap` chỉ chuyển seed cũ vào store, không bổ sung nguồn đã duyệt.
+
+Rollback không mạng, không sửa benchmark:
+
+```bash
+# Lấy previous/corpus_version từ data/private/live-corpus/active.json.
+.venv/bin/python -m scripts.sync_sources rollback --version corpus-REPLACE_WITH_64_HEX
+```
+
+Kiểm offline riêng feature:
+
+```bash
+.venv/bin/python -m pytest backend/tests/test_source_sync.py backend/tests/test_source_publication.py -q
+```

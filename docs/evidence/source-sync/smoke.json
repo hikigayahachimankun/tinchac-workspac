@@ -1,0 +1,594 @@
+{
+  "candidate_inventory": {
+    "approved_new": 0,
+    "pending": 0,
+    "quarantined": 8,
+    "total": 8
+  },
+  "candidates": [
+    {
+      "authority_id": "dut_finance",
+      "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12387",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T16:57:00.742339+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "review_reasons": [
+        "unread_attachment",
+        "payment_requires_human_review",
+        "amendment_relationship_review"
+      ],
+      "status": "quarantined",
+      "text_sha256": "0650bd6e17f48f2f583b3962908efcff7fcd84dd95221200593febc99464101e",
+      "transport_sha256": "6e4fcecfdb686c464f7c8a2314e63dc272adf13b44199c2c91d2a9fc2cd45c52",
+      "trust_evidence": {
+        "linked_path": "/Phong/Taichinh",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S24; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_ctsv",
+      "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12373",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T17:04:49.227893+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "review_reasons": [
+        "unread_attachment"
+      ],
+      "status": "quarantined",
+      "text_sha256": "14888c0d37e384388859040d56c163be9bd3542248698c0989918bc5a0db4b59",
+      "transport_sha256": "56c14631dda357b5df1698c936c4c870087a1fc993ce670270ad7989c57eb535",
+      "trust_evidence": {
+        "linked_path": "/Phong/CTSV",
+        "notice_channel_evidence": {
+          "checked_at": "2026-11-10T16:56:00+00:00",
+          "observed_notice_path": "/Phong/Sinhvien/Thongbao/id/12395",
+          "reviewed_by": "source-sync agent: bounded HTTPS listing inspection; official CTSV listing links this exact channel",
+          "url": "https://dut.udn.vn/Phong/CTSV/Tintucds/gid/332"
+        },
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S03; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_finance",
+      "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12337",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T17:00:46.017423+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "review_reasons": [
+        "unread_attachment",
+        "payment_requires_human_review"
+      ],
+      "status": "quarantined",
+      "text_sha256": "a1fe07f01811a5d1fcda918ce4473ef1011e87ae216922d76d2a99b2e35e29b1",
+      "transport_sha256": "f1bb5b4d4800aeec75a16f56108071f83346cca574bc31f92eaca21f576476e1",
+      "trust_evidence": {
+        "linked_path": "/Phong/Taichinh",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S24; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_finance",
+      "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T16:57:02.794699+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "review_reasons": [
+        "unread_attachment",
+        "payment_requires_human_review",
+        "amendment_relationship_review"
+      ],
+      "status": "quarantined",
+      "text_sha256": "d00f8e6c84db70504bd5e9cc58b2d665628e99313f4e0f98408d96eb97743ab9",
+      "transport_sha256": "9b59fc51421700850a1401f6669c3729887a3de6f0693e748aa9e61fc37f028b",
+      "trust_evidence": {
+        "linked_path": "/Phong/Taichinh",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S24; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_finance",
+      "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12319",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T17:04:50.252391+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "review_reasons": [
+        "unread_attachment",
+        "payment_requires_human_review"
+      ],
+      "status": "quarantined",
+      "text_sha256": "e8eda3794e52a7a54bf519217c8261664a4ade177a8333ae9fbf47c07f487f5f",
+      "transport_sha256": "5a77d01b87215b9706c0fad0d238c1ee08d38103634296b846bf973b7c7ec0e5",
+      "trust_evidence": {
+        "linked_path": "/Phong/Taichinh",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S24; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_finance",
+      "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12340",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T17:00:42.750322+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "review_reasons": [
+        "unread_attachment",
+        "payment_requires_human_review"
+      ],
+      "status": "quarantined",
+      "text_sha256": "f2043d61d263ae11ff997847816ab2842c4a646ae03e217fcd54240aecd26dc8",
+      "transport_sha256": "3472fd4139df29a42c61b8dbfa49f8ac004bbf554e28d8246b2bb78ed4202b8e",
+      "trust_evidence": {
+        "linked_path": "/Phong/Taichinh",
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S24; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_ctsv",
+      "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12394",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T17:00:45.049856+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "review_reasons": [
+        "unread_attachment"
+      ],
+      "status": "quarantined",
+      "text_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+      "transport_sha256": "e9458fca3758e188433273ca1b073e8ca8b5988161dc5ddec374a339154c54e8",
+      "trust_evidence": {
+        "linked_path": "/Phong/CTSV",
+        "notice_channel_evidence": {
+          "checked_at": "2026-11-10T16:56:00+00:00",
+          "observed_notice_path": "/Phong/Sinhvien/Thongbao/id/12395",
+          "reviewed_by": "source-sync agent: bounded HTTPS listing inspection; official CTSV listing links this exact channel",
+          "url": "https://dut.udn.vn/Phong/CTSV/Tintucds/gid/332"
+        },
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S03; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    },
+    {
+      "authority_id": "dut_ctsv",
+      "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "extraction_complete": false,
+      "first_seen": "2026-11-10T17:00:41.991452+00:00",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "review_reasons": [
+        "unread_attachment"
+      ],
+      "status": "quarantined",
+      "text_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+      "transport_sha256": "bbb055707041402a4169b50e47fadff8f94d60214f18c518b7be4bca6846f1a2",
+      "trust_evidence": {
+        "linked_path": "/Phong/CTSV",
+        "notice_channel_evidence": {
+          "checked_at": "2026-11-10T16:56:00+00:00",
+          "observed_notice_path": "/Phong/Sinhvien/Thongbao/id/12395",
+          "reviewed_by": "source-sync agent: bounded HTTPS listing inspection; official CTSV listing links this exact channel",
+          "url": "https://dut.udn.vn/Phong/CTSV/Tintucds/gid/332"
+        },
+        "provenance": "TINCHAC_PROJECT_PLAN.md §4.1 S03; config/sources.yaml; docs/source_log.md",
+        "url": "https://dut.udn.vn/"
+      }
+    }
+  ],
+  "kind": "actual-bounded-DUT-smoke_NOT_source_approval",
+  "private_bootstrap": {
+    "activated_at": "2026-11-10T17:03:52.300778+00:00",
+    "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+    "previous": null
+  },
+  "provider_calls": 0,
+  "provider_cost_usd": 0,
+  "recorded_request_count": 35,
+  "runs": [
+    {
+      "approved": 0,
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "cost_usd": 0,
+      "dry_run": false,
+      "duplicates": 0,
+      "duration_seconds": 7.29,
+      "fetched": 2,
+      "finished_at": "2026-11-10T16:52:30.069606+00:00",
+      "http": [
+        {
+          "host": "dut.udn.vn",
+          "path": "/robots.txt",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Tintucds/gid/332",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12315",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12319",
+          "status": 200
+        }
+      ],
+      "listings_checked": 3,
+      "new_urls": 2,
+      "notices": [],
+      "pending": 0,
+      "quarantined": 0,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "content_empty",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12315"
+        },
+        {
+          "phase": "notice",
+          "reason": "content_empty",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12319"
+        }
+      ],
+      "request_count": 7,
+      "run_id": "211ec4d6-8161-475e-abcb-dce54e7db035",
+      "started_at": "2026-11-10T16:52:22.780116+00:00",
+      "status": "partial",
+      "unchanged": 0,
+      "updated": 0,
+      "urls_discovered": 6
+    },
+    {
+      "approved": 0,
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "cost_usd": 0,
+      "dry_run": false,
+      "duplicates": 0,
+      "duration_seconds": 9.243,
+      "fetched": 2,
+      "finished_at": "2026-11-10T16:57:02.817291+00:00",
+      "http": [
+        {
+          "host": "dut.udn.vn",
+          "path": "/robots.txt",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Tintucds/gid/332",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Sinhvien/Thongbao/id/12395",
+          "status": 301
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12387",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Sinhvien/Thongbao/id/12394",
+          "status": 301
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12381",
+          "status": 200
+        }
+      ],
+      "listings_checked": 3,
+      "new_urls": 4,
+      "notices": [
+        {
+          "candidate_status": "quarantined",
+          "extraction_complete": false,
+          "status": "new",
+          "text_sha256": "0650bd6e17f48f2f583b3962908efcff7fcd84dd95221200593febc99464101e",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12387"
+        },
+        {
+          "candidate_status": "quarantined",
+          "extraction_complete": false,
+          "status": "new",
+          "text_sha256": "d00f8e6c84db70504bd5e9cc58b2d665628e99313f4e0f98408d96eb97743ab9",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381"
+        }
+      ],
+      "pending": 0,
+      "quarantined": 2,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "redirect_denied",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12395"
+        },
+        {
+          "phase": "notice",
+          "reason": "redirect_denied",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12394"
+        }
+      ],
+      "request_count": 9,
+      "run_id": "722d932b-55bd-4104-adf8-e085b66a2176",
+      "started_at": "2026-11-10T16:56:53.574798+00:00",
+      "status": "partial",
+      "unchanged": 0,
+      "updated": 0,
+      "urls_discovered": 18
+    },
+    {
+      "approved": 0,
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "cost_usd": 0,
+      "dry_run": false,
+      "duplicates": 0,
+      "duration_seconds": 12.714,
+      "fetched": 4,
+      "finished_at": "2026-11-10T17:00:46.041005+00:00",
+      "http": [
+        {
+          "host": "dut.udn.vn",
+          "path": "/robots.txt",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Tintucds/gid/332",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Sinhvien/Thongbao/id/12395",
+          "status": 301
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Thongbao/id/12395",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12340",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Sinhvien/Thongbao/id/12394",
+          "status": 301
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Thongbao/id/12394",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12337",
+          "status": 200
+        }
+      ],
+      "listings_checked": 3,
+      "new_urls": 4,
+      "notices": [
+        {
+          "candidate_status": "quarantined",
+          "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+          "extraction_complete": false,
+          "redirects": [
+            "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12395"
+          ],
+          "status": "new",
+          "text_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12395"
+        },
+        {
+          "candidate_status": "quarantined",
+          "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12340",
+          "extraction_complete": false,
+          "redirects": [],
+          "status": "new",
+          "text_sha256": "f2043d61d263ae11ff997847816ab2842c4a646ae03e217fcd54240aecd26dc8",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12340"
+        },
+        {
+          "candidate_status": "quarantined",
+          "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12394",
+          "extraction_complete": false,
+          "redirects": [
+            "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12394"
+          ],
+          "status": "new",
+          "text_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12394"
+        },
+        {
+          "candidate_status": "quarantined",
+          "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12337",
+          "extraction_complete": false,
+          "redirects": [],
+          "status": "new",
+          "text_sha256": "a1fe07f01811a5d1fcda918ce4473ef1011e87ae216922d76d2a99b2e35e29b1",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12337"
+        }
+      ],
+      "pending": 0,
+      "quarantined": 4,
+      "rejected": [],
+      "request_count": 11,
+      "run_id": "143f2b5e-9a6a-4fb5-8f4b-52c0d8239d2e",
+      "started_at": "2026-11-10T17:00:33.327350+00:00",
+      "status": "success",
+      "unchanged": 0,
+      "updated": 0,
+      "urls_discovered": 18
+    },
+    {
+      "approved": 0,
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "cost_usd": 0,
+      "dry_run": false,
+      "duplicates": 0,
+      "duration_seconds": 8.575,
+      "fetched": 2,
+      "finished_at": "2026-11-10T17:04:50.258431+00:00",
+      "http": [
+        {
+          "host": "dut.udn.vn",
+          "path": "/robots.txt",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Tintucds/gid/332",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Sinhvien/Thongbao/id/12373",
+          "status": 301
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/CTSV/Thongbao/id/12373",
+          "status": 200
+        },
+        {
+          "host": "dut.udn.vn",
+          "path": "/Phong/Taichinh/Thongbao/id/12319",
+          "status": 200
+        }
+      ],
+      "listings_checked": 3,
+      "new_urls": 12,
+      "notices": [
+        {
+          "candidate_status": "quarantined",
+          "canonical_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12373",
+          "extraction_complete": false,
+          "redirects": [
+            "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12373"
+          ],
+          "status": "new",
+          "text_sha256": "14888c0d37e384388859040d56c163be9bd3542248698c0989918bc5a0db4b59",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12373"
+        },
+        {
+          "candidate_status": "quarantined",
+          "canonical_url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12319",
+          "extraction_complete": false,
+          "redirects": [],
+          "status": "new",
+          "text_sha256": "e8eda3794e52a7a54bf519217c8261664a4ade177a8333ae9fbf47c07f487f5f",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12319"
+        }
+      ],
+      "pending": 0,
+      "quarantined": 2,
+      "rejected": [],
+      "request_count": 8,
+      "run_id": "7d366322-3052-48eb-ab25-19e4c49f6d2e",
+      "started_at": "2026-11-10T17:04:41.683339+00:00",
+      "status": "success",
+      "unchanged": 0,
+      "updated": 0,
+      "urls_discovered": 18
+    }
+  ],
+  "runtime_measurement": {
+    "direct": {
+      "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+      "iterations": 10000,
+      "runtime_lookup_us": 0.9431835998839233
+    },
+    "pointer": {
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "iterations": 10000,
+      "runtime_lookup_us": 42.945289299677825
+    }
+  },
+  "scheduler_installed": false,
+  "supplementary_listing_inspection": {
+    "request_cap": 6,
+    "request_count_not_persisted": true,
+    "successful_pages": 2
+  }
+}
