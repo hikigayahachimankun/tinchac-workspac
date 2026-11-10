@@ -1,46 +1,25 @@
-# Gemini readiness and bounded preflight
+# Gemini Free Tier readiness and ledger
 
-Current state, **10/11/2026**: outside-repo key loaded safely; read-only model metadata GET returned200 for `gemini-3.5-flash-lite`, with generateContent advertised. **Billing, active quota, inference/structured-output compatibility and actual account charges are not verified. Zero generation attempts were made.** D02 remains blocked. Receipts: `docs/evidence/T05/account-readiness-2026-11-10-02.json` (current), `account-readiness-2026-11-10.json` (initial parser refusal, before metadata request).
+Current state, **10/11/2026**: the owner confirms the key's project is Free Tier and reports approximately15RPM /250000inputTPM /500RPD in AI Studio. This is an owner attestation, not an authenticated console scrape. No billing was enabled, no credit purchased and no paid service used. Public [pricing](https://ai.google.dev/gemini-api/docs/pricing#gemini-3.5-flash-lite) and [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits) were retrieved with HTTP200: model input/output are free on Free Tier, quotas are project-scoped and daily limits reset at Pacific midnight. Exact remaining account-wide quota is not visible to this process.
 
-The user's conditional authorization covers at most3generation attempts including retries/repairs, <=0.03USD. It does not permit billing setup, top-up, plan upgrade, other live cases or a paid request while billing is unverified. HTTP remains LLM_LIVE_ENABLED=false.
+**Actual preflight passed:3generation attempts,859input /1126output tokens including thoughts,3validated structured outputs.** The actual model version returned `gemini-3.5-flash-lite`; temperature0 /MINIMAL thinking /SDK3.0.0 worked. Estimated Free Tier generation charge is0USD; this is not an invoice or an audit of unrelated project activity. Receipts: `docs/evidence/T05/free-tier-owner-authorization-2026-11-10.json` and `free-tier-preflight-2026-11-10.jsonl`. Older metadata-only/billing-blocked receipts remain historical and are superseded for authorized Free Tier use.
 
-## Secret loading
+## Safe secret use
 
-The secret is at `~/.config/tinchac/gemini.env` in WSL, with owner-only permissions. Do not recreate it or paste its value in chat. `scripts.provider_check.load_key` opens a private regular file with no symlink following, checks ownership/mode/size, extracts exactly one literal GEMINI_API_KEY assignment and returns SecretStr. Other variable assignments are ignored. No shell sourcing, expansion, subprocess key argument, environment export, key hash, header logging or error-body dump occurs. Initial refusal of the owner's additional env assignment was fixed without changing the file.
+The configured file is `~/.config/tinchac/gemini.env`, outside Git, owner-only0600. `scripts.provider_check.load_key` reads it as data into SecretStr using a no-symlink regular-file ownership/mode/size check. It accepts one literal GEMINI_API_KEY assignment and ignores other assignments. Never source/eval the file, export or print the key, hash it, pass it on a subprocess command line, log headers/error bodies, or commit it. No secret setup change is currently needed.
 
-Read-only check, using a **new receipt filename** each time:
+`Settings(_env_file=None)` prevents accidental workspace .env loading. Live CLIs accept `--secret-file` and `--readiness-report`; no process export is needed. `account_mode` accepts either a fresh matching-model genuine verified-paid receipt or the owner's explicitly identified Free Tier attestation. These are distinct: `billing_verified` and `quota_verified` remain false in the owner receipt; model metadata alone authorizes neither. Paid mode has no authorization in this session.
 
-```bash
-.venv/bin/python -m scripts.provider_check \
-  --report data/private/gemini-readiness-new.json
-```
+## Do not rerun the consumed preflight
 
-This command only performs a model metadata GET, with key in a header and redirects disabled. It returns exit2 while billing/quota are unverified. A200metadata response is not a successful generation or evidence of a paid plan/remaining quota. It does not initialize/reset the ledger or modify the owner's secret/billing settings.
+The authorized stable run ID `tinchac-preflight-2026-11-10-cap-0p03usd` has consumed **all3attempts** in `data/private/tinchac-live.sqlite3`. Its immutable SQLite limit is3attempts/0.03USD including retries. Do not reset/remove the DB, change the run ID/stage/model/prices or copy counters to obtain more preflight calls. This preflight gate is closed successfully, not replenished by a new CLI invocation.
 
-## Billing blocker
+The owner separately permits subsequent Free Tier recovery after successful preflight, subject to project stage/global caps, quota and freeze. The twelve-case public HTTP suite is separate DEV QA, not a fourth preflight sample or benchmark. Global HTTP remains disabled by default (`LLM_LIVE_ENABLED=false`); the explicit local public QA runner enables it only inside its own TestClient process.
 
-Public docs were rechecked successfully: [pricing](https://ai.google.dev/gemini-api/docs/pricing), [model](https://ai.google.dev/gemini-api/docs/models/gemini-3.5-flash-lite), [billing](https://ai.google.dev/gemini-api/docs/billing), [rate limits](https://ai.google.dev/gemini-api/docs/rate-limits), [Cloud Billing getBillingInfo](https://docs.cloud.google.com/billing/docs/reference/rest/v1/projects/getBillingInfo).
+## Quota and accounting controls
 
-Published Standard prices still match defaults:0.30USD input /2.50USD output per million, including thoughts. This does not establish the account's billing plan, credits, taxes, active quota or key-project billing association. Cloud Billing getBillingInfo needs an authenticated Google Cloud principal and project permission, not merely a Gemini key. Current WSL has neither gcloud nor application-default credentials; available connected tools and plugin discovery supplied no suitable authenticated Cloud Billing/AI Studio reader. No unrelated account connector was installed.
+`LLM_BILLING_MODE=free_tier` records known successful token usage with0estimated charge, while retaining conservative paid-equivalent reservations at0.30/2.50USD per million. Unknown attempts keep their reservation and cannot be reported as zero tokens/cost. The ledger enforces global<=3USD, dev<=0.8USD, evaluation<=1.4USD, demo<=0.8USD. Paid-equivalent holds are internal protection, not actual Free Tier charges.
 
-Remaining required access is an authenticated read-only view of the key's project billing/AI Studio status and quota. Do not fabricate a receipt or flip model_verified/billing_verified from metadata success. Provider project spending caps can lag; they are not a0.03USD real-time guarantee. Until actual billing is verified, **do not execute the generation command below**.
+All attempts, including failures, count in shared-ledger15RPM /250000conservative inputTPM /500Pacific-day RPD; sequential calls wait about5seconds. Other apps may use the same project, so the local ledger cannot guarantee remaining cloud quota. On provider403/404/429, no retry or paid fallback occurs; the durable refusal also blocks later Free Tier runs across restarts. Stop and record the blocker; do not delete the refusal to continue. General503/timeout retains the existing at-most-one retry and unknown accounting; a recovered retry does not hide an unknown earlier attempt.
 
-## Prepared generation command — NOT executed
-
-After actual account/billing/quota and pricing verification, with the same durable ledger and no reset:
-
-```bash
-APP_MODE=live DATABASE_PATH=./data/private/tinchac-live.sqlite3 \
-LLM_BUDGET_USD=3 LLM_LIVE_ENABLED=false \
-  .venv/bin/python -m scripts.preflight --model-check \
-  --secret-file "$HOME/.config/tinchac/gemini.env" \
-  --run-id tinchac-preflight-2026-11-10-cap-0p03usd \
-  --max-calls 3 --max-cost-usd 0.03 \
-  --readiness-report data/private/gemini-account-verified.json
-```
-
-The CLI requires a fresh (<=24h), matching-model account readiness receipt with actual billing/quota verification before it loads the secret or initializes provider/ledger. The maintainer must produce that receipt from genuine authenticated account reads; do not create it by editing metadata-only false flags. Current metadata receipts cannot authorize generation.
-
-Preflight now registers immutable run limits in SQLite and uses this stable authorization ID by default. Each retry/reservation shares the same total call/cost allowance. Restart/re-entry cannot clear calls, release unknown charges, raise the cap, change registered pricing/model, or move the allowance to another stage. Global<=3USD and dev<=0.8USD caps remain. Changing run ID needs a new spending authorization; changing DATABASE_PATH to reset counters is prohibited.
-
-The0.03USD cap is an internal reservation limit calculated from verified configured token prices. The prior0.0234USD estimate assumes <=6000billable input and <=2400combined output/thought tokens per attempt; it is not a verified invoice or an unconditional cloud billing guarantee. The GenerateContent-specific [thinking guide](https://ai.google.dev/gemini-api/docs/generate-content/thinking?hl=en) was separately retrieved with HTTP200 and documents the combined thought/response ceiling. This resolves the endpoint documentation check; it does not verify account billing. See `docs/evidence/T05/preflight-public-bounds.json`. Actual usage includes thoughts; unknown attempts retain reservations and total actual cost remains unavailable until reconciled. Three mock successes do not prove real structured-output/thinking compatibility.
+No sealed test/gold, private images or URL supplied by an end user is sent to this Free Tier smoke. Freeze/data/human gates in `eval/protocol.md` still apply. See T05/T08/T12 handoffs for actual public QA outcomes, including failed runs; do not replace them with fixture/replay results.

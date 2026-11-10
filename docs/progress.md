@@ -9,7 +9,7 @@ Recovery 10/11/2026, giờ Việt Nam. Quyền bảo trì/commit/push và nghi�
 | T02 | Maintainer / người kiểm nguồn | blocked | 5 approved (4 học bổng/1 phí), 1 quarantine; thiếu nguồn phí thứ hai và spot-check độc lập | [T02](handoffs/T02.md) |
 | T03 | Maintainer | done | 37 unit/build, 4 mock browser, mobile/desktop/keyboard/evidence đạt | [T03](handoffs/T03.md) |
 | T04 | Maintainer | done | Lifecycle fixture/TTL/auth/restart, HTTP browser và built release smoke đạt | [T04](handoffs/T04.md) |
-| T05 | Maintainer / chủ tài khoản | blocked | Key ngoài repo đã nạp an toàn; model metadata GET200; cap3attempts/0.03USD bền vững đã kiểm; billing/quota thực chưa đọc được nên chưa generation | [T05](handoffs/T05.md) |
+| T05 | Maintainer | done | Free Tier do chủ tài khoản xác nhận; preflight thật3/3,859input/1126output,0USD ước tính; cap/quota/no-retry/refusal bền vững đã kiểm (D24) | [T05](handoffs/T05.md) |
 | T06 | Maintainer | done | OCR local thật, confirm/edit/delete và browser đạt; nghiên cứu ảnh test/human correction thuộc T12 | [T06](handoffs/T06.md) |
 | T07 | Maintainer | done | Corpus validate: 6 sources/7 chunks (5 approved); retrieval regression và tái lập đạt; quy mô dữ liệu là gate T02/T09 | [T07](handoffs/T07.md) |
 | T08 | Maintainer | blocked | Đã nối production HTTP, 5 test mới và full 329 tests đạt; thiếu Gemini live/public acceptance D02 | [T08](handoffs/T08.md) |

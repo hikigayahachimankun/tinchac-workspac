@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-11-10T09:05:56.911402+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "billing_mode": "free_tier",
+  "confirmation_source": "project_owner_in_chat",
+  "quota_source": "owner_reported_ai_studio",
+  "reported_approximate_quota": {
+    "rpm": 15,
+    "input_tpm": 250000,
+    "rpd": 500
+  },
+  "paid_services_authorized": false,
+  "max_generation_attempts": 3,
+  "preflight_status": "authorized_free_tier",
+  "billing_verified": false,
+  "quota_verified": false,
+  "authorization_scope": "Owner explicitly confirms Free Tier and permits at most3generation attempts; stop immediately on quota or Free Tier refusal; no billing/top-up/paid service.",
+  "run_id": "tinchac-preflight-2026-11-10-cap-0p03usd",
+  "note": "Truthful record of user confirmation, not an authenticated console scrape or a paid billing attestation. Existing ledger/cumulative attempt counter must not be reset."
+}

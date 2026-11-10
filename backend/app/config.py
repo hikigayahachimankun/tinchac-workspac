@@ -28,6 +28,7 @@ class Settings(BaseSettings):
     llm_output_price_per_million_usd: NonNegative = 2.50
     usd_vnd_planning_rate: Annotated[float, Field(gt=0)] = 27000
     llm_budget_usd: NonNegative = 3
+    llm_billing_mode: Literal['configured_rates', 'free_tier'] = 'configured_rates'
     # Enable HTTP charges only after account preflight and budget approval.
     llm_live_enabled: bool = False
     max_concurrent_jobs: PositiveInt = 2

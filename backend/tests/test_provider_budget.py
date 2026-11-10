@@ -536,3 +536,25 @@ def test_preflight_reentry_keeps_same_authorization_and_three_cent_cap(adapter,m
         limit=db.execute('SELECT * FROM llm_run_limits WHERE run_id=?',(preflight.AUTHORIZED_RUN_ID,)).fetchone()
         assert limit['max_calls']==3 and limit['max_cost_nusd']==units('.03')
         assert db.execute('SELECT COUNT(*) FROM llm_attempts').fetchone()[0]==3
+
+
+@pytest.mark.parametrize('status',[403,404,429])
+def test_free_tier_quota_or_access_refusal_never_retries(adapter,status):
+    adapter.settings.llm_billing_mode='free_tier'
+    adapter._invoke=AsyncMock(side_effect=errors.APIError(status,{'error':{'message':'synthetic private error'}}))
+    with pytest.raises(ServiceError) as exc:run(call(adapter))
+    assert adapter._invoke.await_count==1
+    assert not exc.value.detail.retryable
+    assert exc.value.detail.details=={'provider_http_status':status}
+    assert rows(adapter)[0]['outcome']==f'http_{status}'
+    assert rows(adapter)[0]['state']=='unknown'
+
+
+def test_free_tier_settles_zero_estimated_charge_but_retains_tokens_and_reservation(adapter):
+    adapter.settings.llm_billing_mode='free_tier'
+    adapter._invoke=AsyncMock(return_value=response(thoughts=7))
+    result=run(call(adapter));row=rows(adapter)[0]
+    assert result.usage.attempts==1 and result.usage.output_tokens==47
+    assert result.usage.cost_usd==result.usage.cost_vnd_estimate==0
+    assert row['actual_nusd']==0 and row['charged_nusd']==0 and row['reserved_nusd']>0
+    assert json.loads(row['metadata'])['billing_mode']=='free_tier'

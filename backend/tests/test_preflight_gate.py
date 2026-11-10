@@ -160,3 +160,17 @@ def test_account_receipt_requires_current_matching_verified_account(tmp_path):
                    {'checked_at':(datetime.now(timezone.utc)-timedelta(days=2)).isoformat()}):
         path.write_text(json.dumps(receipt|change))
         assert not account_ready(path,'synthetic-test-model')
+
+
+def test_owner_free_tier_confirmation_does_not_fabricate_paid_billing_verification(tmp_path):
+    from datetime import datetime,timezone
+    from scripts.preflight import account_mode
+    path=tmp_path/'owner-free.json'
+    receipt={'checked_at':datetime.now(timezone.utc).isoformat(),'model':'gemini-3.5-flash-lite',
+        'billing_mode':'free_tier','confirmation_source':'project_owner_in_chat',
+        'quota_source':'owner_reported_ai_studio','paid_services_authorized':False,
+        'max_generation_attempts':3,'preflight_status':'authorized_free_tier','billing_verified':False}
+    path.write_text(json.dumps(receipt))
+    assert account_mode(path,receipt['model'])=='free_tier'
+    path.write_text(json.dumps(receipt|{'paid_services_authorized':True}))
+    assert account_mode(path,receipt['model']) is None

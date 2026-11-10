@@ -21,21 +21,34 @@ ROOT = Path(__file__).resolve().parents[1]
 AUTHORIZED_RUN_ID = 'tinchac-preflight-2026-11-10-cap-0p03usd'
 
 
-def account_ready(path: Path | None, model: str) -> bool:
+def account_mode(path: Path | None, model: str) -> str | None:
     """Operator's genuine account-read receipt; never infer readiness from a key or model GET."""
     if path is None:
-        return False
+        return None
     try:
         receipt = json.loads(path.read_text())
         checked = datetime.fromisoformat(receipt['checked_at'])
         if checked.utcoffset() is None:
-            return False
+            return None
         age = (datetime.now(timezone.utc) - checked).total_seconds()
-        return (0 <= age <= 86400 and receipt['model'] == model
-                and receipt.get('billing_verified') is True and receipt.get('quota_verified') is True
-                and receipt.get('preflight_status') == 'ready')
+        if not 0 <= age <= 86400 or receipt['model'] != model:
+            return None
+        if (receipt.get('billing_mode') == 'free_tier' and receipt.get('confirmation_source') == 'project_owner_in_chat'
+                and receipt.get('paid_services_authorized') is False
+                and receipt.get('quota_source') == 'owner_reported_ai_studio'
+                and receipt.get('max_generation_attempts') == 3
+                and receipt.get('preflight_status') == 'authorized_free_tier'):
+            return 'free_tier'
+        if (receipt.get('billing_verified') is True and receipt.get('quota_verified') is True
+                and receipt.get('preflight_status') == 'ready'):
+            return 'configured_rates'
+        return None
     except (OSError, ValueError, KeyError, TypeError, AttributeError):
-        return False
+        return None
+
+
+def account_ready(path: Path | None, model: str) -> bool:
+    return account_mode(path, model) is not None
 
 
 def public_samples():
@@ -61,10 +74,13 @@ async def run(settings: Settings, max_calls: int, *, run_id=AUTHORIZED_RUN_ID,
                       'thinking_config': thinking_config(settings.llm_model).model_dump(mode='json', exclude_none=True),
                       'max_output_tokens': 2400, 'max_calls_including_retry': max_calls,
                       'max_run_cost_usd': str(max_cost_usd),
+                      'billing_mode': settings.llm_billing_mode,
                       'input_price_usd_per_million': settings.llm_input_price_per_million_usd,
                       'output_price_usd_per_million': settings.llm_output_price_per_million_usd}))
     corpus_version = 'preflight-' + digest([(text, stamp.isoformat()) for text, stamp in samples])
     for text, as_of in samples[:max_calls]:
+        if settings.llm_billing_mode == 'free_tier':
+            await asyncio.sleep(5)  # Sequential conservative pacing for reported ~15 RPM.
         request = CheckCreate(schema_version='1.0', input_mode='text', confirmed_text=text,
                               asset_id=None, asset_token=None, as_of=as_of, consent_to_process=True)
         try:
@@ -90,9 +106,11 @@ def main():
     try:
         # Key only comes from the owner's process; do not load a workspace .env.
         settings = Settings(_env_file=None)
-        if not account_ready(args.readiness_report, settings.llm_model):
+        mode = account_mode(args.readiness_report, settings.llm_model)
+        if mode is None:
             print('Preflight blocked: authenticated account billing/quota verification is missing or stale. No generation attempted.')
             return 2
+        settings.llm_billing_mode = mode
         if args.secret_file:
             from scripts.provider_check import load_key
             settings.gemini_api_key = load_key(args.secret_file)

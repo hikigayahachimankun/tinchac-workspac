@@ -1,9 +1,11 @@
 """Durable per-attempt accounting. Amounts are integer nano-USD, rounded up."""
 from contextlib import closing, contextmanager
 from decimal import Decimal, ROUND_CEILING
+from datetime import datetime, timezone
 import json
 import sqlite3
 from uuid import uuid4
+from zoneinfo import ZoneInfo
 
 from ..config import Settings
 from .errors import ServiceError
@@ -59,12 +61,40 @@ class Budget:
                       + Decimal(output_tokens) * Decimal(str(self.settings.llm_output_price_per_million_usd)))
                      / 1_000_000)
 
+    def free_tier_delay(self) -> float:
+        with self.db() as db:
+            stamp = db.execute('SELECT MAX(created_at) FROM llm_attempts').fetchone()[0]
+        if not stamp:
+            return 0
+        elapsed = (datetime.now(timezone.utc) - datetime.fromisoformat(stamp).replace(tzinfo=timezone.utc)).total_seconds()
+        return max(0, min(5, 5 - elapsed))
+
     def reserve(self, amount: int, stage: str, metadata: dict, *, run_id: str | None = None,
                 max_calls: int | None = None) -> str:
         if stage not in STAGE_CAPS or amount <= 0:
             raise ValueError('Invalid stage or reservation')
         with self.db() as db:
             db.execute('BEGIN IMMEDIATE')
+            if self.settings.llm_billing_mode == 'free_tier':
+                refusal = db.execute("""SELECT outcome FROM llm_attempts
+                    WHERE json_extract(metadata,'$.billing_mode')='free_tier'
+                    AND outcome IN ('http_403','http_404','http_429') LIMIT 1""").fetchone()
+                if refusal:
+                    raise ServiceError('RATE_LIMITED', 'Free Tier đã bị provider từ chối; dừng gọi API để kiểm tài khoản.',
+                        status=429, details={'quota_scope':'prior_provider_refusal',
+                                           'provider_http_status':int(refusal['outcome'][5:])})
+                calls_minute, input_minute = db.execute("""SELECT COUNT(*),
+                    COALESCE(SUM(COALESCE(json_extract(metadata,'$.input_bound'),6000)),0)
+                    FROM llm_attempts WHERE created_at>=datetime('now','-60 seconds')""").fetchone()
+                midnight = datetime.now(ZoneInfo('America/Los_Angeles')).replace(hour=0, minute=0, second=0, microsecond=0)
+                start = midnight.astimezone(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
+                calls_day = db.execute('SELECT COUNT(*) FROM llm_attempts WHERE created_at>=?', (start,)).fetchone()[0]
+                incoming = metadata.get('input_bound', 6000)
+                if type(incoming) is not int or incoming <= 0:
+                    raise ValueError('Invalid Free Tier input reservation')
+                if calls_minute >= 15 or input_minute + incoming > 250000 or calls_day >= 500:
+                    raise ServiceError('RATE_LIMITED', 'Đã chạm giới hạn Free Tier cục bộ; chưa gọi provider.',
+                        status=429, details={'quota_scope':'local_shared_ledger'})
             total = db.execute('SELECT COALESCE(SUM(charged_nusd),0) FROM llm_attempts').fetchone()[0]
             staged = db.execute('SELECT COALESCE(SUM(charged_nusd),0) FROM llm_attempts WHERE stage=?',
                                 (stage,)).fetchone()[0]
@@ -81,7 +111,8 @@ class Budget:
             attempt_id = str(uuid4())
             db.execute('''INSERT INTO llm_attempts(id,stage,metadata,reserved_nusd,charged_nusd,state)
                 VALUES(?,?,?,?,?,'reserved')''',
-                       (attempt_id, stage, json.dumps(metadata | {'run_id': run_id}, sort_keys=True), amount, amount))
+                       (attempt_id, stage, json.dumps(metadata | {'run_id': run_id,
+                        'billing_mode':self.settings.llm_billing_mode}, sort_keys=True), amount, amount))
         return attempt_id
 
     def finish(self, attempt_id: str, *, outcome: str, actual: int | None = None,

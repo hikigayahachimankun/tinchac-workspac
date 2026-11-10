@@ -105,6 +105,7 @@ class GeminiAdapter:
         if max_calls is not None:
             self.budget.register_run(run_id, max_calls, units(run_budget_usd) if run_budget_usd is not None else None,
                 digest({'model':settings.llm_model,
+                        'billing_mode':settings.llm_billing_mode,
                         'input_price':settings.llm_input_price_per_million_usd,
                         'output_price':settings.llm_output_price_per_million_usd}))
         self.run_id, self.max_calls = run_id, max_calls
@@ -159,6 +160,10 @@ class GeminiAdapter:
         request_id = str(uuid4())
         contents = text
         for attempt in range(1 + self.settings.llm_max_retries):
+            if self.settings.llm_billing_mode == 'free_tier':
+                delay = self.budget.free_tier_delay()
+                if delay:
+                    await asyncio.sleep(delay)
             # One token per UTF-8 byte plus schema/system overhead is deliberately conservative.
             input_bound = len((contents + prompt + json.dumps(schema)).encode()) + 1024
             if input_bound > 6000:
@@ -169,6 +174,8 @@ class GeminiAdapter:
                 'input_bound': input_bound, 'output_cap': max_output_tokens,
                 'sdk_version': '3.0.0', 'temperature': self.settings.llm_temperature,
                 'thinking_config': config.thinking_config.model_dump(mode='json', exclude_none=True),
+                'billing_mode': self.settings.llm_billing_mode,
+                'reservation_basis': 'configured_paid_equivalent',
                 'input_price_usd_per_million': self.settings.llm_input_price_per_million_usd,
                 'output_price_usd_per_million': self.settings.llm_output_price_per_million_usd},
                 run_id=self.run_id, max_calls=self.max_calls)
@@ -176,24 +183,27 @@ class GeminiAdapter:
             try:
                 response = await asyncio.wait_for(self._invoke(contents, config), self.settings.llm_timeout_seconds)
             except BaseException as exc:
-                self.budget.finish(attempt_id, outcome='transport_error',
+                code = exc.code if isinstance(exc, errors.APIError) else None
+                outcome = f'http_{code}' if type(code) is int and 400 <= code <= 599 else 'transport_error'
+                self.budget.finish(attempt_id, outcome=outcome,
                                    duration_ms=int((time.monotonic() - attempt_started) * 1000))
-                logger.info('llm_attempt id=%s outcome=transport_error', attempt_id)
+                logger.info('llm_attempt id=%s outcome=%s', attempt_id, outcome)
                 if isinstance(exc, (asyncio.CancelledError, KeyboardInterrupt, SystemExit)):
                     raise
                 unknown = True
                 timeout = isinstance(exc, (TimeoutError, httpx.TimeoutException, httpx2.TimeoutException))
-                code = exc.code if isinstance(exc, errors.APIError) else None
                 retryable = timeout or code == 429 or (isinstance(code, int) and 500 <= code <= 599)
+                if self.settings.llm_billing_mode == 'free_tier' and code in (403, 404, 429):
+                    retryable = False  # Owner requires immediate stop, never quota/paid fallback.
                 delay = retry_delay(exc, attempt)
                 if retryable and attempt < self.settings.llm_max_retries and delay >= 0:
                     await asyncio.sleep(delay)
                     continue
                 error_code = 'PROVIDER_TIMEOUT' if timeout else ('RATE_LIMITED' if code == 429 else 'INTERNAL_ERROR')
                 raise ServiceError(error_code, 'Lỗi kỹ thuật từ provider; phí cần đối soát.', retryable,
-                                   status=503) from None
+                                   status=503, details={'provider_http_status':code} if type(code) is int else {}) from None
             tokens = response_usage(response)
-            actual = self.budget.cost(*tokens) if tokens is not None else None
+            actual = (0 if self.settings.llm_billing_mode == 'free_tier' else self.budget.cost(*tokens)) if tokens is not None else None
             self.budget.finish(attempt_id, outcome='response', actual=actual,
                                input_tokens=tokens[0] if tokens else None,
                                output_tokens=tokens[1] if tokens else None,
