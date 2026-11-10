@@ -1,0 +1,42 @@
+{
+  "record": false,
+  "provider_calls": 0,
+  "results": [
+    {
+      "width": 390,
+      "mode": "fixture",
+      "cases": [
+        "OCR original→supported",
+        "nei",
+        "mixed",
+        "worker failure"
+      ],
+      "fault_injection": [
+        "connectionrefused",
+        "HTTP429"
+      ],
+      "external_requests": 0,
+      "page_errors": [],
+      "storage": "empty",
+      "video": null
+    },
+    {
+      "width": 1440,
+      "mode": "fixture",
+      "cases": [
+        "OCR original→supported",
+        "nei",
+        "mixed",
+        "worker failure"
+      ],
+      "fault_injection": [
+        "connectionrefused",
+        "HTTP429"
+      ],
+      "external_requests": 0,
+      "page_errors": [],
+      "storage": "empty",
+      "video": null
+    }
+  ]
+}

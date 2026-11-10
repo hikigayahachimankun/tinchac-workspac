@@ -111,6 +111,33 @@ def test_live_provider_failure_remains_technical(live, monkeypatch):
             assert db.execute('SELECT state FROM llm_attempts').fetchone()[0] == 'unknown'
 
 
+@pytest.mark.parametrize('failure', ['quota', 'budget'])
+def test_release_rehearsal_quota_and_budget_have_no_verdict(live, monkeypatch, failure):
+    from unittest.mock import AsyncMock
+    from google.genai import errors
+    app, request, source, calls = live
+    app.state.settings.llm_billing_mode = 'free_tier'
+    invoke = AsyncMock(side_effect=errors.APIError(429, {'error': {'message': 'synthetic-quota'}}))
+    monkeypatch.setattr(GeminiAdapter, '_invoke', invoke)
+    if failure == 'budget':
+        app.state.settings.llm_budget_usd = 0
+    with TestClient(app) as client:
+        for _ in range(2):
+            created = client.post('/api/v1/checks', json=request)
+            assert created.status_code == 202
+            body = created.json()
+            response = client.get('/api/v1/checks/' + body['check']['check_id'],
+                headers={'X-Resource-Token': body['access_token']})
+            record = CheckRecord.model_validate(response.json())
+            assert record.status == 'failed' and record.result is None
+            assert record.error.code == ('RATE_LIMITED' if failure == 'quota' else 'BUDGET_EXCEEDED')
+            assert not record.error.retryable
+        assert invoke.await_count == (1 if failure == 'quota' else 0)
+        with app.state.jobs.db() as db:
+            assert db.execute('SELECT COUNT(*) FROM llm_attempts').fetchone()[0] == (1 if failure == 'quota' else 0)
+    assert calls == []  # All provider I/O replaced; real quota is untouched.
+
+
 @pytest.mark.parametrize('expire', [False, True])
 def test_cancel_during_extraction_skips_verification(live, monkeypatch, expire):
     app, request, source, calls = live

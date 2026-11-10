@@ -119,6 +119,8 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             allowed = {'.html', '.js', '.css', '.svg', '.ico', '.png', '.jpg', '.jpeg', '.webp', '.woff', '.woff2'}
             if target.is_file() and target.suffix in allowed:
                 return FileResponse(target)
+            if parts and parts[0] == 'assets':
+                raise HTTPException(404)
             index = (dist / 'index.html').resolve()
             if not Path(path).suffix and index.is_relative_to(dist) and index.is_file():
                 return FileResponse(index)

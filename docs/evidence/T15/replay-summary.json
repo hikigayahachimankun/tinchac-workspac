@@ -1,0 +1,219 @@
+{
+  "mode": "replay",
+  "rows": 27,
+  "events": [
+    {
+      "error_case_ids": [],
+      "event": "complete",
+      "planned": 27,
+      "reason": null,
+      "technical_errors": 0,
+      "written": 27
+    }
+  ],
+  "manifest": {
+    "git_commit": "64b726eebe4897c3d743208669733bcc5d59a083",
+    "batch_id": "3f19d303-99df-4232-8f16-6af377380bc5",
+    "mode": "replay",
+    "config": {
+      "schema_version": "1.0",
+      "seed": 42,
+      "model": "fixture-v1",
+      "model_verified": false,
+      "temperature": 0,
+      "systems": [
+        "A",
+        "B",
+        "C"
+      ],
+      "ablation_system": "C_NO_TIME",
+      "retrieval": {
+        "method": "fts5_tfidf_rrf",
+        "fts_candidates": 10,
+        "tfidf_candidates": 10,
+        "rrf_k": 60,
+        "top_k": 5,
+        "max_context_tokens": 6000
+      },
+      "generation": {
+        "max_output_tokens": 1200,
+        "max_retries": 1,
+        "timeout_seconds": 30
+      },
+      "execution": {
+        "concurrency": 1,
+        "cache_mode": "fresh",
+        "total_budget_usd": 1.4
+      },
+      "data": {
+        "corpus_version": "fixture-per-case",
+        "split_manifest": "eval/split_manifest.json",
+        "test_input": "data/test_public/cases.jsonl",
+        "cases_hash": null,
+        "claims_hash": null,
+        "temporal_case_ids": null
+      },
+      "analysis": {
+        "primary": "family_macro_ecv_delta_c_minus_b",
+        "bootstrap_clusters": "family_id",
+        "bootstrap_replicates": 2000,
+        "confidence_level": 0.95
+      }
+    },
+    "config_hash": "17bd673a88432710771b326393913b4987f95c2c7659d7a91bfcff0510a5b7ae",
+    "cases_hash": "569f54507895023c8d69062d2dd345ea9b03c22cfe85e89cd2db2c254edf3f92",
+    "claims_hash": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "implementation": {
+      "backend/app/models.py": "1eb81abb2266df156f0874e0da54551d56e5c715ae3e71a521dffc39fe812148",
+      "backend/app/services/budget.py": "513ee534095ceef41491336ab6932794275e6de755f6f068c5dd4a0ffed75171",
+      "backend/app/services/corpus.py": "3243be9f3077296aad01212488d7ab9d111c2e51b7927c078ded2a8976157d5c",
+      "backend/app/services/errors.py": "b325e59119422672e6da65cde4045829fdaf948a17d4938070b05f8588797630",
+      "backend/app/services/evidence.py": "f4bb7177899767d474ceea781064f7bb6af0b7ff4c703caf615f6e9c342a21a9",
+      "backend/app/services/extract.py": "48fc9036cd8de8c2bbabd5d1dfc35025ed9b3e0a316f48cda37929ca67d4a246",
+      "backend/app/services/fixture.py": "bd75c50367df9616f2c095be9930fdd91e69142be514065e652a7ff28447688e",
+      "backend/app/services/intake.py": "5e025095dacde9317c7842ee86e699dca187f2579b6e14325c94ca6a6a6d3e3a",
+      "backend/app/services/jobs.py": "9f450048bc95cc0ea812661c285a343f9a4350d582e2fc90b3bb3e40db918a74",
+      "backend/app/services/llm.py": "ceb90515e52e4532b446d16286ccd6180da5e6367ef84fc3de378c283c6b8201",
+      "backend/app/services/normalization.py": "cae9288e94729d5ac5a7f285d2fc1248c07b676928dab5cfcbd995f783d5e0b3",
+      "backend/app/services/ocr.py": "3596674bd8115ee53def2be3c1e0b83e6ecbbdfa4bdf03caffcc6e1b350cb506",
+      "backend/app/services/render.py": "2ffc98d5bb37a85bb13ec03088e2322735b8d4921ad1cd8a43e325d394bee0cc",
+      "backend/app/services/retrieve.py": "a7a380c875e7b65eee346f0d0caefcfb454d61635346f3854ab0b0dcb4f721e8",
+      "backend/app/services/runtime.py": "b68f96c941218027e4d0dda8ad00c5cd2f020cfb2d8c2e5a87548d42adb8e515",
+      "backend/app/services/temporal.py": "cf81b49777db9fa68fabfdba687650c6c8284489d62d5fb4229c3b4f532e1ea4",
+      "backend/app/services/verify.py": "5c468f5906f894a7995d04b6e8a2ff429fa45dcff1a43caaac75770ed0559095",
+      "eval/__init__.py": "3de452b830d94d99d44ce5b9e3fb685be87a5eb1155d480cf3e09aa7b7e5e355",
+      "eval/harness.py": "5f64bc6263388fe07c45bd8f4060500f2abe3d2161c1730167dcfbdae7062e35",
+      "eval/metrics.py": "b5b6ecea4003a62f1bfc36349ec33ee5ed6d502f1592f5851e6341a4975e5a68",
+      "eval/run_schema.py": "50d946ec168ad184821251a6787a8d3bdd089edb4687c31d19ca3993049401b0",
+      "eval/schema.py": "adaf393ab158ac3ddde87f04df8600c915b7cab8576c3d81ce1c1ea65a00c4ff",
+      "scripts/run_eval.py": "d5662b7f016889dcae4e60938b39a8d4d0137f9b043ae154d83571abed2670d3",
+      "scripts/score_eval.py": "189962aa6b9cb04a80e806a2e1614f070e456fefb25ffd5be658f4a58f1b4512"
+    },
+    "prompts": {
+      "A": "96adafdc9a74577ed5ed0d05413b1cc7ce4e9c3739f9c3bdd63445639db23d10",
+      "B": "c0af6ff7142f12163f53d61353b362c40bd041a2eab304d121d5fc3c92c60fd4",
+      "C": "0b25fd676a7b9685301459d70fcfe02962a8e54297b7b7b7fe6a70d4531dc7f9",
+      "C_NO_TIME": "4c31c3d44ab4331425986346b71c361e43aa0926d7d47a3b63a8a38ba0f6e07c"
+    },
+    "temporal_case_ids": [
+      "extension",
+      "expired_history",
+      "missing_year"
+    ],
+    "schedule": [
+      [
+        "fee_negation",
+        "B"
+      ],
+      [
+        "fee_negation",
+        "A"
+      ],
+      [
+        "fee_negation",
+        "C"
+      ],
+      [
+        "fee_silence",
+        "B"
+      ],
+      [
+        "fee_silence",
+        "A"
+      ],
+      [
+        "fee_silence",
+        "C"
+      ],
+      [
+        "scope_mismatch",
+        "A"
+      ],
+      [
+        "scope_mismatch",
+        "B"
+      ],
+      [
+        "scope_mismatch",
+        "C"
+      ],
+      [
+        "source_conflict",
+        "B"
+      ],
+      [
+        "source_conflict",
+        "C"
+      ],
+      [
+        "source_conflict",
+        "A"
+      ],
+      [
+        "fabricated_quote",
+        "B"
+      ],
+      [
+        "fabricated_quote",
+        "C"
+      ],
+      [
+        "fabricated_quote",
+        "A"
+      ],
+      [
+        "missing_year",
+        "C_NO_TIME"
+      ],
+      [
+        "missing_year",
+        "A"
+      ],
+      [
+        "missing_year",
+        "C"
+      ],
+      [
+        "missing_year",
+        "B"
+      ],
+      [
+        "expired_history",
+        "A"
+      ],
+      [
+        "expired_history",
+        "C_NO_TIME"
+      ],
+      [
+        "expired_history",
+        "C"
+      ],
+      [
+        "expired_history",
+        "B"
+      ],
+      [
+        "extension",
+        "A"
+      ],
+      [
+        "extension",
+        "C"
+      ],
+      [
+        "extension",
+        "C_NO_TIME"
+      ],
+      [
+        "extension",
+        "B"
+      ]
+    ],
+    "note": "Fixture is scripted plumbing, never model performance. Replay retains source usage separately.",
+    "origin_manifest_hash": "2d017b1cf4b5aa49e3b4b01519db2fe41b1a0c61da23fd9191c283bb4906bc2c"
+  },
+  "provider_calls_in_T15": 0,
+  "benchmark": false,
+  "recording_origin": "synthetic fixture"
+}

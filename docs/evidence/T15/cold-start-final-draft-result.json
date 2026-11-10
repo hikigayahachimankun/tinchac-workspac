@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "mode": "fixture",
+  "provider_calls": 0,
+  "static_api_source_delete": "passed",
+  "cases": [
+    {
+      "case": "mixed",
+      "status": "completed",
+      "labels": {
+        "supported": 1,
+        "contradicted": 1,
+        "insufficient_evidence": 1
+      }
+    },
+    {
+      "case": "supported",
+      "status": "completed",
+      "labels": {
+        "supported": 1
+      }
+    },
+    {
+      "case": "nei",
+      "status": "completed",
+      "labels": {
+        "insufficient_evidence": 1
+      }
+    },
+    {
+      "case": "failed",
+      "status": "failed",
+      "labels": {}
+    }
+  ],
+  "environment": "fresh extracted tree and venv on SAME host",
+  "second_machine_verified": false,
+  "os": "Linux-6.18.58.1-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+  "node": "v22.23.4",
+  "python": "Python 3.11.18",
+  "archive_sha256": "bae093ed5ca1de470394b4b6930b539ee345c0e270e481354121971cc496129b",
+  "package_commit": "64b726eebe4897c3d743208669733bcc5d59a083"
+}

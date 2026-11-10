@@ -1,0 +1,26 @@
+{
+  "scope": "approved DUT metadata URLs only; availability is not content or rights verification",
+  "links": [
+    {
+      "version_id": "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+      "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395"
+    },
+    {
+      "version_id": "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+      "url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://dut.udn.vn/TrangSinhvien/Thongbao/id/12394"
+    },
+    {
+      "version_id": "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+      "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321",
+      "method": "HEAD",
+      "status": 200,
+      "final_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321"
+    }
+  ]
+}

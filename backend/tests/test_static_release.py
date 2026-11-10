@@ -21,7 +21,8 @@ def test_release_serves_ui_and_assets_but_preserves_api_and_private_boundary(tmp
         assert client.head('/assets/app.js').status_code == 200
         assert client.get('/api/v1/health').json()['run_mode'] == 'fixture'
         for path in ('/api/v1/missing','/api/v2/missing','/.env','/data/private/db.sqlite3',
-                     '/leak.txt','/assets/missing.js','/assets/%2e%2e/%2e%2e/secret.txt'):
+                     '/leak.txt','/assets/missing.js','/assets/missing', '/assets',
+                     '/assets/%2e%2e/%2e%2e/secret.txt'):
             response = client.get(path)
             assert response.status_code == 404, path
             assert 'private-secret' not in response.text

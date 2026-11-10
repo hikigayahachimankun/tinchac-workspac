@@ -1,6 +1,52 @@
-# TinChắc · Workspace cho Codex và VS Code
+# TinChắc · Bản chạy local cho sinh viên DUT
 
-Gói chuẩn bị repo, quy tắc làm việc, checkpoint và bốn skill đã ghim phiên bản. Đặc tả gốc nằm tại [TINCHAC_PROJECT_PLAN.md](TINCHAC_PROJECT_PLAN.md). T00 xác nhận đầu vào của nhóm. T01 tạo API/schema và bộ khung. T03 tạo frontend. Các lệnh của app trong §7.1 chỉ dùng sau khi task tương ứng đã tạo tệp.
+Ảnh/văn bản → OCR cục bộ và xác nhận chữ → đối chiếu từng chi tiết → nguồn và bước kiểm tra tiếp. API `/api/v1`, schema `1.0`. **Bản T15 hiện là release candidate nội bộ ở chế độ fixture; chưa nghiệm thu live hoặc máy thứ hai.** Không dùng kết quả mẫu để quyết định đóng tiền/nộp hồ sơ. [Checklist và giới hạn](reports/release_checklist.md) · [Demo/video](docs/demo_script.md) · [Handoff T15](docs/handoffs/T15.md).
+
+## Chạy bản demo hiện tại
+
+Từ repo hoặc thư mục `tinchac/` đã giải nén gói RC, cần Python **3.11.18**, Node **22.23.4** (`.python-version`, `.nvmrc`), uv và Tesseract **vie+eng**. Ubuntu/WSL: `sudo apt-get install tesseract-ocr tesseract-ocr-vie tesseract-ocr-eng fonts-dejavu-core`. Không cần key, `.env` hoặc paid hosting. Dùng thư mục mới, không đặt file `.env` trong đó.
+
+```bash
+uv venv --python 3.11.18 .venv
+uv pip sync --python .venv/bin/python requirements.lock.txt
+uv pip check --python .venv/bin/python
+npm ci --prefix frontend
+VITE_API_MODE=http npm run build --prefix frontend
+tesseract --list-langs
+APP_MODE=fixture GEMINI_API_KEY= LLM_LIVE_ENABLED=false \
+  DATABASE_PATH=./data/private/demo.sqlite3 .venv/bin/python -m scripts.init_db
+APP_MODE=fixture GEMINI_API_KEY= LLM_LIVE_ENABLED=false \
+  DATABASE_PATH=./data/private/demo.sqlite3 PRIVATE_DIR=./data/private \
+  FRONTEND_DIST=./frontend/dist .venv/bin/python -m uvicorn backend.app.main:app \
+  --host 127.0.0.1 --port 8000 --workers 1
+```
+
+Mở `http://127.0.0.1:8000`. Chỉ một tiến trình FastAPI phục vụ cả UI/API; không cần Vite. Chọn mẫu trong “Tình huống mô phỏng”, đồng ý rồi kiểm tra; mở “Xem bằng chứng” và snapshot. Thử ảnh tự tạo `data/fixtures/ocr/vietnamese-clear.png`, kiểm chữ/số tiền rồi xác nhận. Mẫu cố định chỉ nhận đúng các văn bản trong `data/fixtures/cases.jsonl`; không phân tích văn bản tùy ý. Nguồn im lặng → chưa đủ bằng chứng; hết hạn là trường riêng; lỗi API → lỗi kỹ thuật, không có nhãn.
+
+Terminal khác, cùng thư mục:
+
+```bash
+.venv/bin/python -m scripts.release_smoke --base-url http://127.0.0.1:8000
+```
+
+Kết quả mong đợi: health `fixture/1.0/fixture-v1`, không provider; static/API boundary, source quote và DELETE đạt; mixed có S/C/NEI, supported có S, nei có NEI, failed không có verdict. Không mở URL do người dùng nhập. Fixture URL `.example` chỉ là định danh mô phỏng, không có nút mở nguồn gốc thật.
+
+Đóng gói từ checkout đã build; output mới, không ghi đè:
+
+```bash
+mkdir -p artifacts/T15
+.venv/bin/python -m scripts.package_release --output artifacts/T15/tinchac-rc.tar.gz
+python3 scripts/cold_start_release.py --archive artifacts/T15/tinchac-rc.tar.gz \
+  --output /tmp/tinchac-new-cold-start
+```
+
+Script tạo thư mục mới, kiểm hash, venv riêng, npm install/build mới, chạy một worker rồi tự dừng. Cài dependencies lần đầu cần mạng/package cache; demo fixture đã cài chạy offline. Manifest trong gói ghi commit, hash từng file/locks/config/seed, model/corpus fixture và hash manifest corpus thật tham chiếu. Gói chỉ có mã, build và fixture tự tạo; không chứa key, DB/ledger riêng, gold, raw, snapshot corpus thật hoặc vendor binaries. Quyền phân phối ngoài nhóm vẫn là gate mở.
+
+**Đã thử 10/11/2026:** Ubuntu26.04/WSL2 Linux6.18.58.1, Python3.11.18, Node22.23.4, Tesseract5.5.0 vie+eng. Cold-start thành công trong cây giải nén và venv mới **trên cùng host**; browser Chromium390/1440, OCR, bàn phím và injection mất kết nối/quota đạt. Đây không chứng nhận máy thứ hai. Bằng chứng/lệnh: [T15](docs/evidence/T15/README.md).
+
+Live dùng `gemini-3.5-flash-lite` theo cấu hình hiện có, tắt mặc định; corpus thật `corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982` chỉ có trong checkout có quyền truy cập. [Setup/ledger thật](docs/live_setup.md) ghi preflight Free Tier đã đạt nhưng HTTP QA còn lỗi503/unknown; không chạy live từ gói fixture. HTTP replay chưa có recording cấu hình; CLI replay offline được kiểm riêng, không phải kết quả benchmark.
+
+Các mục dưới là hướng dẫn workspace và checkpoint lịch sử. Điểm bắt đầu chạy app hiện tại là mục trên; trạng thái task ở [progress](docs/progress.md). Đặc tả gốc ở [kế hoạch](TINCHAC_PROJECT_PLAN.md).
 
 ## 1. Mở workspace trên Windows
 
