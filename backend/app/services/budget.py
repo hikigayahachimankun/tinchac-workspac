@@ -29,6 +29,24 @@ class Budget:
                 actual_nusd INTEGER, input_tokens INTEGER, output_tokens INTEGER,
                 state TEXT NOT NULL, outcome TEXT, provider_request_id TEXT, model_version TEXT, duration_ms INTEGER
             )''')
+            db.execute('''CREATE TABLE IF NOT EXISTS llm_run_limits (
+                run_id TEXT PRIMARY KEY, max_calls INTEGER NOT NULL,
+                max_cost_nusd INTEGER, identity TEXT NOT NULL
+            )''')
+
+    def register_run(self, run_id: str, max_calls: int, max_cost: int | None, identity: str):
+        if not run_id or type(max_calls) is not int or not 1 <= max_calls <= 3:
+            raise ValueError('Invalid preflight run limits')
+        if max_cost is not None and not 0 < max_cost <= units('.03'):
+            raise ValueError('Preflight cost cap must be positive and <=0.03 USD')
+        with self.db() as db:
+            db.execute('BEGIN IMMEDIATE')
+            db.execute('INSERT OR IGNORE INTO llm_run_limits VALUES(?,?,?,?)',
+                       (run_id, max_calls, max_cost, identity))
+            row = db.execute('SELECT max_calls,max_cost_nusd,identity FROM llm_run_limits WHERE run_id=?',
+                             (run_id,)).fetchone()
+            if tuple(row) != (max_calls, max_cost, identity):
+                raise ValueError('Registered run limits/config cannot change on restart')
 
     @contextmanager
     def db(self):
@@ -50,11 +68,15 @@ class Budget:
             total = db.execute('SELECT COALESCE(SUM(charged_nusd),0) FROM llm_attempts').fetchone()[0]
             staged = db.execute('SELECT COALESCE(SUM(charged_nusd),0) FROM llm_attempts WHERE stage=?',
                                 (stage,)).fetchone()[0]
-            calls = db.execute("SELECT COUNT(*) FROM llm_attempts WHERE json_extract(metadata,'$.run_id')=?",
-                               (run_id,)).fetchone()[0] if max_calls is not None else 0
+            limits = db.execute('SELECT max_calls,max_cost_nusd FROM llm_run_limits WHERE run_id=?',
+                                (run_id,)).fetchone() if run_id is not None else None
+            call_cap = limits['max_calls'] if limits else max_calls
+            calls, run_cost = db.execute("SELECT COUNT(*),COALESCE(SUM(charged_nusd),0) FROM llm_attempts WHERE json_extract(metadata,'$.run_id')=?",
+                                        (run_id,)).fetchone() if call_cap is not None else (0, 0)
             if (total + amount > units(min(self.settings.llm_budget_usd, 3))
                     or staged + amount > units(STAGE_CAPS[stage])
-                    or (max_calls is not None and calls >= max_calls)):
+                    or (call_cap is not None and calls >= call_cap)
+                    or (limits and limits['max_cost_nusd'] is not None and run_cost + amount > limits['max_cost_nusd'])):
                 raise ServiceError('BUDGET_EXCEEDED', 'Đã hết ngân sách hoặc số lần gọi nội bộ.', status=429)
             attempt_id = str(uuid4())
             db.execute('''INSERT INTO llm_attempts(id,stage,metadata,reserved_nusd,charged_nusd,state)

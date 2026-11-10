@@ -1,0 +1,19 @@
+{
+  "checked_at": "2026-11-10T08:33:29.313893+00:00",
+  "model": "gemini-3.5-flash-lite",
+  "key_loaded": false,
+  "billing_verified": false,
+  "quota_verified": false,
+  "inference_verified": false,
+  "generation_attempts": 0,
+  "generation_cost_usd": 0,
+  "preflight_status": "blocked",
+  "blockers": [
+    "secret_missing_or_invalid"
+  ],
+  "authorization": {
+    "max_generation_attempts": 3,
+    "max_cost_usd": 0.03
+  },
+  "note": "Read-only model metadata is not an inference, quota, plan, price or billing verification."
+}

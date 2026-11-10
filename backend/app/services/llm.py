@@ -2,6 +2,7 @@
 import asyncio
 from collections import OrderedDict
 from datetime import datetime, timezone
+from decimal import Decimal
 from email.utils import parsedate_to_datetime
 import hashlib
 import json
@@ -19,7 +20,7 @@ from pydantic import BaseModel
 
 from ..config import Settings
 from ..models import Usage
-from .budget import Budget, SCALE
+from .budget import Budget, SCALE, units
 from .errors import ServiceError
 
 logger = logging.getLogger(__name__)
@@ -91,11 +92,21 @@ def thinking_config(model: str) -> types.ThinkingConfig:
 
 
 class GeminiAdapter:
-    def __init__(self, settings: Settings, *, run_id: str | None = None, max_calls: int | None = None):
+    def __init__(self, settings: Settings, *, run_id: str | None = None, max_calls: int | None = None,
+                 run_budget_usd=None):
         self.settings = settings
         self.budget = Budget(settings)
         if max_calls is not None and (not run_id or not 1 <= max_calls <= 3):
             raise ValueError('A preflight run id and max_calls in 1..3 are required')
+        if run_budget_usd is not None:
+            cap = Decimal(str(run_budget_usd))
+            if not max_calls or not cap.is_finite() or not 0 < cap <= Decimal('.03'):
+                raise ValueError('A registered preflight run and cap <=0.03 USD are required')
+        if max_calls is not None:
+            self.budget.register_run(run_id, max_calls, units(run_budget_usd) if run_budget_usd is not None else None,
+                digest({'model':settings.llm_model,
+                        'input_price':settings.llm_input_price_per_million_usd,
+                        'output_price':settings.llm_output_price_per_million_usd}))
         self.run_id, self.max_calls = run_id, max_calls
         self.cache = OrderedDict()
 

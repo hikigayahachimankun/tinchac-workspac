@@ -43,3 +43,11 @@ Resolve D02 with the owner-only outside-repo secret/account and capped preflight
 Final verification: full **329 passed (13.24s)** after adding cap/non-HTML source regressions;31examples/OpenAPI match. T04 probes also re-run through the Vite proxy after their origin fix: **2/2 (12.9s)**, separate from built release2/2. Detector returned[]; no UI redesign. Planned usability tasks refined by input metadata to include an award, modified amount, unverified fee and payment deadline across four dev families;48-row balance assertions rechecked, still0actual participants/outcomes.
 
 Documentation finalization initially stopped on a Python syntax error and CSV CRLF whitespace check; corrected generation and normalized planned CSV files to LF before committing. No failed command was counted as a passing gate or benchmark outcome.
+
+## T05 follow-up (D23) — current key/account state
+
+The key is now configured outside the repository and loaded safely without sourcing/export/logging; one read-only models.get returned200 for the configured3.5Flash-Lite and advertised generateContent. This supersedes the earlier key-absent checkpoint. Account billing/quota remain unverified because no Cloud OAuth/project access or suitable billing connector is available. No generation was called. See latest T05 handoff and `docs/live_setup.md` for actual receipts, conditional public cost bound0.0234USD, stable3attempt/0.03USD SQLite run limits and the CLI's fresh genuine billing/quota receipt guard. Do not re-request key setup or infer paid readiness from metadata.
+
+Next step for T05: obtain authenticated read-only account billing/AI Studio access for the key's project, then verify and run the existing conditional authorization. No manual code review/commit is required from the owner.
+
+Follow-up technical check:353backend/eval tests passed, contracts/corpus match, expected CLI billing gate returned2 without generating. Details/review/actual metadata receipt are in T05 handoff; no billing success, inference result or project-wide account spend is inferred.

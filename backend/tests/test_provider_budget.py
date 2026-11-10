@@ -524,3 +524,15 @@ def test_thinking_configuration_uses_model_family_without_disabling_accounting()
     assert thinking_config('gemini-3.5-flash-lite').thinking_level == types.ThinkingLevel.MINIMAL
     assert thinking_config('gemini-3.5-flash-lite').thinking_budget is None
     assert thinking_config('gemini-2.5-flash-lite').thinking_budget == 0
+
+
+def test_preflight_reentry_keeps_same_authorization_and_three_cent_cap(adapter,monkeypatch):
+    provider=AsyncMock(return_value=response())
+    monkeypatch.setattr(GeminiAdapter,'_invoke',provider)
+    assert run(preflight.run(adapter.settings,3))==0
+    assert run(preflight.run(adapter.settings,3))==1
+    assert provider.await_count==3
+    with adapter.budget.db() as db:
+        limit=db.execute('SELECT * FROM llm_run_limits WHERE run_id=?',(preflight.AUTHORIZED_RUN_ID,)).fetchone()
+        assert limit['max_calls']==3 and limit['max_cost_nusd']==units('.03')
+        assert db.execute('SELECT COUNT(*) FROM llm_attempts').fetchone()[0]==3

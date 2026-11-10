@@ -1,0 +1,26 @@
+{
+  "checked_on": "2026-11-10",
+  "scope": "public documentation/configuration bound; NOT account billing or live inference",
+  "model": "gemini-3.5-flash-lite",
+  "endpoint": "v1beta/models/gemini-3.5-flash-lite:generateContent",
+  "sources": {
+    "pricing": "https://ai.google.dev/gemini-api/docs/pricing",
+    "generate_content_thinking": "https://ai.google.dev/gemini-api/docs/generate-content/thinking?hl=en",
+    "generate_content_reference": "https://ai.google.dev/api/generate-content"
+  },
+  "public_price_usd_per_million": {
+    "input": "0.30",
+    "output_including_thoughts": "2.50"
+  },
+  "max_attempts": 3,
+  "input_reservation_tokens_per_attempt": 6000,
+  "combined_output_cap_per_attempt": 2400,
+  "documented_combined_output_cap": true,
+  "conditional_max_configured_cost_usd": "0.0234",
+  "authorized_usd": "0.03",
+  "account_billing_verified": false,
+  "quota_verified": false,
+  "generation_attempts": 0,
+  "remaining_blocker": "No authenticated read-only billing/AI Studio access for the actual key project. Public model metadata is insufficient.",
+  "note": "The GenerateContent-specific thinking guide returned200 and documents a combined thought/response output ceiling. Input reservations use the existing conservative UTF-8 bound. The calculation depends on configured public rates and is not proof of account tax/plan/quota/credits or an invoice."
+}
