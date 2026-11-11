@@ -1,0 +1,9 @@
+{
+  "approved": [],
+  "corpus_after": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+  "corpus_before": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+  "kind": "actual_private_DUT_review_replay",
+  "passed": true,
+  "pointer_bytes_unchanged": true,
+  "provider_calls": 0
+}

@@ -1,0 +1,206 @@
+{
+  "candidates": [
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/preview"
+      ],
+      "authority_id": "dut_finance",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "1713461ed7ee0d6969bc4b88bae172f6fc22736a8e94f823ce7fb0f001dcff73",
+      "disposition": "duplicate_existing_pdf_notice",
+      "evidence": "Parent points to the exact existing6075 PDF ID; source already in approved seed. No claim that an unchanged Drive ID proves current byte identity. Same tuition family, not a new independent source.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/Taichinh",
+      "new_approved": false,
+      "notice_id": "12387",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "text_sha256": "0650bd6e17f48f2f583b3962908efcff7fcd84dd95221200593febc99464101e",
+      "transport_sha256": "2d81fcd292fda7c6524e7a4ec8f05a5d8868334d0a8c5e238a257354810a3965",
+      "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12387"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://drive.google.com/file/d/1HmFzkzff9_D0Rw4b8DniHsQqyc1biSZf/preview"
+      ],
+      "authority_id": "dut_ctsv",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "c6a5fa51f288f4cecf928107b49f9601b49351e0a05dd7f651f446361bcc3541",
+      "disposition": "excluded_automatic_personal_award_list_risk",
+      "evidence": "Metadata identifies scholarship award decision with masked student IDs;16,866,115bytes. No list downloaded/OCRed; redacted IDs do not establish absence of names. Not eligible for automatic approval.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/CTSV",
+      "new_approved": false,
+      "notice_id": "12373",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "text_sha256": "14888c0d37e384388859040d56c163be9bd3542248698c0989918bc5a0db4b59",
+      "transport_sha256": "ac438d98d347be11efaf4b36a310031e1ecafcc41b305ec67904b035c97a2709",
+      "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12373"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://drive.google.com/file/d/1NjgiDEHGxVi4d9v5C3GdjOaTgmqDAVme/preview"
+      ],
+      "authority_id": "dut_finance",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "47306c8b5ef9fbffb2f6432f29f16a405d48211578b5a4ed35a886eed64d5bdf",
+      "disposition": "human_review_required_scan_financial",
+      "evidence": "PDF5574/13-10-2026,2scan pages fully agent-read; general enrolment charges forK2026, separate fee kinds, references4179/3066/4055. No personal list in inspected pages. Mandatory financial/scan human review remains; no financial facts automatically promoted.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/Taichinh",
+      "new_approved": false,
+      "notice_id": "12337",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "text_sha256": "a1fe07f01811a5d1fcda918ce4473ef1011e87ae216922d76d2a99b2e35e29b1",
+      "transport_sha256": "652aa585a5528410d0b2e1bbec3ee0b7d081be643e977638c66c508c67c71e27",
+      "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12337"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://drive.google.com/file/d/1gOVIKBh5y6rQpWlucYPYOhKJRBvpusui/preview"
+      ],
+      "authority_id": "dut_finance",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "9390f68700b5cc5abb71bd3089c99466cc51218b38811fd307bced66b1b68159",
+      "disposition": "excluded_personal_data",
+      "evidence": "Already quarantined in seed; upstream T02 confirms personal-list appendix. Attachment not reopened or OCRed; remains absent from retrieval.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/Taichinh",
+      "new_approved": false,
+      "notice_id": "12381",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "text_sha256": "d00f8e6c84db70504bd5e9cc58b2d665628e99313f4e0f98408d96eb97743ab9",
+      "transport_sha256": "8bb10368d28e33deaf2642cefa8eca54709784fc1d715c519b21a565602d0f8e",
+      "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://drive.google.com/file/d/13O2RnXQW1wCItvFPmVsgQzs2Qb8RWEKD/preview"
+      ],
+      "authority_id": "dut_finance",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "e392e8b59a722c51c14ee213ddfabad4c08231707711b0017e7da0c2c29a1e42",
+      "disposition": "not_eligible_metadata_only_financial",
+      "evidence": "Metadata confirms PDF5450 tuition PhD round1/year2026-2027. Privacy/completeness of possible appendices not established; no file downloaded or personal list sought. Mandatory financial review pending; complete eligible HTML alternative used instead.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/Taichinh",
+      "new_approved": false,
+      "notice_id": "12319",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "text_sha256": "e8eda3794e52a7a54bf519217c8261664a4ade177a8333ae9fbf47c07f487f5f",
+      "transport_sha256": "6f570357d4d7834a4db877d494ddbfb42072b63f2bc2204926c9f41aa0946ef6",
+      "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12319"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://drive.google.com/file/d/1jGCTS9f_kb5VJUhBAR2Pxm72waPfisCe/preview"
+      ],
+      "authority_id": "dut_finance",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "e07c84696fe78e3e711d3a4d7387dc3ebdd413d67e86cdff79f7ba7fd95c6438",
+      "disposition": "human_review_required_scan_financial_same_family",
+      "evidence": "PDF5631/14-10-2026,2scan pages fully agent-read; original BIDV/VietinBank collection deadlines30-10-2026, while existing6075 extends30-11-2026. Both reference4055; same tuition family. No personal list in inspected pages. Mandatory financial/scan human review remains; no new money inferred from unseen4055.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/Taichinh",
+      "new_approved": false,
+      "notice_id": "12340",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Kế hoạch - Tài chính",
+      "text_sha256": "f2043d61d263ae11ff997847816ab2842c4a646ae03e217fcd54240aecd26dc8",
+      "transport_sha256": "7554ea9dfe7a6cebd6afe3c50051a7090376d9d04a7ed74bdb80ac0f2c036cff",
+      "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12340"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://dut.udn.vn/Files/psinhvien/images/2aOboRAT5oOgX8yA4o5DL3D2V92bhgnfdSAzMSsS.jpg"
+      ],
+      "authority_id": "dut_ctsv",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "c501dc49d1ebdeb1d1f8d9c33b218298e71083e4d446fbb09b2e74a5974e9fd6",
+      "disposition": "duplicate_existing_notice_requires_relation_review",
+      "evidence": "Same notice/programme/year/award/deadline as approved seed; current HTML includes9inline emoji and a business poster. No new independent source counted; poster not fetched and no changed business fact inferred.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/CTSV",
+      "new_approved": false,
+      "notice_id": "12394",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "text_sha256": "dbd836ad6b4251a7b391f150042b3c463a84a94a7dd1ca01fdc30383ac18fece",
+      "transport_sha256": "49d4f77091b7912834bc5c43d199537886441f36e0c9fbc5a0b8002c318f0260",
+      "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12394"
+    },
+    {
+      "agent_review": true,
+      "attachments": [
+        "https://docs.google.com/document/d/17exz6WD3BS_r8Qeiszhya_8a_sUeyz0q/edit"
+      ],
+      "authority_id": "dut_ctsv",
+      "benchmark_family_added": false,
+      "candidate_receipt_sha256": "9a525cf6528c59cfc35b171dead21dcf51dc675567323edc8240904196ead96f",
+      "disposition": "duplicate_existing_approved_notice",
+      "evidence": "Same canonical notice and retained text/version; blank application form was reviewed upstream T02; no second evidence source.",
+      "human_review_confirmed": false,
+      "listing_url": "https://dut.udn.vn/Phong/CTSV",
+      "new_approved": false,
+      "notice_id": "12395",
+      "publisher": "Trường Đại học Bách khoa - Đại học Đà Nẵng / Phòng Công tác Sinh viên",
+      "text_sha256": "f0ef96bab2007bb962a3152ac3a4090889737570317d2da406295fc9e6c0232c",
+      "transport_sha256": "d6be74fcda007200db892481b2c3d67ee6ee3c5ce2645f68073ce292ac385143",
+      "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395"
+    }
+  ],
+  "kind": "agent_evidenced_disposition_NOT_human_approval",
+  "note": "OCR confidence is diagnostic, not proof of digit accuracy or human review. Material is private; no source PDF/image/text or personal list uploaded.",
+  "ocr_quality": [
+    {
+      "human_accuracy_validated": false,
+      "mean_confidence": 95.28,
+      "page": "5574-p1",
+      "words": 510,
+      "words_below60": 2
+    },
+    {
+      "human_accuracy_validated": false,
+      "mean_confidence": 93.02,
+      "page": "5574-p2",
+      "words": 78,
+      "words_below60": 2
+    },
+    {
+      "human_accuracy_validated": false,
+      "mean_confidence": 94.95,
+      "page": "5631-p1",
+      "words": 405,
+      "words_below60": 3
+    },
+    {
+      "human_accuracy_validated": false,
+      "mean_confidence": 94.03,
+      "page": "5631-p2",
+      "words": 404,
+      "words_below60": 7
+    }
+  ],
+  "pdf_reviews": [
+    {
+      "all_pages_agent_read": true,
+      "document": "tinchac-5631.pdf",
+      "human_review": false,
+      "native_text": false,
+      "pages": 2,
+      "sha256": "33e7c95fb9d182c328d36931f931116cd50fdf3c4b16315e8d45702eb0540af4"
+    },
+    {
+      "all_pages_agent_read": true,
+      "document": "tinchac-5574.pdf",
+      "human_review": false,
+      "native_text": false,
+      "pages": 2,
+      "sha256": "d48633dfa20b9d53d7f986f79e852bd6d60bf89e4cc16dfa6cd5f0f134c200fa"
+    }
+  ]
+}

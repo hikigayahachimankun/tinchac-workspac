@@ -1,0 +1,56 @@
+{
+  "kind": "actual_Drive_metadata_from_DUT_parent_attachments",
+  "files": [
+    {
+      "notice_id": "12387",
+      "file_id": "1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq",
+      "title": "6075 TB gia han thoi gian thu hoc phi dot 2 hoc ky I nam hoc 2026 - 2027.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 503109,
+      "url": "https://drive.google.com/file/d/1n-92p9gKSBVY0jzFZQPqJKAdq6WsZhXq/view?usp=drivesdk",
+      "contents_read": false,
+      "human_review": false
+    },
+    {
+      "notice_id": "12340",
+      "file_id": "1jGCTS9f_kb5VJUhBAR2Pxm72waPfisCe",
+      "title": "5631 TB thu hoc phi dot 2 hoc ky I nam hoc 2026 - 2027.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 552444,
+      "url": "https://drive.google.com/file/d/1jGCTS9f_kb5VJUhBAR2Pxm72waPfisCe/view?usp=drivesdk",
+      "contents_read": true,
+      "human_review": false
+    },
+    {
+      "notice_id": "12337",
+      "file_id": "1NjgiDEHGxVi4d9v5C3GdjOaTgmqDAVme",
+      "title": "TB 5574 ngay 13.10.2026 Vv cap nhat du lieu hoc phi nhap hoc cua khoa tuyen sinh nam 2026.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 921214,
+      "url": "https://drive.google.com/file/d/1NjgiDEHGxVi4d9v5C3GdjOaTgmqDAVme/view?usp=drivesdk",
+      "contents_read": true,
+      "human_review": false
+    },
+    {
+      "notice_id": "12319",
+      "file_id": "13O2RnXQW1wCItvFPmVsgQzs2Qb8RWEKD",
+      "title": "5450 TB thu hoc phi dao tao trinh do tien si dot 1 nam hoc 2026 - 2027.pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 1644581,
+      "url": "https://drive.google.com/file/d/13O2RnXQW1wCItvFPmVsgQzs2Qb8RWEKD/view?usp=drivesdk",
+      "contents_read": false,
+      "human_review": false
+    },
+    {
+      "notice_id": "12373",
+      "file_id": "1HmFzkzff9_D0Rw4b8DniHsQqyc1biSZf",
+      "title": "5860 QD cap hoc bong KK hoc tap kỳ II NH 2025-2026 (dot 2) cho SV he DH chinh quy (che MSSV).pdf",
+      "mime_type": "application/pdf",
+      "size_bytes": 16866115,
+      "url": "https://drive.google.com/file/d/1HmFzkzff9_D0Rw4b8DniHsQqyc1biSZf/view?usp=drivesdk",
+      "contents_read": false,
+      "human_review": false
+    }
+  ],
+  "note": "Known personal-list12381 not reopened;12373 metadata only. No bearer/download URLs or raw content."
+}

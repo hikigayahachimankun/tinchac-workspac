@@ -1,0 +1,23 @@
+{
+  "active_source_http": 200,
+  "after": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+  "archived_quote_exact": true,
+  "archived_source_http": 200,
+  "backend_pid": 22715,
+  "before": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+  "finished_at": "2026-11-11T04:27:47.998947+00:00",
+  "health_after_restart": {
+    "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+    "provider_configured": true,
+    "run_mode": "live",
+    "schema_version": "1.0",
+    "status": "ok"
+  },
+  "new_result_unchanged": true,
+  "old_result_unchanged": true,
+  "passed": true,
+  "provider_calls": 0,
+  "rollback": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+  "source_sha256": "0294c3ba0dc48e237abcd5ff35fdfb4a6b91c3f5f8d1f0dedfe81ab4f9d8f5c5",
+  "started_at": "2026-11-11T04:27:45.978211+00:00"
+}

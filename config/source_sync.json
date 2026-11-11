@@ -6,5 +6,6 @@
   "max_seconds": 90,
   "max_pages": 6,
   "max_notices": 12,
-  "note": "Independent local process; no service installed by default. Does not run while host is off. Network requires explicit --mode live and --enable. Raw/candidates/queue/snapshots remain private."
+  "note": "Local scheduler runs only while this Linux/WSL host is on. Start/stop/status verify lock, PID identity and heartbeat. Machine review requires a separate genuine internal-use confirmation; high-risk sources still need actual human review.",
+  "review_policy_path": "data/private/source-sync/content-use.json"
 }

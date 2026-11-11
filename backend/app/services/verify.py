@@ -74,7 +74,12 @@ def context_text(claims, bundles, temporal):
             hits.append({'hit': hit_ids[identity], 'offset': offset,
                          'text': ''.join(safe),
                          'facts': [{'field': m.fact.field_type.value, 'value': m.fact.normalized.model_dump(exclude_none=True, exclude={'date': {'raw'}}),
-                                    'scope': scope_ref(m.fact.scope), 'q':[m.start, m.start + len(m.fact.quote)]} for m in facts
+                                    'scope': scope_ref(m.fact.scope), 'q':[m.start, m.start + len(m.fact.quote)],
+                                    # Give the exact visible quote alongside its original
+                                    # offsets; normalized values and surrounding excerpts
+                                    # are not interchangeable with citation text.
+                                    **({'quote': ''.join(safe)[m.start-offset:m.start-offset+len(m.fact.quote)]}
+                                       if m.fact.field_type == 'program' else {})} for m in facts
                                    if offset <= m.start and m.start + len(m.fact.quote) <= offset + len(excerpt)]})
         data = claim.model_dump(exclude={'input_span': True, 'scope': True, 'normalized': {'date': {'raw'}}},exclude_none=True)
         if data['normalized'].get('text') == data['statement']:

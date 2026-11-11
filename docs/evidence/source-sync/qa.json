@@ -1,0 +1,62 @@
+{
+  "build_files": {
+    "frontend/dist/assets/index-DVRoHDIe.css": "d3f90c3244178738537540f9358d7a31019eecc9dfa40b21a263b8f65a99134d",
+    "frontend/dist/assets/index-ceJ_oJBU.js": "2df3e3e7337f741c4359870eef45952a46b2b6be17c550a627f90729b60aef6c",
+    "frontend/dist/index.html": "ba809bac6119492033f0fd9ebf0f1c6ea40e855999a9b381c70c888de61eca4a"
+  },
+  "checks": [
+    {
+      "command": ".venv/bin/python -m pytest backend/tests eval/tests -q",
+      "network": "synthetic fixtures, no real SDK/DUT calls",
+      "result": "505 passed",
+      "seconds": 23.87
+    },
+    {
+      "command": "npm test --prefix frontend",
+      "result": "37 passed"
+    },
+    {
+      "command": "VITE_API_MODE=http npm run build --prefix frontend",
+      "result": "passed"
+    },
+    {
+      "command": ".venv/bin/python -m scripts.export_contracts --check",
+      "result": "31 examples validated; OpenAPI matches"
+    },
+    {
+      "command": ".venv/bin/python -m scripts.validate_corpus",
+      "result": "benchmark6sources/7chunks valid; version7b832d unchanged"
+    },
+    {
+      "command": "scripts.sync_sources daemon/start/stop/status",
+      "network": "real DUT",
+      "result": "5actualDUTcycles, two60secondcycles, restart/checkpoint/lock/heartbeat verified;3600secondcadence restored"
+    },
+    {
+      "command": "scripts.source_sync_http and actual Playwright live browser",
+      "network": "real Gemini/HTTP; no response interception",
+      "result": "new-source supported, exact citation; prior NEI records unchanged"
+    },
+    {
+      "command": "actual corpus_store.activate rollback/restart/archive/restore",
+      "result": "passed;0modelcalls"
+    },
+    {
+      "command": "scripts.sync_sources review",
+      "result": "actual repeat no-op; active pointer bytes unchanged"
+    },
+    {
+      "command": "git diff --check",
+      "result": "passed"
+    }
+  ],
+  "excluded": [
+    "private/raw source contents",
+    "capabilities",
+    "secret file",
+    "gold",
+    "benchmark mutations"
+  ],
+  "recorded_at": "2026-11-11T04:41:18.344224+00:00",
+  "source_security": "Closed registry, SSRF/public DNS/redirect/robots/retry/rate-limit/privacy/completeness/review gates tested. Model quota/network failures use synthetic fault tests, not an assertion of real provider429."
+}

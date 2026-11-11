@@ -1,0 +1,24 @@
+{
+  "benchmark_unchanged": true,
+  "chunks": 8,
+  "content_sha256": "0294c3ba0dc48e237abcd5ff35fdfb4a6b91c3f5f8d1f0dedfe81ab4f9d8f5c5",
+  "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+  "fact_spans_exact": true,
+  "fields": [
+    "program",
+    "deadline"
+  ],
+  "indexed_sources": 6,
+  "kind": "actual-approved-DUT-corpus-local-retrieval",
+  "provider_calls": 0,
+  "ranked_versions": [
+    "dut_39c806ec6715272c_0294c3ba0dc48e23",
+    "dut_09fb9c92c9ab7b2f_e5e4f9b141b646e6",
+    "dut_be8a0080c11e660f_f0ef96bab2007bb9",
+    "dut_2a0b90b19b67872f_dbd836ad6b4251a7",
+    "dut_344b21e393855658_921795aab925d271"
+  ],
+  "source_count": 7,
+  "source_url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12218",
+  "source_version": "dut_39c806ec6715272c_0294c3ba0dc48e23"
+}

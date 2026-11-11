@@ -366,68 +366,79 @@ These commands do not create human gold, approve sources or run Gemini. Live HTT
 
 ## Verified DUT source discovery và live refresh
 
-Feature vận hành riêng với benchmark, tắt mặc định. [Báo cáo thật](reports/source_sync.md), [kế hoạch/audit](docs/superpowers/plans/2026-11-10-verified-source-sync.md), [handoff](docs/handoffs/source-sync.md). Không đổi T09/T13, corpus đã khóa, API1.0 hoặc nhãn. Candidate chưa duyệt không được dùng làm bằng chứng; chạy collector không đồng nghĩa corpus đã cập nhật.
+Registry chỉ cho phép hai kênh CTSV/KHTC trên đúng host `dut.udn.vn`; mỗi lượt kiểm robots và liên kết từ trang trường. Không fetch URL người dùng, cổng sinh viên, form hoặc link ngoài registry. Candidate, queue, review và corpus vận hành ở `data/private`, không ghi vào corpus benchmark T09/T13. [Bằng chứng vận hành](docs/evidence/source-sync/operation.json), [báo cáo](reports/source_sync.md), [checkpoint](docs/handoffs/source-sync.md).
 
-`config/source_authorities.json` đăng ký đúng host/path của CTSV và KHTC. Mỗi lượt đối chiếu link từ trang trường; không mở subdomain khác, cổng SV, form hoặc URL người dùng. Listing CTSV có kênh alias `/Phong/Sinhvien`; redirect chỉ theo tối đa2hop, cùng authority và đúng registry/robots. Tốc độ≤1request/giây,40requests/90giây/lượt mặc định; tối đa6listing/12notice,2MiB/response. Khi robots/403/backoff/giới hạn chặn, receipt ghi lý do. Không fetch attachment tự động; PDF/ảnh/link chưa đọc giữ quarantine.
-
-Chạy tại repo root với dependencies hiện có, không key:
+Chạy local từ repo root, dependencies đã cài theo README:
 
 ```bash
-# Chỉ tìm link: vẫn có network tới robots/trang trường/listing, không tải notice.
-.venv/bin/python -m scripts.collect_sources collect --mode live --enable --dry-run
-# Thu incremental, tự resume backlog và nhận ETag/Last-Modified nếu có.
-.venv/bin/python -m scripts.collect_sources collect --mode live --enable
-.venv/bin/python -m scripts.sync_sources status
-```
-
-`--state` mặc định `data/private/source-sync`, `--store` mặc định `data/private/live-corpus`. Giữ các process cùng state/store, một worker. Thư mục trong repo phải nằm dưới `data/private`; có thể chọn thư mục private ngoài repo. State SQLite, candidate text/HTML đã làm sạch, review queue và receipts đều local/ignored. Không lưu transport HTML hoặc ảnh nhúng; receipt có hash. Không commit/push các thư mục này. Screen PII bảo thủ không thay việc đọc kiểm; không OCR/tải danh sách cá nhân. `config/source_candidates.json` và các receipt recovery cũ là lịch sử; CLI cũ `--output data/raw/...` được thay bằng `--state` private và enable live tường minh.
-
-Lịch độc lập với FastAPI:
-
-```bash
-.venv/bin/python -m scripts.sync_sources daemon --mode live --enable
-```
-
-`config/source_sync.json`: `enabled=false`, interval3600giây, poll queue10giây; `--enable` bật cho process này. Terminal phải còn chạy; Ctrl-C dừng, restart giữ cadence/checkpoint. Có thể để local supervisor gọi đúng lệnh này với working directory repo; không cần Redis/Celery hoặc GitHub Actions. **Phiên triển khai chưa cài/bật service thường trực**; user systemd tại môi trường này báo `offline`. Không chạy khi máy/WSL tắt. `scheduler.json` là receipt, không chứng minh process còn sống. Không coi dry-run là đã đồng bộ.
-
-Để live app nhận các lần publish, bootstrap store từ nguồn hiện đã duyệt rồi cấu hình cùng store:
-
-```bash
-# Một lần, offline; giữ nguyên data/corpus và trạng thái review hiện có.
+VITE_API_MODE=http npm run build --prefix frontend
+# Một lần nếu chưa có active store; không chạy lại khi đã bootstrap.
 .venv/bin/python -m scripts.sync_sources bootstrap
-# Thêm vào cấu hình local của process live (các gate LLM trước đây vẫn áp dụng):
-# SOURCE_SYNC_STORE=./data/private/live-corpus
-# SOURCE_SYNC_STATE=./data/private/source-sync
-# SOURCE_LOOKUP_ENABLED=true
+# Dùng readiness Free Tier thật, còn hạn24h; key ở file0600 ngoài repo.
+.venv/bin/python -m scripts.serve_live \
+  --readiness-report docs/evidence/T05/free-tier-owner-authorization-2026-11-10.json
 ```
 
-On-demand chỉ chạy trong `Jobs.run_live` khi thiếu nguồn approved cùng scope, trước khi cắt context. Nó lưu **chỉ ID authority cố định**, không lưu/gửi raw message, scope, ảnh, số điện thoại hoặc URL. Mỗi unit gộp thành một task, queue≤2, cooldown900giây, lease300giây. Daemon mới xử lý network; không giữ request kiểm chứng chờ crawler. Nguồn chưa duyệt không tạo S/C; warning hiện qua UI sẵn có. Kết quả cũ không bị sửa. Fixture/replay/eval không enqueue/crawl, kể cả khi cấu hình on-demand bật.
+Mở `http://127.0.0.1:8000`. Launcher nạp key qua bộ đọc an toàn, không export/source file hoặc in key; dùng **cùng ledger** `data/private/tinchac-live.sqlite3`, model/prompt/budget guard cũ. Chỉ một backend worker. Readiness cũ hơn24h cần xác nhận tài khoản Free Tier thật mới; không sửa timestamp để vượt gate. Không chạy lại preflight đã dùng hết3attempts. Máy khác cần key/readiness hợp lệ của chính chủ tài khoản. Phục vụ live có thể gọi Gemini khi bấm kiểm tra; không bật billing hoặc fallback trả phí.
 
-Promotion cần review thực tế:
-
-1. Đọc candidate `receipt.json`/`text.txt`, xem phần thiếu và quyền sử dụng nội bộ. Agent review ghi đúng danh tính agent. Phí/đính chính, attachment/scan/link ngoài và cập nhật tiền/hạn cần bằng chứng review con người thật; không điền một danh tính giả để vượt gate.
-2. Chuẩn bị private `reviewed-sources.json` theo SourceVersion1.0 và `reviewed-register.json` theo `config/sources.yaml`. Bắt đầu bằng **toàn bộ** sources/register của active snapshot, thêm versions mới, giữ nguyên records cũ. Dùng source_id theo canonical URL/hash text, quote/span chính xác, available_basis=first_seen và available_at=retrieved_at không sớm hơn candidate.first_seen. Giữ family đã có; không suy supersedes từ lần tải mới.
-3. Copy `config/source_review.example.json` vào private, chỉ tạo packet cho versions mới. Từng gate phải có bằng chứng và passed=true sau kiểm thực tế; bind SHA256 receipt/text. Mọi gate mặc định false. PDF text dùng `scripts.ingest_sources.extract_pdf`; scan dùng OCR local hiện có hỗ trợ đọc kiểm và `manual_pdf`/page spans/manual_text/hash, không tự chứng nhận OCR. Attachment phải có parent DUT, canonical URL có trong receipt và file local/hash đã được kiểm. Nếu không được phép đọc đủ hoặc có danh sách cá nhân, giữ quarantine.
-4. Paths raw/manual/reviewed_files trong register/packet phải nằm trong repo private, có hash chính xác. Gate content_use chỉ xác nhận phạm vi sử dụng đã có quyền, không tự cấp giấy phép tái phân phối. Nguồn trùng text khác URL cần giải quyết canonical/family, không index như bằng chứng độc lập.
+Scheduler độc lập, không cần root/systemd:
 
 ```bash
-.venv/bin/python -m scripts.sync_sources publish \
-  --snapshot data/private/reviewed-sources.json \
-  --register data/private/reviewed-register.json \
-  --reviews data/private/source-reviews.json
+.venv/bin/python -m scripts.sync_sources start --mode live --enable
+.venv/bin/python -m scripts.sync_sources status
+.venv/bin/python -m scripts.sync_sources stop
 ```
 
-Publish dùng ingest cũ để dựng staging, validate/index, lưu review trong provenance gắn manifest hash, fsync rồi đổi `active.json` atomic. Không sửa thư mục đang phục vụ; mỗi job giữ một runtime đến cuối, job mới nhận snapshot mới. Lỗi build/publish giữ active trước. Giữ snapshots cũ để citation còn mở sau restart/rollback; chưa có tự xóa archive. `bootstrap` chỉ chuyển seed cũ vào store, không bổ sung nguồn đã duyệt.
+`start` tách process khỏi terminal, log `data/private/source-sync/scheduler.log`; `status` kiểm khóa, PID/boot/start identity và tuổi heartbeat. Hai process không thể giữ cùng scheduler lock. Restart giữ `schedule.json`, SQLite backlog, cooldown và lease; process chết đột ngột được phát hiện khi status báo không còn sống. Đây là lifecycle CLI local, chưa có supervisor tự khởi động lại sau WSL/Windows reboot. Muốn chạy lại, dùng `start`; không xóa checkpoint. Đã đo nhiều chu kỳ DUT thật ở60giây, sau đó khôi phục3600giây/poll10giây. Host/WSL phải còn bật; không tuyên bố uptime24/7. Giữ tracked config `enabled=false` để opt-in; process đang vận hành dùng flag `--enable` rõ ràng.
 
-Rollback không mạng, không sửa benchmark:
+Mỗi lượt mặc định≤40requests/90giây,≤6listing/12notice,≤2MiB HTML,≤1request/giây/host. Retry/robots/redirect/public-DNS/TLS được kiểm tra lại; lỗi một URL có receipt và không xóa corpus. Kiểm thu một lượt hoặc dry-run danh mục:
 
 ```bash
-# Lấy previous/corpus_version từ data/private/live-corpus/active.json.
-.venv/bin/python -m scripts.sync_sources rollback --version corpus-REPLACE_WITH_64_HEX
+.venv/bin/python -m scripts.sync_sources collect --mode live --enable
+.venv/bin/python -m scripts.sync_sources collect --mode live --enable --dry-run
 ```
 
-Kiểm offline riêng feature:
+Chu trình tự động: listing chính thức → candidate immutable → kiểm completeness/privacy/provenance → review agent có bằng chứng → ingest staging → đổi pointer atomic. HTML hoàn chỉnh được phân loại hẹp: tên chương trình được ghi rõ trong ngoặc kép và xuất hiện trong nội dung; fact tên chương trình và một hạn nộp ban đầu có ngày/tháng/năm rõ. Không suy số tiền, điều kiện từng nhóm, năm học từ cohort hoặc quan hệ thay thế. Trường chưa có fact vẫn có thể trả chưa đủ bằng chứng.
+
+Emoji inline đúng mẫu được xem là trang trí; link Google Forms là thao tác đăng ký, **không mở form**. Ảnh nghiệp vụ/PDF/iframe/SVG/background chưa đọc, bảng/danh sách/nguy cơ dữ liệu cá nhân, thông báo thu tiền, gia hạn/đính chính, bản cập nhật và quan hệ programme cũ vẫn chờ review thích hợp. Receipt extractor cũ phải thu lại. Không biến mọi hình/link thành lý do quarantine vĩnh viễn; packet chỉ rõ phần còn thiếu.
+
+`review_policy_path` trỏ tới policy private về căn cứ sử dụng nội bộ. Policy hiện có được maintainer ghi từ xác nhận thật của chủ dự án; không phải giấy phép DUT hay xác nhận human source review. Thiếu xác nhận/căn cứ hợp lệ thì không auto-publish. Người dùng chỉ trả lời câu hỏi về quyền/phạm vi khi cần; maintainer tạo packet, không yêu cầu người dùng viết JSON. Không tái phân phối corpus/raw hoặc lấy danh sách/hồ sơ cá nhân. Phí/scan/đính chính và cập nhật tiền/hạn vẫn giữ gate human thật.
+
+Có thể chạy lại review offline sau khi gate bên ngoài được đáp ứng:
 
 ```bash
-.venv/bin/python -m pytest backend/tests/test_source_sync.py backend/tests/test_source_publication.py -q
+.venv/bin/python -m scripts.sync_sources review
 ```
+
+Promotion dùng `corpus_store.publish_reviewed` và ingest cũ; packet/registry hash gắn với manifest. Giữ toàn bộ version/provenance cũ; duplicate canonical không thêm evidence độc lập. Mỗi check pin đúng một runtime từ extraction tới verdict; check mới nhận pointer mới. Snapshot cũ vẫn phục vụ citation sau restart/rollback; chưa tự xóa archive. Corpus benchmark và protocol không thay đổi.
+
+On-demand chỉ từ `Jobs.run_live` khi thiếu nguồn approved cùng scope. Queue lưu **chỉ authority ID cố định**,≤2task, cooldown900giây, lease300giây; không gửi raw text/programme/year/ảnh/điện thoại/URL người dùng tới DUT. Scheduler xử lý bằng cùng collector/review; check đang chạy không chờ web và không bị sửa kết quả sau publish. Source pending không sinh supported giả. Fixture/replay/eval không enqueue hoặc crawl.
+
+Đối soát bằng HTTP thật trên input công khai được phép, mỗi output là thư mục private mới. Lệnh này **gọi Gemini qua app live**; không dùng cho benchmark hoặc lặp để chọn kết quả đẹp:
+
+```bash
+.venv/bin/python -m scripts.source_sync_http \
+  --output data/private/source-sync/http/NEW_RUN \
+  --text 'PHAT_BIEU_CONG_KHAI_DA_DUOC_PHEP'
+# Sau publish: thêm --expected-version VERSION_MOI --previous THU_MUC_CHECK_CU.
+```
+
+Tool kiểm citation bằng source/chunk/version/quote span thật và so JSON check cũ bất biến. Failed provider vẫn là lỗi kỹ thuật, không có verdict. Capabilities nằm private0600, không commit/push hoặc chép vào báo cáo.
+
+Rollback offline, lấy version từ `data/private/live-corpus/active.json` hoặc snapshot cũ:
+
+```bash
+.venv/bin/python -m scripts.sync_sources rollback --version corpus-64_HEX_THUC_TE
+```
+
+Kiểm hồi quy:
+
+```bash
+.venv/bin/python -m pytest backend/tests eval/tests -q
+.venv/bin/python -m scripts.export_contracts --check
+.venv/bin/python -m scripts.validate_corpus
+npm test --prefix frontend
+VITE_API_MODE=http npm run build --prefix frontend
+```
+
+Các receipt ghi rõ phần DUT/Gemini thật và phần synthetic fault/concurrency/security tests. Full12case live QA và các gate nghiên cứu T02/T08–T15 là phạm vi khác, không được đóng nhờ một smoke nguồn mới.

@@ -1,0 +1,757 @@
+{
+  "approved": [
+    {
+      "family_id": "scholarship_37b499ae1fea9692",
+      "fields": [
+        "program",
+        "deadline"
+      ],
+      "text_sha256": "0294c3ba0dc48e237abcd5ff35fdfb4a6b91c3f5f8d1f0dedfe81ab4f9d8f5c5",
+      "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12218",
+      "version_id": "dut_39c806ec6715272c_0294c3ba0dc48e23"
+    }
+  ],
+  "approved_sources": 6,
+  "benchmark": {
+    "changed": false,
+    "corpus_version": "corpus-7b832d58775878a57849d32ff241cc61904afadfc0299a66e3918ad82da18982",
+    "gold_read": false
+  },
+  "chunks": 8,
+  "content_use_basis": "Actual project_owner_in_chat internal-use attestation; not independently verified DUT licence; no redistribution",
+  "corpus_after": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+  "corpus_before": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+  "cost": {
+    "additional_input_tokens": 1920,
+    "additional_output_tokens": 1078,
+    "additional_shared_ledger_attempts_during_interval": 5,
+    "curated_paid_equivalent_hold_usd": 0.0,
+    "curated_smoke_attempts": 16,
+    "input_tokens": 5822,
+    "known_estimated_free_tier_usd": 0.0,
+    "note": "Same original ledger. Additional localhost requests are not claimed as curated smokes; no private input read. Estimate is not invoice/account-wide quota.",
+    "output_tokens": 2602,
+    "prior_unknown_attempts": 2,
+    "prior_unknown_paid_equivalent_hold_usd": 0.0122415
+  },
+  "discovery_runs": [
+    {
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T03:52:22.837737+00:00",
+      "listings_checked": 3,
+      "pending": 0,
+      "quarantined": 11,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "personal_data_not_retained",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+        }
+      ],
+      "request_count": 23,
+      "run_id": "746f9e02-5d33-428b-b656-eb5a1f3c765e",
+      "started_at": "2026-11-11T03:51:56.124708+00:00",
+      "status": "partial",
+      "unchanged": 5,
+      "urls_discovered": 17
+    },
+    {
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T04:00:38.566985+00:00",
+      "listings_checked": 3,
+      "pending": 0,
+      "quarantined": 12,
+      "rejected": [],
+      "request_count": 23,
+      "run_id": "d8e104ee-094d-4d31-8212-4f0b0f9c63c4",
+      "started_at": "2026-11-11T04:00:11.363039+00:00",
+      "status": "success",
+      "unchanged": 0,
+      "urls_discovered": 17
+    },
+    {
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T04:01:36.398160+00:00",
+      "listings_checked": 3,
+      "pending": 1,
+      "quarantined": 10,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "personal_data_not_retained",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+        }
+      ],
+      "request_count": 23,
+      "run_id": "0482eee0-8932-4bff-871b-5df424c08f20",
+      "started_at": "2026-11-11T04:01:12.787422+00:00",
+      "status": "partial",
+      "unchanged": 6,
+      "urls_discovered": 17
+    },
+    {
+      "authorities_validated": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T04:02:38.237646+00:00",
+      "listings_checked": 3,
+      "pending": 0,
+      "quarantined": 12,
+      "rejected": [],
+      "request_count": 23,
+      "run_id": "f150b850-a87b-4eee-a073-5ebfd134b42e",
+      "started_at": "2026-11-11T04:02:14.760714+00:00",
+      "status": "no_change",
+      "unchanged": 12,
+      "urls_discovered": 17
+    },
+    {
+      "authorities_validated": [
+        "dut_ctsv"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T04:03:20.414668+00:00",
+      "listings_checked": 2,
+      "pending": 1,
+      "quarantined": 10,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "personal_data_not_retained",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+        }
+      ],
+      "request_count": 28,
+      "run_id": "9066fbc4-3085-4fd1-9b89-d2f2445e9460",
+      "started_at": "2026-11-11T04:02:48.303547+00:00",
+      "status": "partial",
+      "unchanged": 11,
+      "urls_discovered": 12
+    },
+    {
+      "authorities_validated": [
+        "dut_ctsv"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T04:14:49.453866+00:00",
+      "listings_checked": 2,
+      "pending": 1,
+      "quarantined": 10,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "personal_data_not_retained",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+        }
+      ],
+      "request_count": 28,
+      "run_id": "70d44539-cd63-4d35-9526-4d311e161714",
+      "started_at": "2026-11-11T04:14:19.784160+00:00",
+      "status": "partial",
+      "unchanged": 0,
+      "urls_discovered": 12
+    },
+    {
+      "authorities_validated": [
+        "dut_ctsv"
+      ],
+      "fetched": 12,
+      "finished_at": "2026-11-11T04:19:52.150572+00:00",
+      "listings_checked": 2,
+      "pending": 1,
+      "quarantined": 10,
+      "rejected": [
+        {
+          "phase": "notice",
+          "reason": "personal_data_not_retained",
+          "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+        }
+      ],
+      "request_count": 28,
+      "run_id": "2f9b466e-d525-471e-a805-e7833acd6609",
+      "started_at": "2026-11-11T04:19:22.898626+00:00",
+      "status": "partial",
+      "unchanged": 11,
+      "urls_discovered": 12
+    }
+  ],
+  "frontend": [
+    {
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "focused": {
+        "tag": "INPUT",
+        "type": "checkbox"
+      },
+      "http_status": 200,
+      "overflow": false,
+      "page_errors": [],
+      "run_mode": "live",
+      "width": 390
+    },
+    {
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "focused": {
+        "tag": "INPUT",
+        "type": "checkbox"
+      },
+      "http_status": 200,
+      "overflow": false,
+      "page_errors": [],
+      "run_mode": "live",
+      "width": 1440
+    }
+  ],
+  "http_checks": [
+    {
+      "check_id": "a11e0b1c-1874-45d0-9d0d-ecbaf50de589",
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "labels": [
+        "insufficient_evidence"
+      ],
+      "phase": "before",
+      "reason_codes": [
+        [
+          "SOURCE_SILENT"
+        ]
+      ],
+      "source_versions": [],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 9679,
+        "input_tokens": 603,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 282,
+        "provider": "gemini"
+      }
+    },
+    {
+      "check_id": "b2c626fb-49e8-420e-b25e-9ec70536b086",
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "labels": [
+        "insufficient_evidence"
+      ],
+      "phase": "before-auto",
+      "reason_codes": [
+        [
+          "SOURCE_SILENT"
+        ]
+      ],
+      "source_versions": [],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 6414,
+        "input_tokens": 604,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 307,
+        "provider": "gemini"
+      }
+    },
+    {
+      "check_id": "077e43ef-d467-47c0-8702-00f9d47cf81c",
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "labels": [
+        "insufficient_evidence"
+      ],
+      "phase": "before-trigger",
+      "reason_codes": [
+        [
+          "SOURCE_SILENT"
+        ]
+      ],
+      "source_versions": [],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 6667,
+        "input_tokens": 603,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 230,
+        "provider": "gemini"
+      }
+    },
+    {
+      "check_id": "1895ae48-02c2-4716-9d03-2f8fdb456654",
+      "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+      "labels": [
+        "insufficient_evidence"
+      ],
+      "phase": "after-publish",
+      "reason_codes": [
+        [
+          "INVALID_CITATION"
+        ]
+      ],
+      "source_versions": [],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 6315,
+        "input_tokens": 861,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 440,
+        "provider": "gemini"
+      }
+    },
+    {
+      "check_id": "3a6e85fe-8a0d-490a-9216-d22bd5496858",
+      "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+      "labels": [
+        "insufficient_evidence"
+      ],
+      "phase": "diagnostic",
+      "reason_codes": [
+        [
+          "SCOPE_UNCLEAR"
+        ]
+      ],
+      "source_versions": [],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 7355,
+        "input_tokens": 620,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 198,
+        "provider": "gemini"
+      }
+    },
+    {
+      "check_id": "3d808c9d-edf8-4086-a13b-8fb35a4af3d4",
+      "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+      "labels": [
+        "insufficient_evidence"
+      ],
+      "phase": "diagnostic-program",
+      "reason_codes": [
+        [
+          "INVALID_CITATION"
+        ]
+      ],
+      "source_versions": [],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 6495,
+        "input_tokens": 837,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 428,
+        "provider": "gemini"
+      }
+    },
+    {
+      "check_id": "6e6dbee7-9074-4398-9daa-07270621e5ae",
+      "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+      "labels": [
+        "supported"
+      ],
+      "phase": "after-quote-fix",
+      "reason_codes": [
+        [
+          "MATCHED"
+        ]
+      ],
+      "source_versions": [
+        "dut_39c806ec6715272c_0294c3ba0dc48e23"
+      ],
+      "status": "completed",
+      "usage": {
+        "attempts": 2,
+        "cache_hit": false,
+        "cost_usd": 0.0,
+        "cost_vnd_estimate": 0.0,
+        "duration_ms": 8802,
+        "input_tokens": 847,
+        "model": "gemini-3.5-flash-lite",
+        "output_tokens": 439,
+        "provider": "gemini"
+      }
+    }
+  ],
+  "human_source_review_claimed": false,
+  "implementation_files_sha256": {
+    "backend/app/services/source_review.py": "f889170a7d147dc8a4d8355c07957f4a7e18f05a4c8b9727e1b02b1d1679cf21",
+    "backend/app/services/source_scheduler.py": "2cae16a9ff3ae8e29ee8e85c836e0f35cbe0651fa88552edc07a11694b39edfa",
+    "backend/app/services/source_sync.py": "858be59fdef57f3f273156831969ded3375b28fc5e52356088e7cea88909b131",
+    "backend/app/services/verify.py": "2f471a30ae1a4abba1ac437551040d80bbfdbb49ddf6fa59fab8ba1110ca9c94",
+    "scripts/sync_sources.py": "c1d03e3d2ca7d80cab3c0b42f06cd60c20e3604b8f8fb372769121bbebcb285d"
+  },
+  "kind": "actual_DUT_auto_publish_Gemini_HTTP_local_operation_NOT_benchmark",
+  "limits": [
+    "Local CLI has no reboot auto-start supervisor; host/WSL must remain on.",
+    "Financial/scan/personal-list candidates are not auto-approved.",
+    "Low-risk machine class is explicitly named complete HTML with program/initial-deadline facts; other fields can remain NEI.",
+    "Observed model citation/scope failures are retained; successful public check does not prove general accuracy or full12case QA.",
+    "AIDA deadline15/9/2026 is historical; approved programme identity is not a current open-application claim."
+  ],
+  "live_browser": {
+    "captures": [
+      {
+        "overflow": false,
+        "width": 390
+      },
+      {
+        "overflow": false,
+        "width": 1440
+      }
+    ],
+    "check_id": "7ae5dfba-8167-4fe8-bf26-212213edf25b",
+    "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+    "keyboard": true,
+    "kind": "actual_Gemini_HTTP_browser_no_interception",
+    "labels": [
+      "supported"
+    ],
+    "page_errors": [],
+    "snapshot_opened": true,
+    "sources": [
+      {
+        "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12218",
+        "version_id": "dut_39c806ec6715272c_0294c3ba0dc48e23"
+      }
+    ],
+    "status": "completed",
+    "usage": {
+      "attempts": 2,
+      "cache_hit": false,
+      "cost_usd": 0,
+      "cost_vnd_estimate": 0,
+      "duration_ms": 6335,
+      "input_tokens": 847,
+      "model": "gemini-3.5-flash-lite",
+      "output_tokens": 278,
+      "provider": "gemini"
+    }
+  },
+  "on_demand": {
+    "authority_ids": [
+      "dut_ctsv"
+    ],
+    "http": [
+      {
+        "host": "dut.udn.vn",
+        "path": "/robots.txt",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Tintucds/gid/332",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12218",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12218",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12217",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12217",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12372",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12372",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12327",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12327",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12321",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12321",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12320",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12320",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12311",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12311",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12104",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12104",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12046",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12046",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12395",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12395",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12394",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12394",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12373",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12373",
+        "status": 200
+      }
+    ],
+    "privacy_basis": "Fixed-ID-only queue schema; actual receipt URLs are closed DUT paths, no raw text/query parameters; no user images sent",
+    "review": {
+      "approved": [
+        {
+          "family_id": "scholarship_37b499ae1fea9692",
+          "fields": [
+            "program",
+            "deadline"
+          ],
+          "text_sha256": "0294c3ba0dc48e237abcd5ff35fdfb4a6b91c3f5f8d1f0dedfe81ab4f9d8f5c5",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12218",
+          "version_id": "dut_39c806ec6715272c_0294c3ba0dc48e23"
+        }
+      ],
+      "corpus_after": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+      "corpus_before": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "duplicates": [
+        {
+          "reason": "version_already_retained",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12321"
+        },
+        {
+          "reason": "version_already_retained",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12381"
+        },
+        {
+          "reason": "version_already_retained",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12395"
+        }
+      ],
+      "finished_at": "2026-11-11T04:19:52.233856+00:00",
+      "pending": [
+        {
+          "reason": "recollect_with_current_extractor",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12340"
+        },
+        {
+          "reason": "incomplete_or_risky",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12311"
+        },
+        {
+          "reason": "recollect_with_current_extractor",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12315"
+        },
+        {
+          "reason": "incomplete_or_risky",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12372"
+        },
+        {
+          "reason": "existing_notice_requires_review",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12394"
+        },
+        {
+          "reason": "incomplete_or_risky",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12373"
+        },
+        {
+          "reason": "existing_notice_requires_review",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12327"
+        },
+        {
+          "reason": "incomplete_or_risky",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12320"
+        },
+        {
+          "reason": "incomplete_or_risky",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12046"
+        },
+        {
+          "reason": "existing_notice_requires_review",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12387"
+        },
+        {
+          "reason": "recollect_with_current_extractor",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12319"
+        },
+        {
+          "reason": "incomplete_or_risky",
+          "url": "https://dut.udn.vn/Phong/CTSV/Thongbao/id/12104"
+        },
+        {
+          "reason": "recollect_with_current_extractor",
+          "url": "https://dut.udn.vn/Phong/Taichinh/Thongbao/id/12337"
+        }
+      ],
+      "started_at": "2026-11-11T04:19:52.155215+00:00"
+    },
+    "run_id": "2f9b466e-d525-471e-a805-e7833acd6609",
+    "user_text_in_outbound_requests": false
+  },
+  "recorded_at": "2026-11-11T04:41:18.031373+00:00",
+  "recorded_collector_http_requests": 176,
+  "rollback_restart": {
+    "active_source_http": 200,
+    "after": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+    "archived_quote_exact": true,
+    "archived_source_http": 200,
+    "backend_pid": 22715,
+    "before": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+    "finished_at": "2026-11-11T04:27:47.998947+00:00",
+    "health_after_restart": {
+      "corpus_version": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+      "provider_configured": true,
+      "run_mode": "live",
+      "schema_version": "1.0",
+      "status": "ok"
+    },
+    "new_result_unchanged": true,
+    "old_result_unchanged": true,
+    "passed": true,
+    "provider_calls": 0,
+    "rollback": "corpus-6b5cb0eb9e0b4f5029857ffe83259f77290af8585d05aa50216fee0d122142e5",
+    "source_sha256": "0294c3ba0dc48e237abcd5ff35fdfb4a6b91c3f5f8d1f0dedfe81ab4f9d8f5c5",
+    "started_at": "2026-11-11T04:27:45.978211+00:00"
+  },
+  "scheduler": {
+    "heartbeat_age_seconds": 2.1,
+    "lock_held": true,
+    "process_alive": true,
+    "receipt": {
+      "cycle_count": 5,
+      "dry_run": false,
+      "heartbeat_unix": 1794372075.931213,
+      "interval_seconds": 3600,
+      "last_authority_ids": [
+        "dut_ctsv"
+      ],
+      "last_request_count": 28,
+      "last_review_status": "checked",
+      "last_run_id": "2f9b466e-d525-471e-a805-e7833acd6609",
+      "last_run_status": "partial",
+      "mode": "live",
+      "next_run": 1794373334.7513814,
+      "pid": 27745,
+      "previous_started_at": "2026-11-11T04:27:48.902206+00:00",
+      "process_identity": "baeeb11b-e650-4db5-9ac4-999c52ab6c87:395683",
+      "restart_count": 6,
+      "started_at": "2026-11-11T04:39:35.741403+00:00",
+      "status": "running"
+    }
+  },
+  "source_count": 7,
+  "supplementary_inspection": "Two bounded registry inspection scripts and web/Drive reads are separate; their complete HTTP counts were not persisted and are not added to recorded totals.",
+  "validation": {
+    "backend_eval_tests": 505,
+    "benchmark_corpus_valid": true,
+    "contract_examples": 31,
+    "frontend_build": true,
+    "frontend_unit_tests": 37,
+    "openapi_matches": true
+  },
+  "vietnam_time": "2026-11-11T11:41:18.031486+07:00"
+}

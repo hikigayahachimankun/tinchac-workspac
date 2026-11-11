@@ -1,0 +1,178 @@
+{
+  "kind": "actual-local-DUT-scheduler",
+  "last_cycle": {
+    "approved": 0,
+    "authorities_validated": [
+      "dut_ctsv",
+      "dut_finance"
+    ],
+    "cost_usd": 0,
+    "dry_run": false,
+    "duplicates": 0,
+    "duration_seconds": 23.611,
+    "fetched": 12,
+    "finished_at": "2026-11-11T04:01:36.398160+00:00",
+    "http": [
+      {
+        "host": "dut.udn.vn",
+        "path": "/robots.txt",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Tintucds/gid/332",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12218",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12218",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh/Thongbao/id/12315",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12217",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12217",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh/Thongbao/id/12387",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12372",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12372",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh/Thongbao/id/12381",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12327",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12327",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh/Thongbao/id/12340",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12321",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12321",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh/Thongbao/id/12337",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Sinhvien/Thongbao/id/12320",
+        "status": 301
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/CTSV/Thongbao/id/12320",
+        "status": 200
+      },
+      {
+        "host": "dut.udn.vn",
+        "path": "/Phong/Taichinh/Thongbao/id/12319",
+        "status": 200
+      }
+    ],
+    "listings_checked": 3,
+    "new_urls": 0,
+    "pending": 1,
+    "quarantined": 10,
+    "rejected": [
+      {
+        "phase": "notice",
+        "reason": "personal_data_not_retained",
+        "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+      }
+    ],
+    "request_count": 23,
+    "run_id": "0482eee0-8932-4bff-871b-5df424c08f20",
+    "started_at": "2026-11-11T04:01:12.787422+00:00",
+    "status": "partial",
+    "unchanged": 6,
+    "updated": 5,
+    "urls_discovered": 17
+  },
+  "note": "60s validation cadence; machine/WSL must remain on; not 24/7 hosting",
+  "status": {
+    "heartbeat_age_seconds": 0.79,
+    "lock_held": true,
+    "process_alive": true,
+    "receipt": {
+      "cycle_count": 2,
+      "dry_run": false,
+      "heartbeat_unix": 1794369730.676757,
+      "interval_seconds": 60,
+      "last_authority_ids": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "last_request_count": 23,
+      "last_run_id": "0482eee0-8932-4bff-871b-5df424c08f20",
+      "last_run_status": "partial",
+      "mode": "live",
+      "next_run": 1794369732.7756665,
+      "pid": 10814,
+      "previous_started_at": null,
+      "process_identity": "baeeb11b-e650-4db5-9ac4-999c52ab6c87:159238",
+      "restart_count": 0,
+      "started_at": "2026-11-11T04:00:11.344474+00:00",
+      "status": "running"
+    }
+  }
+}

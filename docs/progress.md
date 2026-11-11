@@ -25,4 +25,4 @@ Recovery 10/11/2026, giờ Việt Nam. Quyền bảo trì/commit/push và nghi�
 
 | Feature | Owner | Trạng thái | Gate thực tế / bước tiếp theo | Handoff |
 |---|---|---|---|---|
-| Verified source sync | Autonomous maintainer | review | Registry2units/discovery18URLs,8quarantine/0newapproved; incremental/scheduler/on-demand/publish/runtime/rollback đã kiểm; không bật service, không đổi benchmark/T02–T15 acceptance | [Source sync](handoffs/source-sync.md) |
+| Verified source sync | Autonomous maintainer | review | AIDA DUT mới tự publish hợp lệ;7versions/6approved/8chunks trong corpus riêng, HTTP/Gemini/browser supported/citation thật;5scheduler cycles/on-demand/restart/rollback đạt, benchmark giữ nguyên; giới hạn ở report | [Source sync](handoffs/source-sync.md) |

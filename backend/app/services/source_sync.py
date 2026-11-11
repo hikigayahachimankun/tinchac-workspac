@@ -98,7 +98,22 @@ def parse_notice(body: bytes, authority: dict, url: str):
     category = next((c for c in authority['categories'] if TOPICS[c].search(title)), None)
     if category is None:
         raise ValueError('publisher_category_mismatch')
-    attachments, rejected = [], 0
+    # Known 16px inline emoji are punctuation, never a policy document. Unknown
+    # images (even with emoji alt text) stay unread. Do not request the image URL.
+    decorative = 0
+    for tag in content.select('img'):
+        if (re.fullmatch(r'https://static\.xx\.fbcdn\.net/images/emoji\.php/v9/[a-z0-9]+/3/16/[a-f0-9_]+\.png',tag.get('src',''))
+                and tag.get('alt') and not any(c.isalnum() for c in tag['alt'])
+                and re.fullmatch(r'height:\s*16px;\s*width:\s*16px;?',tag.get('style',''))):
+            decorative += 1
+            tag.decompose()
+    attachments, application_links, rejected = [], [], 0
+    def application_link(value):
+        p=urlsplit(value)
+        if (p.scheme=='https' and p.netloc=='forms.gle'
+                and re.fullmatch(r'/[A-Za-z0-9]+',p.path)):
+            return urlunsplit(('https',p.netloc,p.path,'',''))
+        return None
     for tag in content.select('img,iframe,object,embed,a[href]'):
         value = tag.get('src') or tag.get('data') or tag.get('href')
         # All document links are unresolved unless explicitly reviewed later.
@@ -107,13 +122,38 @@ def parse_notice(body: bytes, authority: dict, url: str):
             continue
         if not value or value.startswith(('#','mailto:','tel:')):
             continue
+        application=application_link(value) if tag.name=='a' else None
+        if application:
+            application_links.append(application)
+            continue
         try:
             link = attachment_link(urljoin(url, value), url)
         except ValueError:
             rejected += 1
         else:
             attachments.append({'url': link, 'parent_url': url, 'kind': tag.name, 'fetched': False})
-    embedded = len(content.select('img,iframe,object,embed'))
+    # Editors also paste non-clickable document URLs. They carry exactly the
+    # same completeness risk as an anchor and must not silently disappear.
+    known_links={row['url'] for row in attachments}
+    for value in re.findall(r'https?://[^\s<>"\x27]+',complete_text):
+        value=value.rstrip('.,;)')
+        application=application_link(value)
+        if application:
+            application_links.append(application)
+            continue
+        try:
+            link=attachment_link(value,url)
+        except ValueError:
+            rejected += 1
+        else:
+            if link not in known_links:
+                attachments.append({'url':link,'parent_url':url,'kind':'text','fetched':False})
+                known_links.add(link)
+    # Business images can also be expressed as CSS, picture/srcset or SVG.
+    # They are unresolved objects, never silently treated as complete text.
+    embedded = len(content.select('img,iframe,object,embed,picture,video,audio,svg'))
+    embedded += sum(bool(re.search(r'url\s*\(',tag.get('style',''),re.I)) for tag in content.select('[style]'))
+    tables = len(content.select('table'))
     for tag in content.select('h2,.wd-date,.wd-notify-hot,script,style,img,iframe,object,embed'):
         tag.decompose()
     for table in content.select('table'):
@@ -130,6 +170,9 @@ def parse_notice(body: bytes, authority: dict, url: str):
     if re.search(r'gia hạn|đính chính|điều chỉnh|sửa đổi', title, re.I):
         reasons.append('amendment_relationship_review')
     return dict(title=title, text=text, category=category, attachments=attachments,
+                extraction_policy='html_notice_v2',
+                application_links=sorted(set(application_links)), decorative_images=decorative,
+                tables=tables,
                 omitted_embedded_objects=embedded, rejected_attachment_links=rejected,
                 review_reasons=reasons, extraction_complete=not bool(embedded or attachments or rejected))
 

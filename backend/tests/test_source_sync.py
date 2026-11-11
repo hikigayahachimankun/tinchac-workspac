@@ -230,6 +230,36 @@ def test_unread_attachments_quarantined_and_never_fetched(tmp_path):
     with pytest.raises(ValueError,match='parent'): attachment_link('https://drive.google.com/file/d/abc/view',None)
 
 
+def test_application_form_is_recorded_without_fetch_or_unread_document(tmp_path):
+    result=run_sync(tmp_path,lambda r:site_reply(r,notice_body=notice_html(extra=
+        '<p>Sinh viên đăng ký tại <a href="https://forms.gle/AbCd123?tracking=removed">TẠI ĐÂY</a></p>')))
+    receipt=json.loads(next((tmp_path/'candidates').glob('*/*/receipt.json')).read_text())
+    assert receipt['extraction_complete'] and receipt['attachments']==[]
+    assert receipt['application_links']==['https://forms.gle/AbCd123']
+    assert all(event['host']=='dut.udn.vn' for event in result['http'])
+
+
+def test_known_inline_emoji_is_decoration_but_unknown_images_remain_unread(tmp_path):
+    emoji='<img alt="🎓" src="https://static.xx.fbcdn.net/images/emoji.php/v9/t63/3/16/1f393.png" style="height:16px; width:16px">'
+    result=run_sync(tmp_path,lambda r:site_reply(r,notice_body=notice_html(extra=emoji)))
+    receipt=json.loads(next((tmp_path/'candidates').glob('*/*/receipt.json')).read_text())
+    assert receipt['extraction_complete'] and receipt['decorative_images']==1
+    assert receipt['omitted_embedded_objects']==0
+    for image in ('<img alt="🎓" src="https://evil.test/policy.png" width="16" height="16">',
+                  '<img alt="Điều kiện" src="https://dut.udn.vn/Files/policy.png">'):
+        from backend.app.services.source_sync import parse_notice
+        parsed=parse_notice(notice_html(extra=image).encode(),AuthorityRegistry().authorities['dut_ctsv'],NOTICE)
+        assert not parsed['extraction_complete']
+
+
+def test_plain_document_url_cannot_escape_completeness_checks():
+    from backend.app.services.source_sync import parse_notice
+    parsed=parse_notice(notice_html(extra='<p>Chi tiết: https://drive.google.com/file/d/abc/view</p>').encode(),
+        AuthorityRegistry().authorities['dut_ctsv'],NOTICE)
+    assert not parsed['extraction_complete']
+    assert parsed['attachments'][0]['url']=='https://drive.google.com/file/d/abc/view'
+
+
 def test_no_authority_trust_link_no_listing_fetch(tmp_path):
     def reply(r):
         if r.url.path=='/robots.txt': return httpx.Response(404)
@@ -349,3 +379,14 @@ def test_unfetched_backlog_survives_listing_rotation_and_failure_receipted(tmp_p
 def test_robots_malformed_access_message_is_fail_closed():
     f=fetcher(lambda r:httpx.Response(200,headers={'content-type':'text/plain'},text='Automated access denied'))
     with pytest.raises(FetchBlocked,match='robots_unreadable'): f.get(LISTING,'listing')
+
+
+@pytest.mark.parametrize('extra',[
+    '<p style="background-image:url(https://dut.udn.vn/Files/policy.png)">Điều kiện học bổng</p>',
+    '<picture><source srcset="https://dut.udn.vn/Files/policy.png"></picture>',
+    '<svg><image href="https://dut.udn.vn/Files/policy.png"></image></svg>',
+])
+def test_other_image_encodings_remain_incomplete(extra):
+    from backend.app.services.source_sync import parse_notice
+    parsed=parse_notice(notice_html(extra=extra).encode(),AuthorityRegistry().authorities['dut_ctsv'],NOTICE)
+    assert not parsed['extraction_complete']
