@@ -1,0 +1,18 @@
+{
+  "base_commit": "5c57b0eb70e9aa15a5b167664d3aff31e6ad4f34",
+  "branch": "feature/verified-source-sync",
+  "code_commit": "20e1201e92d422e83819d0b18443a69342ab5b9f",
+  "deploy": false,
+  "follow_up": "Receipt-only commit follows this code commit on the same branch; runtime implementation unchanged.",
+  "force_push": false,
+  "gold_uploaded": false,
+  "local_original_commit": "cdcaf97605f24c2821b2854c348dfbdd388baad5",
+  "local_preservation_branch": "feature/verified-source-sync-local-operation-checkpoint",
+  "merge": false,
+  "private_content_uploaded": false,
+  "public_code_metadata_files": 28,
+  "repository": "hikigayahachimankun/tinchac-workspac",
+  "tag": false,
+  "transport": "Connected GitHub Git Data API; expected-parent fast-forward; fetched and verified equal local/remote tree",
+  "verified_code_tree": "7a565c25506e5a91663cb343c2b8e58cec9eb24e"
+}

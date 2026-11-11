@@ -72,3 +72,10 @@ Final regression: `.venv/bin/python -m pytest backend/tests eval/tests -q` → *
 - Next step: finalize the current-tree regression receipt and publish the verified public Git tree; keep task in review under AGENTS.md rather than impersonating an independent reviewer.
 
 - Final current-tree rerun: `.venv/bin/python -m pytest backend/tests eval/tests -q` → **505passed,23.87s**; safe receipt `docs/evidence/source-sync/qa.json`. Final source security/helper changes included. Backend/source health and benchmark integrity checked; no further model calls needed.
+
+## Git publication and resume verified
+
+- Code commit20e1201e92d422e83819d0b18443a69342ab5b9f published on feature/verified-source-sync; exact tree7a565c25506e5a91663cb343c2b8e58cec9eb24e matches the505-test local tree. Original local cdcaf97 retained on feature/verified-source-sync-local-operation-checkpoint. No reset/force/merge/tag/deploy or private source upload. Receipt: docs/evidence/source-sync/git-operation.json. A receipt-only follow-up records this state.
+- After environment interruption, both processes were correctly detected dead/stale. Restart restored backend/live/frontend/source HTTP200 and scheduler state without clearing checkpoints/cooldown/ledger. Original NEI and new supported records/quotes unchanged. Scheduler completed one more actual DUT cycle: total6cycles,8newcollector receipts/199recordedHTTP requests. Evidence docs/evidence/source-sync/resume.json;0additional model generation calls by resume.
+- Status remains review under AGENTS.md; maintainer technical acceptance is complete for the documented local scope, not independent human approval or upstream benchmark acceptance. Source/privacy/financial and host-availability limits remain as documented. Running process is real local CLI; it does not imply uptime while environment is stopped.
+- Next step: monitor the next scheduled cycle using the README status command.

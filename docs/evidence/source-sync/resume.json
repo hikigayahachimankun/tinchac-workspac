@@ -1,0 +1,73 @@
+{
+  "checkpoint_deleted": false,
+  "frontend_http": 200,
+  "health": {
+    "corpus_version": "corpus-b64622385341477a6afb164f2a171dd3942e1d3372e27f318210668665db5e11",
+    "provider_configured": true,
+    "run_mode": "live",
+    "schema_version": "1.0",
+    "status": "ok"
+  },
+  "initial_observation": {
+    "backend_unavailable": true,
+    "note": "Processes ended across the interrupted environment. Existing corpus/state/ledger survived; no continuous uptime asserted.",
+    "scheduler_alive": false,
+    "stale_heartbeat_age_seconds": 14229.36
+  },
+  "latest_actual_cycle": {
+    "authorities_validated": [
+      "dut_ctsv",
+      "dut_finance"
+    ],
+    "finished_at": "2026-11-11T08:42:44.011548+00:00",
+    "rejected": [
+      {
+        "phase": "notice",
+        "reason": "personal_data_not_retained",
+        "url": "https://dut.udn.vn/Phong/Sinhvien/Thongbao/id/12217"
+      }
+    ],
+    "request_count": 23,
+    "run_id": "c0dfb532-eae0-470e-b436-2d8f3d48e3a3",
+    "started_at": "2026-11-11T08:42:05.379828+00:00",
+    "status": "partial"
+  },
+  "ledger_reset": false,
+  "new_supported_check_unchanged": true,
+  "old_check_unchanged": true,
+  "passed": true,
+  "provider_generation_calls_by_this_resume": 0,
+  "recorded_at": "2026-11-11T08:45:26.654818+00:00",
+  "recorded_collection_runs_today": 8,
+  "recorded_collector_http_requests_today": 199,
+  "scheduler": {
+    "heartbeat_age_seconds": 2.3,
+    "lock_held": true,
+    "process_alive": true,
+    "receipt": {
+      "cycle_count": 6,
+      "dry_run": false,
+      "heartbeat_unix": 1794386724.3243325,
+      "interval_seconds": 3600,
+      "last_authority_ids": [
+        "dut_ctsv",
+        "dut_finance"
+      ],
+      "last_request_count": 23,
+      "last_review_status": "checked",
+      "last_run_id": "c0dfb532-eae0-470e-b436-2d8f3d48e3a3",
+      "last_run_status": "partial",
+      "mode": "live",
+      "next_run": 1794390125.3660567,
+      "pid": 1981,
+      "previous_started_at": "2026-11-11T04:39:35.741403+00:00",
+      "process_identity": "a83260aa-5ae4-4a52-a8b1-c135b651805d:13631",
+      "restart_count": 7,
+      "started_at": "2026-11-11T08:42:05.360959+00:00",
+      "status": "running"
+    }
+  },
+  "source_http": 200,
+  "source_sha256": "0294c3ba0dc48e237abcd5ff35fdfb4a6b91c3f5f8d1f0dedfe81ab4f9d8f5c5",
+  "vietnam_time": "2026-11-11T15:45:26.654831+07:00"
+}

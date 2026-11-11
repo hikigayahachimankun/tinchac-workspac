@@ -61,4 +61,4 @@ Clean feature branch at 5c57b0e, matches upstream. Baseline 471 backend/eval tes
 - [x] Build/frontend tests; run real FastAPI localhost serving built frontend.
 - [x] Execute a missing-source HTTP check, inspect fixed-ID queue, drain via real DUT collector, publish eligible source and repeat check. Check exact citations/version and immutable old result, restart and rollback. Separate real network/model observations from fixtures.
 - [x] Run full backend/eval, contracts, corpus and security regressions; self-review full diff/callers with ponytail-review and fix concrete findings.
-- [ ] Update receipts/runbook and durable checkpoint; commit and safe push public code/metadata only. Record any unavoidable human action immediately and continue independent technical work.
+- [x] Update receipts/runbook and durable checkpoint; commit and safe push public code/metadata only. Record any unavoidable human action immediately and continue independent technical work.
